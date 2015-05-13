@@ -1,0 +1,266 @@
+/*
+  /$$$$$$   /$$$$$$  /$$      /$$       /$$$$$$$  /$$      /$$  /$$$$$$         /$$$$$$  /$$                         /$$             /$$                        
+ /$$__  $$ /$$__  $$| $$$    /$$$      | $$__  $$| $$$    /$$$ /$$__  $$       /$$__  $$|__/                        | $$            | $$                        
+| $$  \ $$|__/  \ $$| $$$$  /$$$$      | $$  \ $$| $$$$  /$$$$| $$  \__/      | $$  \__/ /$$ /$$$$$$/$$$$  /$$   /$$| $$  /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ 
+| $$$$$$$$   /$$$$$/| $$ $$/$$ $$      | $$$$$$$/| $$ $$/$$ $$| $$            |  $$$$$$ | $$| $$_  $$_  $$| $$  | $$| $$ |____  $$|_  $$_/   /$$__  $$ /$$__  $$
+| $$__  $$  |___  $$| $$  $$$| $$      | $$____/ | $$  $$$| $$| $$             \____  $$| $$| $$ \ $$ \ $$| $$  | $$| $$  /$$$$$$$  | $$    | $$  \ $$| $$  \__/
+| $$  | $$ /$$  \ $$| $$\  $ | $$      | $$      | $$\  $ | $$| $$    $$       /$$  \ $$| $$| $$ | $$ | $$| $$  | $$| $$ /$$__  $$  | $$ /$$| $$  | $$| $$      
+| $$  | $$|  $$$$$$/| $$ \/  | $$      | $$      | $$ \/  | $$|  $$$$$$/      |  $$$$$$/| $$| $$ | $$ | $$|  $$$$$$/| $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      
+|__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/      
+                                                                                                                                                                                                                                                                                                                             
+
+
+Admin Panel V 1.0 by Cody Salazar AKA Fr33d0m 
+www.A3MilSim.com
+
+License:
+
+You can do whatever you were going to do anyway. Just give me the credit i'm due, and don't steal my shit. I'll be pissed. 
+If you want to repay me for all my hard work, come and play arma with me! I hang out at a MilSim unit known as A3M (A3 MilSim) 
+Come and visit us at ts3.a3milsim.com:1911
+
+WE LOVE JOINT OPS WITH OTHER UNITS!! 
+
+www.A3MilSim.com (A3 MilSim)
+All Rights Reserved
+
+For Information and Inquiries, EMAIL: salazar@a3milsim.com
+
+Credits & Thanks: 
+
+My wife, for not only supporting my modding ventures, but actually jumping in and helping with mods when she can. What a gal! 
+
+Sgt. Lucht and Sgt. Scanlon, of the U.S. Army, for realism consulting. 
+
+All my patient internal testers!!
+
+Cannabis, Sativa and Indica, (The legal, medical variety) for giving me the patience and focus to complete this project over, and over again. 
+
+And last, but definitely not least, the A3 community, who through over 250+ encouraging messages highly encouraged me to continue this project. I'm glad you like it, 
+and I hope you enjoy the things I have in the works! 
+
+
+################################## LET US BEGIN #################################### */
+
+author = "Cody Salazar AkA A3M Fr33d0m";
+OnLoadName = "A3M PMC Simulator"; 
+OnLoadMission = "Orion Private Security Group"; 
+onLoadIntro = "Req. ALiVE, RHS Esc, ACE3, Leights OPFOR and TFAR"; 
+
+respawn = 3;
+respawnDelay = 30;
+respawnDialog = 1;
+respawnTemplatesWest[] = {"MenuPosition"};
+respawnButton = 1;
+disabledAI = 1;
+enableDebugConsole = 1;
+showMap = 1;
+scriptedPlayer = 1;
+corpseManagerMode = 1;
+corpseLimit = 1;
+corpseRemovalMinTime = 60; //seconds
+corpseRemovalMaxTime = 1200; //seconds
+wreckManagerMode = 1;
+wreckLimit = 1;
+wreckRemovalMinTime = 60; //seconds
+wreckRemovalMaxTime = 1200; //seconds
+forceRotorLibSimulation = 1; 
+loadscreen = "images\OPSG_Loadimg.jpg"; 
+
+class Header
+{
+	gameType = Sandbox;
+	minPlayers = 1;
+	maxPlayers = 40;
+};
+
+disableChannels[]={0,1,2,3,6};
+
+#include "dialogs\A3M_Normals.hpp"
+#include "dialogs\FleetMgmt.hpp"
+#include "dialogs\MissionSelector.hpp"
+#include "dialogs\Gunstore_Dialog.hpp" 
+#include "dialogs\BankAccount.hpp"
+#include "dialogs\AdminPanel.hpp"
+#include "dialogs\2ABCT_M4R.hpp"
+
+class CfgSounds
+{
+	sounds[] = {deuce, RTB, Standby, MissionAccepted, MissionFailed, WFP, T9Cinematic1, alarmed, PLChant, Showdown};
+	class buy
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "buy";
+		// filename, volume, pitch
+		sound[] = {"sounds\buy.ogg", 0.50, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, "*You have made a purchase*"};
+	};
+	
+		class deuce
+	{
+		name = "deuce";
+		sound[] = {"\sounds\deuce.ogg", 0.8, 1.0};
+		titles[] = {1, "*Travelling to Destination: Standby*"};
+	};
+	
+		class RTB
+	{
+		name = "RTB";
+		sound[] = {"\sounds\AORTB.ogg", 0.8, 1.0};
+		titles[] = {1, "*Radio Message: Return To Base*"};
+	};
+	
+		class Standby
+	{
+		name = "Standby";
+		sound[] = {"\sounds\AOSB.ogg", 0.8, 1.0};
+		titles[] = {1, "*Radio Message: Standby for Transmission*"};
+	};
+	
+		class MissionAccepted
+	{
+		name = "MissionAccepted";
+		sound[] = {"\sounds\MissionAcc.ogg", 0.5, 1.0};
+		titles[] = {1, "*You have accepted a contract*"};
+	};
+	
+		class MissionFailed
+	{
+		name = "MissionFailed";
+		sound[] = {"\sounds\MissionFail.ogg", 0.5, 1.0};
+		titles[] = {1, "*You have failed to complete this contract*"};
+	};
+	
+		class WFP
+	{
+		name = "Wildfire";
+		sound[] = {"\sounds\WildProEvac.ogg", 0.5, 1.0};
+		titles[] = {1, "* Radio Message: WILDFIRE PROTOCOL. EVACUATE! *"};
+	};
+	
+	class T9Cinematic1
+	{
+		name = "T9Cinematic1";
+		sound[] = {"\sounds\T9Cinematic1.ogg", 0.3, 1.0};
+		titles[] = {};
+	};
+	
+	class alarmed
+	{
+		name = "alarmed";
+		sound[] = {"\sounds\alarmc1.ogg", db+0.95, 1.0};
+		titles[]= {}; 
+	};
+	
+	class PLChant
+	{
+		name = "PLChant";
+		sound[] = {"\sounds\noPL.ogg", db+0.75, 1.0};
+		titles[]= {}; 
+	};
+	
+	class Showdown
+	{
+		name = "Showdown"; 
+		sound[]= {"\music\Showdown.ogg", db-0.35, 1.0}; 
+		titles[]= {}; 
+	}; 
+	
+};
+
+class CfgMusic
+{
+	tracks[]={Assigned, gearup, failure, success, bank};
+
+	class Assigned
+	{
+		name = "Assigned";
+		sound[] = {"\music\Assigned.ogg", db+0, 1.0};
+	};
+	
+		class gearup
+	{
+		name = "gearup";
+		sound[] = {"\music\gearup.ogg", db+1.05, 1.0};
+	};
+	
+		class failure
+		{
+		name = "failure";
+		sound[] = {"\music\failure.ogg", db+0, 1.0};
+	};
+	
+		class success
+	{
+		name = "success";
+		sound[] = {"\music\success.ogg", db+0, 1.0};
+	};
+	
+		class bank
+	{
+		name = "bank";
+		sound[] = {"\music\bank.ogg", db+0, 1.0};
+	};
+	
+};
+
+class Params {
+
+class DTimer { 
+//ParamsArray Select 0 
+title= "Payout Multiplier (Personal Accounts)";
+values[]= {0.5, 1, 2, 3}; 
+texts[]= {"Half of Rating Points (Subtraction)", "No Multiplier", "Double", "Triple"}; 
+default= 2;
+}; 
+
+class OpBudget { 
+//ParamsArray select 1
+title= "Operation Budget:";
+values[]= {0, 5000000, 12000000, 25000000, 50000000, 75000000, 120000000}; 
+texts[]= {"Broke", "5 Million", "12 Million", "25 Million", "50 Million", "75 Million", "120 Million"}; 
+default= 12000000;
+}; 
+
+class RBLength {
+// ParamsArray select 2
+title = "Roadblock Shift Length:"; 
+values[]= {10, 15, 20, 25, 30}; 
+texts[] = {"Ten Cars", "Fifteen Cars", "Twenty Cars", "Twenty Five Cars", "Thirty Cars"}; 
+default= 10; 
+}; 
+
+class DeliveryTime {
+// ParamsArray select 3
+title = "Online Order Delivery Time:"; 
+values[]= {10, 30, 60, 120, 180, 240, 300}; 
+texts[] = {"10 Seconds", "30 Seconds", "1 Minute", "2 Minutes", "3 Minutes", "4 Minutes", "5 Minutes"}; 
+default= 10; 
+}; 
+
+class FuelCost {
+// ParamsArray select 4
+title = "Gas Prices (Cost Per Gallon - Vehicle Refuelling):"; 
+values[]= {2, 4, 6, 7, 8, 10, 12}; 
+texts[] = {"$2.00 / Gallon", "$4.00 / Gallon", "$6.00 / Gallon", "$8.00 / Gallon", "$10.00 / Gallon", "$12.00 / Gallon", "$14.00 / Gallon"}; 
+default= 2; 
+}; 
+
+class RepairPrice {
+// ParamsArray select 5
+title = "Repair / Labor Prices (Multiplier - Vehicle Repair):"; 
+values[]= {20, 40, 60, 70, 80, 100, 120}; 
+texts[] = {"$20.00 / Hr", "$40.00 / Hr", "$60.00 / Hr", "$80.00 / Hr", "$100.00 / Hr", "$120.00 / Hr", "$140.00 / Hr"}; 
+default= 20; 
+}; 
+
+class JetFuelCost {
+// ParamsArray select 6
+title = "Jet Fuel (Cost Per LB - Aircraft Refuelling):"; 
+values[]= {8, 10, 12, 15, 17, 20, 25}; 
+texts[] = {"$8.00 / Lb", "$10.00 / Lb", "$12.00 / Lb", "$15.00 / Lb", "$17.00 / Lb", "$20.00 / Lb", "$25.00 / Lb"}; 
+default= 8; 
+}; 
+
+}; 

@@ -1,0 +1,2 @@
+{ if (!alive _x) then { deletevehicle _x } } foreach (nearestObjects [center, ["Man", "Car", "Tank", "Helicopter"], 2600]);
+hint "Forced Garbage collector has initialized...cleaning up the wasted shit...";
