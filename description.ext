@@ -171,7 +171,7 @@ class CfgSounds
 
 class CfgMusic
 {
-	tracks[]={Assigned, gearup, failure, success, bank};
+	tracks[]={Assigned, gearup, failure, success, bank, dead};
 
 	class Assigned
 	{
@@ -201,6 +201,12 @@ class CfgMusic
 	{
 		name = "bank";
 		sound[] = {"\music\bank.ogg", db+0, 1.0};
+	};
+	
+	class dead
+	{
+		name = "dead";
+		sound[] = {"\music\dead.ogg", db+0.85, 1.0};
 	};
 	
 };
@@ -261,6 +267,14 @@ title = "Jet Fuel (Cost Per LB - Aircraft Refuelling):";
 values[]= {8, 10, 12, 15, 17, 20, 25}; 
 texts[] = {"$8.00 / Lb", "$10.00 / Lb", "$12.00 / Lb", "$15.00 / Lb", "$17.00 / Lb", "$20.00 / Lb", "$25.00 / Lb"}; 
 default= 8; 
+}; 
+
+class TMNRevive {
+// ParamsArray select 7
+title = "TMN Revive Module:"; 
+values[]= {0, 1}; 
+texts[] = {"Off", "On"}; 
+default= 1; 
 }; 
 
 }; 

@@ -83,3 +83,9 @@ execVM "scripts\intro.sqf";
 
 // the line below starts the JIP Tasker. 
 execVM "scripts\initask.sqf"; 
+
+//Use TMN Revive: Uncomment Line Below
+ReviveOn = ParamsArray Select 7; 
+
+if (ReviveOn == 1) then {
+call compileFinal preprocessFileLineNumbers "TMN_revive\TMN_revive_init.sqf" }; 
