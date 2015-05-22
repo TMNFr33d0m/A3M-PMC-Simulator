@@ -49,8 +49,7 @@ class Controls
 // GUI EDITOR OUTPUT START (by Fr33d0m, v1.063, #Mevevi)
 ////////////////////////////////////////////////////////
 
-class A3M_AdminFrame: RscFrame
-{
+class A3M_AdminFrame: RscFrame {
 	idc = 1845;
 	text = "Orion Private Security Group - Administrative Options"; //--- ToDo: Localize;
 	x = 0.270799 * safezoneW + safezoneX;
@@ -59,18 +58,18 @@ class A3M_AdminFrame: RscFrame
 	h = 0.550154 * safezoneH;
 	tooltip = "By Cody Salazar AKA Fr33d0m - www.A3MilSim.com"; //--- ToDo: Localize;
 };
-class A3M_ExitButton: RscButton
-{
+
+class A3M_ExitButton: RscButton {
 	idc = 1640;
 	text = "Exit"; //--- ToDo: Localize;
 	x = 0.671901 * safezoneW + safezoneX;
 	y = 0.720062 * safezoneH + safezoneY;
 	w = 0.0458403 * safezoneW;
 	h = 0.0330092 * safezoneH;
-	action = "closeDialog 0;"
+	action = "closeDialog 0;";
 };
-class A3M_10k2All: RscButton
-{
+
+class A3M_10k2All: RscButton {
 	idc = 1641;
 	text = "Advance $10,000 To All Players"; //--- ToDo: Localize;
 	x = 0.282259 * safezoneW + safezoneX;
@@ -78,19 +77,17 @@ class A3M_10k2All: RscButton
 	w = 0.160441 * safezoneW;
 	h = 0.0330092 * safezoneH;
 	tooltip = "Advance $10,000 to each player from the operational budget."; //--- ToDo: Localize;
-	action = "[] spawn CashAdvance"
+	action = "[] spawn CashAdvance";
 };
-class A3M_CancelAllMissions: RscButton
-{
+
+class A3M_CancelAllMissions: RscButton {
 	idc = 1642;
 	text = "Force Cancel All Missions"; //--- ToDo: Localize;
 	x = 0.45416 * safezoneW + safezoneX;
 	y = 0.268935 * safezoneH + safezoneY;
 	w = 0.131791 * safezoneW;
 	h = 0.0330092 * safezoneH;
-	action = "[] spawn CancelAllMissions"
-	
-	
+	action = "[] spawn CancelAllMissions";	
 };
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END

@@ -75,7 +75,7 @@ class A3M_Comm_Video: RscPicture
 };
 class A3M_Exitbutton: RscButton
 {
-	action = "closeDialog 0; [] call A3M_fnc_silence;"
+	action = "closeDialog 0; [] call A3M_fnc_silence;";
 
 	idc = 1600;
 	text = "Exit"; //--- ToDo: Localize;

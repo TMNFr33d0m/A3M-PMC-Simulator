@@ -87,6 +87,7 @@ disableChannels[]={0,1,2,3,6};
 class CfgSounds
 {
 	sounds[] = {deuce, RTB, Standby, MissionAccepted, MissionFailed, WFP, T9Cinematic1, alarmed, PLChant, Showdown};
+	
 	class buy
 	{
 		// how the sound is referred to in the editor (e.g. trigger effects)
