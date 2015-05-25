@@ -39,6 +39,6 @@ missionStatus= "M0";
 publicVariable "missionStatus"; 
 CO1 = player createSimpleTask ["Report to briefing area."]; 
 CO1 setSimpleTaskDescription ["Report to briefing area","Report","Briefing Area"]; 
-CO1 setSimpleTaskDestination (getPos Laptop1);
+CO1 setSimpleTaskDestination (getPos laptop1);
 CO1 setTaskState "Created";
 player setCurrentTask CO1;

@@ -62,7 +62,6 @@ class Mission
 		"A3_Structures_F_Kart_Civ_SportsGrounds",
 		"A3_Characters_F_Kart",
 		"A3_Structures_F_Bootcamp_System",
-		"lop_c_men",
 		"A3_Structures_F_Heli_Furniture",
 		"A3_Structures_F_Bootcamp_Items_Electronics",
 		"A3_Structures_F_Heli_Items_Electronics",
@@ -84,17 +83,15 @@ class Mission
 		"A3_Structures_F_Heli_Ind_Machines",
 		"A3_Structures_F_Heli_Items_Airport",
 		"A3_Structures_F_Heli_Ind_AirPort",
-		"A3_Structures_F_Heli_Civ_Constructions",
-		"lop_c_veh_armored"
+		"A3_Structures_F_Heli_Civ_Constructions"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Modules_F",
 		"A3_Characters_F_INDEP",
-		"lop_c_men",
+		"a3_characters_f",
 		"A3_Soft_F_MRAP_03",
 		"A3_Characters_F_Civil",
-		"a3_characters_f",
 		"A3_Characters_F_Gamma",
 		"A3_Characters_F_OPFOR",
 		"A3_Characters_F_EPC",
@@ -163,7 +160,6 @@ class Mission
 		"A3_Structures_F_Heli_Ind_Machines",
 		"A3_Structures_F_Heli_Items_Airport",
 		"A3_Structures_F_Heli_Ind_AirPort",
-		"lop_c_veh_armored",
 		"a3_map_altis"
 	};
 	randomSeed=3479504;
@@ -2325,7 +2321,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=716;
+		items=715;
 		class Item0
 		{
 			position[]={26833.133,23.385778,24602.961};
@@ -9430,20 +9426,11 @@ class Mission
 		};
 		class Item714
 		{
-			position[]={26750.857,20.750814,24614.328};
-			azimut=-70.553001;
-			id=807;
-			side="EMPTY";
-			vehicle="LOP_RACS_MH9_armed";
-			skill=0.60000002;
-		};
-		class Item715
-		{
 			position[]={20956.084,16.85,19231.826};
 			azimut=156.55901;
 			offsetY=2.5;
 			special="NONE";
-			id=808;
+			id=807;
 			side="EMPTY";
 			vehicle="UserTexture_1x2_F";
 			leader=1;

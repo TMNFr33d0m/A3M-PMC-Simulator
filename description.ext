@@ -45,7 +45,7 @@ and I hope you enjoy the things I have in the works!
 author = "Cody Salazar AkA A3M Fr33d0m";
 OnLoadName = "A3M PMC Simulator"; 
 OnLoadMission = "Orion Private Security Group"; 
-onLoadIntro = "Req. ALiVE, RHS Esc, ACE3, Leights OPFOR and TFAR"; 
+onLoadIntro = "Requires Leights OPFOR"; 
 
 respawn = 3;
 respawnDelay = 30;
