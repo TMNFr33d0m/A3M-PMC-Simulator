@@ -40,29 +40,6 @@ and I hope you enjoy the things I have in the works!
 
 // MISSION PREDEFINES
 
-A3M_fnc_MoneyToAll = {
-Wallet = (Wallet + 10000); 
-	profileNamespace setVariable ["SavedMoney", Wallet]; 
-	SaveProfileNamespace;
-	B_defensebudget = (B_defensebudget - 10000);
-    publicVariable "B_defensebudget"; 
-	B_totalcost= (B_totalcost+10000); 
-    publicVariable "B_totalcost"; 
-   	hint "You've been advanced $10,000.00 from the Operation Budget by your Team Coordinator."; 
-}; 
-
-A3M_MissionsCanceledMP = {
-playSound "RTB"; 
-VIPEscort setTaskState "Failed";
-DELEscort setTaskState "Failed";
-RBduty2 setTaskState "Failed";
-SARMission setTaskState "Failed";
-A3MRaid1 setTaskState "Failed";
-sleep 2; 
-Hint "Your mission was cancelled by the Team Coordinator. Return to Base Immediately for further instructions."; 
-player setCurrentTask CO1; 
-}; 
-
 // Escort Mission Pre-Defines:"
 A3M_fnc_EscortTask = {
 VIPEscort=player createSimpleTask ["Escort VIP"]; 
@@ -392,4 +369,69 @@ T9Task setTaskState "Failed";
 playMusic "Failure"; 
 hint "You have failed to meet the conditions of your contract. The contract has been cancelled and you are to RTB Immediately"; 
 player setCurrentTask CO1;
+}; 
+
+// Administrator Panel Predefines
+
+A3M_Fnc_Testmessage = {
+   if (name player == TargetPlayer) then { hint format ["Incoming Message from Field Commander: \n \n %1", PvtTextMsg]}; 
+};
+
+A3M_Fnc_MoneyToYou = {
+
+if (name player == TargetPlayer) then {
+Wallet = (Wallet + GlobalPushAmount);
+ProfileNamespace SetVariable ["SavedMoney", Wallet]; 
+SaveProfileNamespace;
+B_defensebudget = (B_defensebudget - GlobalPushAmount);
+publicVariable "B_defensebudget"; 
+B_totalcost= (B_totalcost+GlobalPushAmount); 
+publicVariable "B_totalcost"; 
+Hint Format ["You've been advanced $%1.00 from the Operation Budget by your Team Coordinator.", GlobalPushAmount]; 
+}; 
+
+}; 
+
+A3M_Fnc_MoneyFromYou = {
+
+if (name player == TargetPlayer) then {
+Wallet = (Wallet - GlobalPushAmount);
+ProfileNamespace SetVariable ["SavedMoney", Wallet]; 
+SaveProfileNamespace;
+B_defensebudget = (B_defensebudget + GlobalPushAmount);
+publicVariable "B_defensebudget"; 
+B_totalcost= (B_totalcost-GlobalPushAmount); 
+publicVariable "B_totalcost"; 
+Hint Format ["You've been fined for $%1.00 from your personal account by your Team Coordinator. Contact your team coordinator for details about this fine / deduction.", GlobalPushAmount]; 
+}; 
+
+};
+
+A3M_Fnc_GoToJail = {
+if (name player == TargetPlayer) then {
+Player SetPos (GetMarkerPos "Jail");
+}; 
+}; 
+
+A3M_fnc_MoneyToAll = {
+Wallet = (Wallet + 10000); 
+	profileNamespace setVariable ["SavedMoney", Wallet]; 
+	SaveProfileNamespace;
+	B_defensebudget = (B_defensebudget - 10000);
+    publicVariable "B_defensebudget"; 
+	B_totalcost= (B_totalcost+10000); 
+    publicVariable "B_totalcost"; 
+   	hint "You've been advanced $10,000.00 from the Operation Budget by your Team Coordinator."; 
+}; 
+
+A3M_MissionsCanceledMP = {
+playSound "RTB"; 
+VIPEscort setTaskState "Failed";
+DELEscort setTaskState "Failed";
+RBduty2 setTaskState "Failed";
+SARMission setTaskState "Failed";
+A3MRaid1 setTaskState "Failed";
+sleep 2; 
+Hint "Your mission was cancelled by the Team Coordinator. Return to Base Immediately for further instructions."; 
+player setCurrentTask CO1; 
 }; 

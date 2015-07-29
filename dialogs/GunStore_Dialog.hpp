@@ -56,7 +56,7 @@ class A3M_btn_pistols: RscButton
 {
 	action = "[] spawn DoAddPistols";
 
-	idc = 1610;
+	idc = 1810;
 	text = "Pistols & SMGs"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.180921 * safezoneH + safezoneY;
@@ -68,7 +68,7 @@ class A3M_btn_Rifles: RscButton
 {
 	action = "[] spawn DoAddRifles"; 
 
-	idc = 1611;
+	idc = 1811;
 	text = "Long Rifles"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.13691 * safezoneH + safezoneY;
@@ -80,7 +80,7 @@ class A3M_btn_Lnch: RscButton
 {
 	action = "[] spawn DoAddLaunchers"; 
 
-	idc = 1612;
+	idc = 1812;
 	text = "Launchers"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.400976 * safezoneH + safezoneY;
@@ -92,7 +92,7 @@ class A3M_btn_Mags: RscButton
 {
 	action = "[] spawn DoAddAmmo";
 
-	idc = 1613;
+	idc = 1813;
 	text = "Ammunition"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.224932 * safezoneH + safezoneY;
@@ -104,7 +104,7 @@ class A3M_Btn_Optics: RscButton
 {
 	action = "[] spawn DoAddOptics"; 
 
-	idc = 1614;
+	idc = 1814;
 	text = "Optics"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.268943 * safezoneH + safezoneY;
@@ -116,7 +116,7 @@ class A3M_btn_Supp: RscButton
 {
 	action = "[] spawn DoAddSuppressors";
 
-	idc = 1615;
+	idc = 1815;
 	text = "Suppressors"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.312954 * safezoneH + safezoneY;
@@ -128,7 +128,7 @@ class A3M_btn_Smoke: RscButton
 {
 	action = "[] spawn DoAddSmoke";
 
-	idc = 1616;
+	idc = 1816;
 	text = "Smoke Grenades"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.488997 * safezoneH + safezoneY;
@@ -140,7 +140,7 @@ class A3M_btn_Expl: RscButton
 {
 	action = "[] spawn DoAddExplosives";
 
-	idc = 1617;
+	idc = 1817;
 	text = "Grenades / Explosives"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.444986 * safezoneH + safezoneY;
@@ -152,7 +152,7 @@ class A3M_Btn_Unis: RscButton
 {
 	action = "[] spawn DoAddClothes";
 
-	idc = 1618;
+	idc = 1818;
 	text = "Uniforms"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.555014 * safezoneH + safezoneY;
@@ -164,7 +164,7 @@ class A3M_btn_Vests: RscButton
 {
 	action = "[] spawn DoAddVests"; 
 
-	idc = 1619;
+	idc = 1819;
 	text = "Body Armor / Carriers"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.687046 * safezoneH + safezoneY;
@@ -176,7 +176,7 @@ class A3M_Btn_Misc: RscButton
 {
 	action = "[] spawn DoAddItems"; 
 
-	idc = 1620;
+	idc = 1820;
 	text = "Misc Items"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.841084 * safezoneH + safezoneY;
@@ -184,11 +184,11 @@ class A3M_Btn_Misc: RscButton
 	h = 0.0330081 * safezoneH;
 	tooltip = "Access Our Non-Weapon Tactical Items Catalogue"; //--- ToDo: Localize;
 };
-class RscListbox_1650: RscListbox
+class RscListbox_1850: RscListbox
 {
 	onLBDblClick = "_this spawn A3M_fnc_GShandleClick";
 
-	idc = 1650;
+	idc = 1850;
 	x = 0.196263 * safezoneW + safezoneX;
 	y = 0.13691 * safezoneH + safezoneY;
 	w = 0.687706 * safezoneW;
@@ -199,7 +199,7 @@ class A3M_BackPackButton: RscButton
 {
 	action = "[] spawn DoAddBackpacks"; 
 
-	idc = 1621;
+	idc = 1821;
 	text = "Backpacks"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.599024 * safezoneH + safezoneY;
@@ -222,7 +222,7 @@ class A3M_HeadGearButton: RscButton
 {
 	action = "[] spawn DoAddHeadgear";
 
-	idc = 1622;
+	idc = 1822;
 	text = "Head Gear"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.643035 * safezoneH + safezoneY;
@@ -241,6 +241,7 @@ class A3M_ModsTxt: RscText
 };
 class A3M_StoreFrameSA: RscFrame
 {
+	Moving = 1; 
 	idc = 1821;
 	text = "Lazarus International Security Supply"; //--- ToDo: Localize;
 	x = 0.0759146 * safezoneW + safezoneX;
@@ -252,7 +253,7 @@ class A3M_exitbutton: RscButton
 {
 	action = "closeDialog 0; [] call A3M_fnc_silence; ";
 
-	idc = 1623;
+	idc = 1823;
 	text = "Exit"; //--- ToDo: Localize;
 	x = 0.0873763 * safezoneW + safezoneX;
 	y = 0.9071 * safezoneH + safezoneY;
@@ -263,7 +264,7 @@ class A3M_exitbutton: RscButton
 class A3M_Btn_Med: RscButton
 {
 	action = "[] spawn DoAddMedical";
-	idc = 1624;
+	idc = 1824;
 	text = "Medical"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.753062 * safezoneH + safezoneY;
@@ -274,7 +275,7 @@ class A3M_Btn_Elect: RscButton
 {
 	action = "[] spawn DoAddElect"; 
 
-	idc = 1625;
+	idc = 1825;
 	text = "Electronics"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
 	y = 0.797073 * safezoneH + safezoneY;

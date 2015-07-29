@@ -1,4 +1,5 @@
 /*
+
   /$$$$$$   /$$$$$$  /$$      /$$       /$$$$$$$  /$$      /$$  /$$$$$$         /$$$$$$  /$$                         /$$             /$$                        
  /$$__  $$ /$$__  $$| $$$    /$$$      | $$__  $$| $$$    /$$$ /$$__  $$       /$$__  $$|__/                        | $$            | $$                        
 | $$  \ $$|__/  \ $$| $$$$  /$$$$      | $$  \ $$| $$$$  /$$$$| $$  \__/      | $$  \__/ /$$ /$$$$$$/$$$$  /$$   /$$| $$  /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ 
@@ -6,12 +7,9 @@
 | $$__  $$  |___  $$| $$  $$$| $$      | $$____/ | $$  $$$| $$| $$             \____  $$| $$| $$ \ $$ \ $$| $$  | $$| $$  /$$$$$$$  | $$    | $$  \ $$| $$  \__/
 | $$  | $$ /$$  \ $$| $$\  $ | $$      | $$      | $$\  $ | $$| $$    $$       /$$  \ $$| $$| $$ | $$ | $$| $$  | $$| $$ /$$__  $$  | $$ /$$| $$  | $$| $$      
 | $$  | $$|  $$$$$$/| $$ \/  | $$      | $$      | $$ \/  | $$|  $$$$$$/      |  $$$$$$/| $$| $$ | $$ | $$|  $$$$$$/| $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      
-|__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/  
-                                                                                                             
+|__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/    
 
-
-
-Email (Mission Selector) GUI V 1.0 by Cody Salazar AKA Fr33d0m 
+Weapon Locker Script V 0.01 by Cody Salazar AKA Fr33d0m 
 www.A3MilSim.com
 
 License:
@@ -37,57 +35,13 @@ and I hope you enjoy the things I have in the works!
 
 ################################## LET US BEGIN #################################### */
 
-class A3M_VMS
+class A3M_WpnLkr
 {
-    idd = 1420;
+    idd = 9500;
 	movingEnable = true;
 	enableSimulation = true;
 	
 class Controls
 { 
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Fr33d0m, v1.063, #Popofo)
-////////////////////////////////////////////////////////
 
-class M_MissionFrame: RscFrame
-{
-	Moving = 1; 
-	idc = 1901;
-	text = "WarMail Encrypted Email Service"; //--- ToDo: Localize;
-	x = 0.270799 * safezoneW + safezoneX;
-	y = 0.224923 * safezoneH + safezoneY;
-	w = 0.45825 * safezoneW;
-	h = 0.550154 * safezoneH;
-};
-class M_EmailWindow: RscListbox
-{
-	idc = 1905;
-	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.276529 * safezoneW + safezoneX;
-	y = 0.345957 * safezoneH + safezoneY;
-	w = 0.446943 * safezoneW;
-	h = 0.363102 * safezoneH;
-	onLBDblClick = "_this spawn A3M_fnc_Email";
-};
-class M_Inbox_Text: RscText
-{
-	idc = 1935;
-	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.276529 * safezoneW + safezoneX;
-	y = 0.312948 * safezoneH + safezoneY;
-	w = 0.0343688 * safezoneW;
-	h = 0.0220062 * safezoneH;
-};
-class Email_Close_Button: RscButton
-{
-	idc = 1931;
-	text = "Close"; //--- ToDo: Localize;
-	x = 0.276603 * safezoneW + safezoneX;
-	y = 0.742068 * safezoneH + safezoneY;
-	w = 0.045825 * safezoneW;
-	h = 0.0220062 * safezoneH;
-	action = "closeDialog 0; [] call A3M_fnc_silence";
-};
-
-};
-};
+}; 

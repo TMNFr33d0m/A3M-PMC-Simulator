@@ -51,6 +51,7 @@ class Controls
 
 class A3M_Bank_Frame: RscFrame
 {
+	Moving = 1; 
 	idc = 1860;
 	text = "Pursuit Bank - Member FDICK"; //--- ToDo: Localize;
 	x = 0.270875 * safezoneW + safezoneX;

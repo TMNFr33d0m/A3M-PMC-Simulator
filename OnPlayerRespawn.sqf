@@ -42,5 +42,3 @@ and I hope you enjoy the things I have in the works!
 waitUntil {player == player}; 
 
 [player] execVM "Scripts\PMCBasic.sqf"; 
-
-hint format ["You have been mortally wounded, and your previous character is dead.  \n Your new character has inherited your previous character's account balance and stash. \n Your previous character's weapons and equipment may still be in the field..."] 

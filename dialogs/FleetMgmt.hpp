@@ -53,8 +53,9 @@ class Controls
 
 class A3M_StoreFrame: RscFrame
 {
+	Moving = 1; 
 	idc = 1800;
-	text = "Internet Voyager V 1.69.420"; //--- ToDo: Localize;
+	text = "Internet Exploiter V 1.69.420"; //--- ToDo: Localize;
 	x = 0.0988381 * safezoneW + safezoneX;
 	y = 0.0818968 * safezoneH + safezoneY;
 	w = 0.7794 * safezoneW;
@@ -77,7 +78,7 @@ class A3M_Exitbutton: RscButton
 {
 	action = "closeDialog 0; [] call A3M_fnc_silence;";
 
-	idc = 1600;
+	idc = 1900;
 	text = "Exit"; //--- ToDo: Localize;
 	x = 0.831245 * safezoneW + safezoneX;
 	y = 0.86309 * safezoneH + safezoneY;
@@ -96,7 +97,7 @@ class A3M_BalanceTitle: RscText
 };
 class A3M_BudgetBalance: RscStructuredText
 {
-	idc = 1100;
+	idc = 1170;
 	x = 0.763621 * safezoneW + safezoneX;
 	y = 0.101701 * safezoneH + safezoneY;
 	w = 0.108871 * safezoneW;
@@ -105,7 +106,7 @@ class A3M_BudgetBalance: RscStructuredText
 };
 class A3M_TotalTitle: RscText
 {
-	idc = 1001;
+	idc = 1071;
 	text = "Total Operation Cost:"; //--- ToDo: Localize;
 	x = 0.622641 * safezoneW + safezoneX;
 	y = 0.147913 * safezoneH + safezoneY;
@@ -114,7 +115,7 @@ class A3M_TotalTitle: RscText
 };
 class A3M_TotalBalance: RscStructuredText
 {
-	idc = 1101;
+	idc = 1171;
 	x = 0.75789 * safezoneW + safezoneX;
 	y = 0.143511 * safezoneH + safezoneY;
 	w = 0.114601 * safezoneW;
@@ -123,7 +124,7 @@ class A3M_TotalBalance: RscStructuredText
 };
 class A3M_RankDisplay: RscText
 {
-	idc = 1002;
+	idc = 1072;
 	text = "Your Rank Info:"; //--- ToDo: Localize;
 	x = 0.649003 * safezoneW + safezoneX;
 	y = 0.191924 * safezoneH + safezoneY;
@@ -132,7 +133,7 @@ class A3M_RankDisplay: RscText
 };
 class A3M_CurrentRank: RscStructuredText
 {
-	idc = 1102;
+	idc = 1172;
 	x = 0.734966 * safezoneW + safezoneX;
 	y = 0.194125 * safezoneH + safezoneY;
 	w = 0.137521 * safezoneW;
@@ -143,7 +144,7 @@ class A3M_SelectWheeled: RscButton
 {
 	action = "[] call DoAddWheel"; 
 
-	idc = 1604;
+	idc = 1704;
 	text = "Auto Dealership"; //--- ToDo: Localize;
 	x = 0.236379 * safezoneW + safezoneX;
 	y = 0.411978 * safezoneH + safezoneY;
@@ -155,7 +156,7 @@ class A3M_SelectArmor: RscButton
 {
 	action = "[] call DoAddArmored";
 
-	idc = 1605;
+	idc = 1705;
 	text = "Armor Depot"; //--- ToDo: Localize;
 	x = 0.1103 * safezoneW + safezoneX;
 	y = 0.411978 * safezoneH + safezoneY;
@@ -167,7 +168,7 @@ class A3M_RotaryVeh: RscButton
 {
 	action = "[] call DoAddRotary";
 
-	idc = 1606;
+	idc = 1706;
 	text = "Helicopters"; //--- ToDo: Localize;
 	x = 0.522924 * safezoneW + safezoneX;
 	y = 0.411978 * safezoneH + safezoneY;
@@ -179,7 +180,7 @@ class A3M_SelectPlanes: RscButton
 {
 	action = "[] call DoAddFixedWing";
 
-	idc = 1607;
+	idc = 1707;
 	text = "Aircraft"; //--- ToDo: Localize;
 	x = 0.379651 * safezoneW + safezoneX;
 	y = 0.411978 * safezoneH + safezoneY;
@@ -191,7 +192,7 @@ class A3M_SelectionWindow: RscListbox
 {
 	onLBDblClick = "_this spawn A3M_fnc_handleClick";
 
-	idc = 1500;
+	idc = 1575;
 	x = 0.1103 * safezoneW + safezoneX;
 	y = 0.455989 * safezoneH + safezoneY;
 	w = 0.756477 * safezoneW;
@@ -199,7 +200,7 @@ class A3M_SelectionWindow: RscListbox
 };
 class A3M_VehMod: RscCombo
 {
-	idc = 2100;
+	idc = 2175;
 	text = "Supported Vehicle Mods"; //--- ToDo: Localize;
 	x = 0.654709 * safezoneW + safezoneX;
 	y = 0.411978 * safezoneH + safezoneY;
@@ -210,7 +211,7 @@ class A3M_VehMod: RscCombo
 
 class A3M_ModTxt: RscText
 {
-	idc = 1003;
+	idc = 1073;
 	text = "Supported Modifications: "; //--- ToDo: Localize;
 	x = 0.654734 * safezoneW + safezoneX;
 	y = 0.37897 * safezoneH + safezoneY;

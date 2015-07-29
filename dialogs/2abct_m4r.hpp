@@ -51,6 +51,7 @@ class Controls
 
 class m4R_Frame: RscFrame
 {
+	Moving = 1; 
 	idc = 1800;
 	text = "Pneumatic Range Control"; //--- ToDo: Localize;
 	x = 0.150573 * safezoneW + safezoneX;

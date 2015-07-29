@@ -36,14 +36,4 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 
-_safe = _this select 0; 
-Padlocked = _safe; 
-key = profileName; 
 
-_Weapons = getWeaponCargo _Safe; 
-_Items = getItemCargo _Safe; 
-_Ammo = getMagazineCargo _Safe; 
-_BPacks = getBackpackCargo _Safe; 
-
-profileNameSpace setVariable ["A3M_LocalLocker", [_Weapons, _Items, _Ammo, _BPacks]];
-saveProfileNamespace;

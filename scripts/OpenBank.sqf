@@ -39,47 +39,6 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 disableSerialization;
-///////////////////////////////////////////////////////////////////////////////////////////
-// Open Dialog
-_handle= CreateDialog "A3M_BankAccount";
-// [] call DoBalance; 
-// [] call DoDebits; 
-[] call DoRankChk; 
-
-A3M_fnc_TnE = 
-{ 
-if (signedin == 1) then { 
-PM = ParamsArray Select 0; 
-disableSerialization;
-plyscore = rating player;
-multiplyer = plyscore * PM; 
-Wallet = (Wallet + Multiplyer); 
-profileNamespace setVariable ["SavedMoney", Wallet]; 
-hint format ["Payday! You were paid $%1.00 for services rendered. The money has been direct deposited to your account.", multiplyer]; 
-player addRating -plyscore; 
-plyscore = rating player;
-SaveProfileNamespace;
-[] call DoBalance; 
-[] call DoDebits; 
-[] call DoRankChk; 
-} else {Hint "Guest User: You are not signed in! Please sign in to the banking system."}; 
-};
-
-A3M_SignIn = {
-if (signedin == 0) then {
-disableSerialization;
-Wallet = 0; 
-getdough= profileNamespace getVariable ["SavedMoney", 0];
-Wallet = (Wallet+getdough); 
-Pname = profileName;
-hint format ["Welcome %1, You have signed in to the Medius Federated Credit Union.", Pname]; 
-signedin= 1; 
-[] call DoBalance; 
-[] call DoDebits; 
-[] call DoRankChk; 
-} else {hint format ["Welcome back, %1! You are already signed in!", Pname]}; 
-
-}; 
 
 A3M_handle_number=
 {
@@ -116,10 +75,10 @@ if (str (_Bdisplay) != "no display") then
 };
 }; 
 
-[] call DoBalance; 
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//Update Account Balance in GUI
+//Update Debit Balance in GUI
 
 DoDebits = {
 //Get the dialog display (a viewport)
@@ -134,4 +93,46 @@ if (str (_Bdisplay) != "no display") then
 };
 }; 
 
+
+
+A3M_fnc_TnE = 
+{ 
+if (signedin == 1) then { 
+PM = ParamsArray Select 0; 
+disableSerialization;
+plyscore = rating player;
+multiplyer = plyscore * PM; 
+Wallet = (Wallet + Multiplyer); 
+profileNamespace setVariable ["SavedMoney", Wallet]; 
+hint format ["Payday! You were paid $%1.00 for services rendered. The money has been direct deposited to your account.", multiplyer]; 
+player addRating -plyscore; 
+plyscore = rating player;
+SaveProfileNamespace;
+[] call DoBalance; 
 [] call DoDebits; 
+
+} else {Hint "Guest User: You are not signed in! Please sign in to the banking system."}; 
+};
+
+A3M_SignIn = {
+if (signedin == 0) then {
+disableSerialization;
+Wallet = 0; 
+getdough= profileNamespace getVariable ["SavedMoney", 0];
+Wallet = (Wallet+getdough); 
+Pname = profileName;
+hint format ["Welcome %1, You have signed in to the Medius Federated Credit Union.", Pname]; 
+signedin= 1; 
+[] call DoBalance; 
+[] call DoDebits; 
+} else {hint format ["Welcome back, %1! You are already signed in!", Pname]}; 
+
+}; 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Open Dialog
+_handle= CreateDialog "A3M_BankAccount";
+
+[] call DoDebits; 
+[] call DoBalance; 
