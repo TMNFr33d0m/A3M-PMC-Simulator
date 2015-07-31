@@ -37,11 +37,98 @@ and I hope you enjoy the things I have in the works!
 
 class A3M_WpnLkr
 {
-    idd = 9500;
+    idd = 9550;
 	movingEnable = true;
 	enableSimulation = true;
 	
 class Controls
 { 
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Vofogo)
+////////////////////////////////////////////////////////
 
+class A3M_Dia_Stashframe: RscFrame
+{
+	idc = 1800;
+	x = 0.213841 * safezoneW + safezoneX;
+	y = 0.21392 * safezoneH + safezoneY;
+	w = 0.577928 * safezoneW;
+	h = 0.616172 * safezoneH;
+};
+class A3M_Dia_CurInv: RscListbox
+{
+	OnLbDblClick = "_this spawn HandleCurInv";
+	idc = 1525;
+	text = "On Person"; //--- ToDo: Localize;
+	x = 0.225063 * safezoneW + safezoneX;
+	y = 0.224923 * safezoneH + safezoneY;
+	w = 0.162718 * safezoneW;
+	h = 0.594166 * safezoneH;
+};
+class A3M_Dia_Stashbox: RscListbox
+{
+	OnLbDblClick = "_this spawn HandleCurStash";
+	idc = 1526;
+	text = "In Stash"; //--- ToDo: Localize;
+	x = 0.606608 * safezoneW + safezoneX;
+	y = 0.224923 * safezoneH + safezoneY;
+	w = 0.17394 * safezoneW;
+	h = 0.594166 * safezoneH;
+};
+class A3M_Btn_AddToStash: RscButton
+{
+	Action = "[] spawn MoveToStash";
+	idc = 1600;
+	text = "Add To Stash"; //--- ToDo: Localize;
+	x = 0.43828 * safezoneW + safezoneX;
+	y = 0.246929 * safezoneH + safezoneY;
+	w = 0.11783 * safezoneW;
+	h = 0.0440123 * safezoneH;
+};
+class A3M_Btn_TakeFromStash: RscButton
+{
+	Action = "[] spawn GetFromStash";
+	idc = 1601;
+	text = "Take From Stash"; //--- ToDo: Localize;
+	x = 0.43828 * safezoneW + safezoneX;
+	y = 0.301945 * safezoneH + safezoneY;
+	w = 0.11783 * safezoneW;
+	h = 0.0440123 * safezoneH;
+};
+class A3M_Btn_Discard: RscButton
+{
+	Action = "[] spawn DiscardItem";
+	idc = 1602;
+	text = "Discard Item"; //--- ToDo: Localize;
+	x = 0.43828 * safezoneW + safezoneX;
+	y = 0.35696 * safezoneH + safezoneY;
+	w = 0.11783 * safezoneW;
+	h = 0.0440123 * safezoneH;
+};
+class A3M_Btn_ExitStash: RscButton
+{
+	action="CloseDialog 0";
+	idc = 1603;
+	text = "Exit"; //--- ToDo: Localize;
+	x = 0.460723 * safezoneW + safezoneX;
+	y = 0.753071 * safezoneH + safezoneY;
+	w = 0.0729424 * safezoneW;
+	h = 0.0550154 * safezoneH;
+};
+class A3M_Dia_LkrImg: RscPicture
+{
+	idc = 1200;
+	text = "images\WeaponLocker.paa";
+	x = 0.399003 * safezoneW + safezoneX;
+	y = 0.411975 * safezoneH + safezoneY;
+	w = 0.196383 * safezoneW;
+	h = 0.330092 * safezoneH;
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+
+
+
+}; 
 }; 

@@ -161,7 +161,7 @@ _ChildControl3 ctrlSetStructuredText parseText format ["%1", A3M_AvailSlots];
  lbClear 1595;
  _idx= { lbAdd [1595, name _x] } forEach allPlayers; 
  // Pass the player's actual name along with the index number:
- {lbSetData [1595, _forEachIndex, name _X ]} forEach allPlayers; 
+{lbSetData [1595, _forEachIndex, name _X ]} forEach allPlayers; 
  };
  
  // This is to test the locality execution effect:  

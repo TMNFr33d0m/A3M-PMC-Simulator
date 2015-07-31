@@ -83,6 +83,7 @@ disableChannels[]={0,1,2,3,6};
 #include "dialogs\AdminPanel.hpp"
 #include "dialogs\2ABCT_M4R.hpp"
 #include "dialogs\HomePage.hpp"
+#include "dialogs\WpnLkr.hpp"
 
 class CfgSounds
 {

@@ -130,6 +130,25 @@ $[
 
 // End HomePage
 
+// Player Stash
+
+/* #Vofogo
+$[
+	1.063,
+	["ItemStash",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"A3M_Dia_Stashframe",[1,"",["0.213841 * safezoneW + safezoneX","0.21392 * safezoneH + safezoneY","0.577928 * safezoneW","0.616172 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1500,"A3M_Dia_CurInv",[1,"On Person",["0.225063 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.162718 * safezoneW","0.594166 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1501,"A3M_Dia_Stashbox",[1,"In Stash",["0.606608 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.17394 * safezoneW","0.594166 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1600,"A3M_Btn_AddToStash",[1,"Add To Stash",["0.43828 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.11783 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"A3M_Btn_TakeFromStash",[1,"Take From Stash",["0.43828 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.11783 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1602,"A3M_Btn_Discard",[1,"Discard Item",["0.43828 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.11783 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1603,"A3M_Btn_ExitStash",[1,"Exit",["0.460723 * safezoneW + safezoneX","0.753071 * safezoneH + safezoneY","0.0729424 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1200,"A3M_Dia_LkrImg",[1,"#(argb,8,8,3)color(1,1,1,1)",["0.399003 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.196383 * safezoneW","0.330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
+
+// 
+
 
 //
 
