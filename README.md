@@ -36,28 +36,50 @@ Sincerely,
 
 
 -Orion Private Security Group 
+
 Human Resources Dept. 
+
+
+
 Roles & Command Structure:
+
+
  The A3M PMC Simulator is designed to be played by clans or groups of friends who play together, and have a defined leader. The Team Coordinator (Clan Leader) has control of a majority of things in this mission, including the operational budget and the purchase of vehicles and aircraft. As of this version (0.98.1 Alpha) there are a variety of instances where the honor system is employed…For example, the mailbox, anyone can access it. The lockers can be accessed by anyone, there are no locks yet. Such reinforces playing this mission with people you know to get the best benefit. Since Task Force Radio is a requirement of this mission, it again reinforces that everyone be in contact and be able to communicate, which helps in keeping people honest. 
+ 
+
 1.	Team Coordinator:
+
  The Team Coordinator is the top slot in the mission and carries the rank of “MAJOR”. This is the only rank that can spend from the Operational Budget (Buy Vehicles and Aircraft), and has full control of the operation’s spending. While not restricted by code, this is also the person who should access the secure email system to start missions. The reason this is NOT restricted by code is so people can continue to enjoy the mission after the Team Coordinator has logged off, or if the TC is unavailable to start a new mission. See more about the Secure Email System in the “Accessing the Internet / Secure Email System” section of this document. By design, the Team Coordinator is also in operational command of OPSG ops in Altis. NOTE: LOGGED AS ADMIN gives a single player (optimally, the team coordinator) access to Zeus. Log in as admin and hit Y to open the Zeus interface, and create missions and spice up situations on the fly!
 
+
 2.	Medics: 
+
 Medics are ACE 3 enabled medics, and carry the full responsibility of providing medical care to wounded soldiers. The need for this is elevated by the fact the death means one of two things: A team mate loses thousands-of-dollars’ worth of gear, or, surviving team members are stuck managing a dead body or the dead guy’s gear until the new spawn can come and claim his remains. This means that saving lives is a top priority, and a VERY important job!
 
-3.	General Contractor: 
+
+3.	General Contractor:
+
 The General Contractor is the heart and soul of the Private Security Group, and his or her responsibilities vary greatly from operation to operation.
 
+
 Budget, Bank Account and Making Money:
+
 Dual Budget System
 
  In the PMC Simulator, there are two separate running budgets. The Team Coordinator has control of the Operation Budget. This budget, by default, starts at $12,000,000.00 (You can change this in the Mission Parameters). The Team Coordinator may purchase vehicles, aircraft and armor with this budget, as well as advance 10k to every player out of it. Additionally, every time a player refuels, rearms or repairs a vehicle, the cost of parts, labor, ammunition and fuel are calculated based on the amount needed, and charged to the Operational Budget. The cost of Fuel and the Hourly Rate of Labor can be adjusted via the Mission Parameters. 
+ 
 Parallel to the Operation Budget that is controlled only by the Team Coordinator, every player has a personal bank account, in which he or she may use to purchase equipment for use in the field.
+
 With every contract mission completed, two payouts occur. The first, a payout of rating points to the player, which he or she must then submit in the form of a “Time Sheet” via the Pursuit Bank Interface, the rating points are converted and deposited into the player’s bank account as payment for services rendered. The multiplier for rating points can be adjusted via “Mission Parameters”. The second payout occurs immediately, and is applied to the operational budget balance. This can only be spent by the Team Coordinator on vehicles or aircraft, or may be “advanced” to players via the button.
+
+
 Rating Points: The Behind - The - Scenes Currency of the PMC Simulator
 
 The payout system in the PMC Simulator is based off of performance. Rating is added in a static amount for completing various contracts, and in the Arma default amounts for kills. The more kills during a mission, the more money you’ll make. Doing negative things will COST rating, such as killing team mates, killing civilians, etc. It is possible to achieve a negative rating, which would then make the player unable to acquire additional funds until sufficient good work was done to bring the rating back to a positive. Alternately, a player may buy out of a negative rating by submitting a timesheet with the negative rating, which will subtract the payout multiplier x the negative rating from the player’s account to cover for the bad behavior. If the player doesn’t have the funds to cover the bad behavior, the player may find themselves with a negative balance in the bank, unable to purchase even something as small as ammo.
+
+
 Bank Account: 
+
 The PMC Simulator features a persistent bank account for all players. This balance will persist through server restarts and over different servers running the mission. To access the bank account, visit a Computer and access “Personal Banking” via the Action Menu. You will be presented with the “Pursuit Bank” interface, where you will need to sign in prior to submitting your Timesheet, as well as view your account balance and debit amount of recent purchases. 
 
 As mentioned above, in order to earn money, you must earn rating points by successfully completing missions and killing hostile enemies. Killing innocents or friendlies will severely impact your rating in game, therefore negatively impacting your account balance. 
@@ -71,31 +93,46 @@ Email System:
 The primary method for accepting contracts in the PMC Simulator is via the “WarMail Encrypted Email Service”. 
 
 The “From:” line designates the client the contract is offered by.  
+
 The “Subject:” line designates the type of contract. 
+
 To accept a contract, DOUBLE CLICK the line of the contract you want to execute. 
+
 The Team Coordinator can cancel ALL missions via the admin panel. 
+
+
 Fleet Management:  
- The Team Coordinator is responsible for all purchasing of Fleet (Vehicles and Aircraft) for the Altis Operation. The Team Coordinator must carefully plan every operation and allocate assets accordingly, so that adequate assets are available for every mission. To purchase a vehicle or aircraft, click the appropriate button on the main screen and then double click the vehicle or aircraft you would like to purchase. Vehicles will be delivered to the C-12 compound, in the field east of the C-12 Main Gate. It is marked clearly on the map with “Fleet Delivery”. Aircraft will be delivered to the Astral Corporation Owned Molos Airfield in the NE corner of Altis.
+
+The Team Coordinator is responsible for all purchasing of Fleet (Vehicles and Aircraft) for the Altis Operation. The Team Coordinator must carefully plan every operation and allocate assets accordingly, so that adequate assets are available for every mission. To purchase a vehicle or aircraft, click the appropriate button on the main screen and then double click the vehicle or aircraft you would like to purchase. Vehicles will be delivered to the C-12 compound, in the field east of the C-12 Main Gate. It is marked clearly on the map with “Fleet Delivery”. Aircraft will be delivered to the Astral Corporation Owned Molos Airfield in the NE corner of Altis.
 
 PMC Simulator supports RHS: Escalation, and you will find all the RHS: Escalation vehicles by selecting the “RHS: Escalation” option from the drop-down box, then clicking a category to load the RHS: Escalation vehicles from that category. 
 
 All vehicles have been painstakingly researched, and are priced at real world market values of 2015. Some equipment is estimated based on close counterparts. 
+
 Shopping Online & Personal Purchases:
 
  
  To access Lazarus International Security Supply, access a laptop and select “Shop Online” from the action menu. You may then purchase a weapon, ammunition, vests, bags, electronics, medical supplies and other items from the corresponding categories by double clicking. WARNING: There is no “ARE YOU SURE” safety to this function. It is easy to spend money accidentally! Once you have made your purchase, you will need to wait the “Delivery Time” for your equipment to be delivered “via freight” to the large delivery locker in the C-12 Operations Headquarters (The Big Green Locker with the big yellow arrow over it.) 
   
+  
 Fast Travel:
  
  Fast Travel between the C-12 Compound and Molos Airfield can be facilitated by utilizing the HEMTT Transport’s action menu option to “Fast Travel”. The user will experience a short loading sequence, followed by a teleportation to the destination. As of Alpha 0.98 – You must exit the HEMTT before fast traveling a second consecutive time, otherwise, you will wait through the loading sequence and end up right where you started, with no teleportation. This is slated to be addressed in coming versions.
+ 
+ 
 Wildfire Protocol Safe houses:
+
  On the map screen, a series of large, orange triangles depict seven locations strategically located throughout Altis. These locations, known as “Wildfire Protocol Safe houses”, provide generally safe locations for Orion teams to retreat to in the event of prolonged or severe combat. Wildfire Protocol safe houses are equipped with medical equipment, limited ammunition supplies, a laptop with internet access (Purchased items will still be delivered to the C-12 compound) and two empty supply lockers nearby on the property which can be filled with any kind of supplies deemed necessary by the Team Coordinator of OPSG staff. 
 
+
 Other Facilities & Features:
+
+
 C-12 Facility
  
 The C-12 Facility is a Biomedical Research Facility owned by Astral Corporation that has been allocated partially to Orion Private Security Group for operations in Altis Theatre. 
 The C-12 Facility is equipped with a medical and detention / interrogation facilities as well as office facilities for the Operations HQ, and mechanical facilities for vehicle service. It is equipped with a helipad in the western end of the compound, and all security gates are equipped with RFID sensors for automatic operation. 
+  
   
 Medipod Field Hospital:
  
@@ -107,6 +144,7 @@ ACE 3 Medical supplies are for sale via the online store, ACE 3 mod filter, and 
 Operations HQ:
  
 The Operations HQ is a Role-Play encouraging center for operational planning and downtime actions like shopping online. The OHQ is the location of the Mail Locker (Where things purchased are delivered) and where several Laptops can be found for access to the internet. 
+
 The Conference Room supports MP Compatible slideshows, and can be changed with a little editing. Every chair is sit-down enabled. Change the slide from the projector on the table. 
 
 The Eastern-Most office is the Team Coordinator Office. This laptop will host any TC Specific Actions (If Any). 
@@ -161,20 +199,27 @@ Check score will display the current score for the corresponding lane, and reset
 Missions:
 
 VIP Escort
+
 The player who starts the mission will have an Astral Executive spawn as a member of his or her group. All players will receive a task designating the VIP’s randomized destination. Your job is to select the safest method to deliver your VIP to his destination, and get him there safe. If he dies, you fail.
+
 High Value Shipment Escort
+
 A box truck will spawn just out front of the C-12 HQ on the road. All players will receive a task designating the vehicle’s randomized delivery destination. Get the truck to its destination in one piece. If the truck is destroyed, you fail.
+
 Traffic Enforcement Checkpoint
+
 All players will receive a task designating the location of checkpoint C-12 North, located north of the Altis Airport on the main highway. Upon reporting to the checkpoint, a mission will begin in which a series of randomized drivers, entering randomized vehicles and having randomized situations and behaviors.
+
 Hostage Rescue I (Snatch and Extract)
+
  All players will receive a task indicating the last known location of an Astral Corp Executive. All players will have a new marker on their map as well, which depicts the location of the Astral Executive in real time by way of an emergency transponder voluntarily implanted sub dermally in most Astral Corp executives working abroad in dangerous countries for reasons just like this. The executive will be held by violent captors, so surgical extraction of the VIP is a requirement. Once the fighting starts, the hostage may break free and run for his life. The Emergency Transponder should keep you informed on his location via the map at all times.
 
 
 Supported mods:
- The Following Mods are SUPPORTED / Required: 
+ The Following Mods are Supported / Required: 
 
-ALiVE
-RHS: Escalation
-ACE 3
-Task Force Arrowhead Radio
-Leights OPFOR Pack
+ALiVE (Req)
+RHS: Escalation (Sptd) 
+ACE 3 (Req) 
+Task Force Arrowhead Radio (Sptd) 
+Leights OPFOR Pack (Req) 
