@@ -14,8 +14,11 @@ Description:
 
 
 To: CONTRACT OPERATIVE
+
 From: Orion Private Security Group (OPSG) HR
+
 Date: 4/26/2030
+
 Subject: Welcome Aboard! 
  
 Greetings! We’re pleased to have you on our team! 
