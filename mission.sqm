@@ -2892,7 +2892,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="laptop2";
-			init="this attachTo [desk2,[0.0,0.0,0.57]]; this setDir 180; this setObjectTexture [0, ""images\LoginScreen.paa""]; this addAction [""Check Email"", ""scripts\handleTasks.sqf""];   this addAction [""Shop Online"", ""scripts\ItemStore.sqf""];   this addAction [""Personal Banking"", ""scripts\OpenBank.sqf""];   this addAction [""Fleet Management"", ""scripts\FleetMgmt.sqf""];   this addAction [""Admin Panel"", ""scripts\AdminPanel.sqf""]; ";
+			init="this attachTo [desk2,[0.0,0.0,0.57]]; this setDir 180; this setObjectTexture [0, ""images\LoginScreen.paa""]; this addAction [""Access Internet"", { [laptop2] execVM ""scripts\homepage.sqf""}]; ";
 		};
 		class Item62
 		{
@@ -3946,7 +3946,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="laptop1";
-			init="this attachTo [desk1,[0.0,0.0,0.57]]; this setObjectTexture [0, ""images\LoginScreen.paa""];  this addAction [""Check Email"", ""scripts\handleTasks.sqf""];   this addAction [""Shop Online"", ""scripts\ItemStore.sqf""];   this addAction [""Personal Banking"", ""scripts\OpenBank.sqf""];   this addAction [""Fleet Management"", ""scripts\FleetMgmt.sqf""];   this addAction [""Admin Panel"", ""scripts\AdminPanel.sqf""]; ";
+			init="this attachTo [desk1,[0.0,0.0,0.57]]; this setObjectTexture [0, ""images\LoginScreen.paa""];  this addAction [""Access Internet"", { [laptop1] execVM ""scripts\homepage.sqf""}]; ";
 		};
 		class Item173
 		{
@@ -7303,7 +7303,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			skill=0.60000002;
 			text="LuchtComp";
-			init="this setObjectTexture [0, ""images\BeachGirl.jpg""];   this attachTo [LuchtDesk,[0.0,0.0,0.57]];   this addAction [""Check Email"", ""scripts\handleTasks.sqf""];   this addAction [""Shop Online"", ""scripts\ItemStore.sqf""];   this addAction [""Personal Banking"", ""scripts\OpenBank.sqf""];   this addAction [""Fleet Management"", ""scripts\FleetMgmt.sqf""];   this addAction [""Admin Panel"", ""scripts\AdminPanel.sqf""];";
+			init="this setObjectTexture [0, ""images\BeachGirl.jpg""];   this attachTo [LuchtDesk,[0.0,0.0,0.57]];   this addAction [""Access Internet"", { [luchtComp] execVM ""scripts\homepage.sqf""}]; ";
 		};
 		class Item514
 		{
@@ -8111,7 +8111,7 @@ class Mission
 			vehicle="B_Slingload_01_Cargo_F";
 			skill=0.60000002;
 			text="deliveries";
-			init="clearWeaponCargoGlobal deliveries; clearItemCargoGlobal deliveries; clearBackpackCargoGlobal deliveries; clearMagazinecargoGlobal deliveries; this addAction [""Delivery Box"", {hint ""Your deliveries will arrive in this locker! Access the locker inventory to find odered and delivered goods. \n \n WARNING: \n If you did NOT BUY the item that is in the box, DONT TAKE IT! Someone else bought it, and it belongs to them. Theft is a crime!""}]; this allowDamage False; ";
+			init="clearWeaponCargoGlobal deliveries; clearItemCargoGlobal deliveries; clearBackpackCargoGlobal deliveries; clearMagazinecargoGlobal deliveries; this addAction [""Delivery Box"", {hint ""Your deliveries will arrive in this locker! Access the locker inventory to find odered and delivered goods. \n \n WARNING: \n If you did NOT BUY the item that is in the box, DONT TAKE IT! Someone else bought it, and it belongs to them. Theft is a crime!""}]; this allowDamage False; this addAction [""Open Private Stash"", { cunt= execVM ""scripts\locker.sqf"" }]; ";
 		};
 		class Item590
 		{
