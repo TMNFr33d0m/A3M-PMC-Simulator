@@ -46,16 +46,13 @@ Roles & Command Structure:
 
  The A3M PMC Simulator is designed to be played by clans or groups of friends who play together, and have a defined leader. The Team Coordinator (Clan Leader) has control of a majority of things in this mission, including the operational budget and the purchase of vehicles and aircraft. As of this version (0.98.1 Alpha) there are a variety of instances where the honor system is employed…For example, the mailbox, anyone can access it. The lockers can be accessed by anyone, there are no locks yet. Such reinforces playing this mission with people you know to get the best benefit. Since Task Force Radio is a requirement of this mission, it again reinforces that everyone be in contact and be able to communicate, which helps in keeping people honest. 
  
-
 1.	Team Coordinator:
 
  The Team Coordinator is the top slot in the mission and carries the rank of “MAJOR”. This is the only rank that can spend from the Operational Budget (Buy Vehicles and Aircraft), and has full control of the operation’s spending. While not restricted by code, this is also the person who should access the secure email system to start missions. The reason this is NOT restricted by code is so people can continue to enjoy the mission after the Team Coordinator has logged off, or if the TC is unavailable to start a new mission. See more about the Secure Email System in the “Accessing the Internet / Secure Email System” section of this document. By design, the Team Coordinator is also in operational command of OPSG ops in Altis. NOTE: LOGGED AS ADMIN gives a single player (optimally, the team coordinator) access to Zeus. Log in as admin and hit Y to open the Zeus interface, and create missions and spice up situations on the fly!
 
-
 2.	Medics: 
 
 Medics are ACE 3 enabled medics, and carry the full responsibility of providing medical care to wounded soldiers. The need for this is elevated by the fact the death means one of two things: A team mate loses thousands-of-dollars’ worth of gear, or, surviving team members are stuck managing a dead body or the dead guy’s gear until the new spawn can come and claim his remains. This means that saving lives is a top priority, and a VERY important job!
-
 
 3.	General Contractor:
 
