@@ -53,7 +53,6 @@ respawnTemplatesWest[] = {"MenuPosition"};
 respawnButton = 1;
 disabledAI = 1;
 enableDebugConsole = 1;
-showMap = 1;
 scriptedPlayer = 1;
 corpseManagerMode = 1;
 corpseLimit = 1;
@@ -70,7 +69,7 @@ class Header
 {
 	gameType = Sandbox;
 	minPlayers = 1;
-	maxPlayers = 40;
+	maxPlayers = 42;
 };
 
 disableChannels[]={0,1,2,3,6};

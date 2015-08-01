@@ -77,9 +77,21 @@ _ici={lbAdd [1525,  gettext (configFile >> "CfgWeapons" >> _x >> "displayName")]
 
 GetStashGear = {
 
-StsWeaponArray = profileNameSpace GetVariable "SvdWeaponArray";
-StsMagArray = profileNameSpace GetVariable "SvdMagArray";
-StsBagArray = profileNameSpace GetVariable "SvdBagArray";
+// FTP Var Check / Est
+_PA1 = profileNameSpace GetVariable "SvdWeaponArray";
+_PA2 = profileNameSpace GetVariable "SvdMagArray";
+_PA3 = profileNameSpace GetVariable "SvdBagArray";
+
+if (isNil "_PA1")then {ProfileNameSpace SetVariable ["SvdWeaponArray", nil ]};
+if (isNil "_PA2")then {ProfileNameSpace SetVariable ["SvdMagArray", nil ]};
+if (isNil "_PA3") then {ProfileNameSpace SetVariable ["SvdBagArray", nil]};
+
+StsWeaponArray = _PA1;
+StsMagArray = _PA2;
+StsBagArray = _PA3;
+
+// hint format ["Array Check: \n \n Weapon Array: \n %1, \n \n Mag Array: \n %2 \n \n Bag Array: \n %3", StsWeaponArray, StsMagArray, StsBagArray];
+
 
 
 PreStashCombined = StsWeaponArray+StsMagArray;
@@ -208,7 +220,7 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 		
 		_IsUniform = getText (configfile >> "CfgWeapons" >> ItmStsNme >> "ItemInfo" >> "uniformClass");		
 		_IsVest = getText (configfile >> "CfgWeapons" >> ItmStsNme >> "ItemInfo" >> "_generalMacro" );
-		// _IsItem = getText ( )
+		
 		If (_IsUniform != "") then {  
 			_PlyrCrUni = Uniform Player; 
 				if (_PlyrCrUni != "") Then {
@@ -295,10 +307,10 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 						
 								} else { 
 										if (ItmStsNme isKindOf ["Pistol", configFile >> "CfgWeapons"]) then {
-										_TmpScdWpn = HandgunWeapon Player; 
+										_TmphgnWpn = HandgunWeapon Player; 
 						
-											if (_TmpScdWpn != "") Then {
-											StsWeaponArray pushBack _TmpScdWpn; 
+											if (_TmphgnWpn != "") Then {
+											StsWeaponArray pushBack _TmphgnWpn; 
 											ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
 											SaveProfileNamespace;
 								
@@ -354,10 +366,6 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 			} else {
 				
 				if (ItmStsNme isKindOf [ItmStsNme, configFile >> "CfgVehicles"]) then { 		
-				Player AddBackpack ItmStsNme; 
-				lbDelete [1526, PassedIntCS];
-				
-				[] call GetCurrentGear;
 				
 				_TmpBkPk = Backpack Player; 
 						
@@ -365,8 +373,14 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 								StsBagArray pushBack _TmpBkPk; 
 								ProfileNameSpace SetVariable ["SvdBagArray", StsBagArray];
 								SaveProfileNamespace;
-								
+				}; 		
 				
+				Player AddBackpack ItmStsNme; 
+				
+				lbDelete [1526, PassedIntCS];
+					
+				[] call GetCurrentGear;
+					
 				_TempBagCt = {_x == ItmStsNme} count StsBagArray;
 				StsBagArray = StsBagArray - [ItmStsNme];
 				_TempBagCt = _TempBagCt-1;
@@ -377,11 +391,13 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 						StsBagArray PushBack ItmStsNme; 
 						};
 					}; 
+					
 			ProfileNameSpace SetVariable ["SvdBagArray", StsBagArray];
 			SaveProfileNamespace;
+			
 			[] call GetStashGear;
 			
-			}; 																		
+																					
 		}; 																	
 	}; 
 }; 

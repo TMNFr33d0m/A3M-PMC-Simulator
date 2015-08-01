@@ -49,7 +49,7 @@ removeHeadgear PMCRegular;
 removeGoggles PMCRegular;
 
 PMCRegular forceAddUniform "U_BG_Guerrilla_6_1";
-PMCRegular addItemToUniform "ItemMap";
+PMCRegular addWeapon "ItemMap";
 PMCRegular addVest "V_Rangemaster_belt";
 for "_i" from 1 to 6 do {PMCRegular addItemToVest "16Rnd_9x21_Mag";};
 PMCRegular addHeadgear "H_Cap_usblack";
