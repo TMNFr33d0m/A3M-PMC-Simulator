@@ -43,17 +43,19 @@ class A3M_WpnLkr
 	
 class Controls
 { 
+
 ////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Vofogo)
+// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Davijy)
 ////////////////////////////////////////////////////////
 
 class A3M_Dia_Stashframe: RscFrame
 {
+	Moving = 1; 
 	idc = 1800;
-	x = 0.213841 * safezoneW + safezoneX;
-	y = 0.21392 * safezoneH + safezoneY;
-	w = 0.577928 * safezoneW;
-	h = 0.616172 * safezoneH;
+	x = 0.211596 * safezoneW + safezoneX;
+	y = 0.147901 * safezoneH + safezoneY;
+	w = 0.583539 * safezoneW;
+	h = 0.682191 * safezoneH;
 };
 class A3M_Dia_CurInv: RscListbox
 {
@@ -99,19 +101,19 @@ class A3M_Btn_Discard: RscButton
 {
 	Action = "[] spawn DiscardItem";
 	idc = 1602;
-	text = "Discard Item"; //--- ToDo: Localize;
-	x = 0.43828 * safezoneW + safezoneX;
+	text = "Discard Item From Stash"; //--- ToDo: Localize;
+	x = 0.423692 * safezoneW + safezoneX;
 	y = 0.35696 * safezoneH + safezoneY;
-	w = 0.11783 * safezoneW;
+	w = 0.145885 * safezoneW;
 	h = 0.0440123 * safezoneH;
 };
 class A3M_Btn_ExitStash: RscButton
 {
-	action="CloseDialog 0";
+	action = "CloseDialog 0";
 	idc = 1603;
 	text = "Exit"; //--- ToDo: Localize;
 	x = 0.460723 * safezoneW + safezoneX;
-	y = 0.753071 * safezoneH + safezoneY;
+	y = 0.755272 * safezoneH + safezoneY;
 	w = 0.0729424 * safezoneW;
 	h = 0.0550154 * safezoneH;
 };
@@ -123,6 +125,33 @@ class A3M_Dia_LkrImg: RscPicture
 	y = 0.411975 * safezoneH + safezoneY;
 	w = 0.196383 * safezoneW;
 	h = 0.330092 * safezoneH;
+};
+class A3M_DiaTxt_PersTtl: RscText
+{
+	idc = 1000;
+	text = "Personal Stash"; //--- ToDo: Localize;
+	x = 0.456235 * safezoneW + safezoneX;
+	y = 0.130297 * safezoneH + safezoneY;
+	w = 0.151496 * safezoneW;
+	h = 0.0550154 * safezoneH;
+};
+class A3M_DiaTxt_Inv: RscText
+{
+	idc = 1001;
+	text = "Inventory"; //--- ToDo: Localize;
+	x = 0.275562 * safezoneW + safezoneX;
+	y = 0.169908 * safezoneH + safezoneY;
+	w = 0.0448876 * safezoneW;
+	h = 0.0550154 * safezoneH;
+};
+class A3M_DiaTxt_St: RscText
+{
+	idc = 1002;
+	text = "Stash"; //--- ToDo: Localize;
+	x = 0.67394 * safezoneW + safezoneX;
+	y = 0.169908 * safezoneH + safezoneY;
+	w = 0.0448876 * safezoneW;
+	h = 0.0550154 * safezoneH;
 };
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END

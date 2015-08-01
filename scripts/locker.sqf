@@ -127,7 +127,8 @@ MoveToStash= {
 
 if (isNil "PassedIntCI") then {Hint "You must select an Item from your Inventory."} else {
 
-if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then { 
+																if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then { 
+																	
 																	if (isNil "StsWeaponArray") then {
 																	StsWeaponArray = []
 																	};
@@ -144,14 +145,20 @@ if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then {
 																			removeUniform Player; 
 																			lbDelete [1525, PassedIntCI];
 																		} else {
-																			if (ItmClsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
-																			Player removeItem ItmClsNme; 
-																			lbDelete [1525, PassedIntCI];
-																			} else {
-																				if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then {
-																				Player removeWeapon ItmClsNme; 
+																			_IsHeadGear = getText (configfile >> "CfgWeapons" >> ItmClsNme >> "ItemInfo" >> "_generalMacro" );
+																				if (_IsHeadGear == "HeadgearItem") then {
+																				removeHeadGear Player; 
 																				lbDelete [1525, PassedIntCI];
-																				}; 
+																			} else {
+																					if (ItmClsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
+																					Player removeItem ItmClsNme; 
+																					lbDelete [1525, PassedIntCI];
+																			} else {
+																					if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then {
+																					Player removeWeapon ItmClsNme; 
+																					lbDelete [1525, PassedIntCI];
+																					}; 
+																			}; 	
 																		};
 																	}; 
 																}; 
