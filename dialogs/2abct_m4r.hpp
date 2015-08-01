@@ -51,6 +51,7 @@ class Controls
 
 class m4R_Frame: RscFrame
 {
+	Moving = 1; 
 	idc = 1800;
 	text = "Pneumatic Range Control"; //--- ToDo: Localize;
 	x = 0.150573 * safezoneW + safezoneX;
@@ -104,7 +105,7 @@ class M4R_LaneA_Button2: RscButton
 	y = 0.258087 * safezoneH + safezoneY;
 	w = 0.0916531 * safezoneW;
 	h = 0.0329881 * safezoneH;
-	action= "[] spawn M4RR_A_AllTargetsDown"
+	action= "[] spawn M4RR_A_AllTargetsDown";
 };
 class M4R_LaneA_L50: RscButton
 {

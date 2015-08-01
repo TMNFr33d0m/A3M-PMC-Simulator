@@ -76,10 +76,8 @@ class Mission
 		"A3_Structures_F_Mil_BagFence",
 		"A3_Structures_F_EPB_Items_Vessels",
 		"A3_Supplies_F_Heli_CargoNets",
-		"A3_Air_F_Heli_Heli_Transport_04",
 		"A3_Modules_F_Sites",
 		"A3_Modules_F_Heli_SpawnAi",
-		"A3_Structures_F_System",
 		"A3_Structures_F_Heli_Ind_Machines",
 		"A3_Structures_F_Heli_Items_Airport",
 		"A3_Structures_F_Heli_Ind_AirPort",
@@ -9440,7 +9438,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=112;
+		items=108;
 		class Item0
 		{
 			position[]={20966,16.85,19237.535};
@@ -10226,46 +10224,6 @@ class Mission
 			angle=-66.560799;
 		};
 		class Item107
-		{
-			position[]={20099.109,100.31871,6722.6279};
-			name="AAF_TAOR2";
-			text="AAF_TAOR2";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=500;
-			b=500;
-		};
-		class Item108
-		{
-			position[]={25338.469,81.454704,21818.906};
-			name="OPSG_TAOR2";
-			text="OPSG_TAOR2";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=350;
-			b=350;
-		};
-		class Item109
-		{
-			position[]={27027.975,21.934963,24707.697};
-			name="OPSG_TAOR3";
-			text="OPSG_TAOR3";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=1000;
-			b=1000;
-		};
-		class Item110
-		{
-			position[]={9180.4766,17.433031,21457.33};
-			name="OP_TAOR2";
-			text="OP_TAOR2";
-			markerType="ELLIPSE";
-			type="Empty";
-			a=450;
-			b=450;
-		};
-		class Item111
 		{
 			position[]={20835.248,11.463227,19194.018};
 			name="C12LZ";

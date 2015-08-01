@@ -40,14 +40,17 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 deathrating = rating player; 
+profileNamespace setVariable ["SvdWeaponArray", nil]; 
+profileNamespace setVariable ["SvdMagArray", nil]; 
+profileNamespace setVariable ["SvdBagArray", nil]; 
 profileNamespace setVariable ["SavedMoney", nil]; 
 SaveProfileNamespace;
 if (deathrating < 0 ) then {
 player addRating deathrating;
-hint "You had a negative rating before you died. You were a terrible person. "} 
+hint "You had a negative rating before you died. You were a terrible person. Your soul will burn in hell for eternity."} 
 else {
 player addRating -deathrating;
-hint "You pass on to your reward with a positive rating. You were a good person."; 
+hint "You pass on to your reward with a positive rating. You were a good person. You will bask in the eternal afterlife of glory."; 
 };
 sleep 2;  
 player setDamage 1; 

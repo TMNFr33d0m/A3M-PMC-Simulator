@@ -92,7 +92,6 @@
 #define MB_BUTTON_CANCEL  2
 #define MB_BUTTON_USER    4
 
-
 ///////////////////////////////////////////////////////////////////////////
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
@@ -1396,4 +1395,106 @@ class RscControlsGroup
 	h = 1;
 	shadow = 0;
 	style = 16;
+};
+class RscClrButton
+{
+	access = 0;
+	type = 1;
+	text = "";
+	colorText[] = 
+	{
+		1,
+		1,
+		1,
+		1
+	};
+	colorDisabled[] = 
+	{
+		1,
+		1,
+		1,
+		0.25
+	};
+	colorBackground[] = 
+	{
+		0,
+		0,
+		0,
+		0.1
+	};
+	colorBackgroundDisabled[] = 
+	{
+		0,
+		0,
+		0,
+		0.5
+	};
+	colorBackgroundActive[] = 
+	{
+		0,
+		0,
+		0,
+		0.35
+	};
+	colorFocused[] = 
+	{
+		0,
+		0,
+		0,
+		0.55
+	};
+	colorShadow[] = 
+	{
+		0,
+		0,
+		0,
+		0
+	};
+	colorBorder[] = 
+	{
+		0,
+		0,
+		0,
+		1
+	};
+	soundEnter[] = 
+	{
+		"\A3\ui_f\data\sound\RscButton\soundEnter",
+		0.09,
+		1
+	};
+	soundPush[] = 
+	{
+		"\A3\ui_f\data\sound\RscButton\soundPush",
+		0.09,
+		1
+	};
+	soundClick[] = 
+	{
+		"\A3\ui_f\data\sound\RscButton\soundClick",
+		0.09,
+		1
+	};
+	soundEscape[] = 
+	{
+		"\A3\ui_f\data\sound\RscButton\soundEscape",
+		0.09,
+		1
+	};
+	style = 64;
+	x = 0;
+	y = 0;
+	w = 0.095589;
+	h = 0.039216;
+	shadow = 1;
+	font = "PuristaMedium";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	borderSize = 0;
+	offsetX = 0;
+	offsetY = 0;
+	offsetPressedX = 0;
+	offsetPressedY = 0;
+	period = 1.2;
+	periodFocus = 1.2;
+	periodOver = 1.2;
 };

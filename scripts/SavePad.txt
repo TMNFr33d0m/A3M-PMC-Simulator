@@ -3,28 +3,40 @@
 
 // Remix!! Fleet Management Screen
 
-/* #Gynibo
+/* #Wycomu
 $[
 	1.063,
-	["REAL_GUI",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"A3M_StoreFrame",[1,"Internet Voyager V 1.69.420",["0.0988381 * safezoneW + safezoneX","0.0818968 * safezoneH + safezoneY","0.7794 * safezoneW","0.825204 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1"],[]],
-	[1200,"A3M_Comm_Video",[1,"videos\commerce.ogv",["0.108008 * safezoneW + safezoneX","0.119305 * safezoneH + safezoneY","0.481394 * safezoneW","0.275068 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["autoplay = 1; ","loops = 100; "]],
-	[1600,"A3M_Exitbutton",[1,"Exit",["0.831245 * safezoneW + safezoneX","0.86309 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit the Internet","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence;|"]],
-	[1000,"A3M_BalanceTitle",[1,"Operation Budget Balance:",["0.603156 * safezoneW + safezoneX","0.0973005 * safezoneH + safezoneY","0.131787 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1100,"A3M_BudgetBalance",[1,"",["0.763621 * safezoneW + safezoneX","0.101701 * safezoneH + safezoneY","0.108871 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0.25,0.001],[-1,-1,-1,-1],"","-1"],[]],
-	[1001,"A3M_TotalTitle",[1,"Total Operation Cost:",["0.622641 * safezoneW + safezoneX","0.147913 * safezoneH + safezoneY","0.108871 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1101,"A3M_TotalBalance",[1,"",["0.75789 * safezoneW + safezoneX","0.143511 * safezoneH + safezoneY","0.114601 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
-	[1002,"A3M_RankDisplay",[1,"Your Rank Info:",["0.649003 * safezoneW + safezoneX","0.191924 * safezoneH + safezoneY","0.080218 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1102,"A3M_CurrentRank",[1,"",["0.734966 * safezoneW + safezoneX","0.194125 * safezoneH + safezoneY","0.137521 * safezoneW","0.0770215 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
-	[1604,"A3M_SelectWheeled",[1,"Auto Dealership",["0.236379 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Jump into the Motor Fleet UI to purchase wheeled vehicles","-1"],["action = |[] call DoAddWheel|; "]],
-	[1605,"A3M_SelectArmor",[1,"Armor Depot",["0.1103 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.103156 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Armored Vehicle Fleet","-1"],["action = |[] call DoAddArmored|;"]],
-	[1606,"A3M_RotaryVeh",[1,"Helicopters",["0.522924 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Rotary Aircraft Fleet","-1"],["action = |[] call DoAddRotary|;"]],
-	[1607,"A3M_SelectPlanes",[1,"Aircraft",["0.379651 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse Fixed-Wing Assets","-1"],["action = |[] call DoAddFixedWing|;"]],
-	[1500,"A3M_SelectionWindow",[1,"",["0.1103 * safezoneW + safezoneX","0.455989 * safezoneH + safezoneY","0.756477 * safezoneW","0.374092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_handleClick|;"]],
-	[2100,"A3M_VehMod",[1,"Supported Vehicle Mods",["0.654709 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.206312 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"A3M_ModTxt",[1,"Supported Modifications: ",["0.654734 * safezoneW + safezoneX","0.37897 * safezoneH + safezoneY","0.149003 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+	["AdminPanel",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"A3M_AdminFrame",[1,"A3M PMC Sandbox | Administrator Panel",["0.0567346 * safezoneW + safezoneX","0.134697 * safezoneH + safezoneY","0.875309 * safezoneW","0.770215 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"By Cody S. AkA A3M Fr33d0m - www.A3MilSim.com","-1"],["Moving = 1; "]],
+	[1600,"A3M_ExitButton",[1,"Exit",["0.875934 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.0458403 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action= |CloseDialog 0|;"]],
+	[1601,"A3M_10k2All",[1,"Advance $10,000 To All Players",["0.281173 * safezoneW + safezoneX","0.290941 * safezoneH + safezoneY","0.160441 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance $10,000 to each connected player from the operational budget.","-1"],["action = |[] spawn CashAdvance|;"]],
+	[1602,"A3M_CancelAllMissions",[1,"Force Cancel All Missions",["0.281173 * safezoneW + safezoneX","0.455988 * safezoneH + safezoneY","0.131791 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Cancel all active missions and order all players to RTB.","-1"],["action=|[] spawn CancelAllMissions|;"]],
+	[1500,"A3M_Dia_Oprtvs",[1,"Active Operatives: ",["0.0679565 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.201994 * safezoneW","0.671188 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Double Click to Activate an Operative Selection","-1"],["OnLbDblClick= |_this call A3M_HandlePlyrSel|;"]],
+	[1000,"A3M_ctl_PlyrTxt",[1,"Active Operatives: ",["0.0702008 * safezoneW + safezoneX","0.18751 * safezoneH + safezoneY","0.168329 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1603,"A3M_Btn_MessageClient",[1,"Send Message",["0.724438 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.134663 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select an operator from the list, type a message, and hit this button to send it, ","-1"],["action=|[] call A3MLocalEffectTest|;"]],
+	[1001,"",[1,"",["0.208593 * safezoneW + safezoneX","0.976675 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1400,"A3M_Dia_MessageBox",[1,"",["0.275562 * safezoneW + safezoneX","0.852099 * safezoneH + safezoneY","0.437654 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Type a message here.","-1"],[]],
+	[1401,"A3M_Dia_Number",[1,"",["0.281173 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.185161 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Enter a dollar amount here","-1"],[]],
+	[1002,"A3M_Dia_TxtBanking",[1,"Financial Control: ",["0.275562 * safezoneW + safezoneX","0.180911 * safezoneH + safezoneY","0.100997 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1003,"A3M_Dia_GCont",[1,"Gameplay Control:",["0.275562 * safezoneW + safezoneX","0.405372 * safezoneH + safezoneY","0.0953862 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1604,"A3M_Btn_AdvPlyr",[1,"Advance",["0.477556 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.0561095 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance the amount in the box to the player currently selected.","-1"],["action=|[] Spawn OpAdvance;|;"]],
+	[1605,"A3M_Btn_FinePlyr",[1,"Deduct",["0.544888 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Fine the selected player for the amount shown in the box. ","-1"],["action=|[] Spawn OpDeduct;|;"]],
+	[1606,"A3M_Btn_MovePlyrToJail",[1,"Incarcerate",["0.281173 * safezoneW + safezoneX","0.544012 * safezoneH + safezoneY","0.0673314 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Move this player to the detention facility large cell. ","-1"],["action=|[] call A3M_fnc_Incarcerate;|;"]],
+	[1607,"A3M_Btn_Cleanup",[1,"Force Cleanup",["0.281173 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.0841643 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Force Cleanup of bodies and junk. ","-1"],["action=|[] call A3M_Fnc_Cleanup;|;"]],
+	[1608,"A3M_Dia_RefActvOprtvs",[1,"Refresh",["0.219453 * safezoneW + safezoneX","0.191912 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Refresh list of Active Operatives","-1"],["action=|[] spawn A3M_GetPlayers;|;"]],
+	[1004,"A3M_Dia_AmoutnTxt",[1,"Amount: ",["0.275562 * safezoneW + safezoneX","0.202917 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1005,"A3M_Dia_MsgText:",[1,"Message:",["0.272196 * safezoneW + safezoneX","0.814689 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1006,"A3M_Dia_BalncTxt",[1,"Company Account Balance: ",["0.647007 * safezoneW + safezoneX","0.235926 * safezoneH + safezoneY","0.140274 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1100,"A3M_Dia_ActBal",[1,"",["0.780548 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1101,"A3M_Dia_TotalSpent",[1,"",["0.780548 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1007,"A3M_Dia_TxtTotal",[1,"Total Spent: ",["0.716582 * safezoneW + safezoneX","0.290941 * safezoneH + safezoneY","0.0673314 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1102,"A3M_Dia_Plyblslts",[1,"",["0.780548 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.0841643 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1008,"A3M_Dia_TxtSlots",[1,"Playable Slots Remaining: ",["0.655985 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.145885 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1103,"A3M_Dia_CurPlyrSel",[1,"",["0.780548 * safezoneW + safezoneX","0.158905 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1009,"A3M_Dia_CurSelTxt",[1,"Currently Selected Player: ",["0.651496 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.123441 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
 */
+
 
 
 
@@ -64,25 +76,83 @@ $[
 
 
 
-/* #Mevevi
+/* #Qypucy
 $[
 	1.063,
 	["AdminPanel",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"A3M_AdminFrame",[1,"Outlaws PSG PMC Sandbox Admin Panel",["0.270799 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.458403 * safezoneW","0.550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"By A3M Fr33d0m - www.mediusgaming.com","-1"],[]],
-	[1600,"A3M_ExitButton",[1,"Exit",["0.671901 * safezoneW + safezoneX","0.720062 * safezoneH + safezoneY","0.0458403 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1601,"A3M_10k2All",[1,"Advance $10,000 To All Players",["0.282259 * safezoneW + safezoneX","0.268935 * safezoneH + safezoneY","0.160441 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance $10,000 to each player from the operational budget.","-1"],[]],
-	[1602,"A3M_CancelAllMissions",[1,"Force Cancel All Missions",["0.45416 * safezoneW + safezoneX","0.268935 * safezoneH + safezoneY","0.131791 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+	[1800,"A3M_AdminFrame",[1,"A3M PMC Sandbox | Administrator Panel",["0.0612234 * safezoneW + safezoneX","0.136898 * safezoneH + safezoneY","0.875309 * safezoneW","0.770215 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"By Cody S. AkA A3M Fr33d0m - www.A3MilSim.com","-1"],[]],
+	[1600,"A3M_ExitButton",[1,"Exit",["0.875934 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.0458403 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action= |CloseDialog 0|;"]],
+	[1601,"A3M_10k2All",[1,"Advance $10,000 To All Players",["0.280051 * safezoneW + safezoneX","0.323951 * safezoneH + safezoneY","0.160441 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance $10,000 to each connected player from the operational budget.","-1"],["action = |[] spawn CashAdvance|;"]],
+	[1602,"A3M_CancelAllMissions",[1,"Force Cancel All Missions",["0.281173 * safezoneW + safezoneX","0.455988 * safezoneH + safezoneY","0.131791 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Cancel all active missions and order all players to RTB.","-1"],["action=|[] spawn CancelAllMissions|;"]],
+	[1500,"A3M_Dia_Oprtvs",[1,"Active Operatives: ",["0.0679565 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.201994 * safezoneW","0.671188 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Double Click to Activate an Operative Selection","-1"],[]],
+	[1000,"A3M_ctl_PlyrTxt",[1,"Active Operatives: ",["0.0702008 * safezoneW + safezoneX","0.18751 * safezoneH + safezoneY","0.168329 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1603,"A3M_Btn_MessageClient",[1,"Send Message",["0.724438 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.134663 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select an operator from the list, type a message, and hit this button to send it, ","-1"],[]],
+	[1001,"",[1,"",["0.208593 * safezoneW + safezoneX","0.976675 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1400,"A3M_Dia_MessageBox",[1,"",["0.275562 * safezoneW + safezoneX","0.852099 * safezoneH + safezoneY","0.437654 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Type a message here.","-1"],[]],
+	[1401,"A3M_Dia_Number",[1,"",["0.280051 * safezoneW + safezoneX","0.286543 * safezoneH + safezoneY","0.185161 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Enter a dollar amount here","-1"],[]],
+	[1002,"A3M_Dia_TxtBanking",[1,"Financial Control: ",["0.276684 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.100997 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1003,"A3M_Dia_GCont",[1,"Gameplay Control:",["0.275562 * safezoneW + safezoneX","0.405372 * safezoneH + safezoneY","0.0953862 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1604,"A3M_Btn_AdvPlyr",[1,"Advance",["0.473068 * safezoneW + safezoneX","0.284342 * safezoneH + safezoneY","0.0561095 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance the amount in the box to the player currently selected.","-1"],[]],
+	[1605,"A3M_Btn_FinePlyr",[1,"Deduct",["0.539278 * safezoneW + safezoneX","0.284342 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Fine the selected player for the amount shown in the box. ","-1"],[]],
+	[1606,"A3M_Btn_MovePlyrToJail",[1,"Incarcerate",["0.281173 * safezoneW + safezoneX","0.544012 * safezoneH + safezoneY","0.0673314 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Move this player to the detention facility large cell. ","-1"],[]],
+	[1607,"A3M_Btn_Cleanup",[1,"Force Cleanup",["0.281173 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.0841643 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Force Cleanup of bodies and junk. ","-1"],[]],
+	[1608,"A3M_Dia_RefActvOprtvs",[1,"Refresh",["0.219453 * safezoneW + safezoneX","0.191912 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Refresh list of Active Operatives","-1"],[]],
+	[1004,"A3M_Dia_AmoutnTxt",[1,"Amount: ",["0.275562 * safezoneW + safezoneX","0.24473 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1005,"A3M_Dia_MsgText:",[1,"Message:",["0.272196 * safezoneW + safezoneX","0.814689 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1006,"A3M_Dia_BalncTxt",[1,"Company Account Balance: ",["0.471945 * safezoneW + safezoneX","0.21392 * safezoneH + safezoneY","0.140274 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1100,"A3M_Dia_ActBal",[1,"",["0.604364 * safezoneW + safezoneX","0.21832 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
 */
 
 
+
+
+
+
 // END ADMIN PANEL
 
+/* HomePage
+
+$[
+	1.063,
+	["HomePage",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1200,"",[1,"#(argb,8,8,3)color(1,1,1,1)",["0.0679565 * safezoneW + safezoneX","0.0378707 * safezoneH + safezoneY","0.858476 * safezoneW","0.924259 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1201,"",[1,"images\OPSG_HomePage2.paa",["0.0679565 * safezoneW + safezoneX","0.0378712 * safezoneH + safezoneY","0.858476 * safezoneW","0.924259 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1600,"A3M_Btn_PBank",[1,"",["0.567331 * safezoneW + safezoneX","0.114892 * safezoneH + safezoneY","0.35349 * safezoneW","0.0880246 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Pursuit Bank","-1"],[]],
+	[1601,"A3M_Btn_Fleet",[1,"",["0.0735675 * safezoneW + safezoneX","0.455988 * safezoneH + safezoneY","0.403989 * safezoneW","0.187052 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Lazarus Fleet Management","-1"],[]],
+	[1602,"A3M_Btn_Arms",[1,"",["0.567331 * safezoneW + safezoneX","0.21392 * safezoneH + safezoneY","0.347879 * safezoneW","0.110031 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Lazarus Security Supply","-1"],[]],
+	[1603,"A3M_Btn_Admin",[1,"",["0.399003 * safezoneW + safezoneX","0.874104 * safezoneH + safezoneY","0.145885 * safezoneW","0.0770215 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Administrator Login","-1"],[]],
+	[1604,"A3M_Btn_Mail",[1,"",["0.236285 * safezoneW + safezoneX","0.753071 * safezoneH + safezoneY","0.151496 * safezoneW","0.132037 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Email","-1"],[]],
+	[1605,"A3M_Btn_Exit",[1,"",["0.892767 * safezoneW + safezoneX","0.0378707 * safezoneH + safezoneY","0.0336657 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Browser","-1"],[]]
+]
+*/
+
+
+// End HomePage
+
+// Player Stash
+
+/* #Pabisi
+$[
+	1.063,
+	["ItemStash",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"A3M_Dia_Stashframe",[1,"",["0.211596 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.583539 * safezoneW","0.682191 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1500,"A3M_Dia_CurInv",[1,"On Person",["0.225063 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.162718 * safezoneW","0.594166 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["OnLbDblClick = |_this spawn HandleCurInv|;"]],
+	[1501,"A3M_Dia_Stashbox",[1,"In Stash",["0.606608 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.17394 * safezoneW","0.594166 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["OnLbDblClick = |_this spawn HandleCurStash|;"]],
+	[1600,"A3M_Btn_AddToStash",[1,"Add To Stash",["0.43828 * safezoneW + safezoneX","0.246929 * safezoneH + safezoneY","0.11783 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["Action = |[] spawn MoveToStash|;"]],
+	[1601,"A3M_Btn_TakeFromStash",[1,"Take From Stash",["0.43828 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.11783 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[" Action = |[] spawn GetFromStash|;"]],
+	[1602,"A3M_Btn_Discard",[1,"Discard Item From Stash",["0.423692 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.145885 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["Action = |[] spawn DiscardItem|;"]],
+	[1603,"A3M_Btn_ExitStash",[1,"Exit",["0.466348 * safezoneW + safezoneX","0.753071 * safezoneH + safezoneY","0.0729129 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action = |CloseDialog 0|;"]],
+	[1200,"A3M_Dia_LkrImg",[1,"images\WeaponLocker.paa",["0.399003 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.196383 * safezoneW","0.330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1000,"A3M_DiaTxt_PersTtl",[1,"Personal Stash",["0.456235 * safezoneW + safezoneX","0.130297 * safezoneH + safezoneY","0.151496 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1001,"A3M_DiaTxt_Inv",[1,"Inventory",["0.275562 * safezoneW + safezoneX","0.169908 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1002,"A3M_DiaTxt_St",[1,"Stash",["0.67394 * safezoneW + safezoneX","0.169908 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
 
 
 
-
-
+// 
 
 
 //

@@ -51,15 +51,15 @@ _handle= CreateDialog "A3M_VMS";
 //};
  
 DoAddMissions = {
-lbClear 1505; 
-_index0= lbAdd [1505, "From: Astral Corp | Subject:  V.I.P. Escort Contract"];
-_index1= lbAdd [1505, "From: Astral Corp | Subject:  High Value Shipment Escort / Delivery Contract"]; 
-_index2= lbAdd [1505, "From: Altis Government | Subject: Traffic Enforcement Checkpoint Contract"]; 
-_index3= lbAdd [1505, "From: Astral Corp | Subject: Hostage Rescue I (Snatch and Extract)"]; 
-_index4= lbAdd [1505, "From: Altis Government | Subject: Terrorist Cell Raid I (Assault)"]; 
-_index5= lbAdd [1505, "From: Altis Government | Subject: Terrorist Cell Raid II(Assault)"]; 
-_index6 = lbAdd [1505, "From: NATO Ops Center | Subject: *Urgent* Stranded unit requires E&E support"]; 
-_index7 = lbAdd [1505, "From: Astral Corp | Subject: Premise Security Shift (T-9 Facility) "]; 
+lbClear 1905; 
+_index0= lbAdd [1905, "From: Astral Corp | Subject:  V.I.P. Escort Contract"];
+_index1= lbAdd [1905, "From: Astral Corp | Subject:  High Value Shipment Escort / Delivery Contract"]; 
+_index2= lbAdd [1905, "From: Altis Government | Subject: Traffic Enforcement Checkpoint Contract"]; 
+_index3= lbAdd [1905, "From: Astral Corp | Subject: Hostage Rescue I (Snatch and Extract)"]; 
+_index4= lbAdd [1905, "From: Altis Government | Subject: Terrorist Cell Raid I (Assault)"]; 
+_index5= lbAdd [1905, "From: Altis Government | Subject: Terrorist Cell Raid II(Assault)"]; 
+_index6 = lbAdd [1905, "From: NATO Ops Center | Subject: *Urgent* Stranded unit requires E&E support"]; 
+_index7 = lbAdd [1905, "From: Astral Corp | Subject: Premise Security Shift (T-9 Facility) "]; 
 };
 
 []call doAddMissions;
