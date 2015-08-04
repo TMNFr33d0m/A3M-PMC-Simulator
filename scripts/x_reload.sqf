@@ -31,10 +31,6 @@ To Xeno, for this script's core, despite the fact that he'd probably call me a t
 
 My wife, for not only supporting my modding ventures, but actually jumping in and helping with mods when she can. What a gal! 
 
-Corello, for helping me with forming long numbers in Arma without truncation, and his awesome wife #define, for her work and encouragement. 
-
-Cannabis, Sativa and Indica, (The legal, medical variety) for giving me the patience and focus to complete this project over, and over again. 
-
 And last, but definitely not least, the A3 community, who through over 250+ encouraging messages highly encouraged me to continue this project. I'm glad you like it, 
 and I hope you enjoy the things I have in the works! 
 
