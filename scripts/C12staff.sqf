@@ -48,6 +48,7 @@ mayes disableAI "ANIM";
 mayes disableAI "MOVE"; 
 CivLead disableAI "MOVE"; 
 CivLead allowDamage False; 
+HR_Rep disableAI "ANIM"; 
 //
 //
 sol1 switchMove "InBaseMoves_patrolling1"; 
@@ -59,3 +60,30 @@ sol6 switchMove "InBaseMoves_HandsBehindBack1";
 mayes switchMove "AmovPercMstpSnonWnonDnon_Ease";
 westin switchMove "AmovPercMstpSnonWnonDnon_Ease";
 CivLead switchMove "InBaseMoves_HandsBehindBack1";
+
+[[ HR_Rep, "HubSittingChairA_idle1" ], "switchMoveEverywhere" ] call BIS_fnc_MP;
+HR_Rep attachTo [HRChair,[0,0.05,-0.55]]; 
+HR_Rep setDir (getDIr HRChair);
+HR_Rep setDir 180; 
+sleep 0.1;
+
+
+removeAllWeapons HR_Rep;
+removeAllItems HR_Rep;
+removeAllAssignedItems HR_Rep;
+removeUniform HR_Rep;
+removeVest HR_Rep;
+removeBackpack HR_Rep;
+removeHeadgear HR_Rep;
+removeGoggles HR_Rep;
+
+HR_Rep forceAddUniform "U_Marshal";
+HR_Rep addHeadgear "H_Cap_blk_CMMG";
+HR_Rep addGoggles "G_Spectacles";
+
+HR_Rep linkItem "ItemCompass";
+HR_Rep linkItem "ItemWatch";
+HR_Rep linkItem "tf_anprc152_1";
+
+HR_Rep setFace "WhiteHead_03";
+HR_Rep setSpeaker "Male01ENG";

@@ -469,7 +469,7 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 // Open Dialog
 _handle= CreateDialog "A3M_WpnLkr";
 
-StashArray = ["SMB"]; 
+StashArray = []; 
 
 [] call GetCurrentGear; 
 [] call GetStashGear;

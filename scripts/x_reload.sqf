@@ -41,7 +41,7 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 // DEBUG - 1 = ON : 0= OFF
-_Debug = 1; 
+_Debug = 0; 
 
 _object = _this;
 

@@ -73,7 +73,7 @@ class RscPicture_2000: RscPicture
 };
 class A3M_Btn_PBank: RscClrButton
 {
-	action="execVM 'scripts\OpenBank.sqf'";
+	action="[] call A3M_Fnc_AccessBank";
 	idc = 2150;
 	x = 0.567331 * safezoneW + safezoneX;
 	y = 0.114892 * safezoneH + safezoneY;
@@ -103,7 +103,7 @@ class A3M_Btn_Arms: RscClrButton
 };
 class A3M_Btn_Admin: RscClrButton
 {
-	action="execVM 'scripts\AdminPanel.sqf'";
+	action="[] spawn A3M_Fnc_AdminPanel";
 	idc = 2300;
 	x = 0.399003 * safezoneW + safezoneX;
 	y = 0.874104 * safezoneH + safezoneY;

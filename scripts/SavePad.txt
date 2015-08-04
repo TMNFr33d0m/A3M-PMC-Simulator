@@ -3,6 +3,32 @@
 
 // Remix!! Fleet Management Screen
 
+/* #Fexejy
+$[
+	1.063,
+	["REAL_GUI",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"A3M_StoreFrame",[1,"Internet Voyager V 1.69.420",["0.0988381 * safezoneW + safezoneX","0.0818968 * safezoneH + safezoneY","0.7794 * safezoneW","0.825204 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1"],["Moving = 1; "]],
+	[1600,"A3M_Exitbutton",[1,"Exit",["0.831245 * safezoneW + safezoneX","0.86309 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit the Internet","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence;|"]],
+	[1000,"A3M_BalanceTitle",[1,"Operation Budget Balance:",["0.603156 * safezoneW + safezoneX","0.0973005 * safezoneH + safezoneY","0.131787 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1100,"A3M_BudgetBalance",[1,"",["0.763621 * safezoneW + safezoneX","0.101701 * safezoneH + safezoneY","0.108871 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0.25,0.001],[-1,-1,-1,-1],"","-1"],[]],
+	[1001,"A3M_TotalTitle",[1,"Total Operation Cost:",["0.622641 * safezoneW + safezoneX","0.147913 * safezoneH + safezoneY","0.108871 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1101,"A3M_TotalBalance",[1,"",["0.75789 * safezoneW + safezoneX","0.143511 * safezoneH + safezoneY","0.114601 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
+	[1002,"A3M_RankDisplay",[1,"Your Rank Info:",["0.649003 * safezoneW + safezoneX","0.191924 * safezoneH + safezoneY","0.080218 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1102,"A3M_CurrentRank",[1,"",["0.734966 * safezoneW + safezoneX","0.194125 * safezoneH + safezoneY","0.137521 * safezoneW","0.0770215 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
+	[1604,"A3M_SelectWheeled",[1,"Auto Dealership",["0.219563 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Jump into the Motor Fleet UI to purchase wheeled vehicles","-1"],["action = |[] call DoAddWheel|; "]],
+	[1605,"A3M_SelectArmor",[1,"Armor Depot",["0.1103 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.103156 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Armored Vehicle Fleet","-1"],["action = |[] call DoAddArmored|;"]],
+	[1606,"A3M_RotaryVeh",[1,"Helicopters",["0.451116 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Rotary Aircraft Fleet","-1"],["action = |[] call DoAddRotary|;"]],
+	[1607,"A3M_SelectPlanes",[1,"Aircraft",["0.334771 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse Fixed-Wing Assets","-1"],["action = |[] call DoAddFixedWing|;"]],
+	[1500,"A3M_SelectionWindow",[1,"",["0.1103 * safezoneW + safezoneX","0.464793 * safezoneH + safezoneY","0.756477 * safezoneW","0.374092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_handleClick|;"]],
+	[2100,"A3M_VehMod",[1,"Supported Vehicle Mods",["0.654709 * safezoneW + safezoneX","0.411978 * safezoneH + safezoneY","0.206312 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1003,"A3M_ModTxt",[1,"Supported Modifications: ",["0.654734 * safezoneW + safezoneX","0.37897 * safezoneH + safezoneY","0.149003 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1200,"",[1,"images\FleetMgmtImg.jpg",["0.111879 * safezoneW + safezoneX","0.130292 * safezoneH + safezoneY","0.482347 * safezoneW","0.242068 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"A3M_Btn_Prch",[1,"Purchase",["0.575156 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.0673042 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
+
+
+// Admin Panel
 /* #Wycomu
 $[
 	1.063,
@@ -35,81 +61,8 @@ $[
 	[1103,"A3M_Dia_CurPlyrSel",[1,"",["0.780548 * safezoneW + safezoneX","0.158905 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1009,"A3M_Dia_CurSelTxt",[1,"Currently Selected Player: ",["0.651496 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.123441 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
-*/
+/* 
 
-
-
-
-// Budget Interface 2.5 
-
-/* #Hilypy
-$[
-	1.063,
-	["REAL_GUI",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"A3M_StoreFrame",[1,"Medius Network Secure Data Communications Interface",["0.270806 * safezoneW + safezoneX","0.202917 * safezoneH + safezoneY","0.458389 * safezoneW","0.57216 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1"],[]],
-	[1200,"A3M_Comm_Video",[1,"videos\commerce.ogv",["0.270799 * safezoneW + safezoneX","0.240326 * safezoneH + safezoneY","0.217741 * safezoneW","0.198055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["autoplay = 1; ","loops = 100; "]],
-	[1600,"A3M_Exitbutton",[1,"Exit",["0.683361 * safezoneW + safezoneX","0.447186 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit the Internet","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence;|"]],
-	[1000,"A3M_BalanceTitle",[1,"Operation Budget Balance:",["0.49427 * safezoneW + safezoneX","0.235926 * safezoneH + safezoneY","0.131787 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1100,"A3M_BudgetBalance",[1,"",["0.623769 * safezoneW + safezoneX","0.242527 * safezoneH + safezoneY","0.108871 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0.25,0.001],[-1,-1,-1,-1],"","-1"],[]],
-	[1001,"A3M_TotalTitle",[1,"Total Operation Cost:",["0.49427 * safezoneW + safezoneX","0.279938 * safezoneH + safezoneY","0.108871 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1101,"A3M_TotalBalance",[1,"",["0.614601 * safezoneW + safezoneX","0.28434 * safezoneH + safezoneY","0.114601 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
-	[1002,"A3M_RankDisplay",[1,"Your Rank Info:",["0.49427 * safezoneW + safezoneX","0.323951 * safezoneH + safezoneY","0.080218 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1102,"A3M_CurrentRank",[1,"",["0.580221 * safezoneW + safezoneX","0.326152 * safezoneH + safezoneY","0.137521 * safezoneW","0.0770215 * safezoneH"],[-1,-1,-1,-1],[0,0,0,0],[-1,-1,-1,-1],"","-1"],[]],
-	[1602,"A3M_ShowCreds",[1,"Administrator Panel",["0.368209 * safezoneW + safezoneX","0.447186 * safezoneH + safezoneY","0.114601 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"If you are of rank, you can claim immediate rating points. ","-1"],["action = |execVM ^scripts\AdminPanel.sqf^|; "]],
-	[1603,"A3M_ItemStoreButton",[1,"Infantry Supply",["0.276529 * safezoneW + safezoneX","0.555015 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Infantry Supply","-1"],["action = |execVM ^scripts\ItemStore.sqf^|; "]],
-	[1604,"A3M_SelectWheeled",[1,"Auto Dealership",["0.276529 * safezoneW + safezoneX","0.64304 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Jump into the Motor Fleet UI to purchase wheeled vehicles","-1"],["action = |[] call DoAddWheel|; "]],
-	[1605,"A3M_SelectArmor",[1,"Armor Depot",["0.276529 * safezoneW + safezoneX","0.599028 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Armored Vehicle Fleet","-1"],["action = |[] call DoAddArmored|;"]],
-	[1606,"A3M_RotaryVeh",[1,"Helicopters",["0.276529 * safezoneW + safezoneX","0.731065 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse our Rotary Aircraft Fleet","-1"],["action = |[] call DoAddRotary|;"]],
-	[1607,"A3M_SelectPlanes",[1,"Aircraft",["0.276529 * safezoneW + safezoneX","0.687052 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Browse Fixed-Wing Assets","-1"],["action = |[] call DoAddFixedWing|;"]],
-	[1500,"A3M_SelectionWindow",[1,"",["0.362479 * safezoneW + safezoneX","0.484597 * safezoneH + safezoneY","0.360992 * safezoneW","0.28608 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_handleClick|;"]],
-	[1608,"A3M_OpenBankButton",[1,"Medius Banking",["0.276529 * safezoneW + safezoneX","0.511003 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Banking Interface","-1"],["action = |execVM ^scripts\OpenBank.sqf^|; "]],
-	[1601,"A3M_EmailButton",[1,"Secure Email",["0.276529 * safezoneW + safezoneX","0.466991 * safezoneH + safezoneY","0.0802205 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action = |execVM ^scripts\handleTasks.sqf^|; "]],
-	[2100,"A3M_VehMod",[1,"Supported Vehicle Mods",["0.5 * safezoneW + safezoneX","0.447186 * safezoneH + safezoneY","0.166171 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"A3M_ModTxt",[1,"Supported Modifications: ",["0.5 * safezoneW + safezoneX","0.422978 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
-]
-*/
-
-
-// END BUDGET INTERFACE
-
-// Admin Panel
-
-
-
-/* #Qypucy
-$[
-	1.063,
-	["AdminPanel",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"A3M_AdminFrame",[1,"A3M PMC Sandbox | Administrator Panel",["0.0612234 * safezoneW + safezoneX","0.136898 * safezoneH + safezoneY","0.875309 * safezoneW","0.770215 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"By Cody S. AkA A3M Fr33d0m - www.A3MilSim.com","-1"],[]],
-	[1600,"A3M_ExitButton",[1,"Exit",["0.875934 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.0458403 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action= |CloseDialog 0|;"]],
-	[1601,"A3M_10k2All",[1,"Advance $10,000 To All Players",["0.280051 * safezoneW + safezoneX","0.323951 * safezoneH + safezoneY","0.160441 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance $10,000 to each connected player from the operational budget.","-1"],["action = |[] spawn CashAdvance|;"]],
-	[1602,"A3M_CancelAllMissions",[1,"Force Cancel All Missions",["0.281173 * safezoneW + safezoneX","0.455988 * safezoneH + safezoneY","0.131791 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Cancel all active missions and order all players to RTB.","-1"],["action=|[] spawn CancelAllMissions|;"]],
-	[1500,"A3M_Dia_Oprtvs",[1,"Active Operatives: ",["0.0679565 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.201994 * safezoneW","0.671188 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Double Click to Activate an Operative Selection","-1"],[]],
-	[1000,"A3M_ctl_PlyrTxt",[1,"Active Operatives: ",["0.0702008 * safezoneW + safezoneX","0.18751 * safezoneH + safezoneY","0.168329 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1603,"A3M_Btn_MessageClient",[1,"Send Message",["0.724438 * safezoneW + safezoneX","0.863102 * safezoneH + safezoneY","0.134663 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select an operator from the list, type a message, and hit this button to send it, ","-1"],[]],
-	[1001,"",[1,"",["0.208593 * safezoneW + safezoneX","0.976675 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1400,"A3M_Dia_MessageBox",[1,"",["0.275562 * safezoneW + safezoneX","0.852099 * safezoneH + safezoneY","0.437654 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Type a message here.","-1"],[]],
-	[1401,"A3M_Dia_Number",[1,"",["0.280051 * safezoneW + safezoneX","0.286543 * safezoneH + safezoneY","0.185161 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Enter a dollar amount here","-1"],[]],
-	[1002,"A3M_Dia_TxtBanking",[1,"Financial Control: ",["0.276684 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.100997 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"A3M_Dia_GCont",[1,"Gameplay Control:",["0.275562 * safezoneW + safezoneX","0.405372 * safezoneH + safezoneY","0.0953862 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1604,"A3M_Btn_AdvPlyr",[1,"Advance",["0.473068 * safezoneW + safezoneX","0.284342 * safezoneH + safezoneY","0.0561095 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Advance the amount in the box to the player currently selected.","-1"],[]],
-	[1605,"A3M_Btn_FinePlyr",[1,"Deduct",["0.539278 * safezoneW + safezoneX","0.284342 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Fine the selected player for the amount shown in the box. ","-1"],[]],
-	[1606,"A3M_Btn_MovePlyrToJail",[1,"Incarcerate",["0.281173 * safezoneW + safezoneX","0.544012 * safezoneH + safezoneY","0.0673314 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Move this player to the detention facility large cell. ","-1"],[]],
-	[1607,"A3M_Btn_Cleanup",[1,"Force Cleanup",["0.281173 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.0841643 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Force Cleanup of bodies and junk. ","-1"],[]],
-	[1608,"A3M_Dia_RefActvOprtvs",[1,"Refresh",["0.219453 * safezoneW + safezoneX","0.191912 * safezoneH + safezoneY","0.0504986 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Refresh list of Active Operatives","-1"],[]],
-	[1004,"A3M_Dia_AmoutnTxt",[1,"Amount: ",["0.275562 * safezoneW + safezoneX","0.24473 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1005,"A3M_Dia_MsgText:",[1,"Message:",["0.272196 * safezoneW + safezoneX","0.814689 * safezoneH + safezoneY","0.0448876 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1006,"A3M_Dia_BalncTxt",[1,"Company Account Balance: ",["0.471945 * safezoneW + safezoneX","0.21392 * safezoneH + safezoneY","0.140274 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1100,"A3M_Dia_ActBal",[1,"",["0.604364 * safezoneW + safezoneX","0.21832 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
-]
-*/
-
-
-
-
-
-
-// END ADMIN PANEL
 
 /* HomePage
 
@@ -128,11 +81,10 @@ $[
 */
 
 
-// End HomePage
 
 // Player Stash
 
-/* #Pabisi
+
 $[
 	1.063,
 	["ItemStash",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -150,70 +102,7 @@ $[
 ]
 */
 
-
-
-// 
-
-
-//
-
-
-
-PMC_VIP_F
-PMC_Bodyguard1
-PMC_Marksman
-PMC_Medic
-PMC_Bodyguard1
-PMC_FieldSpecialist_LMG
-PMC_Engineer
-PMC_SecurityCon_MX
-PMC_SecurityCon_MXGL
-PMC_Helipilot
-PMC_TL
-
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Fr33d0m, v1.063, #Humeti)
-////////////////////////////////////////////////////////
-
-class M_MissionFrame: RscFrame
-{
-	idc = 1801;
-	text = "Section 9 Secure Email"; //--- ToDo: Localize;
-	x = 0.270875 * safezoneW + safezoneX;
-	y = 0.224923 * safezoneH + safezoneY;
-	w = 0.45825 * safezoneW;
-	h = 0.550154 * safezoneH;
-};
-class RscButtonMenuCancel_2700: RscButtonMenuCancel
-{
-	x = 0.305244 * safezoneW + safezoneX;
-	y = 0.676049 * safezoneH + safezoneY;
-	w = 0.045825 * safezoneW;
-	h = 0.0220062 * safezoneH;
-};
-class M_EmailWindow: RscListbox
-{
-	idc = 1505;
-	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.373981 * safezoneW + safezoneX;
-	y = 0.334954 * safezoneH + safezoneY;
-	w = 0.309319 * safezoneW;
-	h = 0.363102 * safezoneH;
-};
-class M_Inbox_Text: RscText
-{
-	idc = 1000;
-	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.373981 * safezoneW + safezoneX;
-	y = 0.301945 * safezoneH + safezoneY;
-	w = 0.0343688 * safezoneW;
-	h = 0.0220062 * safezoneH;
-};
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT END
-////////////////////////////////////////////////////////
-
-/* #Popofo
+// Email Service
 $[
 	1.063,
 	["Mission_GUI",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -233,6 +122,7 @@ $[
 // Lazarus ISS
 
 /* #Rolomo
+/* #Jyruja
 $[
 	1.063,
 	["GunStore",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -247,55 +137,20 @@ $[
 	[1608,"A3M_Btn_Unis",[1,"Uniforms",["0.0816454 * safezoneW + safezoneX","0.555014 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Clothing","-1"],["action = |[] call DoAddClothes|;"]],
 	[1609,"A3M_btn_Vests",[1,"Body Armor / Carriers",["0.0816454 * safezoneW + safezoneX","0.687046 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Body Armor and Carrier Catalogue","-1"],["action = |[] call DoAddVests|; "]],
 	[1610,"A3M_Btn_Misc",[1,"Misc Items",["0.0816454 * safezoneW + safezoneX","0.841084 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] call DoAddItems|; "]],
-	[1500,"",[1,"",["0.196263 * safezoneW + safezoneX","0.13691 * safezoneH + safezoneY","0.687706 * safezoneW","0.759187 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_GShandleClick|;"]],
+	[1500,"",[1,"",["0.197131 * safezoneW + safezoneX","0.17431 * safezoneH + safezoneY","0.678651 * safezoneW","0.759212 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_GShandleClick|;"]],
 	[1611,"A3M_BackPackButton",[1,"Backpacks",["0.0816454 * safezoneW + safezoneX","0.599024 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Backpacks","-1"],["action = |[] call DoAddBackpacks|; "]],
-	[2100,"A3M_ModSelector",[1,"Select Modification ",["0.683388 * safezoneW + safezoneX","0.103902 * safezoneH + safezoneY","0.194821 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! ","-1"],[]],
+	[2100,"A3M_ModSelector",[1,"Select Modification ",["0.679478 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.194821 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! ","-1"],[]],
 	[1612,"A3M_HeadGearButton",[1,"Head Gear",["0.0816454 * safezoneW + safezoneX","0.643035 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Ballstic Head Protection and Hats","-1"],["action = |[] call DoAddHeadgear|;"]],
-	[1000,"A3M_ModsTxt",[1,"Supported Modifications:",["0.551578 * safezoneW + safezoneX","0.103902 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1800,"A3M_StoreFrameSA",[1,"Lazarus International Security Supply",["0.0759146 * safezoneW + safezoneX","0.037886 * safezoneH + safezoneY","0.830978 * safezoneW","0.913225 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1613,"A3M_exitbutton",[1,"Exit",["0.0873763 * safezoneW + safezoneX","0.9071 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Store Interface","-1"],["action = |closeDialog 0|;"]],
-	[1614,"A3M_Btn_Med",[1,"Medical",["0.0816454 * safezoneW + safezoneX","0.753062 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1615,"A3M_Btn_Elect",[1,"Electronics",["0.0816454 * safezoneW + safezoneX","0.797073 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] call DoAddItems|; "]]
+	[1000,"A3M_ModsTxt",[1,"Supported Modifications:",["0.560574 * safezoneW + safezoneX","0.143499 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1800,"A3M_StoreFrameSA",[1,"Lazarus International Security Supply",["0.0647665 * safezoneW + safezoneX","0.0400713 * safezoneH + safezoneY","0.830978 * safezoneW","0.913225 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1613,"A3M_exitbutton",[1,"Exit",["0.0849575 * safezoneW + safezoneX","0.907114 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Store Interface","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence; |;"]],
+	[1614,"A3M_Btn_Med",[1,"Medical",["0.0816454 * safezoneW + safezoneX","0.753062 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action = |[] spawn DoAddMedical|;"]],
+	[1615,"A3M_Btn_Elect",[1,"Electronics",["0.0816454 * safezoneW + safezoneX","0.797073 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] spawn DoAddElect|; "]],
+	[1616,"A3m_Btn_Buy",[2,"PURCHASE",["45.4 * GUI_GRID_W + GUI_GRID_X","-5.5 * GUI_GRID_H + GUI_GRID_Y","8 * GUI_GRID_W","1.5 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action=|[] call A3M_Fnc_BuyButton|; "]]
 ]
 */
 
-
-
-\
-/* #Dymetu
-$[
-	1.063,
-	["GunStore",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1200,"",[1,"videos\commerce.ogv",["0.53438 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.194821 * safezoneW","0.176049 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["autoplay = 1; ","loops = 100;"]],
-	[1600,"A3M_btn_pistols",[1,"Pistols & SMGs",["0.276603 * safezoneW + safezoneX","0.268935 * safezoneH + safezoneY","0.0859219 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Sidearms and Personal Defense Weapons","-1"],["action = |[] call DoAddPistols|;"]],
-	[1601,"A3M_btn_Rifles",[1,"Long Rifles",["0.368253 * safezoneW + safezoneX","0.268935 * safezoneH + safezoneY","0.0630304 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access catalogue of Assault Rifles and Long Arms Weapons","-1"],["action = |[] call DoAddRifles|; "]],
-	[1602,"A3M_btn_Lnch",[1,"Launchers",["0.385399 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.0630094 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Launchers","-1"],["action = |[] call DoAddLaunchers|; "]],
-	[1603,"A3M_btn_Mags",[1,"Ammunition",["0.43697 * safezoneW + safezoneX","0.268935 * safezoneH + safezoneY","0.0630304 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Magazines and Ammunition","-1"],["action = |[] call DoAddAmmo|;"]],
-	[1604,"A3M_Btn_Optics",[1,"Optics",["0.276529 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.0343688 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Weapon Optics and Target Acquisition Assistance Devices","-1"],["action = |[] call DoAddOptics|; "]],
-	[1605,"A3M_btn_Supp",[1,"Suppressors",["0.316639 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.0630094 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Suppressors","-1"],["action = |[] call DoAddSuppressors|;"]],
-	[1606,"A3M_btn_Smoke",[1,"Smoke Grenades",["0.276529 * safezoneW + safezoneX","0.334954 * safezoneH + safezoneY","0.0859505 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access catalogue of smoke and signaling devices","-1"],["action = |[] call DoAddSmoke|;"]],
-	[1607,"A3M_btn_Expl",[1,"Grenades / Explosives",["0.368209 * safezoneW + safezoneX","0.334954 * safezoneH + safezoneY","0.108834 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access catalogue of Grenades and Explosives","-1"],["action = |[] call DoAddExplosives|;"]],
-	[1608,"A3M_Btn_Unis",[1,"Uniforms",["0.276529 * safezoneW + safezoneX","0.367963 * safezoneH + safezoneY","0.0515531 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Clothing","-1"],["action = |[] call DoAddClothes|;"]],
-	[1609,"A3M_btn_Vests",[1,"Body Armor / Carriers",["0.333829 * safezoneW + safezoneX","0.367963 * safezoneH + safezoneY","0.108834 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Body Armor and Carrier Catalogue","-1"],["action = |[] call DoAddVests|; "]],
-	[1610,"A3M_Btn_Misc",[1,"Misc Items",["0.45416 * safezoneW + safezoneX","0.367963 * safezoneH + safezoneY","0.0687375 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] call DoAddItems|; "]],
-	[1500,"",[1,"",["0.276529 * safezoneW + safezoneX","0.444985 * safezoneH + safezoneY","0.446943 * safezoneW","0.319089 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_GShandleClick|;"]],
-	[1611,"A3M_BackPackButton",[1,"Backpacks",["0.45416 * safezoneW + safezoneX","0.301945 * safezoneH + safezoneY","0.0573003 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Backpacks","-1"],["action = |[] call DoAddBackpacks|; "]],
-	[2100,"A3M_ModSelector",[1,"Select Modification ",["0.402589 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.194821 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! ","-1"],[]],
-	[1612,"A3M_HeadGearButton",[1,"Head Gear",["0.48281 * safezoneW + safezoneX","0.334954 * safezoneH + safezoneY","0.0515703 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Ballstic Head Protection and Hats","-1"],["action = |[] call DoAddHeadgear|;"]],
-	[1000,"A3M_ModsTxt",[1,"Supported Modifications:",["0.276529 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1800,"A3M_StoreFrameSA",[1,"Medius International Military Supply",["0.270799 * safezoneW + safezoneX","0.21392 * safezoneH + safezoneY","0.458403 * safezoneW","0.561157 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1613,"A3M_exitbutton",[1,"Exit",["0.683361 * safezoneW + safezoneX","0.411975 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Store Interface","-1"],["action = |closeDialog 0|;"]]
-]
-*/
-
-
-
-
-
-
-
-
-/* #Bihuki
+// Banking
 $[
 	1.063,
 	["A3M_Banking",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],

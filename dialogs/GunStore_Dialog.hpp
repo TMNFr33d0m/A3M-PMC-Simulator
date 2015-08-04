@@ -49,12 +49,12 @@ class Controls
 { 
 
 ////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by CPL Salazar, v1.063, #Wowipo)
+// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Razika)
 ////////////////////////////////////////////////////////
 
 class A3M_btn_pistols: RscButton
 {
-	action = "[] spawn DoAddPistols";
+	action = "[] call DoAddPistols";
 
 	idc = 1810;
 	text = "Pistols & SMGs"; //--- ToDo: Localize;
@@ -66,7 +66,7 @@ class A3M_btn_pistols: RscButton
 };
 class A3M_btn_Rifles: RscButton
 {
-	action = "[] spawn DoAddRifles"; 
+	action = "[] call DoAddRifles"; 
 
 	idc = 1811;
 	text = "Long Rifles"; //--- ToDo: Localize;
@@ -78,7 +78,7 @@ class A3M_btn_Rifles: RscButton
 };
 class A3M_btn_Lnch: RscButton
 {
-	action = "[] spawn DoAddLaunchers"; 
+	action = "[] call DoAddLaunchers"; 
 
 	idc = 1812;
 	text = "Launchers"; //--- ToDo: Localize;
@@ -90,7 +90,7 @@ class A3M_btn_Lnch: RscButton
 };
 class A3M_btn_Mags: RscButton
 {
-	action = "[] spawn DoAddAmmo";
+	action = "[] call DoAddAmmo";
 
 	idc = 1813;
 	text = "Ammunition"; //--- ToDo: Localize;
@@ -102,7 +102,7 @@ class A3M_btn_Mags: RscButton
 };
 class A3M_Btn_Optics: RscButton
 {
-	action = "[] spawn DoAddOptics"; 
+	action = "[] call DoAddOptics"; 
 
 	idc = 1814;
 	text = "Optics"; //--- ToDo: Localize;
@@ -114,7 +114,7 @@ class A3M_Btn_Optics: RscButton
 };
 class A3M_btn_Supp: RscButton
 {
-	action = "[] spawn DoAddSuppressors";
+	action = "[] call DoAddSuppressors";
 
 	idc = 1815;
 	text = "Suppressors"; //--- ToDo: Localize;
@@ -126,7 +126,7 @@ class A3M_btn_Supp: RscButton
 };
 class A3M_btn_Smoke: RscButton
 {
-	action = "[] spawn DoAddSmoke";
+	action = "[] call DoAddSmoke";
 
 	idc = 1816;
 	text = "Smoke Grenades"; //--- ToDo: Localize;
@@ -134,11 +134,11 @@ class A3M_btn_Smoke: RscButton
 	y = 0.488997 * safezoneH + safezoneY;
 	w = 0.108887 * safezoneW;
 	h = 0.0330081 * safezoneH;
-	tooltip = "Access catalogue of smoke and signalling devices"; //--- ToDo: Localize;
+	tooltip = "Access catalogue of smoke and signaling devices"; //--- ToDo: Localize;
 };
 class A3M_btn_Expl: RscButton
 {
-	action = "[] spawn DoAddExplosives";
+	action = "[] call DoAddExplosives";
 
 	idc = 1817;
 	text = "Grenades / Explosives"; //--- ToDo: Localize;
@@ -150,7 +150,7 @@ class A3M_btn_Expl: RscButton
 };
 class A3M_Btn_Unis: RscButton
 {
-	action = "[] spawn DoAddClothes";
+	action = "[] call DoAddClothes";
 
 	idc = 1818;
 	text = "Uniforms"; //--- ToDo: Localize;
@@ -162,7 +162,7 @@ class A3M_Btn_Unis: RscButton
 };
 class A3M_btn_Vests: RscButton
 {
-	action = "[] spawn DoAddVests"; 
+	action = "[] call DoAddVests"; 
 
 	idc = 1819;
 	text = "Body Armor / Carriers"; //--- ToDo: Localize;
@@ -174,7 +174,7 @@ class A3M_btn_Vests: RscButton
 };
 class A3M_Btn_Misc: RscButton
 {
-	action = "[] spawn DoAddItems"; 
+	action = "[] call DoAddItems"; 
 
 	idc = 1820;
 	text = "Misc Items"; //--- ToDo: Localize;
@@ -182,22 +182,21 @@ class A3M_Btn_Misc: RscButton
 	y = 0.841084 * safezoneH + safezoneY;
 	w = 0.108887 * safezoneW;
 	h = 0.0330081 * safezoneH;
-	tooltip = "Access Our Non-Weapon Tactical Items Catalogue"; //--- ToDo: Localize;
+	tooltip = "Access Electronics and Non-Weapon Tactical Items Catalogue"; //--- ToDo: Localize;
 };
-class RscListbox_1850: RscListbox
+class RscListbox_1500: RscListbox
 {
 	onLBDblClick = "_this spawn A3M_fnc_GShandleClick";
 
 	idc = 1850;
-	x = 0.196263 * safezoneW + safezoneX;
-	y = 0.13691 * safezoneH + safezoneY;
-	w = 0.687706 * safezoneW;
-	h = 0.759187 * safezoneH;
-	tooltip = "Select a supported mod from the drop down, and then click a category to see mod gear."; //--- ToDo: Localize;
+	x = 0.197131 * safezoneW + safezoneX;
+	y = 0.17431 * safezoneH + safezoneY;
+	w = 0.678651 * safezoneW;
+	h = 0.759212 * safezoneH;
 };
 class A3M_BackPackButton: RscButton
 {
-	action = "[] spawn DoAddBackpacks"; 
+	action = "[] call DoAddBackpacks"; 
 
 	idc = 1821;
 	text = "Backpacks"; //--- ToDo: Localize;
@@ -209,18 +208,18 @@ class A3M_BackPackButton: RscButton
 };
 class A3M_ModSelector: RscCombo
 {
+	onLBSelChanged = "_this spawn A3M_fnc_handleWModClick";
 	idc = 2175;
 	text = "Select Modification "; //--- ToDo: Localize;
-	x = 0.683388 * safezoneW + safezoneX;
-	y = 0.103902 * safezoneH + safezoneY;
+	x = 0.679478 * safezoneW + safezoneX;
+	y = 0.147901 * safezoneH + safezoneY;
 	w = 0.194821 * safezoneW;
 	h = 0.0220062 * safezoneH;
-	onLBSelChanged = "_this spawn A3M_fnc_handleWModClick";
 	tooltip = "Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! "; //--- ToDo: Localize;
 };
 class A3M_HeadGearButton: RscButton
 {
-	action = "[] spawn DoAddHeadgear";
+	action = "[] call DoAddHeadgear";
 
 	idc = 1822;
 	text = "Head Gear"; //--- ToDo: Localize;
@@ -228,24 +227,24 @@ class A3M_HeadGearButton: RscButton
 	y = 0.643035 * safezoneH + safezoneY;
 	w = 0.108887 * safezoneW;
 	h = 0.0330081 * safezoneH;
-	tooltip = "Access Catalogue of Ballstic Head Protection and Hats"; //--- ToDo: Localize;
+	tooltip = "Access Catalogue of Ballistic Head Protection and Hats"; //--- ToDo: Localize;
 };
 class A3M_ModsTxt: RscText
 {
-	idc = 1887;
+	idc = 1000;
 	text = "Supported Modifications:"; //--- ToDo: Localize;
-	x = 0.551578 * safezoneW + safezoneX;
-	y = 0.103902 * safezoneH + safezoneY;
+	x = 0.560574 * safezoneW + safezoneX;
+	y = 0.143499 * safezoneH + safezoneY;
 	w = 0.126061 * safezoneW;
 	h = 0.0220062 * safezoneH;
 };
 class A3M_StoreFrameSA: RscFrame
 {
 	Moving = 1; 
-	idc = 1821;
+	idc = 1800;
 	text = "Lazarus International Security Supply"; //--- ToDo: Localize;
-	x = 0.0759146 * safezoneW + safezoneX;
-	y = 0.037886 * safezoneH + safezoneY;
+	x = 0.0647665 * safezoneW + safezoneX;
+	y = 0.0400713 * safezoneH + safezoneY;
 	w = 0.830978 * safezoneW;
 	h = 0.913225 * safezoneH;
 };
@@ -255,8 +254,8 @@ class A3M_exitbutton: RscButton
 
 	idc = 1823;
 	text = "Exit"; //--- ToDo: Localize;
-	x = 0.0873763 * safezoneW + safezoneX;
-	y = 0.9071 * safezoneH + safezoneY;
+	x = 0.0849575 * safezoneW + safezoneX;
+	y = 0.907114 * safezoneH + safezoneY;
 	w = 0.0401102 * safezoneW;
 	h = 0.0220062 * safezoneH;
 	tooltip = "Exit Store Interface"; //--- ToDo: Localize;
@@ -264,6 +263,7 @@ class A3M_exitbutton: RscButton
 class A3M_Btn_Med: RscButton
 {
 	action = "[] spawn DoAddMedical";
+
 	idc = 1824;
 	text = "Medical"; //--- ToDo: Localize;
 	x = 0.0816454 * safezoneW + safezoneX;
@@ -283,9 +283,17 @@ class A3M_Btn_Elect: RscButton
 	h = 0.0330081 * safezoneH;
 	tooltip = "Access Electronics and Non-Weapon Tactical Items Catalogue"; //--- ToDo: Localize;
 };
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT END
-////////////////////////////////////////////////////////
+class A3m_Btn_Buy: RscButton
+{
+	action="[] call A3M_Fnc_BuyButton"; 
+
+	idc = 1826;
+	text = "PURCHASE"; //--- ToDo: Localize;
+	x = 0.784921 * safezoneW + safezoneX;
+	y = 0.103889 * safezoneH + safezoneY;
+	w = 0.0897389 * safezoneW;
+	h = 0.0330092 * safezoneH;
+};
 
 
 

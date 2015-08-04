@@ -660,14 +660,22 @@ _index83	=	lbAdd	[1575,"RUS ZSU-23-4 (TV)	Cost:	$6,500,000.00"];		_Pic74	=	getTe
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Handle the menu clicks (Parent class)
-A3M_fnc_handleClick = {
+A3M_fnc_VhandleClick = {
 TheSelection = _this select 1;
+hint "You have made a selection. Click *Purchase* button to buy.";
+}; 
+
+A3M_Fnc_VBuyButton = {
+
+if (IsNil "TheSelection") then {hint "Nothing was selected to purchase!"} else {
 //hint format ["Handle Click Activated. Variable passed was %1", TheSelection];
 if (wheelson == 1) then {_this call A3M_fnc_wheeled;};
 if (wingson == 1) then {_this call A3M_fnc_winged;};
 if (helion == 1) then {_this call A3M_fnc_heli;};
 if (armoredon == 1) then {_this call A3M_fnc_Armor};
 };
+
+}; 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Handle Mod Menu Clicks
 A3M_fnc_handleModClick= {

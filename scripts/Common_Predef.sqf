@@ -371,8 +371,388 @@ hint "You have failed to meet the conditions of your contract. The contract has 
 player setCurrentTask CO1;
 }; 
 
-// Administrator Panel Predefines
+// Roadblock MP Pre-Defines
+// 
+A3M_fnc_Roadblock = {
 
+RBduty=player createSimpleTask ["Move To Checkpoint Duty"]; 
+RBduty SetSimpleTaskDescription ["Stand at the checkpoint and perform stop and search checkpoint duties with the authority of the United Nations.", "Move To Checkpoint Duty", " Checkpoint C-12N"];
+RBduty SetSimpleTaskDestination (getMarkerPos "RBC");
+RBduty setTaskState "Assigned"; 
+player setCurrentTask RBduty; 
+hint "Move to checkpoint C-12 North and perform stop and search checkpoint duties. \n Check your map for details.";
+
+if (isServer) then {
+
+RBtrg= createTrigger ["EmptyDetector", getMarkerPos "RBC"]; 
+RBtrg setTriggerArea [20, 20, 0, false]; 
+RBtrg setTriggerActivation ["WEST", "PRESENT", false]; 
+RBtrg setTriggerType "NONE";
+RBtrg setTriggerStatements ["This","[[], 'A3M_fnc_Checkpoint', True, False, False] call BIS_fnc_MP",""]; 
+
+}; 
+
+}; 
+
+//MP Task: Stand at checkpoint (Active mission task at site) 
+A3M_fnc_checkpoint = {
+RBduty setTaskState "Succeeded"; 
+playMusic "Success"; 
+player addRating 100; 
+if (isServer) then {
+deleteVehicle RBtrg; 
+}; 
+
+RBduty2=player createSimpleTask ["Perform Checkpoint Duty"]; 
+RBduty2 SetSimpleTaskDescription ["Wait for cars to stop at the checkpoint and perform stop and search checkpoint duties with the authority of the Altian Government.", "Perform Checkpoint Duty", " Checkpoint C-12N"];
+RBduty2 SetSimpleTaskDestination (getMarkerPos "RBC");
+RBduty2 setTaskState "Assigned"; 
+hint "Welcome to the C-12 South Checkpoint. Perform stop and search duties on Altian Nationals. Be suspicious of terroristic threats.";
+
+if (isServer) then {
+
+execVM 'Scripts\A3MCheckpoint.sqf';
+
+sleep 5; 
+
+while { (CheckPointActive == 1) } do {
+
+sleep 2; 
+
+if !(alive RBVehD) then {
+[ '','RemAllAct',True,False] call BIS_fnc_MP;
+[] call A3M_fnc_handleSol;
+sleep 10;
+}; 
+
+};
+
+} else { hint "A Checkpoint Mission is currently active. You must wait until the current checkpoint shift is completed before you can start another." }; 
+
+};
+
+MP_Roadblock_Attitude = {
+
+switch (RAPickedNumber) do { 
+//Innocent 1
+Case "M0": {
+mantype= "M2"; 
+removeAllActions RBVeh; 
+greet= RBVeh addAction ["Greeting", {Hint "How are you today sir. Im a Altian Citizen." }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Vehicle Appears Normal"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The vehicle appears clean and in good repair. \n Smells:\n The vehicle doesn't smell of anything at all.  \n Driver Attitude: \n Driver appears calm and cooperative"} ];
+search= RBVeh addAction ["Search", {RBVehD LeaveVehicle RBVeh; hint "Officer, is this really needed? I know my rights!"; sleep 2; hint "Searching Car....."; sleep 5; hint "Nothing illegal or interesting was found in the car"; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; getincar= RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; } ]; 
+goSouth= RBVeh addAction ["Allow to Proceed", {hint "Thank you sir, I'll be moving on now"; [] Call DoExitStopSouth; }]; 
+goNorth= RBveh addAction ["Order To Turn Around", {hint "Are you kidding me? I'm perfectly legal! You are out of your mind, buster! "; [] Call DoExitStopNorth;  }]; 
+}; 
+
+// Drunk Driver
+Case "M1": {
+mantype= "M1"; 
+removeAllActions RBVeh; 
+RBveh addAction ["Greeting", {Hint "Howdy dooo, fucker! I'm an Altian fuckin' Citizen. Fuck outha my vay." }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Vehicle Appears normal"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The vehicle appears clean and in good repair.  \n Smells: \n The vehicle smells of alcohol \n Driver Attitude: \n Driver appears Impaired and Uncooperative"} ];
+RBveh addAction ["Search", {RBVehD LeaveVehicle RBVeh; hint "Go fuck yourself, piggie wiggie."; sleep 2; hint "Searching Car....."; sleep 5; hint "Found open bottle of Russian vodka"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; RBVehD addAction ["Arrest for DWI", { mantype= 4; publicVariable "mantype"; Hint "Abreast? Arrest meee? Fuck YOU! "; sleep 2; hint "Escort the Suspect to Altian jail. Alternately, use the Fast Transport option in the action menu to fast travel the suspect to Altian Jail."; sleep 2; [] call A3M_fnc_jailtrigger;}];}];
+RBveh addAction ["Allow to Proceed", {hint "Thank ya kindly, muthafucka! I'm out."; [] Call DoExitStopSouth;}]; 
+RBveh addAction ["Order To Turn Around", {hint "Bitch, Fuck you then muthafucka! I'm outta here. "; [] Call DoExitStopNorth;}]; 
+}; 
+
+// Drug Runner
+Case "M2": {
+mantype= "M1";
+removeAllActions RBVeh; 
+RBveh addAction ["Greeting", {Hint "I'm an Altian Citizen. May I please pass? " }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"}]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears clean and in good repair. \n Smells:\n A faint smell of Anise is radiating from the vehicle.  \n Driver Attitude: \n The driver appears to be quite nervous."} ];
+RBveh addAction ["Search", {RBVehD LeaveVehicle RBVeh; hint "I better call my lawyer. I'm not saying anything until my attorney arrives. Oh my God."; sleep 2.0; hint "Searching Car....."; sleep 6; hint "WOAH!! Found a load Cocaine!! "; sleep 2; hint "Driver: Step out of the vehicle! \n \n If the driver refuses to exit, shoot the vehicle's tires and disable it!";
+		RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; 
+		RBVehD addAction ["Sir, You are under arrest...", { mantype= "M4"; publicVariable "mantype"; Hint "Oh God...Oh My God....Ohhhh Shit. Fuck...FUCK ME! "; sleep 3.0; hint "Transport the Criminal to Altian Jail. Alternately, use the Fast Transport option in the action menu to fast travel the suspect to Altian Jail."; [] call A3M_fnc_jailtrigger; }];}];	
+RBveh addAction ["Allow to Proceed", {hint "Okay...thanks!"; [] Call DoExitStopSouth;  }]; 
+RBveh addAction ["Order To Turn Around", {hint "Okay...No problem officer."; [] Call DoExitStopNorth;} ];  
+};
+
+// Illegal Alien
+Case "M3": {
+mantype= "M1"; 
+removeAllActions RBVeh; 
+RBveh addAction ["Greeting", {Hint "Hell-Oh, Me am Altian Citizen. Surree Am!  " }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Vehicle appears normal"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears dirty and aged. \n Smells:\n The vehicle smells like chewing tobacco. \n Driver Attitude: \n  The driver appears disoriented, but cooperative."} ];
+RBveh addAction ["Search", { RBVehD LeaveVehicle RBVeh; hint "I cant beeleeeeeve dis es happening to meee."; sleep 2.0; hint "Searching Car....."; sleep 5; hint "Found Multiple Identifications. Upon further review, the Altian Citizen Number on the Altian ID doesn't check out..."; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh}]; RBVehD addAction ["Arrest for Illegal Immigration", { mantype= "M4"; publicVariable "mantype"; Hint "Fock you mane. You cops are always trying to keepa de mano down!  "; sleep 3.0; hint "Escort the Illegal Alien to Altian Jail. Alternately, use the Fast Transport option in the action menu to fast travel the suspect to Altian Jail."; [] call A3M_fnc_jailtrigger; } ]; } ];
+RBveh addAction ["Allow to Proceed", {hint "Peace on you sire"; [] Call DoExitStopSouth;} ]; 
+RBveh addAction ["Order To Turn Around", {hint "Eat a deek, bottmonch."; [] Call DoExitStopNorth;} ];
+}; 
+
+// Terrorist Attack on checkpoint - carbomb
+Case "M4": {
+mantype= "M3";
+removeAllActions RBVeh; 
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected!"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; Hint "Visual Inspection: \n The vehicle appears clean, but in disrepair. Wires appear to be protruding from the drivers side door frame. \n Smells:\n The smell of Jet Fuel permeates the air. \n Driver Attitude: \n The driver appears calm."; } ];
+RBveh addAction ["Greeting", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; Hint "Allahu Akbar"; [ '','RemAllAct',True,False] call BIS_fnc_MP; sleep 3; if (alive RBVehD) then { mantype = "M5"; publicVariable "mantype"; bomb = 'Bo_GBU12_LGB' createVehicle getPos RBVeh; hint "TERRORIST ATTACK"; }; } ];
+RBveh addAction ["Search", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; Hint "Allahu Akbar"; [ '','RemAllAct',True,False] call BIS_fnc_MP;  sleep 5; if (alive RBVehD) then { mantype = "M5"; publicVariable "mantype"; bomb = 'Bo_GBU12_LGB' createVehicle getPos RBVeh; hint "TERRORIST ATTACK"; }; } ];
+RBveh addAction ["Allow to Proceed", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; Hint "Allahu Akbar"; [ '','RemAllAct',True,False] call BIS_fnc_MP; sleep 2; if (alive RBVehD) then { mantype = "M5"; publicVariable "mantype"; bomb = 'Bo_GBU12_LGB' createVehicle getPos RBVeh; hint "TERRORIST ATTACK"; }; } ]; 
+RBveh addAction ["Order To Turn Around", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; Hint "Allahu Akbar"; [ '','RemAllAct',True,False] call BIS_fnc_MP;  sleep 2:  if (alive RBVehD) then { mantype = "M5"; publicVariable "mantype"; bomb = 'Bo_GBU12_LGB' createVehicle getPos RBVeh; hint "TERRORIST ATTACK"; }; } ]; 
+}; 
+
+// Innocent 2
+Case "M5": {
+mantype= "M2"; 
+removeAllActions RBVeh; 
+RBVeh setDamage 0.3; 
+RBveh addAction ["Greeting", {Hint "Im an Altian Citizen. What the fuck do you want? Fuck outta my way, bitch!" }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears clean, but in disrepair. A single red wire is protruding from under the vehicle. A fluid is dripping on the ground.  \n Smells:\n The vehicle smells of rich burning fuel and exhaust. \n Driver Attitude: \n The driver appears angry and combative"} ];
+RBveh addAction ["Search", {RBVehD LeaveVehicle RBVeh; hint "Officer, You're a real fucking prick. I know my rights, fuckhead!!"; sleep 2.0; hint "Searching Car....."; sleep 5; hint "Nothing illegal or interesting was found in the car. Anomaly was a false alert - damaged vehicle. "; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; }]; 
+RBveh addAction ["Allow to Proceed", {hint "Yeah, that's what I thought. Civil Rights Violatin' muthafuckas!" ; [] Call DoExitStopSouth;}]; 
+RBveh addAction ["Order To Turn Around", {hint "Civil Rights Violatin' muthafuckas! I'll have your ass for this!" ;[] Call DoExitStopNorth;}]; 
+}; 
+
+// Innocent 3
+Case "M6": { 
+mantype= "M2";
+removeAllActions RBVeh; 
+RBveh addAction ["Greeting", {Hint "Hi...I'd like to pass on that ass, please? " }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Vehicle Appears Normal"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears clean and in good repair. \n Smells:\n The vehicle smells like Strawberries. \n Driver Attitude: \n The driver appears to be feeling snarky."} ];
+RBveh addAction ["Search", { RBVehD LeaveVehicle RBVeh; hint "Officer, What the hell? Is this really needed? I know my rights!"; sleep 2.0; hint "Searching Car....."; sleep 10; hint "Nothing illegal or interesting was found in the car"; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; } ];  
+RBveh addAction ["Allow to Proceed", {hint "Later bitches"; [] Call DoExitStopSouth;} ]; 
+RBveh addAction ["Order To Turn Around", {hint "Fuck you bitches. I'm filing a complaint and fucking your mother in the ass!"; [] Call DoExitStopNorth; } ]; 
+}; 
+
+//Innocent 4
+Case "M7": {
+mantype= "M2"; 
+removeAllActions RBVeh; 
+RBveh addAction ["Greeting", {Hint "I'm an Altian Citizen. Let me pass." }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"}]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears clean and in good repair. \n Smells:\n The vehicle smells of an oil substance. \n Driver Attitude: \n The driver appears uncertain."}];
+RBveh addAction ["Search", { RBVehD LeaveVehicle RBVeh; hint "Officer, This is insane. Is this really needed? I know my rights!"; sleep 2.0; hint "Searching Car....."; sleep 10; hint "You found a double sided dildo. Nothing illegal in this vehicle. "; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; } ]; 
+RBveh addAction ["Allow to Proceed", {hint "Have a nice day"; [] Call DoExitStopSouth;} ]; 
+RBveh addAction ["Order To Turn Around", {hint "Doom on you!"; [] Call DoExitStopNorth;} ]; 
+}; 
+
+//Innocent 5
+Case "M8": {
+mantype= "M2"; 
+removeAllActions RBVeh; 
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The vehicle appears clean and in good repair. \n Smells:\n The vehicle smells sulphuric, like rotten eggs. \n Driver Attitude: \n The drive appears nervous."} ];
+RBveh addAction ["Greeting", {Hint "I'm an Altian Citizen. Let me pass. Immediately" }];
+RBveh addAction ["Search", { RBVehD LeaveVehicle RBVeh; hint "Officer, This is insane. Is this really needed? I know my rights!"; sleep 2.0; hint "Searching Car....."; sleep 10; hint "Nothing illegal or interesting was found in the car. A suspicious smell turns out to be a rotten sandwich. "; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; } ]; 
+RBveh addAction ["Allow to Proceed", {hint "Have a good one!"; [] Call DoExitStopSouth;} ]; 
+RBveh addAction ["Order To Turn Around", {hint "Eat shit, dickbag!"; [] Call DoExitStopNorth;} ]; 
+}; 
+
+// Innocent 6
+Case "M9": {
+mantype= "M2"; 
+removeAllActions RBVeh; 
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Vehicle Appears Normal"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears to have excessive junk in the back. \n Smells:\n The vehicle smells strongly of wintergreen air freshener. \n Driver Attitude: \n The driver appears nervous."} ];
+RBveh addAction ["Greeting", {Hint "I'm an Altian Citizen. Let me pass." }];
+RBveh addAction ["Search", { RBVehD LeaveVehicle RBVeh; hint "Officer, What the fuck. You gonna ask me to suck your cock next?"; sleep 2.0; hint "Searching Car....."; sleep 10; hint "Nothing illegal or interesting was found in the car. A suspicious smell turns out to be a moldy gym sock. "; rightsviols= (rightsviols + 1); publicVariable "rightsviols"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; } ]; 	
+RBveh addAction ["Allow to Proceed", {[] Call DoExitStopSouth; hint "Have a good day!" } ]; 
+RBveh addAction ["Order To Turn Around", {[] Call DoExitStopNorth; hint "Oh, that's fucking great. Thanks bitch!" } ]; 
+}; 
+
+// Foiled  Terrorist Attack
+Case "M10": {
+mantype= "M3"; 
+removeAllActions RBVeh; 
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The Vehicle appears to have wires slightly protruding from the grill. \n Smells:\n The vehicle smells of alcohol or paint thinner \n Driver Attitude: \n The driver appears fidgety."} ];
+RBveh addAction ["Greeting", {Hint "Hello! I'm an Altian Citizen. May I pass? " }];
+RBveh addAction ["Search", {Bad1= createGroup East; [RBVeh] joinSilent Bad1; hint "You stupid fuck. I'll kill you."; [ '','RemAllAct',True,False] call BIS_fnc_MP; sleep 2.0; if (alive RBVehD) then { mantype = "M5"; publicVariable "mantype"; bomb = 'Bo_GBU12_LGB' createVehicle getPos RBVeh; hint "TERRORIST ATTACK"; }; } ]; 
+RBveh addAction ["Allow to Proceed", {[] call DoExitStopSouth; hint "You live to fight another day!"; } ]; 
+RBveh addAction ["Order To Turn Around", {[] call DoExitStopNorth; hint "Fuck you then!";} ]; 
+}; 
+
+// Heroin Runner
+Case "M11": {
+mantype= "M1"; 
+removeAllActions RBVeh; 
+greet= RBVeh addAction ["Greeting", {Hint "How are you today sir. Im an Altian Citizen." }];
+backscatter= RBVeh addAction ["Backscatter Scanner", {Hint "Anomaly Detected"} ]; 
+inspect= RBVeh addAction ["Inspect Vehicle", {Hint "Visual Inspection: \n The vehicle appears clean and in good repair. \n Smells:\n The vehicle doesn't smell of anything at all.  \n Driver Attitude: \n Driver appears calm and cooperative"} ];
+search= RBVeh addAction ["Search", {RBVehD LeaveVehicle RBVeh; hint "Officer, is this really needed? This is just stupid. I know my rights! Call my lawyer! "; hint "Searching Car....."; sleep 6; hint "WOAH!! Found a load Heroin!! "; sleep 2; hint "Driver: Step out of the vehicle! \n \n If the driver refuses to exit, shoot the vehicle's tires and disable it!"; RBVehD addAction ["Return to Vehicle", {RBVehD moveInDriver RBVeh} ]; RBVehD addAction ["Sir, You are under arrest...", { mantype= "M4"; publicVariable "mantype"; Hint "Oh Mother of God. I've really done it now."; sleep 3.0; hint "Transport the Criminal to Altian Jail.  Alternately, use the Fast Transport option in the action menu to fast travel the suspect to Altian Jail.";[] call A3M_fnc_jailtrigger;}];}]; 
+goSouth= RBVeh addAction ["Allow to Proceed", {hint "Thank you sir, I'll be moving on now"; [] Call DoExitStopSouth; }];  
+goNorth= RBveh addAction ["Order To Turn Around", {hint "Are you kidding me? But...that's where I CAME from! "; [] Call DoExitStopNorth;}]; 
+}; 
+
+}; 
+};
+
+//This function removes all actions from the vehicle
+RemAllAct = {
+removeAllActions RBVeh;
+removeAllActions RBVehD; 
+}; 
+
+
+//This function handles letting the car go South 
+DoExitStopSouth = {
+
+// Remove Options from Vehicle (Encounter Complete) 
+[ '','RemAllAct',True,False] call BIS_fnc_MP;
+// Get fucking going...
+[RBVeh] joinSilent (group Sam); 
+RBVeh doMove (getMarkerPos "RBStage2");
+// Add to missions passed counter
+sleep 10; 
+mantype= "M5"; 
+publicVariable "mantype";
+sleep 5; 
+deleteVehicle RBVeh;
+deleteVehicle RBVehD; 
+}; 
+
+//This function handles letting the car go North
+DoExitStopNorth = {
+// Remove Options from Vehicle (Encounter Complete) 
+[ '','RemAllAct',True,False] call BIS_fnc_MP;
+// Get fucking going...
+[RBVeh] joinSilent (group hector); 
+RBVeh doMove (getMarkerPos "RBStage1");
+// Add to missions passed counter
+sleep 10; 
+mantype= "M5"; 
+publicVariable "mantype";
+sleep 5; 
+deleteVehicle RBVeh;
+deleteVehicle RBVehD; 
+}; 
+
+// Arrest / Move to Jail Triggers / Launch JailTask MP
+A3M_fnc_jailtrigger= {
+[ '','RemAllAct',True,False] call BIS_fnc_MP;
+deleteVehicle RBVeh; 
+MJMP= createTrigger ["EmptyDetector", getMarkerPos "AAF_Jail"]; 
+MJMP setTriggerArea [15, 15, 0, false]; 
+MJMP setTriggerActivation ["ANY", "PRESENT", True]; 
+MJMP setTriggerType "NONE";
+MJMP setTriggerStatements ["RBVehD in ThisList", "[] call A3M_fnc_booked", ""]; 
+MoveToJail = MJMP; 
+PublicVariable "MoveToJail"; 
+[ '','A3M_fnc_jailtask',True,False] call BIS_fnc_MP;
+}; 
+
+//Prisoner Booked MP Msgs
+A3M_Booked_MP = {
+hint "Prisoner has been booked into Altian Police Custody. Thank you!";
+ALTEscort setTaskState "Succeeded";  
+playMusic "Success";
+mantype = "M0";
+}; 
+
+
+// A3M FNC BOOKED
+A3M_fnc_booked= {
+RBVehD setPos (GetMarkerPos "AAF_Jail"); 
+deleteVehicle MoveToJail; 
+mantype= "M5";
+publicVariable "mantype"; 
+deleteVehicle RBVehD; 
+['','A3M_Booked_MP',True,False] call BIS_fnc_MP;
+
+};
+
+
+// ESCORT TO JAIL MP TASK
+A3M_fnc_jailtask= {
+deleteVehicle RBVeh; 
+hint "Suspect's Vehicle has been Impounded"; 
+ALTEscort=player createSimpleTask ["Escort Prisoner to Altian Jail"]; 
+ALTEscort SetSimpleTaskDescription ["Escort the Altian Law Breaker to Altian Jail.", "Jail Transport", "Altian Jail"];
+ALTEscort SetSimpleTaskDestination (getMarkerPos "AAF_Jail");
+ALTEscort setTaskState "Assigned"; 
+player setCurrentTask ALTEscort; 
+playMusic "Assigned";
+hint "Escort the Law Breaker to his destination. ";
+RBVehD addAction ["Fast Transport", {[] call A3M_fnc_booked} ]; 
+}; 
+
+
+//PRIS MP 
+A3M_FNC_PRISMP= { 
+hint "The prisoner has been killed";
+ALTEscort setTaskState "Failed"; 
+mantype = "M0";
+}; 
+
+// CIV MP
+A3M_FNC_CIVMP= {
+removeAllActions RBVeh; 
+hint "The Driver has been killed. This is a major civil rights violation. Expect backlash! "; 
+mantype = "M0";
+}; 
+
+// TERR MP
+A3M_fnc_TerrMP= {
+hint "The terrorist has been neutralized. Great Job. The shooting was in policy, and the terrorist was killed before he could detonate a very lethal bomb.";
+mantype = "M0";
+};
+
+//CRIM MP
+A3M_FNC_CRIMMP= {
+hint "The suspect has been neutralized. The shooting will come under investigation by command staff, but for your moral sake, we hope it was an in policy shooting. You know the truth in your heart."; 
+mantype = "M0";
+};
+
+
+// This triggers when the missionCompleted Variable reaches the limit. 
+A3M_fnc_rbmissionend = { 
+
+if (CheckpointActive == 1) then {
+
+player addRating 500;  
+
+hint format ["Checkpoint Duty Complete! Great job! You had %1 Rights Violation Complaints. \n Completion Bonus: \n 500 rating points  \n ~ Altis Government HR", rightsviols];
+
+RBduty2 setTaskState "Succeeded";
+MissionActive = 0; 
+publicVariable "MissionActive"; 
+
+[] call coroner;
+sleep 2; 
+
+if (isServer) then {
+B_DefenseBudget = (B_DefenseBudget + 150000);
+publicVariable B_DefenseBudget; 
+}; 
+
+hint "Budget Increase Secured. OPSG has been allotted $150,000.00";
+
+player setCurrentTask CO1;
+};
+}; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Administrator Panel Predefines
+//
 A3M_Fnc_Testmessage = {
    if (name player == TargetPlayer) then { hint format ["Incoming Message from Field Commander: \n \n %1", PvtTextMsg]}; 
 };
@@ -435,3 +815,1685 @@ sleep 2;
 Hint "Your mission was cancelled by the Team Coordinator. Return to Base Immediately for further instructions."; 
 player setCurrentTask CO1; 
 }; 
+// Administrator Panel Script 
+A3M_Fnc_AdminPanel = {
+
+// Make sure only MAJOR rank can access Admin Panel
+B_maxrank = "MAJOR";
+_prat = rank player; 
+ // Gather Some Data...
+  
+ // Number of Playable Blufor Slots Remaining: 
+ A3M_AvailSlots = playableSlotsNumber blufor; 
+ 
+ A3M_HandlePlyrSel= {
+PassedVar = _this select 1;
+TargetPlayer = lbdata [1595, PassedVar];
+hint format ["Operative Selected. You have selected %1", TargetPlayer];
+publicVariable "TargetPlayer";
+
+[] call DoCurSelPlyr; 
+
+ }; 
+ 
+ //////////////////////////////////////////////////////////////////////////////////////////////////
+//Initial Budget Creator
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+//Initial Budget for Side - Change in ParamsArray! 
+B_initialbudget= paramsArray select 1;
+
+if (isnil"B_defensebudget") then {
+B_defensebudget= B_initialbudget;
+publicVariable"B_defensebudget";
+};
+if (isnil"B_totalcost") then {
+B_totalcost= 0;
+publicVariable"B_totalcost";
+};
+///////////////////////////////////////////////////////////////////////////////////////////
+//Number Conversion by Corello
+A3M_handle_number=
+{
+private ["_number","_mod","_digots","_digitsCount","_modBase","_numberText"];
+_number = [_this,0,0,[0]] call bis_fnc_param;
+_mod = [_this,1,3,[0]] call bis_fnc_param;
+_digits = _number call bis_fnc_numberDigits;
+_digitsCount = count _digits - 1;
+_modBase = _digitsCount % _mod;
+_numberText ="";
+{
+_numberText = _numberText + str _x;
+if ((_foreachindex - _modBase) % (_mod) == 0 && _foreachindex != _digitsCount) then {_numberText = _numberText +",";};
+} foreach _digits;
+_numberText
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Budget Balance in GUI
+DoBudget = {
+disableSerialization;
+//Get the dialog display (a viewport)
+_Bdisplay = findDisplay 9290;
+if (str (_Bdisplay) !="no display") then
+{
+_ChildControl = _Bdisplay displayCtrl 1121;
+//Change It
+form_B_defensebudget= [B_defensebudget] call A3M_handle_number;
+_ChildControl ctrlSetStructuredText parseText format ["$%1", form_B_defensebudget];
+};
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Total Balance in GUI
+DoTotal = {
+disableSerialization;
+//Get the dialog display (a viewport)
+_BTdisplay = findDisplay 9290;
+if (str (_BTdisplay) !="no display") then
+{
+_ChildControl2 = _BTdisplay displayCtrl 1122;
+//Change It
+form_B_totalcost= [B_totalcost] call A3M_handle_number;
+_ChildControl2 ctrlSetStructuredText parseText format ["$%1", form_B_totalcost];
+};
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Currently Selected Player in GUI
+DoCurSelPlyr = {
+disableSerialization;
+//Get the dialog display (a viewport)
+_BTdisplay = findDisplay 9290;
+if (str (_BTdisplay) !="no display") then
+{
+_ChildControl3 = _BTdisplay displayCtrl 1124;
+//Change It
+if (isNil "TargetPlayer") then {_ChildControl3 ctrlSetStructuredText parseText format ["None"];} else {
+_ChildControl3 ctrlSetStructuredText parseText format ["%1", TargetPlayer];
+}; 
+};
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Available Slots in GUI
+DoPlyblSltCnt = {
+disableSerialization;
+//Get the dialog display (a viewport)
+_BTdisplay = findDisplay 9290;
+if (str (_BTdisplay) !="no display") then
+{
+_ChildControl3 = _BTdisplay displayCtrl 1123;
+//Change It
+
+if (isNil "A3M_AvailSlots") then {A3M_AvailSlots = "SP / ERROR"};
+
+_ChildControl3 ctrlSetStructuredText parseText format ["%1", A3M_AvailSlots];
+};
+};
+
+// Done With The Predefines and setup........
+ //  Evaluate whether you are important enough to access this module...
+ if (_prat != B_maxrank) then { Hint "You are not the Team Coordinator, and may not access the Admin Panel. Only the team coordinator may access this feature."} else {
+ 
+ // Define how to get a list of players in game: 
+ A3M_GetPlayers = {
+ lbClear 1595;
+ _idx= { lbAdd [1595, name _x] } forEach allPlayers; 
+ // Pass the player's actual name along with the index number:
+{lbSetData [1595, _forEachIndex, name _X ]} forEach allPlayers; 
+ };
+ 
+ // This is to test the locality execution effect:  
+ A3MLocalEffectTest = {
+ if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First!"} else {
+PvtTextMsg = ctrlText 1400;
+publicVariable "PvtTextMsg";
+['','A3M_Fnc_Testmessage',True,False] call BIS_fnc_MP;
+hint Format ["You have messaged %1 with the following message: \n \n %2", TargetPlayer, PvtTextMsg];
+}; 
+};
+ 
+ // Define what buttons do: 
+ 
+// Advance $10,000 to all Players 
+CashAdvance = { 
+hint "You have advanced $10,000.00 to each player in the game. This money has been subtracted from the Operational Budget. "; 
+sleep 1; 
+[ '','A3M_fnc_MoneyToAll',True,False] spawn BIS_fnc_MP; 
+[] call DoBudget;
+[] call DoTotal; 
+}; 
+
+// Advance to Individual Player (Custom Amount)
+OpAdvance = {
+
+GlobalPushAmount = ctrlText 1401;
+GlobalPushAmount = parseNumber GlobalPushAmount;
+publicVariable "GlobalPushAmount"; 
+
+if (isNil "TargetPlayer") then { hint "Please Select an Active Operative First"} else {
+	if (isNil "GlobalPushAmount") then { Hint "You must first set an amount."} else {
+		if (GlobalPushAmount <= 0 ) then { Hint "You Can't Do That."} else {
+			if (GlobalPushAmount < 1) then {Hint "You must advance more than that, cheapskate!"} else {
+				if (GlobalPushAmount >= 1) then {
+				['','A3M_fnc_MoneyToYou',True,False] spawn BIS_fnc_MP; 
+				sleep 1; 
+				[] call DoBudget;
+				[] call DoTotal;
+				}; 
+			}; 
+		};
+	};
+};	
+};
+// Deduct From Individual Player 
+OpDeduct = {
+
+GlobalPushAmount = ctrlText 1401;
+GlobalPushAmount = parseNumber GlobalPushAmount;
+publicVariable "GlobalPushAmount";
+
+if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First"} else {
+	if (isNil "GlobalPushAmount") then { Hint "You must first set an amount."} else {
+		 if (GlobalPushAmount <= 0 ) then { Hint "You Can't Do That."} else {
+			if (GlobalPushAmount < 1) then {Hint "You must deduct more than that, light-hand!"} else {
+				if (GlobalPushAmount >= 1) then {
+				['','A3M_fnc_MoneyFromYou',True,False] spawn BIS_fnc_MP; 
+				sleep 1; 
+				[] call DoBudget;
+				[] call DoTotal;
+				}; 
+			};
+		 };
+	};
+};	
+};
+
+// Force Cancel All Missions
+CancelAllMissions = {
+
+hint "You have issued an order to abandon all orders and RTB. Processing..."; 
+
+sleep 2; 
+
+MissionStatus= "M0"; 
+PublicVariable "MissionStatus"; 
+hint "JIP Tasker Module Reset"; 
+
+sleep 1; 
+
+EscortActive = 0; 
+publicVariable "EscortActive"; 
+[VIP1] joinSilent grpnull; 
+
+deleteVehicle VIPDest;
+deleteVehicle VIPDead; 
+deleteVehicle VIP1;
+
+hint "Escort Mission Cancelled."; 
+
+sleep 1; 
+
+ConveyActive = 0; 
+publicVariable "ConvoyActive"; 
+deleteVehicle DelDest;
+deleteVehicle DelDead; 
+deleteVehicle DEL1;
+hint "Convoy Mission Cancelled."; 
+
+sleep 1; 
+
+CheckpointActive = 0;
+publicVariable "CheckpointActive"; 
+hint "Checkpoint Shift Ended Early.";
+
+sleep 1; 
+
+SEActive = 0; 
+PublicVariable "SEActive"; 
+"SAR1ICO" setmarkerpos (getMarkerpos "offmap");
+deleteVehicle SAR1; 
+hint "Snatch And Extract Mission Cancelled.";
+
+sleep 1; 
+
+raid1Active = 0; 
+publicVariable "raid1Active"; 
+hint "Raid I Mission Cancelled.";
+
+sleep 1; 
+
+raid2Active = 0; 
+publicVariable "raid2active"; 
+hint "Raid II Mission Cancelled."; 
+
+sleep 1; 
+
+NSARActive = 1; 
+publicVariable "NSARActive"; 
+hint "NATO Search And Rescue Mission Cancelled.";
+
+sleep 1; 
+
+T9Active = 1; 
+publicVariable "T9Active"; 
+hint "T9 Security Shift Ended Early.";
+
+hint "Cancelling all missions for players"; 
+
+sleep 1; 
+
+[ '','A3M_MissionsCanceledMP',True,False] spawn BIS_fnc_MP;
+
+sleep 1; 
+
+hint "All Missions Force Cancelled Successfully."; 
+
+};
+
+// Force Cleanup
+A3M_Fnc_Cleanup = {
+hint "Cleanup Initiated...Removing Waste...";
+{ if (!alive _x) then { deletevehicle _x } } foreach (nearestObjects [center, ["Man", "Car", "Tank", "Helicopter"], 7500]);
+
+};
+
+// Incarcerate
+A3M_fnc_Incarcerate = {
+if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First!"} else {
+['','A3M_Fnc_GoToJail',True,False] spawn BIS_fnc_MP; 
+hint format ["You have incarcerated %1 in the C-12 Detention Facility.", TargetPlayer];
+};
+}; 
+
+// Refresh
+A3M_Refresh = {
+
+[] spawn A3M_GetPlayers; 
+[] call DoBudget;
+[] call DoTotal; 
+[] call DoCurSelPlyr; 
+[] call DoPlyblSltCnt;
+
+}; 
+
+// Close Dialog
+
+A3M_Fnc_CloseDia = {
+CloseDialog 0; 
+TargetPlayer= nil; 
+publicVariable "TargetPlayer";
+GlobalPushAmount = Nil; 
+PublicVariable "GlobalPushAmount";
+PvtTextMsg = nil; 
+PublicVariable "PvtTextMsg";
+};
+ ///////////////////////////////////////////////////////////////////////////////////////////
+// Open Dialog
+_handle= CreateDialog "A3M_AdminPanel";
+// Create list of connected players 
+[] spawn A3M_GetPlayers; 
+[] call DoBudget;
+[] call DoTotal; 
+[] call DoCurSelPlyr; 
+[] call DoPlyblSltCnt; 
+
+}; 
+
+
+}; 
+
+
+// Fast Travel Pre-Defines 
+
+A3M_Fnc_ToMolos = {
+player moveInCargo Molos_Taxi;
+playSound "Deuce";   
+titleText ["Travelling to Molos Air Facility | Orion Private Security Group Facility", "BLACK FADED",10];
+titleFadeOut 5;
+player action ["Eject",Molos_Taxi]; 
+
+}; 
+
+A3M_Fnc_ToC12 = {
+player moveInCargo C12_Taxi;
+playSound "Deuce";   
+titleText ["Travelling to C-12 Research Facility | Astral Corporation / OPSG Facility", "BLACK FADED", 10];
+titleFadeOut 5;
+player action ["Eject",C12_Taxi]; 
+}; 
+
+// Bank Account Pre-Defines 
+
+A3M_Fnc_InitBank = {
+
+Wallet= 0; 
+getdough= profileNamespace getVariable ["SavedMoney", 0];
+Wallet = (Wallet+getdough); 
+Debits= 0; 
+plyscore= rating player; 
+multiplyer= plyscore * 2; 
+Payday_TimeSheet= 1;
+player addRating -plyscore; 
+SignedIn= 0;
+
+}; 
+
+A3M_Fnc_AccessBank = {
+
+A3M_handle_number=
+{
+private ["_number","_mod","_digots","_digitsCount","_modBase","_numberText"];
+ 
+_number = [_this,0,0,[0]] call bis_fnc_param;
+_mod = [_this,1,3,[0]] call bis_fnc_param;
+ 
+_digits = _number call bis_fnc_numberDigits;
+_digitsCount = count _digits - 1;
+ 
+_modBase = _digitsCount % _mod;
+_numberText = "";
+{
+_numberText = _numberText + str _x;
+if ((_foreachindex - _modBase) % (_mod) == 0 && _foreachindex != _digitsCount) then {_numberText = _numberText + ",";};
+} foreach _digits;
+_numberText
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Account Balance in GUI
+
+DoBalance = {
+//Get the dialog display (a viewport)
+_Bdisplay = findDisplay 6969;
+
+if (str (_Bdisplay) != "no display") then 
+{
+	_ChildControl = _Bdisplay displayCtrl 1160;
+        //Change It
+		form_Balance= [Wallet] call A3M_handle_number;
+	_ChildControl ctrlSetStructuredText parseText format ["$%1", form_Balance];
+};
+}; 
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//Update Debit Balance in GUI
+
+DoDebits = {
+//Get the dialog display (a viewport)
+_Bdisplay = findDisplay 6969;
+
+if (str (_Bdisplay) != "no display") then 
+{
+	_ChildControl = _Bdisplay displayCtrl 1161;
+        //Change It
+		form_Debits= [Debits] call A3M_handle_number;
+	_ChildControl ctrlSetStructuredText parseText format ["$%1", form_Debits];
+};
+}; 
+
+
+
+A3M_fnc_TnE = 
+{ 
+if (signedin == 1) then { 
+PM = ParamsArray Select 0; 
+disableSerialization;
+plyscore = rating player;
+multiplyer = plyscore * PM; 
+Wallet = (Wallet + Multiplyer); 
+profileNamespace setVariable ["SavedMoney", Wallet]; 
+hint format ["Payday! You were paid $%1.00 for services rendered. The money has been direct deposited to your account.", multiplyer]; 
+player addRating -plyscore; 
+plyscore = rating player;
+SaveProfileNamespace;
+[] call DoBalance; 
+[] call DoDebits; 
+
+} else {Hint "Guest User: You are not signed in! Please sign in to the banking system."}; 
+};
+
+A3M_SignIn = {
+if (signedin == 0) then {
+disableSerialization;
+Wallet = 0; 
+getdough= profileNamespace getVariable ["SavedMoney", 0];
+Wallet = (Wallet+getdough); 
+Pname = profileName;
+hint format ["Welcome %1, You have signed in to the Pursuit Bank Online Banking Interface.", Pname]; 
+signedin= 1; 
+[] call DoBalance; 
+[] call DoDebits; 
+} else {hint format ["Welcome back, %1! You are already signed in!", Pname]}; 
+
+}; 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Open Dialog
+_handle= CreateDialog "A3M_BankAccount";
+
+[] call DoDebits; 
+[] call DoBalance; 
+
+}; 
+
+// OPHQ Pre-Defines 
+
+//GUI  Location ID Function 
+DRI_HQmsg = {
+[
+		
+		[
+			["Orion Private ","align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+			["Security Group","align = 'center' shadow = '1' size = '0.7'","#aaaaaa"],
+			["","<br/>"],
+			["Operations HQ","align = 'center' shadow = '1' size = '1.0'"]
+		]
+
+	] spawn BIS_fnc_typeText2;
+
+}; 
+
+
+DRI_ArmoryMsg = {
+[
+		
+		[
+			["Orion Private ","align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+			["Security Group","align = 'center' shadow = '1' size = '0.7'","#aaaaaa"],
+			["","<br/>"],
+			["Armory","align = 'center' shadow = '1' size = '1.0'"]
+		]
+
+	] spawn BIS_fnc_typeText2;
+
+}; 
+DRI_MPHQMsg = {
+[
+		
+		[
+			["Orion Private ","align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+			["Security Group","align = 'center' shadow = '1' size = '0.7'","#aaaaaa"],
+			["","<br/>"],
+			["Detention Center","align = 'center' shadow = '1' size = '1.0'"]
+		]
+
+	] spawn BIS_fnc_typeText2;
+
+}; 
+
+
+// HQ Radio (Plays music) 
+DRI_ABCT2_HQRadio = {
+HQ_MusicSource say3D "Showdown"; 
+HQ_MusicSource removeAction TurnOn; 
+HQ_MusicSource addAction ["Turn Off", { HQ_MusicSource say3D ""; HQ_MusicSource removeAction TurnOff; TurnOn = HQ_MusicSource addAction ["Turn on radio", {[] spawn DRI_ABCT2_HQRadio} ] } ]; };  
+
+
+// Define Slides with MP Compat 
+
+DRI_ABCT2_MPimg1 = {
+PresBoard setObjectTexture [0, "images\Deadly_Zones_Slide.paa"];
+}; 
+
+
+// MP Compatible Television(s)
+
+DRI_ABCT2_DHQTV = { 
+
+CMDTVON = 1;
+
+while {CMDTVON == 1} do {
+
+if (CMDTVON == 1) then {
+CMD_TV setObjectTexture [0, "images\Television1.jpg"]; 
+sleep 3; } else {CMD_TV setObjectTexture [0, "images\TVNoise.jpg"];};
+
+if (CMDTVON == 1) then {
+CMD_TV setObjectTexture [0, "images\Television2.jpg"]; 
+sleep 3;  } else {CMD_TV setObjectTexture [0, "images\TVNoise.jpg"];};
+
+if (CMDTVON == 1) then {
+CMD_TV setObjectTexture [0, "images\Television3.jpg"]; 
+sleep 3;   } else {CMD_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
+
+if (CMDTVON == 1) then {
+CMD_TV setObjectTexture [0, "images\Television4.jpg"]; 
+sleep 3;  } else { CMD_TV setObjectTexture [0, "images\TVNoise.jpg"];  };
+}; 
+
+}; 
+
+DRI_ABCT2_DHQTVOFF = {
+CMDTVON = 0; 
+CMD_TV setObjectTexture [0, "images\TVNoise.jpg"];
+}; 
+
+
+DRI_ABCT2_MPTV = { 
+
+MPTVON = 1;
+
+
+while {MPTVON == 1} do {
+
+if (MPTVON == 1) then {
+MP_TV setObjectTexture [0, "images\Television1.jpg"];
+sleep 3;} else {MP_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
+
+if (MPTVON == 1) then {
+MP_TV setObjectTexture [0, "images\Television2.jpg"]; 
+sleep 3; } else {MP_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
+
+if (MPTVON == 1) then {
+MP_TV setObjectTexture [0, "images\Television3.jpg"]; 
+sleep 3;} else  {MP_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
+
+if (MPTVON == 1) then {
+MP_TV setObjectTexture [0, "images\Television4.jpg"]; 
+sleep 3;} else {MP_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
+
+}; 
+
+}; 
+
+
+DRI_ABCT2_MPTVOFF = {
+
+MPTVON = 0; 
+MP_TV setObjectTexture [0, "images\TVNoise.jpg"];
+}; 
+
+
+// Rifle Range Pre-Defines
+// 
+
+M4RR_A_ChkScore = {
+if (isNil "M4RR_A_Totalhits") then {M4RR_A_Totalhits = 0; }; 
+hint format ["Lane A Current Score: \n %1", M4RR_A_Totalhits]; 
+}; 
+
+M4RR_A_ResetScore = {
+M4RR_A_Totalhits = 0; 
+publicVariable "M4RR_A_Totalhits";
+}; 
+
+M4RR_A_AllTargetsUp = {
+
+M4RR_A_1 animate["terc",0];
+sleep 0.5; 
+M4RR_A_2 animate["terc",0];
+sleep 0.5; 
+M4RR_A_3 animate["terc",0];
+sleep 0.5; 
+M4RR_A_4 animate["terc",0];
+sleep 0.5; 
+M4RR_A_5 animate["terc",0];
+sleep 0.5; 
+M4RR_A_6 animate["terc",0];
+sleep 0.5; 
+M4RR_A_7 animate["terc",0];
+
+hint format ["Lane A: \n Ready."]; 
+
+}; 
+
+M4RR_A_AllTargetsDown = {
+
+M4RR_A_1 animate["terc",1];
+sleep 0.5; 
+M4RR_A_2 animate["terc",1];
+sleep 0.5; 
+M4RR_A_3 animate["terc",1];
+sleep 0.5; 
+M4RR_A_4 animate["terc",1];
+sleep 0.5; 
+M4RR_A_5 animate["terc",1];
+sleep 0.5; 
+M4RR_A_6 animate["terc",1];
+sleep 0.5; 
+M4RR_A_7 animate["terc",1];
+
+hint format ["Lane A: \n Ready."]; 
+
+}; 
+
+M4RR_A_L50 = {
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+}; 
+
+M4RR_A_R50 = {
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+}; 
+
+M4RR_A_100= {
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+}; 
+
+M4RR_A_150 = {
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+}; 
+
+M4RR_A_200 = {
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+}; 
+
+M4RR_A_250 = {
+M4RR_A_6 animate["terc",0];
+sleep 5; 
+M4RR_A_6 animate["terc",1];
+}; 
+
+M4RR_A_300 = {
+M4RR_A_7 animate["terc",0];
+sleep 5;
+M4RR_A_7 animate["terc",1];
+}; 
+
+M4RR_A_Pop7 = {
+
+[] spawn M4RR_A_AllTargetsDown; 
+[] spawn M4RR_A_ResetScore; 
+sleep 2; 
+hint "Begin Program Now."; 
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+sleep 3; 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+sleep 3; 
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+M4RR_A_6 animate["terc",0];
+sleep 5; 
+M4RR_A_6 animate["terc",1];
+sleep 3; 
+M4RR_A_7 animate["terc",0];
+sleep 5;
+M4RR_A_7 animate["terc",1];
+
+hint Format [" Lane A: \n Pop 7 Complete. Total Hits: %1", M4RR_A_Totalhits]; 
+
+[] spawn M4RR_A_AllTargetsUp; 
+
+}; 
+
+M4RR_A_Pop40 = {
+
+hint "40 Target Scheduled Qualification Test Started.";
+
+[] spawn M4RR_A_AllTargetsDown; 
+[] spawn M4RR_A_ResetScore; 
+sleep 2; 
+hint "Begin Program Now"; 
+// T1 - Left 50
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+sleep 3; 
+//  T2 - 150
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+// T3 - Right 50 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+sleep 3; 
+// T4 - 150 
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+//T5 - 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T6 - 250
+M4RR_A_6 animate["terc",0];
+sleep 5; 
+M4RR_A_6 animate["terc",1];
+sleep 3; 
+//T7 - 200 
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+//T8 - 300 
+M4RR_A_7 animate["terc",0];
+sleep 5;
+M4RR_A_7 animate["terc",1];
+sleep 3; 
+//T9- 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T10  - 150
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+//T11 - Left 50
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+sleep 3; 
+//T12  - 200 
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+//T13  - 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T14 - 300 
+M4RR_A_7 animate["terc",0];
+sleep 5;
+M4RR_A_7 animate["terc",1];
+sleep 3; 
+//T15 - 250
+M4RR_A_6 animate["terc",0];
+sleep 5; 
+M4RR_A_6 animate["terc",1];
+sleep 3; 
+//T16 - Right 50 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+sleep 3; 
+//T17 - 200 
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+//T18 - Right 50 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+sleep 3; 
+//T19 - 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T20- Left 50 
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+hint format ["Lane A: \n Set 1 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 20 Targets", M4RR_A_Totalhits];
+sleep 10; 
+//T21 - 100 // Begin wave 2
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T22 - 250
+M4RR_A_6 animate["terc",0];
+sleep 5; 
+M4RR_A_6 animate["terc",1];
+sleep 3; 
+//T23 - 300 
+M4RR_A_7 animate["terc",0];
+sleep 5;
+M4RR_A_7 animate["terc",1];
+sleep 3; 
+//T24 - 150
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+//T25 - Left 50
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+sleep 3; 
+//T26 - 200  and T27 - 100
+M4RR_A_5 animate["terc",0];
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+M4RR_A_5 animate["terc",1];
+sleep 3;  
+//T28 - 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T29 - Left 50
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+sleep 3; 
+//T30   - Right 50 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+hint format ["Lane A: \n Set 2 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 30 Targets" , M4RR_A_Totalhits];
+sleep 10; 
+//T31- 200
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+//T32 - 100
+M4RR_A_3 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+sleep 3; 
+//T33- 150
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+//T34- 100 AND T35 - 150
+M4RR_A_3 animate["terc",0];
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+M4RR_A_4 animate["terc",1];
+sleep 3;
+//T36 - R50 
+M4RR_A_2 animate["terc",0];
+sleep 5; 
+M4RR_A_2 animate["terc",1];
+sleep 3; 
+//T37-  200
+M4RR_A_5 animate["terc",0];
+sleep 5; 
+M4RR_A_5 animate["terc",1];
+sleep 3; 
+//T38  - 100 and T39 - 150
+M4RR_A_3 animate["terc",0];
+M4RR_A_4 animate["terc",0];
+sleep 5; 
+M4RR_A_3 animate["terc",1];
+M4RR_A_4 animate["terc",1];
+sleep 3; 
+//T40- L50
+M4RR_A_1 animate["terc",0];
+sleep 5; 
+M4RR_A_1 animate["terc",1];
+
+hint Format [" Lane A: \n Pop 40 Complete. \n Total Hits: %1 / 40 Targets \n in 3 sets (20, 10, 10)", M4RR_A_Totalhits]; 
+
+sleep 5; 
+[] spawn M4RR_A_AllTargetsUp; 
+
+}; 
+
+// Lane B
+M4RR_B_ChkScore = {
+if (isNil "M4RR_B_Totalhits") then {M4RR_B_Totalhits = 0}; 
+hint format ["Lane B Current Score: \n %1", M4RR_B_Totalhits]; 
+}; 
+
+M4RR_B_ResetScore = {
+M4RR_B_Totalhits = 0; 
+publicVariable "M4RR_B_Totalhits";
+}; 
+
+M4RR_B_AllTargetsUp = {
+
+M4RR_B_1 animate["terc",0];
+sleep 0.5; 
+M4RR_B_2 animate["terc",0];
+sleep 0.5; 
+M4RR_B_3 animate["terc",0];
+sleep 0.5; 
+M4RR_B_4 animate["terc",0];
+sleep 0.5; 
+M4RR_B_5 animate["terc",0];
+sleep 0.5; 
+M4RR_B_6 animate["terc",0];
+sleep 0.5; 
+M4RR_B_7 animate["terc",0];
+
+hint format ["Lane B: \n Ready."]; 
+
+}; 
+
+M4RR_B_AllTargetsDown = {
+
+M4RR_B_1 animate["terc",1];
+sleep 0.5; 
+M4RR_B_2 animate["terc",1];
+sleep 0.5; 
+M4RR_B_3 animate["terc",1];
+sleep 0.5; 
+M4RR_B_4 animate["terc",1];
+sleep 0.5; 
+M4RR_B_5 animate["terc",1];
+sleep 0.5; 
+M4RR_B_6 animate["terc",1];
+sleep 0.5; 
+M4RR_B_7 animate["terc",1];
+
+hint format ["Lane B: \n Ready."]; 
+
+}; 
+
+M4RR_B_L50 = {
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+}; 
+
+M4RR_B_R50 = {
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+}; 
+
+M4RR_B_100= {
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+}; 
+
+M4RR_B_150 = {
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+}; 
+
+M4RR_B_200 = {
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+}; 
+
+M4RR_B_250 = {
+M4RR_B_6 animate["terc",0];
+sleep 5; 
+M4RR_B_6 animate["terc",1];
+}; 
+
+M4RR_B_300 = {
+M4RR_B_7 animate["terc",0];
+sleep 5;
+M4RR_B_7 animate["terc",1];
+}; 
+
+M4RR_B_Pop7 = {
+
+[] spawn M4RR_B_AllTargetsDown; 
+[] spawn M4RR_B_ResetScore;
+sleep 2; 
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+sleep 3; 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+sleep 3; 
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+M4RR_B_6 animate["terc",0];
+sleep 5; 
+M4RR_B_6 animate["terc",1];
+sleep 3; 
+M4RR_B_7 animate["terc",0];
+sleep 5;
+M4RR_B_7 animate["terc",1];
+
+hint Format [" Lane B: \n Pop 7 Complete. Total Hits: %1", M4RR_B_Totalhits]; 
+
+[] spawn M4RR_B_AllTargetsUp; 
+
+}; 
+
+M4RR_B_Pop40 = {
+
+hint "40 Target Scheduled Qualification Test Started.";
+
+[] spawn M4RR_B_AllTargetsDown; 
+[] spawn M4RR_B_ResetScore; 
+sleep 2; 
+hint "Begin Program Now"; 
+// T1 - Left 50
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+sleep 3; 
+//  T2 - 150
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+// T3 - Right 50 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+sleep 3; 
+// T4 - 150 
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+//T5 - 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T6 - 250
+M4RR_B_6 animate["terc",0];
+sleep 5; 
+M4RR_B_6 animate["terc",1];
+sleep 3; 
+//T7 - 200 
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+//T8 - 300 
+M4RR_B_7 animate["terc",0];
+sleep 5;
+M4RR_B_7 animate["terc",1];
+sleep 3; 
+//T9- 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T10  - 150
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+//T11 - Left 50
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+sleep 3; 
+//T12  - 200 
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+//T13  - 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T14 - 300 
+M4RR_B_7 animate["terc",0];
+sleep 5;
+M4RR_B_7 animate["terc",1];
+sleep 3; 
+//T15 - 250
+M4RR_B_6 animate["terc",0];
+sleep 5; 
+M4RR_B_6 animate["terc",1];
+sleep 3; 
+//T16 - Right 50 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+sleep 3; 
+//T17 - 200 
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+//T18 - Right 50 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+sleep 3; 
+//T19 - 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T20- Left 50 
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+hint format ["Lane B: \n Set 1 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 20 Targets", M4RR_B_Totalhits];
+sleep 10; 
+//T21 - 100 // Begin wave 2
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T22 - 250
+M4RR_B_6 animate["terc",0];
+sleep 5; 
+M4RR_B_6 animate["terc",1];
+sleep 3; 
+//T23 - 300 
+M4RR_B_7 animate["terc",0];
+sleep 5;
+M4RR_B_7 animate["terc",1];
+sleep 3; 
+//T24 - 150
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+//T25 - Left 50
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+sleep 3; 
+//T26 - 200  and T27 - 100
+M4RR_B_5 animate["terc",0];
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+M4RR_B_5 animate["terc",1];
+sleep 3;  
+//T28 - 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T29 - Left 50
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+sleep 3; 
+//T30   - Right 50 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+hint format ["Lane B: \n Set 2 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 30 Targets" , M4RR_B_Totalhits];
+sleep 10; 
+//T31- 200
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+//T32 - 100
+M4RR_B_3 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+sleep 3; 
+//T33- 150
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+//T34- 100 AND T35 - 150
+M4RR_B_3 animate["terc",0];
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+M4RR_B_4 animate["terc",1];
+sleep 3;
+//T36 - R50 
+M4RR_B_2 animate["terc",0];
+sleep 5; 
+M4RR_B_2 animate["terc",1];
+sleep 3; 
+//T37-  200
+M4RR_B_5 animate["terc",0];
+sleep 5; 
+M4RR_B_5 animate["terc",1];
+sleep 3; 
+//T38  - 100 and T39 - 150
+M4RR_B_3 animate["terc",0];
+M4RR_B_4 animate["terc",0];
+sleep 5; 
+M4RR_B_3 animate["terc",1];
+M4RR_B_4 animate["terc",1];
+sleep 3; 
+//T40- L50
+M4RR_B_1 animate["terc",0];
+sleep 5; 
+M4RR_B_1 animate["terc",1];
+
+hint Format [" Lane B: \n Pop 40 Complete. \n Total Hits: %1 / 40 Targets \n in 3 sets (20, 10, 10)", M4RR_B_Totalhits]; 
+
+sleep 5; 
+[] spawn M4RR_B_AllTargetsUp; 
+
+}; 
+
+// Lane C
+
+M4RR_C_ChkScore = {
+if (isNil "M4RR_C_Totalhits") then {M4RR_C_Totalhits = 0}; 
+hint format ["LANE C Current Score: \n %1", M4RR_C_Totalhits]; 
+}; 
+
+M4RR_C_ResetScore = {
+M4RR_C_Totalhits = 0; 
+publicVariable "M4RR_C_Totalhits";
+}; 
+
+M4RR_C_AllTargetsUp = {
+
+M4RR_C_1 animate["terc",0];
+sleep 0.5; 
+M4RR_C_2 animate["terc",0];
+sleep 0.5; 
+M4RR_C_3 animate["terc",0];
+sleep 0.5; 
+M4RR_C_4 animate["terc",0];
+sleep 0.5; 
+M4RR_C_5 animate["terc",0];
+sleep 0.5; 
+M4RR_C_6 animate["terc",0];
+sleep 0.5; 
+M4RR_C_7 animate["terc",0];
+
+hint format ["LANE C: \n Ready."]; 
+
+}; 
+
+M4RR_C_AllTargetsDown = {
+
+M4RR_C_1 animate["terc",1];
+sleep 0.5; 
+M4RR_C_2 animate["terc",1];
+sleep 0.5; 
+M4RR_C_3 animate["terc",1];
+sleep 0.5; 
+M4RR_C_4 animate["terc",1];
+sleep 0.5; 
+M4RR_C_5 animate["terc",1];
+sleep 0.5; 
+M4RR_C_6 animate["terc",1];
+sleep 0.5; 
+M4RR_C_7 animate["terc",1];
+
+hint format ["LANE C: \n Ready."]; 
+}; 
+
+M4RR_C_L50 = {
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+}; 
+
+M4RR_C_R50 = {
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+}; 
+
+M4RR_C_100= {
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+}; 
+
+M4RR_C_150 = {
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+}; 
+
+M4RR_C_200 = {
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+}; 
+
+M4RR_C_250 = {
+M4RR_C_6 animate["terc",0];
+sleep 5; 
+M4RR_C_6 animate["terc",1];
+}; 
+
+M4RR_C_300 = {
+M4RR_C_7 animate["terc",0];
+sleep 5;
+M4RR_C_7 animate["terc",1];
+}; 
+
+M4RR_C_Pop7 = {
+
+[] spawn M4RR_C_AllTargetsDown; 
+[] spawn M4RR_C_ResetScore; 
+sleep 2; 
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+sleep 3; 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+sleep 3; 
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+M4RR_C_6 animate["terc",0];
+sleep 5; 
+M4RR_C_6 animate["terc",1];
+sleep 3; 
+M4RR_C_7 animate["terc",0];
+sleep 5;
+M4RR_C_7 animate["terc",1];
+
+hint Format [" LANE C: \n Pop 7 Complete. Total Hits: %1", M4RR_C_Totalhits]; 
+
+[] spawn M4RR_C_AllTargetsUp; 
+
+}; 
+
+M4RR_C_Pop40 = {
+
+hint "40 Target Scheduled Qualification Test Started.";
+
+[] spawn M4RR_C_AllTargetsDown; 
+[] spawn M4RR_C_ResetScore; 
+sleep 2; 
+hint "Begin Program Now"; 
+// T1 - Left 50
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+sleep 3; 
+//  T2 - 150
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+// T3 - Right 50 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+sleep 3; 
+// T4 - 150 
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+//T5 - 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T6 - 250
+M4RR_C_6 animate["terc",0];
+sleep 5; 
+M4RR_C_6 animate["terc",1];
+sleep 3; 
+//T7 - 200 
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+//T8 - 300 
+M4RR_C_7 animate["terc",0];
+sleep 5;
+M4RR_C_7 animate["terc",1];
+sleep 3; 
+//T9- 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T10  - 150
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+//T11 - Left 50
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+sleep 3; 
+//T12  - 200 
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+//T13  - 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T14 - 300 
+M4RR_C_7 animate["terc",0];
+sleep 5;
+M4RR_C_7 animate["terc",1];
+sleep 3; 
+//T15 - 250
+M4RR_C_6 animate["terc",0];
+sleep 5; 
+M4RR_C_6 animate["terc",1];
+sleep 3; 
+//T16 - Right 50 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+sleep 3; 
+//T17 - 200 
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+//T18 - Right 50 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+sleep 3; 
+//T19 - 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T20- Left 50 
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+hint format ["Lane C: \n Set 1 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 20 Targets", M4RR_C_Totalhits];
+sleep 10; 
+//T21 - 100 // Begin wave 2
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T22 - 250
+M4RR_C_6 animate["terc",0];
+sleep 5; 
+M4RR_C_6 animate["terc",1];
+sleep 3; 
+//T23 - 300 
+M4RR_C_7 animate["terc",0];
+sleep 5;
+M4RR_C_7 animate["terc",1];
+sleep 3; 
+//T24 - 150
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+//T25 - Left 50
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+sleep 3; 
+//T26 - 200  and T27 - 100
+M4RR_C_5 animate["terc",0];
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+M4RR_C_5 animate["terc",1];
+sleep 3;  
+//T28 - 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T29 - Left 50
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+sleep 3; 
+//T30   - Right 50 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+hint format ["Lane C: \n Set 2 complete!  (10 SEC DELAY) \n Total Hits So Far: \n %1 / 30 Targets" , M4RR_C_Totalhits];
+sleep 10; 
+//T31- 200
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+//T32 - 100
+M4RR_C_3 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+sleep 3; 
+//T33- 150
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+//T34- 100 AND T35 - 150
+M4RR_C_3 animate["terc",0];
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+M4RR_C_4 animate["terc",1];
+sleep 3;
+//T36 - R50 
+M4RR_C_2 animate["terc",0];
+sleep 5; 
+M4RR_C_2 animate["terc",1];
+sleep 3; 
+//T37-  200
+M4RR_C_5 animate["terc",0];
+sleep 5; 
+M4RR_C_5 animate["terc",1];
+sleep 3; 
+//T38  - 100 and T39 - 150
+M4RR_C_3 animate["terc",0];
+M4RR_C_4 animate["terc",0];
+sleep 5; 
+M4RR_C_3 animate["terc",1];
+M4RR_C_4 animate["terc",1];
+sleep 3; 
+//T40- L50
+M4RR_C_1 animate["terc",0];
+sleep 5; 
+M4RR_C_1 animate["terc",1];
+
+hint Format [" Lane C: \n Pop 40 Complete. \n Total Hits: %1 / 40 Targets \n in 3 sets (20, 10, 10)", M4RR_C_Totalhits]; 
+
+sleep 5; 
+[] spawn M4RR_C_AllTargetsUp; 
+
+}; 
+
+// Shit - Taking Pre-Defines
+A3M_Fnc_DumpAss = {
+
+_Shitter = _this select 0;
+
+player attachTo [_Shitter,[0,0.7,-0.4]]; 
+player setDir 90;
+[[ player, "HubSittingChairA_idle1" ], "switchMoveEverywhere" ] call BIS_fnc_MP;
+sleep 0.2;
+detach player;
+
+AllDone= player addAction ["Done Shitting", {
+detach player;
+player removeAction AllDone; 
+[[ player, "AidlPercMstpSlowWrflDnon_AI" ], "switchMoveEverywhere" ] call BIS_fnc_MP; 
+ }
+ ]; 
+ 
+};
+
+// Reset Identity Pre-Defines
+A3M_Fnc_PreReset = {
+
+if (IsNil "ResetIdentActive") then {ResetIdentActive = 0};
+
+if (ResetIdentActive == 0) then {
+ResetIdentActive = 1; 
+ResetIdentAct= player addAction ["Commit Suicide (Reset Identity)", {[] spawn A3M_Fnc_ResetIdent}]; 
+ResetIdentRem= player addAction ["Nevermind, I want to live! (Leave Reset Mode)", {player removeAction ResetIdentAct; player removeAction ResetIdentRem}];  
+};
+
+}; 
+
+A3M_Fnc_ResetIdent = {
+
+
+
+deathrating = rating player;
+ 
+profileNamespace setVariable ["SvdWeaponArray", nil]; 
+profileNamespace setVariable ["SvdMagArray", nil]; 
+profileNamespace setVariable ["SvdBagArray", nil]; 
+profileNamespace setVariable ["SavedMoney", nil];
+profileNamespace setVariable ["IsFTP_LCL", nil];  
+SaveProfileNamespace;
+
+IsFTP = nil; 
+
+if (deathrating < 0 ) then {
+player addRating deathrating;
+hint "You had a negative rating before you died. You were a terrible person. Your soul will burn in hell for eternity.";
+}else {
+player addRating -deathrating;
+hint "You pass on to your reward with a positive rating. You were a good person. You will bask in the eternal afterlife of glory."; 
+};
+
+sleep 2;  
+
+player setDamage 1; 
+hint format ["SACRIFICE! Your player identity has been deleted. Your bank account has been closed. Your rating has been reset to 0. Your soul has been claimed. Sign in to the bank to start a new persistent identity.", multiplyer]; 
+
+ResetIdentActive = 0; 
+player removeAction ResetIdentAct; 
+};

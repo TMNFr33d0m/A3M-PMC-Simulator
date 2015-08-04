@@ -45,7 +45,7 @@ TFAR_Enabled= 0;
 DeliveryTime = ParamsArray Select 3; 
 
 // Define costs
-
+//
 // Items
 Binoculars=365;
 ItemCompass=50;
@@ -1013,34 +1013,42 @@ hint "Task Force Arrowhead Radio (TFAR) is required to use equipment in this cat
 };
 };
 A3M_fnc_GShandleClick= {
+
 TheSelection = _this select 1;
-// Uncomment Below for DEBUG
-hint format ["Handle Click Activated. Variable passed was %1", TheSelection];
-if (itemson == 1) then { if (ACE3_Enabled == 1) then {_this call A3M_fnc_ACE3Items} else {_this call A3M_fnc_items}; }; 
-if (vestson == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSVests} else {_this call A3M_fnc_Vests}; };
-if (clotheson == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSUnis} else {_this call A3M_fnc_Unis}; };
-if (explon == 1) then { if (RHSESC == 1) then { _this call A3M_fnc_RHSexplosives} else {_this call A3M_fnc_Explosives}; };
-if (smokeon == 1) then { if (RHSESC == 1) then { _this call A3M_fnc_RHSSmoke} else { _this call A3M_fnc_Smoke}; };
-if (suppon == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSSuppressors} else {_this call A3M_fnc_Suppressors}; };
-if (opton == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSOptics} else {_this call A3M_fnc_Optics}; };
-if (Ammoon == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSAmmo} else {_this call A3M_fnc_Ammo}; };
-if (launcherson == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSLaunchers} else {_this call A3M_fnc_Launchers}; };
-if (rifleson == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSRifles} else {_this call A3M_fnc_Rifles}; };
-if (pistolson == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSPistols} else {_this call A3M_fnc_pistols}; };
-if (HeadGearOn == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSHeadgear} else {_this call A3M_fnc_Headgear}; };
-if (BackPacksOn == 1) then { if (RHSESC == 1) then {_this call A3M_fnc_RHSBackpacks} else {_this call A3M_fnc_Backpacks}; };
+hint "You have made a selection. Click *Purchase* button to buy.";
+ }; 
+
+A3M_Fnc_BuyButton = {
+
+if (IsNil "TheSelection") then {hint "Nothing was selected to purchase!"} else {
+
+// hint format ["Handle Click Activated. Variable passed was %1", TheSelection];
+
+if (itemson == 1) then { if (ACE3_Enabled == 1) then {_this Spawn A3M_fnc_ACE3Items} else {_this Spawn A3M_fnc_items}; }; 
+if (vestson == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSVests} else {_this Spawn A3M_fnc_Vests}; };
+if (clotheson == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSUnis} else {_this Spawn A3M_fnc_Unis}; };
+if (explon == 1) then { if (RHSESC == 1) then { _this Spawn A3M_fnc_RHSexplosives} else {_this Spawn A3M_fnc_Explosives}; };
+if (smokeon == 1) then { if (RHSESC == 1) then { _this Spawn A3M_fnc_RHSSmoke} else { _this Spawn A3M_fnc_Smoke}; };
+if (suppon == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSSuppressors} else {_this Spawn A3M_fnc_Suppressors}; };
+if (opton == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSOptics} else {_this Spawn A3M_fnc_Optics}; };
+if (Ammoon == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSAmmo} else {_this Spawn A3M_fnc_Ammo}; };
+if (launcherson == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSLaunchers} else {_this Spawn A3M_fnc_Launchers}; };
+if (rifleson == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSRifles} else {_this Spawn A3M_fnc_Rifles}; };
+if (pistolson == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSPistols} else {_this Spawn A3M_fnc_pistols}; };
+if (HeadGearOn == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSHeadgear} else {_this Spawn A3M_fnc_Headgear}; };
+if (BackPacksOn == 1) then { if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSBackpacks} else {_this Spawn A3M_fnc_Backpacks}; };
 
 if (ElecOn == 1) then {
-if (RHSESC == 1) then {_this call A3M_fnc_RHSElectronics} else {
-if (ACE3_Enabled == 1) then { _this call A3M_fnc_Ace3Electronics} else { 
-if (TFAR_Enabled == 1) then {_this call A3M_fnc_TFAR} else { _this call A3M_fnc_Electronics};
+if (RHSESC == 1) then {_this Spawn A3M_fnc_RHSElectronics} else {
+if (ACE3_Enabled == 1) then { _this Spawn A3M_fnc_Ace3Electronics} else { 
+if (TFAR_Enabled == 1) then {_this Spawn A3M_fnc_TFAR} else { _this Spawn A3M_fnc_Electronics};
 }; 
 }; 
 }; 
 
+if (MedOn == 1) then { if (ACE3_Enabled == 1) then {_this Spawn A3M_fnc_ACE3Medical} else {_this Spawn A3M_fnc_Medical}; };
 
-if (MedOn == 1) then { if (ACE3_Enabled == 1) then {_this call A3M_fnc_ACE3Medical} else {_this call A3M_fnc_Medical}; };
-
+}; 
 // Final Bracket GSHandleClick
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

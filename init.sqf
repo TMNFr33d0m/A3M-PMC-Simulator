@@ -50,36 +50,35 @@ switchMoveEverywhere = compileFinal " _this select 0 switchMove (_this select 1)
 
 
 //The Line Below calls all the predefines for the mission. Most of the MP Compat stuff is done via predefine 
+
+//The line below plays the intro text at spawn in. 
+
+// Load the Common Predefines (Huge!!) 
 execVM "scripts\Common_Predef.sqf";
-
-// HQ Interactive Script
-execVM "scripts\OPHQ_Predef.sqf";
-
-// The line below starts the bank account script. 
-execVM "scripts\A3M_bankaccount.sqf";
-
-// Roadblock mission specific Init FILE
-execVM "scripts\RBMP_Predef.sqf"; 
-
-// Altis Rifle Club Preloads
-execVM "scripts\m4rr_Predef.sqf";
-
-//the line below startes the briefing
+sleep 2;
+execVM "scripts\intro.sqf";
+//the line below starts the briefing
 execVM "scripts\briefing.sqf"; 
+// Initiate Bank Account
+[] call A3M_Fnc_InitBank; 
+// the line below starts the JIP Tasker. 
+execVM "scripts\initask.sqf"; 
+
+waitUntil {player == player}; 
+[player] execVM "Scripts\PMCBasic.sqf"; 
 
 //  Detention Center Predefines
 // execVM "scripts\Detention.sqf"; 
-
 
 //   RHS NUKE Function !! Stupid place to save it....
 //   [position,yield,radius] call rhs_fnc_ss21_nuke
 // EX [getpos player,10000,1000] call rhs_fnc_ss21_nuke
 
-waitUntil {player == player}; 
-[player] execVM "Scripts\PMCBasic.sqf"; 
 
-//The line below plays the intro text at spawn in. 
-execVM "scripts\intro.sqf"; 
 
-// the line below starts the JIP Tasker. 
-execVM "scripts\initask.sqf"; 
+
+
+ 
+
+
+

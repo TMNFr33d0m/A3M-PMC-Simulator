@@ -34,9 +34,10 @@ And last, but definitely not least, the A3 community, who through over 250+ enco
 and I hope you enjoy the things I have in the works! 
 
 ################################## LET US BEGIN #################################### */
+_Basepos = Getpos Player; 
 
-[getMarkerPos "safe1","Astral Research Compound C-12",300,200,180,0,[]] spawn BIS_fnc_establishingShot;
-sleep 15.0;
+[_Basepos,"Astral Research Compound C-12",200,200,180,0] spawn BIS_fnc_establishingShot;
+
 ["A3M PMC", "Simulator", "By: Cody S.","AkA Fr33d0m"] spawn BIS_fnc_infoText;
 
 hintSilent parseText format["<img size = 15 image='images\Orion_Logo2.paa'/> <br/> <br/> <t size='1.25' font='TahomaB' color='#ff0000'>Welcome to Orion Private Security Group. We're glad to have you aboard!</t> <br/> <br/>  Access the Internet via a Laptop to Access Email, Banking (And Time Submission...to get paid!!), Online Shopping and more! <br/> <br/> <t color='#ffff00'>General Communications:</t>  <br/> <br/>Radio Channel 76 <br/> <br/>Please remember to operate responsibly. <br/> <br/> -OPSG HR</t>"]
