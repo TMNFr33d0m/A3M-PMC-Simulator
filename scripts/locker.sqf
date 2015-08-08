@@ -26,6 +26,8 @@ For Information and Inquiries, EMAIL: salazar@a3milsim.com
 
 Credits & Thanks: 
 
+My wife, for not only supporting my modding ventures, but actually jumping in and helping with mods when she can. What a gal! 
+
 And last, but definitely not least, the A3 community, who through over 250+ encouraging messages highly encouraged me to continue this project. I'm glad you like it, 
 and I hope you enjoy the things I have in the works! 
 
@@ -40,6 +42,14 @@ CurBackpack = Backpack Player;
 CurLBV = Vest Player; 
 CurHelm = Headgear Player; 
 CurItems = Items Player; 
+
+if (IsNil "CurWeaponArray") then {CurWeaponArray = []};
+if (IsNil "CurMagArray") then {CurMagArray = []};
+if (IsNil "CurUni") then {CurUni = []};
+if (IsNil "CurBackpack") then {CurBackpack = []};
+if (IsNil "CurLBV") then {CurLBV = []};
+if (IsNil "CurHelm") then {CurHelm = []};
+if (IsNil "CurItems") then {CurItems = []};
 
 PreCollectiveArray = CurWeaponArray+CurMagArray;
 PreCollectiveArray pushback CurUni;
@@ -78,17 +88,18 @@ _PA1 = profileNameSpace GetVariable "SvdWeaponArray";
 _PA2 = profileNameSpace GetVariable "SvdMagArray";
 _PA3 = profileNameSpace GetVariable "SvdBagArray";
 
-if (isNil "_PA1")then {ProfileNameSpace SetVariable ["SvdWeaponArray", nil ]};
-if (isNil "_PA2")then {ProfileNameSpace SetVariable ["SvdMagArray", nil ]};
-if (isNil "_PA3") then {ProfileNameSpace SetVariable ["SvdBagArray", nil]};
+if (isNil "_PA1")then {ProfileNameSpace SetVariable ["SvdWeaponArray", [] ]; _PA1 = [];};
+if (isNil "_PA2")then {ProfileNameSpace SetVariable ["SvdMagArray", [] ]; _PA2 = [];};
+if (isNil "_PA3") then {ProfileNameSpace SetVariable ["SvdBagArray", [] ]; _PA3 = [];};
 
 StsWeaponArray = _PA1;
 StsMagArray = _PA2;
 StsBagArray = _PA3;
 
+if (IsNil "StsWeaponArray") then {StsWeaponArray = []};
+if (IsNil "StsMagArray") then {StsMagArray = []};
+if (IsNil "StsBagArray") then {StsBagArray = []};
 // hint format ["Array Check: \n \n Weapon Array: \n %1, \n \n Mag Array: \n %2 \n \n Bag Array: \n %3", StsWeaponArray, StsMagArray, StsBagArray];
-
-
 
 PreStashCombined = StsWeaponArray+StsMagArray;
 StashArray= PreStashCombined+StsBagArray;
@@ -110,8 +121,6 @@ _Sab={lbadd [1526, gettext (configFile >> "CfgVehicles" >> _x >> "displayName")]
 
 {lbSetPicture	[1526,_forEachIndex,getText (configFile >>"CfgVehicles">>_x>>"picture")]} forEach StashArray; 	
 {lbSetPictureColor	[1526,_forEachIndex,[0.9,0.9,0.9,0.8]]} forEach StashArray;
-
-
 
 }; 
 
@@ -148,29 +157,35 @@ if (isNil "PassedIntCI") then {Hint "You must select an Item from your Inventory
 																	if ((ItmClsNme isKindOf ["Vest_Camo_Base", configFile >> "CfgWeapons"]) OR (ItmClsNme isKindOf ["Vest_NoCamo_Base", configFile >> "CfgWeapons"])) then {
 																		removeVest Player; 
 																		lbDelete [1525, PassedIntCI];
-																		} else {
+																	} else {
 																		if (ItmClsNme isKindOf ["Uniform_Base", configFile >> "CfgWeapons"]) then {
 																			removeUniform Player; 
 																			lbDelete [1525, PassedIntCI];
 																		} else {
 																			_IsHeadGear = getText (configfile >> "CfgWeapons" >> ItmClsNme >> "ItemInfo" >> "_generalMacro" );
 																				if (_IsHeadGear == "HeadgearItem") then {
-																				removeHeadGear Player; 
-																				lbDelete [1525, PassedIntCI];
-																			} else {
-																					if (ItmClsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
+																				CurHelm = Headgear Player;
+																					if (CurHelm == ItmClsNme) then {
+																					removeHeadGear Player; 
+																					lbDelete [1525, PassedIntCI];
+																					} else {		
 																					Player removeItem ItmClsNme; 
 																					lbDelete [1525, PassedIntCI];
-																			} else {
-																					if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then {
-																					Player removeWeapon ItmClsNme; 
-																					lbDelete [1525, PassedIntCI];
 																					}; 
-																			}; 	
-																		};
+																				} else {
+																						if (ItmClsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
+																						Player removeItem ItmClsNme; 
+																						lbDelete [1525, PassedIntCI];
+																						} else {
+																							if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgWeapons"]) then {
+																							Player removeWeapon ItmClsNme; 
+																							lbDelete [1525, PassedIntCI];
+																							}; 
+																						}; 	
+																				};
+																		}; 
 																	}; 
-																}; 
-															} else {
+																} else {
 																	if (ItmClsNme isKindOf [ItmClsNme, configFile >> "CfgMagazines"]) then {
 																		if (isNil "StsMagArray") then {
 																		StsMagArray = []
@@ -191,7 +206,7 @@ if (isNil "PassedIntCI") then {Hint "You must select an Item from your Inventory
 																			removeBackpack Player; 
 																			lbDelete [1525, PassedIntCI];
 																			} else { 
-hint "Item Type Cannot Be Found"}; 
+hint "Nothing Selected or Item Type Cannot Be Found"}; 
 	};
 }; 
  
@@ -215,8 +230,9 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 	if (ItmStsNme isKindOf [ItmStsNme, configFile >> "CfgWeapons"]) then {
 		
 		_IsUniform = getText (configfile >> "CfgWeapons" >> ItmStsNme >> "ItemInfo" >> "uniformClass");		
-		_IsVest = getText (configfile >> "CfgWeapons" >> ItmStsNme >> "ItemInfo" >> "_generalMacro" );
+		_GenMac = getText (configfile >> "CfgWeapons" >> ItmStsNme >> "ItemInfo" >> "_generalMacro" );
 		
+																				
 		If (_IsUniform != "") then {  
 			_PlyrCrUni = Uniform Player; 
 				if (_PlyrCrUni != "") Then {
@@ -242,12 +258,12 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 	 
 		} else {
 
-				if (_IsVest == "VestItem") then {
+				if (_GenMac == "VestItem") then {
 				
 				_PlyrCrVst = Vest Player; 
-				if (_PlyrCrVst != "") Then {
-				StsWeaponArray pushBack _PlyrCrVst; 
-				};  
+					if (_PlyrCrVst != "") Then {
+					StsWeaponArray pushBack _PlyrCrVst; 
+					};  
 				
 				Player AddVest ItmStsNme; 
 				lbDelete [1526, PassedIntCS];
@@ -268,38 +284,85 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 				
 				
 				} else {
-						if (ItmStsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
-						Player AddItem ItmStsNme; 
-						lbDelete [1526, PassedIntCS];
-						[] call GetCurrentGear;
-						_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
-						StsWeaponArray = StsWeaponArray - [ItmStsNme];
-						_TempWpnCt = _TempWpnCt-1;
+						if (_GenMac == "HeadgearItem") then {
+						
+						_PlyrCrHgr = Headgear Player; 
+							
+							if (_PlyrCrHgr != "") Then {
+							StsWeaponArray pushBack _PlyrCrHgr; 
+							};  
+					
+							Player AddHeadgear ItmStsNme; 
+							lbDelete [1526, PassedIntCS];
+							[] call GetCurrentGear;
+							
+							_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
+							StsWeaponArray = StsWeaponArray - [ItmStsNme];
+							_TempWpnCt = _TempWpnCt-1;
 				
-							if (_TempWpnCt > 0) then {
+								if (_TempWpnCt > 0) then {
 				
-								for "_x" from 1 to _TempWpnCt do {
-								StsWeaponArray PushBack ItmStsNme; 
-								};
-							}; 	
-				ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
-				SaveProfileNamespace;
-				[] call GetStashGear;
+									for "_x" from 1 to _TempWpnCt do {
+									StsWeaponArray PushBack ItmStsNme; 
+									};
+								}; 	
 				
+						ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
+						SaveProfileNamespace;
+						[] call GetStashGear;
 						
 						} else {
-				
-								if (ItmStsNme isKindOf ["Rifle", configFile >> "CfgWeapons"]) then {
-					 
-								_TmpPriWpn = PrimaryWeapon Player;
-						
-									if (_TmpPriWpn != "") Then {
-									StsWeaponArray pushBack _TmpPriWpn;
-									ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
-									SaveProfileNamespace;
+							if (ItmStsNme isKindOf ["ItemCore", configFile >> "CfgWeapons"]) then {
 							
-									[] call GetStashGear;
-								};  
+								if (Player canAdd ItmStsNme) then {
+								
+							Player AddItem ItmStsNme; 
+							lbDelete [1526, PassedIntCS];
+							[] call GetCurrentGear;
+							_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
+							StsWeaponArray = StsWeaponArray - [ItmStsNme];
+							_TempWpnCt = _TempWpnCt-1;
+				
+								if (_TempWpnCt > 0) then {
+				
+									for "_x" from 1 to _TempWpnCt do {
+									StsWeaponArray PushBack ItmStsNme; 
+									};
+								}; 	
+							ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
+							SaveProfileNamespace;
+							[] call GetStashGear;
+							} else {hint "No Room For This!"};
+				
+						
+								} else {
+				
+									if (ItmStsNme isKindOf ["Rifle", configFile >> "CfgWeapons"]) then {
+									
+									_TmpPriWpn = PrimaryWeapon Player;
+						
+										if (_TmpPriWpn != "") Then {
+										StsWeaponArray pushBack _TmpPriWpn;
+										};   
+									
+									Player AddWeapon ItmStsNme; 
+									lbDelete [1526, PassedIntCS];
+									[] call GetCurrentGear;
+							
+									_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
+									StsWeaponArray = StsWeaponArray - [ItmStsNme];
+									_TempWpnCt = _TempWpnCt-1;
+				
+										if (_TempWpnCt > 0) then {
+				
+											for "_x" from 1 to _TempWpnCt do {
+											StsWeaponArray PushBack ItmStsNme; 
+											};
+										}; 	
+				
+						ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
+						SaveProfileNamespace;
+						[] call GetStashGear;
 						
 								} else { 
 										if (ItmStsNme isKindOf ["Pistol", configFile >> "CfgWeapons"]) then {
@@ -307,57 +370,58 @@ if (isNil "PassedIntCS") then {Hint "You must select an Item from your Stash."} 
 						
 											if (_TmphgnWpn != "") Then {
 											StsWeaponArray pushBack _TmphgnWpn; 
-											ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
-											SaveProfileNamespace;
-								
-											[] call GetStashGear;
-											};  
-						
-										};
-									};
-								}; 
-				Player AddWeapon ItmStsNme; 
-				lbDelete [1526, PassedIntCS];
+											}; 
+											
+										Player AddWeapon ItmStsNme; 
+										lbDelete [1526, PassedIntCS];
+										[] call GetCurrentGear;
+							
+										_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
+										StsWeaponArray = StsWeaponArray - [ItmStsNme];
+										_TempWpnCt = _TempWpnCt-1;
 				
-				[] call GetCurrentGear;
+											if (_TempWpnCt > 0) then {
 				
-				_TempWpnCt = {_x == ItmStsNme} count StsWeaponArray;
-				StsWeaponArray = StsWeaponArray - [ItmStsNme];
-				_TempWpnCt = _TempWpnCt-1;
-				
-				if (_TempWpnCt > 0) then {
-				
-					for "_x" from 1 to _TempWpnCt do {
-					StsWeaponArray PushBack ItmStsNme; 
-					};
-				}; 	
-				
-				ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
-				SaveProfileNamespace;
-				[] call GetStashGear;
-				
+												for "_x" from 1 to _TempWpnCt do {
+												StsWeaponArray PushBack ItmStsNme; 
+												};
+												
+											}; 	
+										ProfileNameSpace SetVariable ["SvdWeaponArray", StsWeaponArray];
+										SaveProfileNamespace;
+										[] call GetStashGear;	
+											
+										}; 
+								};
+							};
+					    }; 
+					};				
 				}; 
-		}; 		
+		 		
 	} else { 
 	
 			if (ItmStsNme isKindOf [ItmStsNme, configFile >> "CfgMagazines"]) then { 
 			
-			Player AddMagazine ItmStsNme; 
-			lbDelete [1526, PassedIntCS];
-			[] call GetCurrentGear;
-			_TempMagCt = {_x == ItmStsNme} count StsMagArray;	
-			StsMagArray = StsMagArray - [ItmStsNme];
-			_TempMagCt = _TempMagCt-1;
+				if (Player canAdd ItmStsNme) then {
+				
+				Player AddMagazine ItmStsNme; 
+				lbDelete [1526, PassedIntCS];
+				[] call GetCurrentGear;
+				_TempMagCt = {_x == ItmStsNme} count StsMagArray;	
+				StsMagArray = StsMagArray - [ItmStsNme];
+				_TempMagCt = _TempMagCt-1;
 			
-			if (_TempMagCt > 0) then {
+					if (_TempMagCt > 0) then {
 					
-					for "_x" from 1 to _TempMagCt do {
-					StsMagArray PushBack ItmStsNme; 
-					};
-			}; 
-			ProfileNameSpace SetVariable ["SvdMagArray", StsMagArray];
-			SaveProfileNamespace;
-			[] call GetStashGear;
+						for "_x" from 1 to _TempMagCt do {
+						StsMagArray PushBack ItmStsNme; 
+						};
+					}; 
+				ProfileNameSpace SetVariable ["SvdMagArray", StsMagArray];
+				SaveProfileNamespace;
+				[] call GetStashGear;
+				
+				} else {Hint "No room for this!"};
 			
 			} else {
 				

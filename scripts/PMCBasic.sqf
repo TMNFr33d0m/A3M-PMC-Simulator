@@ -39,7 +39,7 @@ _Debug = 0;
 
 IsFTP = profileNamespace getVariable "IsFTP_LCL";
 
-sleep 1;
+sleep 3;
 
 if (_Debug == 1) then {Hint Format ["IsFTP S1? %1", IsFTP]; sleep 2;};
 
