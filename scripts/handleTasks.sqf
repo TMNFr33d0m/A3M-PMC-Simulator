@@ -50,14 +50,14 @@ _handle= CreateDialog "A3M_VMS";
  
 DoAddMissions = {
 lbClear 1905; 
-_index0= lbAdd [1905, "From: Astral Corp | Subject:  V.I.P. Escort Contract"];
-_index1= lbAdd [1905, "From: Astral Corp | Subject:  High Value Shipment Escort / Delivery Contract"]; 
-_index2= lbAdd [1905, "From: Altis Government | Subject: Traffic Enforcement Checkpoint Contract"]; 
-_index3= lbAdd [1905, "From: Astral Corp | Subject: Hostage Rescue I (Snatch and Extract)"]; 
-_index4= lbAdd [1905, "From: Altis Government | Subject: Terrorist Cell Raid I (Assault)"]; 
-_index5= lbAdd [1905, "From: Altis Government | Subject: Terrorist Cell Raid II(Assault)"]; 
-_index6 = lbAdd [1905, "From: NATO Ops Center | Subject: *Urgent* Stranded unit requires E&E support"]; 
-_index7 = lbAdd [1905, "From: Astral Corp | Subject: Premise Security Shift (T-9 Facility) "]; 
+_index0= lbAdd [1905,"V.I.P. Escort Contract"];
+_index1= lbAdd [1905,"High Value Shipment Escort / Delivery Contract"]; 
+_index2= lbAdd [1905,"Traffic Enforcement Checkpoint Contract"]; 
+_index3= lbAdd [1905,"Hostage Rescue Contract"]; 
+_index4= lbAdd [1905,"Terrorist Cell Raid I (Assault Compound)"]; 
+_index5= lbAdd [1905,"Terrorist Cell Raid II (Assault City)"]; 
+_index6 = lbAdd [1905,"*Urgent* Stranded unit requires E&E support"]; 
+_index7 = lbAdd [1905,"Premise Security Shift (T-9 Facility)"]; 
 };
 
 []call doAddMissions;
@@ -424,17 +424,60 @@ execVM "scripts\T9.sqf";
 
 // Handle Click On Emails
 A3M_fnc_Email = {
+
 TheSelection = _this select 1; 
+
 //hint format ["Email Handle Click Activated. Variable passed was %1", TheSelection]; }; 
+hint "Email Selected. Click *Accept Contract* to begin selected mission.";
 
 switch (TheSelection) do {
 
 case 0: {
-[] call A3M_msn_VIPEscort; 
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M1.paa";
 }; 
 
 case 1: { 
-[] call A3M_msn_TRKEscort;
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M2.paa";
+}; 
+
+case 2: {
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M3.paa";
+}; 
+
+case 3: {
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M4.paa";
+}; 
+
+case 4: {
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M5.paa";
+};
+
+case 5: {
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M6.paa";
+};
+
+case 6: {
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M7.paa";
+}; 
+
+case 7: { 
+((findDisplay 1420) displayCtrl 1200) ctrlSetText "images\M8.paa";
+}; 
+
+}; 
+
+}; 
+
+A3M_Fnc_AcceptMission = {
+
+switch (TheSelection) do {
+
+case 0: {
+[] spawn A3M_msn_VIPEscort; 
+}; 
+
+case 1: { 
+[] spawn A3M_msn_TRKEscort;
 }; 
 
 case 2: {
@@ -442,23 +485,23 @@ case 2: {
 }; 
 
 case 3: {
-[] call A3M_msn_SandE; 
+[] spawn A3M_msn_SandE; 
 }; 
 
 case 4: {
-[] call A3M_msn_Raid1; 
+[] spawn A3M_msn_Raid1; 
 };
 
 case 5: {
-[] call A3M_msn_Raid2; 
+[] spawn A3M_msn_Raid2; 
 };
 
 case 6: {
-[] call A3M_msn_reinforce;
+[] spawn A3M_msn_reinforce;
 }; 
 
 case 7: { 
-[] call A3M_msn_T9sec; 
+[] spawn A3M_msn_T9sec; 
 }; 
 
 }; 

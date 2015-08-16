@@ -32,8 +32,6 @@ Sgt. Lucht and Sgt. Scanlon, of the U.S. Army, for realism consulting.
 
 All my patient internal testers!!
 
-Cannabis, Sativa and Indica, (The legal, medical variety) for giving me the patience and focus to complete this project over, and over again. 
-
 And last, but definitely not least, the A3 community, who through over 250+ encouraging messages highly encouraged me to continue this project. I'm glad you like it, 
 and I hope you enjoy the things I have in the works! 
 
@@ -74,6 +72,7 @@ class Header
 
 disableChannels[]={0,1,2,3,6};
 
+
 #include "dialogs\A3M_Normals.hpp"
 #include "dialogs\FleetMgmt.hpp"
 #include "dialogs\MissionSelector.hpp"
@@ -83,6 +82,7 @@ disableChannels[]={0,1,2,3,6};
 #include "dialogs\2ABCT_M4R.hpp"
 #include "dialogs\HomePage.hpp"
 #include "dialogs\WpnLkr.hpp"
+#include "dialogs\A3M_AIR.hpp"
 
 class CfgSounds
 {
@@ -262,6 +262,14 @@ title = "Jet Fuel (Cost Per LB - Aircraft Refuelling):";
 values[]= {8, 10, 12, 15, 17, 20, 25}; 
 texts[] = {"$8.00 / Lb", "$10.00 / Lb", "$12.00 / Lb", "$15.00 / Lb", "$17.00 / Lb", "$20.00 / Lb", "$25.00 / Lb"}; 
 default= 8; 
+}; 
+
+class DefaultRecruiting {
+// ParamsArray select 7
+title = "Allow AIRecruit to any player"; 
+values[]= {1,0}; 
+texts[] = {"Yes", "No"}; 
+default= 0; 
 }; 
 
 }; 

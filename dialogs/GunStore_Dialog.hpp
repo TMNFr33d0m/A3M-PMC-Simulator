@@ -187,8 +187,8 @@ class RscListbox_1500: RscListbox
 	onLBDblClick = "_this spawn A3M_fnc_GShandleClick";
 
 	idc = 1850;
-	x = 0.197131 * safezoneW + safezoneX;
-	y = 0.17431 * safezoneH + safezoneY;
+	x = 0.213957 * safezoneW + safezoneX;
+	y = 0.158905 * safezoneH + safezoneY;
 	w = 0.678651 * safezoneW;
 	h = 0.759212 * safezoneH;
 };
@@ -209,8 +209,8 @@ class A3M_ModSelector: RscCombo
 	onLBSelChanged = "_this spawn A3M_fnc_handleWModClick";
 	idc = 2175;
 	text = "Select Modification "; //--- ToDo: Localize;
-	x = 0.679478 * safezoneW + safezoneX;
-	y = 0.147901 * safezoneH + safezoneY;
+	x = 0.33174 * safezoneW + safezoneX;
+	y = 0.130295 * safezoneH + safezoneY;
 	w = 0.194821 * safezoneW;
 	h = 0.0220062 * safezoneH;
 	tooltip = "Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! "; //--- ToDo: Localize;
@@ -231,8 +231,8 @@ class A3M_ModsTxt: RscText
 {
 	idc = 1000;
 	text = "Supported Modifications:"; //--- ToDo: Localize;
-	x = 0.560574 * safezoneW + safezoneX;
-	y = 0.143499 * safezoneH + safezoneY;
+	x = 0.213957 * safezoneW + safezoneX;
+	y = 0.125895 * safezoneH + safezoneY;
 	w = 0.126061 * safezoneW;
 	h = 0.0220062 * safezoneH;
 };
@@ -241,19 +241,19 @@ class A3M_StoreFrameSA: RscFrame
 	Moving = 1; 
 	idc = 1800;
 	text = "Lazarus International Security Supply"; //--- ToDo: Localize;
-	x = 0.0647665 * safezoneW + safezoneX;
-	y = 0.0400713 * safezoneH + safezoneY;
+	x = 0.0737401 * safezoneW + safezoneX;
+	y = 0.0642782 * safezoneH + safezoneY;
 	w = 0.830978 * safezoneW;
 	h = 0.913225 * safezoneH;
 };
 class A3M_exitbutton: RscButton
 {
-	action = "closeDialog 0; [] call A3M_fnc_silence; ";
+	action = "closeDialog 0;";
 
 	idc = 1823;
 	text = "Exit"; //--- ToDo: Localize;
-	x = 0.0849575 * safezoneW + safezoneX;
-	y = 0.907114 * safezoneH + safezoneY;
+	x = 0.113001 * safezoneW + safezoneX;
+	y = 0.918117 * safezoneH + safezoneY;
 	w = 0.0401102 * safezoneW;
 	h = 0.0220062 * safezoneH;
 	tooltip = "Exit Store Interface"; //--- ToDo: Localize;
@@ -287,8 +287,8 @@ class A3m_Btn_Buy: RscButton
 
 	idc = 1826;
 	text = "PURCHASE"; //--- ToDo: Localize;
-	x = 0.784921 * safezoneW + safezoneX;
-	y = 0.103889 * safezoneH + safezoneY;
+	x = 0.802869 * safezoneW + safezoneX;
+	y = 0.92912 * safezoneH + safezoneY;
 	w = 0.0897389 * safezoneW;
 	h = 0.0330092 * safezoneH;
 };

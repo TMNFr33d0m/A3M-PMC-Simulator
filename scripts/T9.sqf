@@ -156,7 +156,7 @@ MissionStatus = "M0";
 publicVariable "MissionStatus";
 T9Active = 0; 
 publicVariable "T9Active"; 
-B_defensebudget= (B_defensebudget + 3000000); 
+B_defensebudget= (B_defensebudget + 750000); 
 publicVariable "B_defensebudget"; 
 }; 
 

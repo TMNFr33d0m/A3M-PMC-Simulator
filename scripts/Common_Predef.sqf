@@ -55,7 +55,7 @@ sleep 3;
 player addRating 300; 
 hint "Rating Earned: 300"; 
 sleep 3: 
-hint "Budget Increase Secured. OPSG has been allotted $500,000.00";
+hint "Budget Increase Secured. OPSG has been allotted $50,000.00";
 player setCurrentTask CO1;
 }; 
 
@@ -73,7 +73,7 @@ escortActive = 0;
 publicVariable "escortActive";
 missionStatus = "M0";
 publicVariable "missionStatus"; 
-B_defensebudget = (B_defensebudget + 500000); 
+B_defensebudget = (B_defensebudget + 50000); 
 publicVariable "B_defensebudget"; 
 }; 
 
@@ -116,9 +116,9 @@ hint "You have safely delivered the Supplies to their destination. Astral Corpor
 playMusic "Success"; 
 sleep 3; 
 player addRating 300; 
-hint "Rating Earned: 300"; 
+hint "Rating Earned: 500"; 
 sleep 3; 
-hint "Budget Increase Secured. OPSG has been allotted $750,000.00";
+hint "Budget Increase Secured. OPSG has been allotted $75,000.00";
 player setCurrentTask CO1;
 }; 
 
@@ -129,11 +129,11 @@ deleteVehicle DelDest;
 deleteVehicle DelDead;
 sleep 5.0; 
 deleteVehicle DEL1;
-convoyActive = 0; 
+convoyActive = 0;
 publicVariable "convoyActive"; 
 missionStatus = "M0"; 
 publicVariable "missionStatus"; 
-B_defensebudget = (B_defensebudget+ 750000); 
+B_defensebudget = (B_defensebudget+ 75000); 
 publicVariable "B_defensebudget"; 
 };
 
@@ -186,8 +186,8 @@ hint "You have successfully returned the executive to the OPSG compound. He will
 SARMission setTaskState "Succeeded"; 
 PlayMusic "Success"; 
 sleep 5; 
-player addRating 500; 
-hint "You were paid 500 rating points for this operation. Thank you for your hard work. We recognize that Outlaws PSG and it's sub-contractors are always dedicated professionals. \n ~Astral Corp HR"; 
+player addRating 850; 
+hint "You were paid 850 rating points for this operation. Thank you for your hard work. We recognize that Outlaws PSG and it's sub-contractors are always dedicated professionals. \n ~Astral Corp HR"; 
 sleep 3; 
 hint "Budget Increase Secured. OPSG has been allotted $1,500,000.00";
 player setCurrentTask CO1;
@@ -233,7 +233,7 @@ A3MRaid1 SetSimpleTaskDestination (getMarkerPos "sg1");
 A3MRaid1 setTaskState "Assigned"; 
 player setCurrentTask A3MRaid1; 
 playMusic "Assigned";
-hint "Eliminate the rogue military unit, and clear the compound of all hostiles. Check your map and briefing for details.";
+hint "Eliminate the rogue military unit, and clear the compound of all hostile forces. Check your map and briefing for details.";
 }; 
 
 A3M_Raid_2MP = {
@@ -243,17 +243,17 @@ A3MRaid2 SetSimpleTaskDestination (getMarkerPos "sg2");
 A3MRaid2 setTaskState "Assigned"; 
 player setCurrentTask A3MRaid2; 
 playMusic "Assigned";
-hint "Eliminate the rogue military unit, and clear the compound of all hostiles. Check your map and briefing for details.";
+hint "Eliminate the rogue military unit, and clear the compound of all hostile forces. Check your map and briefing for details.";
 }; 
 
 A3M_fnc_RaidClearMP = {
 A3MRaid1 setTaskState "Succeeded"; 
 hint " You have cleared the terror cell operating here. Well done."; 
-player addRating 1000; 
+player addRating 2000; 
 sleep 2; 
-hint "You have recieved 1000 rating points for successfully clearing this objective."; 
+hint "You have received 2000 rating points for successfully clearing this objective."; 
 sleep 3; 
-hint "Outlaws PSG has been awarded $2m in operational funds from our client, Astral corp. Great job!"; 
+hint "OPSG has been awarded $2m in operational funds from our client, Astral corp. Great job!"; 
 player setCurrentTask CO1;
 }; 
 // End Raid Missions
@@ -287,8 +287,8 @@ NSARTask setTaskState "Succeded";
 playMusic "Success"; 
 hint "The NATO team has reached their extraction point. Great job! Return to Base!";
 sleep 5; 
-player addRating 2500;
-hint "You have been paid 2,500 rating points for your services."; 
+player addRating 900;
+hint "You have been paid 900 rating points for your services."; 
 sleep 2; 
 hint "Outlaws PSG has been awarded $5m in operational funds from our client, NATO. Great job!"; 
 player setCurrentTask CO1;
@@ -356,7 +356,7 @@ sleep 5;
 player addRating 1000;
 hint "You have been paid 1,000 rating points for your services."; 
 sleep 2; 
-hint "Outlaws PSG has been awarded $3m in operational funds from our client, NATO. Great job!"; 
+hint "OPSG has been awarded $750,000.00 in operational funds from our client, Astral Corp. Great job!"; 
 player setCurrentTask CO1;
 }; 
 
@@ -702,7 +702,7 @@ A3M_fnc_rbmissionend = {
 
 if (CheckpointActive == 1) then {
 
-player addRating 500;  
+player addRating 1500;  
 
 hint format ["Checkpoint Duty Complete! Great job! You had %1 Rights Violation Complaints. \n Completion Bonus: \n 500 rating points  \n ~ Altis Government HR", rightsviols];
 
@@ -726,27 +726,6 @@ player setCurrentTask CO1;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Administrator Panel Predefines
 //
 A3M_Fnc_Testmessage = {
@@ -767,6 +746,19 @@ Hint Format ["You've been advanced $%1.00 from the Operation Budget by your Team
 }; 
 
 }; 
+
+A3M_Fnc_GrantPower = {
+if (name player == TargetPlayer) then {
+// Compensate for rating replacement at rank switch
+_Prerate = rating player; 
+player setRank "MAJOR";
+_SubRate = Rating player; 
+Player AddRating -_SubRate; 
+Player addRating _PreRate; 
+// Done Compensating
+hint format ["Congratulations %1, You have been promoted! \n \n You are vested with purchasing power within your company. Purchase wisely and work to make your company the best in the business! \n \n You may now act as a Team Coordinator.", TargetPlayer]; 
+}; 
+};
 
 A3M_Fnc_MoneyFromYou = {
 
@@ -811,12 +803,14 @@ sleep 2;
 Hint "Your mission was cancelled by the Team Coordinator. Return to Base Immediately for further instructions."; 
 player setCurrentTask CO1; 
 }; 
+
 // Administrator Panel Script 
+
 A3M_Fnc_AdminPanel = {
 
 // Make sure only MAJOR rank can access Admin Panel
-B_maxrank = "MAJOR";
-_prat = rank player; 
+B_maxrankAIR = "MAJOR";
+_prat2 = rank player; 
  // Gather Some Data...
   
  // Number of Playable Blufor Slots Remaining: 
@@ -931,7 +925,7 @@ _ChildControl3 ctrlSetStructuredText parseText format ["%1", A3M_AvailSlots];
 
 // Done With The Predefines and setup........
  //  Evaluate whether you are important enough to access this module...
- if (_prat != B_maxrank) then { Hint "You are not the Team Coordinator, and may not access the Admin Panel. Only the team coordinator may access this feature."} else {
+ if (_prat2 != B_maxrankAIR) then { Hint "You are not the Team Coordinator, and may not access the Admin Panel. Only the team coordinator may access this feature."} else {
  
  // Define how to get a list of players in game: 
  A3M_GetPlayers = {
@@ -1006,6 +1000,18 @@ if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First"
 	};
 };	
 };
+
+// Bestow Purchasing Power / Promote Player
+
+PromotePlayer = {
+
+if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First"} else {
+['','A3M_Fnc_GrantPower',True,False] spawn BIS_fnc_MP; 
+hint format ["You have promoted %1", TargetPlayer];
+}; 
+
+};
+
 
 // Force Cancel All Missions
 CancelAllMissions = {
@@ -1279,7 +1285,6 @@ _handle= CreateDialog "A3M_BankAccount";
 }; 
 
 // OPHQ Pre-Defines 
-
 //GUI  Location ID Function 
 DRI_HQmsg = {
 [
@@ -1294,8 +1299,6 @@ DRI_HQmsg = {
 	] spawn BIS_fnc_typeText2;
 
 }; 
-
-
 DRI_ArmoryMsg = {
 [
 		
@@ -1323,23 +1326,18 @@ DRI_MPHQMsg = {
 
 }; 
 
-
 // HQ Radio (Plays music) 
 DRI_ABCT2_HQRadio = {
 HQ_MusicSource say3D "Showdown"; 
 HQ_MusicSource removeAction TurnOn; 
 HQ_MusicSource addAction ["Turn Off", { HQ_MusicSource say3D ""; HQ_MusicSource removeAction TurnOff; TurnOn = HQ_MusicSource addAction ["Turn on radio", {[] spawn DRI_ABCT2_HQRadio} ] } ]; };  
 
-
 // Define Slides with MP Compat 
-
 DRI_ABCT2_MPimg1 = {
 PresBoard setObjectTexture [0, "images\Deadly_Zones_Slide.paa"];
 }; 
 
-
 // MP Compatible Television(s)
-
 DRI_ABCT2_DHQTV = { 
 
 CMDTVON = 1;
@@ -1370,7 +1368,6 @@ CMDTVON = 0;
 CMD_TV setObjectTexture [0, "images\TVNoise.jpg"];
 }; 
 
-
 DRI_ABCT2_MPTV = { 
 
 MPTVON = 1;
@@ -1398,13 +1395,11 @@ sleep 3;} else {MP_TV setObjectTexture [0, "images\TVNoise.jpg"]; };
 
 }; 
 
-
 DRI_ABCT2_MPTVOFF = {
 
 MPTVON = 0; 
 MP_TV setObjectTexture [0, "images\TVNoise.jpg"];
 }; 
-
 
 // Rifle Range Pre-Defines
 // 
@@ -2493,3 +2488,353 @@ hint format ["SACRIFICE! Your player identity has been deleted. Your bank accoun
 ResetIdentActive = 0; 
 player removeAction ResetIdentAct; 
 };
+
+// A3M AIR 
+
+A3M_fnc_AIR = {
+
+AllAllowed = ParamsArray select 7; 
+if (AllAllowed == 1) then {B_maxrankAIR = rank player} else {B_maxrankAIR = "MAJOR"};
+/////////////////////////////////////////////////////////////////////////////////////
+//Initial Budget for Side - Change in ParamsArray! 
+B_initialbudget= paramsArray select 1;
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//Initial Budget Creator
+////////////////////////////////////////////////////////////////////////////////////////////////
+if (isnil"B_defensebudget") then {
+B_defensebudget= B_initialbudget;
+publicVariable"B_defensebudget";
+};
+if (isnil"B_totalcost") then {
+B_totalcost= 0;
+publicVariable"B_totalcost";
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Open Dialog
+_handle= CreateDialog "A3M_AIR";
+
+// Cost of AI 
+Operator0 = 6500; 
+Operator1 = 8500; 
+Operator2 = 10500; 
+Operator3 = 12500; 
+Operator4 = 15000; 
+
+_index0 = lbadd [2560, "Operator I ~ $6,500.00"];
+_index1 = lbadd [2560, "Operator II ~ $8,500.00"];
+_index2 = lbadd [2560, "Operator III ~ $10,500.00"];
+_index3 = lbadd [2560, "Operator IV ~ $12,500.00"];
+_index4 = lbadd [2560, "Operator V ~ $15,000.00"];
+
+A3M_fnc_AIRhandleClick= {
+
+AIRSelection = _this select 1;
+hint format ["You have made a selection. Click *Recruit* button to hire.", AIRSelection];
+
+switch (AIRSelection) do {
+
+Case 0: { 
+
+((findDisplay 2575) displayCtrl 2580) ctrlSetText "images\OperativeI.paa";
+
+}; 
+
+Case 1: {
+
+((findDisplay 2575) displayCtrl 2580) ctrlSetText "images\OperativeII.paa";
+
+};
+
+Case 2: {
+
+((findDisplay 2575) displayCtrl 2580) ctrlSetText "images\OperativeIII.paa";
+
+}; 
+
+Case 3: {
+
+((findDisplay 2575) displayCtrl 2580) ctrlSetText "images\OperativeIV.paa";
+
+}; 
+
+Case 4: {
+
+((findDisplay 2575) displayCtrl 2580) ctrlSetText "images\OperativeV.paa";
+
+}; 
+
+}; 
+
+}; 
+
+A3M_Fnc_HandleRct = {
+
+switch (AIRSelection) do {
+
+case 0: {
+
+_prat2 = Rank Player;
+if ((B_defensebudget<Operator0) OR ( _prat2 != B_maxrankAIR)) then { 
+
+hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrankAIR,Operator0]} 
+	
+	else {
+
+	"B_G_Soldier_F" createUnit [ getMarkerPos "AIR_Spawn", group player, "CurAIRUnit = This;", 0.6];
+
+	removeAllWeapons CurAIRUnit;
+	removeAllItems CurAIRUnit;
+	removeAllAssignedItems CurAIRUnit;
+	removeUniform CurAIRUnit;
+	removeVest CurAIRUnit;
+	removeBackpack CurAIRUnit;
+	removeHeadgear CurAIRUnit;
+	removeGoggles CurAIRUnit;
+
+	CurAIRUnit forceAddUniform "U_BG_Guerrilla_6_1";
+	for "_i" from 1 to 2 do {CurAIRUnit addItemToUniform "30Rnd_9x21_Mag";};
+	CurAIRUnit addVest "V_TacVest_oli";
+	CurAIRUnit addItemToVest "NVGoggles_INDEP";
+	CurAIRUnit addItemToVest "30Rnd_9x21_Mag";
+	CurAIRUnit addHeadgear "H_MilCap_blue";
+
+	CurAIRUnit addWeapon "SMG_02_F";
+	CurAIRUnit addPrimaryWeaponItem "acc_pointer_IR";
+	CurAIRUnit addPrimaryWeaponItem "optic_ACO_grn";
+	CurAIRUnit addWeapon "Binocular";
+
+	CurAIRUnit linkItem "ItemMap";
+	CurAIRUnit linkItem "ItemCompass";
+	CurAIRUnit linkItem "ACE_Altimeter";
+	CurAIRUnit linkItem "tf_anprc152_2";
+	CurAIRUnit linkItem "ItemGPS";
+
+	CurAIRUnit setFace "GreekHead_A3_10_sa";
+	CurAIRUnit setSpeaker "Male01ENG";
+	[CurAIRUnit,"TFAegis"] call bis_fnc_setUnitInsignia;
+
+	B_defensebudget= (B_defensebudget-Operator0);  
+	publicVariable "B_defensebudget";
+	B_totalcost= (B_totalcost+Operator0); 
+	publicVariable "B_totalcost";
+	hint "Operative I Hired. Unit will be joining you shortly.";
+	}; 
+
+};
+
+case 1: {
+
+_prat2 = Rank Player;
+
+if ((B_defensebudget<Operator1) OR ( _prat2 != B_maxrankAIR)) then { 
+
+hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrankAIR,Operator1]} 
+	
+	else {
+
+	"B_G_Soldier_F" createUnit [ getMarkerPos "AIR_Spawn", group player, "CurAIRUnit = This;", 0.8];
+
+	removeAllWeapons CurAIRUnit;
+	removeAllItems CurAIRUnit;
+	removeAllAssignedItems CurAIRUnit;
+	removeUniform CurAIRUnit;
+	removeVest CurAIRUnit;
+	removeBackpack CurAIRUnit;
+	removeHeadgear CurAIRUnit;
+	removeGoggles CurAIRUnit;
+
+
+	CurAIRUnit forceAddUniform "U_BG_Guerrilla_6_1";
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToUniform "16Rnd_9x21_Mag";};
+	CurAIRUnit addVest "V_PlateCarrier1_rgr";
+	for "_i" from 1 to 6 do {CurAIRUnit addItemToVest "10Rnd_93x64_DMR_05_Mag";};
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "16Rnd_9x21_Mag";};
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "SmokeShell";};
+	CurAIRUnit addHeadgear "H_Booniehat_oli";
+
+
+	CurAIRUnit addWeapon "srifle_DMR_05_blk_F";
+	CurAIRUnit addPrimaryWeaponItem "optic_AMS_khk";
+	CurAIRUnit addWeapon "hgun_P07_F";
+	
+
+	CurAIRUnit linkItem "ItemMap";
+
+
+	CurAIRUnit setFace "GreekHead_A3_01";
+	CurAIRUnit setSpeaker "Male01ENG";
+
+	B_defensebudget= (B_defensebudget-Operator1);  
+	publicVariable "B_defensebudget";
+	B_totalcost= (B_totalcost+Operator1); 
+	publicVariable "B_totalcost";
+	hint "Operative II Hired. Unit will be joining you shortly.";
+	}; 
+};
+
+case 2: {
+
+_prat2 = Rank Player;
+if ((B_defensebudget<Operator2) OR ( _prat2 != B_maxrankAIR)) then { 
+
+hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrankAIR,Operator2]} 
+	
+	else {
+	
+	"B_G_Soldier_F" createUnit [ getMarkerPos "AIR_Spawn", group player, "CurAIRUnit = This;", 0.8];
+
+	removeAllWeapons CurAIRUnit;
+	removeAllItems CurAIRUnit;
+	removeAllAssignedItems CurAIRUnit;
+	removeUniform CurAIRUnit;
+	removeVest CurAIRUnit;
+	removeBackpack CurAIRUnit;
+	removeHeadgear CurAIRUnit;
+	removeGoggles CurAIRUnit;
+
+
+	CurAIRUnit forceAddUniform "U_BG_Guerrilla_6_1";
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToUniform "16Rnd_9x21_Mag";};
+	CurAIRUnit addVest "V_PlateCarrier1_rgr";
+	for "_i" from 1 to 2 do {CurAIRUnit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 2 do {CurAIRUnit addItemToVest "SmokeShell";};
+	for "_i" from 1 to 6 do {CurAIRUnit addItemToVest "30Rnd_65x39_caseless_mag";};
+	for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "16Rnd_9x21_Mag";};
+	CurAIRUnit addHeadgear "rhsusf_ach_bare_wood_ess";
+
+	CurAIRUnit addWeapon "arifle_MX_Black_F";
+	CurAIRUnit addPrimaryWeaponItem "acc_pointer_IR";
+	CurAIRUnit addPrimaryWeaponItem "optic_MRCO";
+	CurAIRUnit addWeapon "hgun_P07_F";
+	
+	CurAIRUnit linkItem "ItemMap";
+	CurAIRUnit linkItem "ItemCompass";
+	CurAIRUnit linkItem "ACE_Altimeter";
+	CurAIRUnit linkItem "tf_anprc152_3";
+	CurAIRUnit linkItem "ItemGPS";
+	
+	CurAIRUnit setFace "WhiteHead_08";
+	CurAIRUnit setSpeaker "Male01ENG";
+	
+	B_defensebudget= (B_defensebudget-Operator2);  
+	publicVariable "B_defensebudget";
+	B_totalcost= (B_totalcost+Operator2); 
+	publicVariable "B_totalcost";
+	
+	hint "Operative III Hired. Unit will be joining you shortly.";
+
+	};
+}; 
+case 3: {
+
+_prat2 = Rank Player;
+ if ((B_defensebudget<Operator3) OR ( _prat2 != B_maxrankAIR)) then { 
+
+hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrankAIR,Operator3]} 
+	
+	else {
+	
+"B_G_Soldier_F" createUnit [ getMarkerPos "AIR_Spawn", group player, "CurAIRUnit = This;", 0.9];
+
+removeAllWeapons CurAIRUnit;
+removeAllItems CurAIRUnit;
+removeAllAssignedItems CurAIRUnit;
+removeUniform CurAIRUnit;
+removeVest CurAIRUnit;
+removeBackpack CurAIRUnit;
+removeHeadgear CurAIRUnit;
+removeGoggles CurAIRUnit;
+
+CurAIRUnit forceAddUniform "U_BG_Guerrilla_6_1";
+for "_i" from 1 to 3 do {CurAIRUnit addItemToUniform "16Rnd_9x21_Mag";};
+CurAIRUnit addItemToUniform "HandGrenade";
+CurAIRUnit addVest "V_PlateCarrier1_rgr";
+for "_i" from 1 to 2 do {CurAIRUnit addItemToVest "HandGrenade";};
+for "_i" from 1 to 2 do {CurAIRUnit addItemToVest "SmokeShell";};
+for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "16Rnd_9x21_Mag";};
+for "_i" from 1 to 3 do {CurAIRUnit addItemToVest "30Rnd_65x39_caseless_mag";};
+for "_i" from 1 to 5 do {CurAIRUnit addItemToVest "3Rnd_HE_Grenade_shell";};
+CurAIRUnit addHeadgear "rhsusf_ach_bare_wood_ess";
+
+CurAIRUnit addWeapon "arifle_MX_GL_Black_F";
+CurAIRUnit addPrimaryWeaponItem "acc_pointer_IR";
+CurAIRUnit addPrimaryWeaponItem "optic_MRCO";
+CurAIRUnit addWeapon "hgun_P07_F";
+
+CurAIRUnit linkItem "ItemMap";
+CurAIRUnit linkItem "ItemCompass";
+CurAIRUnit linkItem "ACE_Altimeter";
+CurAIRUnit linkItem "tf_anprc152_3";
+CurAIRUnit linkItem "ItemGPS";
+
+CurAIRUnit setFace "WhiteHead_08";
+CurAIRUnit setSpeaker "Male01ENG";
+
+B_defensebudget= (B_defensebudget-Operator3);  
+publicVariable "B_defensebudget";
+B_totalcost= (B_totalcost+Operator3); 
+publicVariable "B_totalcost";
+	
+hint "Operative IV Hired. Unit will be joining you shortly.";
+
+}; 
+};
+
+case 4: {
+
+_prat2 = Rank Player;
+if ((B_defensebudget<Operator4) OR ( _prat2 != B_maxrankAIR)) then { 
+
+hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrankAIR,Operator4]} 
+	
+	else {
+	
+"B_G_Soldier_F" createUnit [ getMarkerPos "AIR_Spawn", group player, "CurAIRUnit = This;", 0.99];
+
+removeAllWeapons CurAIRUnit;
+removeAllItems CurAIRUnit;
+removeAllAssignedItems CurAIRUnit;
+removeUniform CurAIRUnit;
+removeVest CurAIRUnit;
+removeBackpack CurAIRUnit;
+removeHeadgear CurAIRUnit;
+removeGoggles CurAIRUnit;
+
+CurAIRUnit forceAddUniform "U_BG_Guerrilla_6_1";
+for "_i" from 1 to 3 do {CurAIRUnit addItemToUniform "16Rnd_9x21_Mag";};
+
+CurAIRUnit addVest "V_PlateCarrier1_rgr";
+for "_i" from 1 to 2 do {CurAIRUnit addItemToVest "16Rnd_9x21_Mag";};
+for "_i" from 1 to 7 do {CurAIRUnit addItemToVest "20Rnd_762x51_Mag";};
+CurAIRUnit addHeadgear "rhsusf_ach_bare_wood_ess";
+
+CurAIRUnit addWeapon "srifle_DMR_03_F";
+CurAIRUnit addPrimaryWeaponItem "acc_pointer_IR";
+CurAIRUnit addPrimaryWeaponItem "optic_Hamr";
+CurAIRUnit addWeapon "hgun_P07_F";
+
+CurAIRUnit linkItem "ItemMap";
+CurAIRUnit linkItem "ItemCompass";
+CurAIRUnit linkItem "ACE_Altimeter";
+CurAIRUnit linkItem "tf_anprc152_3";
+CurAIRUnit linkItem "ItemGPS";
+
+CurAIRUnit setFace "WhiteHead_08";
+CurAIRUnit setSpeaker "Male01ENG";
+
+	B_defensebudget= (B_defensebudget-Operator4);  
+	publicVariable "B_defensebudget";
+	B_totalcost= (B_totalcost+Operator4); 
+	publicVariable "B_totalcost";
+	
+hint "Operative V Hired. Unit will be joining you shortly.";
+}; 
+};
+
+};
+
+};
+
+}; 

@@ -80,7 +80,7 @@ saveProfileNamespace;
 
 if (_Debug == 1) then {Hint Format ["IsFTP s4 ? %1", IsFTP]; sleep 2;};
 
-titleText ["Welcome back operative! We hope you were responsible enough to store your gear before clocking out last shift? PROTIP: Use ALiVE to restore your gear from last session...autosave every 5 minutes!","PLAIN DOWN"]; 
+titleText ["Welcome back operative. Your persistent stash, bank account and profile have been loaded.","PLAIN DOWN"]; 
 
 }; 
 

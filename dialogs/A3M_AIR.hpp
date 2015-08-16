@@ -7,10 +7,10 @@
 | $$  | $$ /$$  \ $$| $$\  $ | $$      | $$      | $$\  $ | $$| $$    $$       /$$  \ $$| $$| $$ | $$ | $$| $$  | $$| $$ /$$__  $$  | $$ /$$| $$  | $$| $$      
 | $$  | $$|  $$$$$$/| $$ \/  | $$      | $$      | $$ \/  | $$|  $$$$$$/      |  $$$$$$/| $$| $$ | $$ | $$|  $$$$$$/| $$|  $$$$$$$  |  $$$$/|  $$$$$$/| $$      
 |__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/  
+                                                                                                             
 
 
-
-Bank Account V 1.5 by Cody Salazar AKA Fr33d0m 
+AI Recruiter GUI V 2.0 by Cody Salazar AKA Fr33d0m 
 www.A3MilSim.com
 
 License:
@@ -29,24 +29,77 @@ Credits & Thanks:
 
 My wife, for not only supporting my modding ventures, but actually jumping in and helping with mods when she can. What a gal! 
 
-Corello, for helping me with forming long numbers in Arma without truncation, and his awesome wife #define, for her work and encouragement. 
-
 And last, but definitely not least, the A3 community, who through over 250+ encouraging messages highly encouraged me to continue this project. I'm glad you like it, 
 and I hope you enjoy the things I have in the works! 
 
+
 ################################## LET US BEGIN #################################### */
-SwitchScreen = _this select 0; 
 
-disableSerialization;
-///////////////////////////////////////////////////////////////////////////////////////////
-// Open Dialog
-_handle= CreateDialog "A3M_HomePage";
-playMusic "gearup";
 
-///////////////////////////////////////////////////////////////////////////////////////////
-// Menu Music Killer
-A3M_fnc_silence = {
-playMusic"";
+class A3M_AIR
+{
+    idd = 2575;
+	movingEnable = true;
+	enableSimulation = true;
+	
+class Controls
+{ 
+
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Gyquxe)
+////////////////////////////////////////////////////////
+
+class A3M_Dia_PersMngr: RscFrame
+{
+	Moving = 1; 
+	idc = 2570;
+	text = "Personnel Management "; //--- ToDo: Localize;
+	x = 0.198185 * safezoneW + safezoneX;
+	y = 0.185425 * safezoneH + safezoneY;
+	w = 0.594655 * safezoneW;
+	h = 0.670946 * safezoneH;
 };
+class A3M_Dia_SolPic: RscPicture
+{
+	idc = 2580;
+	text = "images\AIR_Main.paa";
+	x = 0.20274 * safezoneW + safezoneX;
+	y = 0.224923 * safezoneH + safezoneY;
+	w = 0.336521 * safezoneW;
+	h = 0.550154 * safezoneH;
+};
+class RscListbox_2560: RscListbox
+{
+	OnLbDblClick = "_this call A3M_fnc_AIRhandleClick";
+	idc = 2560;
+	x = 0.556096 * safezoneW + safezoneX;
+	y = 0.225022 * safezoneH + safezoneY;
+	w = 0.229956 * safezoneW;
+	h = 0.550154 * safezoneH;
+};
+class A3M_Btn_Rcrt: RscButton
+{
+	action = "[] call A3M_Fnc_HandleRct";
 
-SwitchScreen setObjectTexture [0, "images\OPSG_Home.paa"];
+	idc = 2561;
+	text = "Recruit"; //--- ToDo: Localize;
+	x = 0.275602 * safezoneW + safezoneX;
+	y = 0.785977 * safezoneH + safezoneY;
+	w = 0.0841493 * safezoneW;
+	h = 0.0439965 * safezoneH;
+};
+class A3M_Btn_RcClose: RscButton
+{
+	action = "closeDialog 0";
+	idc = 2562;
+	text = "Close"; //--- ToDo: Localize;
+	x = 0.640249 * safezoneW + safezoneX;
+	y = 0.785977 * safezoneH + safezoneY;
+	w = 0.0841493 * safezoneW;
+	h = 0.0439965 * safezoneH;
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+};
+};

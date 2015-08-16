@@ -36,7 +36,7 @@ and I hope you enjoy the things I have in the works!
 
 A3M_fnc_SARSuccess = {
 ['','A3M_fnc_SARSuccessMP',True,False] call BIS_fnc_MP;
-B_defensebudget = (B_defensebudget + 5000000); 
+B_defensebudget = (B_defensebudget + 1500000); 
 
 MissionStatus = "M0"; 
 publicVariable "MissionStatus";

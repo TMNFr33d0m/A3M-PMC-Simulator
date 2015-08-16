@@ -29,7 +29,7 @@ $[
 
 
 // Admin Panel
-/* #Wycomu
+/* #Kyqeqo
 $[
 	1.063,
 	["AdminPanel",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -59,9 +59,11 @@ $[
 	[1102,"A3M_Dia_Plyblslts",[1,"",["0.780548 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.0841643 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1008,"A3M_Dia_TxtSlots",[1,"Playable Slots Remaining: ",["0.655985 * safezoneW + safezoneX","0.35696 * safezoneH + safezoneY","0.145885 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1103,"A3M_Dia_CurPlyrSel",[1,"",["0.780548 * safezoneW + safezoneX","0.158905 * safezoneH + safezoneY","0.145885 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1009,"A3M_Dia_CurSelTxt",[1,"Currently Selected Player: ",["0.651496 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.123441 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+	[1009,"A3M_Dia_CurSelTxt",[1,"Currently Selected Player: ",["0.651496 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.123441 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1609,"A3M_Btn_Promote",[1,"Promote Player",["0.438304 * safezoneW + safezoneX","0.455988 * safezoneH + safezoneY","0.0953476 * safezoneW","0.0330092 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Give this player purchasing power, and the ability to act as a field coordinator. Player will have access to company budget, admin panel, fleet mgmt, etc. ","-1"],["Action = |[] call PromotePlayer|; "]]
 ]
-/* 
+*/
+
 
 
 /* HomePage
@@ -103,13 +105,17 @@ $[
 */
 
 // Email Service
+/* #Naxuqo
 $[
 	1.063,
 	["Mission_GUI",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1801,"M_MissionFrame",[1,"WarMail Encrypted Email Service",["0.270799 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.45825 * safezoneW","0.550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1500,"M_EmailWindow",[1,"Inbox: ",["0.276529 * safezoneW + safezoneX","0.345957 * safezoneH + safezoneY","0.446943 * safezoneW","0.363102 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1000,"M_Inbox_Text",[1,"Inbox: ",["0.276529 * safezoneW + safezoneX","0.312948 * safezoneH + safezoneY","0.0343688 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1600,"Email_Close_Button",[2,"Close",["0.5 * GUI_GRID_W + GUI_GRID_X","23 * GUI_GRID_H + GUI_GRID_Y","6.5 * GUI_GRID_W","1.5 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+	[1801,"M_MissionFrame",[1,"WarMail Encrypted Email Service",["0.152262 * safezoneW + safezoneX","0.114892 * safezoneH + safezoneY","0.605738 * safezoneW","0.869243 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1500,"M_EmailWindow",[1,"Inbox: ",["0.275653 * safezoneW + safezoneX","0.180911 * safezoneH + safezoneY","0.448695 * safezoneW","0.209058 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1000,"M_Inbox_Text",[1,"Inbox: ",["0.236392 * safezoneW + safezoneX","0.180911 * safezoneH + safezoneY","0.0343688 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1600,"Email_Close_Button",[1,"Close",["0.197131 * safezoneW + safezoneX","0.918117 * safezoneH + safezoneY","0.0729129 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1200,"",[1,"#(argb,8,8,3)color(1,1,1,1)",["0.275653 * safezoneW + safezoneX","0.389969 * safezoneH + safezoneY","0.448695 * safezoneW","0.583163 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"A3M_Btn_AcceptMission",[1,"Accept Contract",["0.169088 * safezoneW + safezoneX","0.852098 * safezoneH + safezoneY","0.100956 * safezoneW","0.0440123 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1001,"A3m_Dia_MMsgTxt",[1,"Message: ",["0.225175 * safezoneW + safezoneX","0.378966 * safezoneH + safezoneY","0.0448695 * safezoneW","0.0550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
 */
 
@@ -123,6 +129,7 @@ $[
 
 /* #Rolomo
 /* #Jyruja
+/* #Jokaji
 $[
 	1.063,
 	["GunStore",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -137,17 +144,19 @@ $[
 	[1608,"A3M_Btn_Unis",[1,"Uniforms",["0.0816454 * safezoneW + safezoneX","0.555014 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Clothing","-1"],["action = |[] call DoAddClothes|;"]],
 	[1609,"A3M_btn_Vests",[1,"Body Armor / Carriers",["0.0816454 * safezoneW + safezoneX","0.687046 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Body Armor and Carrier Catalogue","-1"],["action = |[] call DoAddVests|; "]],
 	[1610,"A3M_Btn_Misc",[1,"Misc Items",["0.0816454 * safezoneW + safezoneX","0.841084 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] call DoAddItems|; "]],
-	[1500,"",[1,"",["0.197131 * safezoneW + safezoneX","0.17431 * safezoneH + safezoneY","0.678651 * safezoneW","0.759212 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_GShandleClick|;"]],
+	[1500,"",[1,"",["0.213957 * safezoneW + safezoneX","0.158905 * safezoneH + safezoneY","0.678651 * safezoneW","0.759212 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["onLBDblClick = |_this spawn A3M_fnc_GShandleClick|;"]],
 	[1611,"A3M_BackPackButton",[1,"Backpacks",["0.0816454 * safezoneW + safezoneX","0.599024 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Backpacks","-1"],["action = |[] call DoAddBackpacks|; "]],
-	[2100,"A3M_ModSelector",[1,"Select Modification ",["0.679478 * safezoneW + safezoneX","0.147901 * safezoneH + safezoneY","0.194821 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! ","-1"],[]],
+	[2100,"A3M_ModSelector",[1,"Select Modification ",["0.33174 * safezoneW + safezoneX","0.130295 * safezoneH + safezoneY","0.194821 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Select Modification to list Supported Items. ENSURE THE MOD IS INSTALLED BEFORE PURCHASING MOD ITEMS! ","-1"],[]],
 	[1612,"A3M_HeadGearButton",[1,"Head Gear",["0.0816454 * safezoneW + safezoneX","0.643035 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Catalogue of Ballstic Head Protection and Hats","-1"],["action = |[] call DoAddHeadgear|;"]],
-	[1000,"A3M_ModsTxt",[1,"Supported Modifications:",["0.560574 * safezoneW + safezoneX","0.143499 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1800,"A3M_StoreFrameSA",[1,"Lazarus International Security Supply",["0.0647665 * safezoneW + safezoneX","0.0400713 * safezoneH + safezoneY","0.830978 * safezoneW","0.913225 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1613,"A3M_exitbutton",[1,"Exit",["0.0849575 * safezoneW + safezoneX","0.907114 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Store Interface","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence; |;"]],
+	[1000,"A3M_ModsTxt",[1,"Supported Modifications:",["0.213957 * safezoneW + safezoneX","0.125895 * safezoneH + safezoneY","0.126061 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1800,"A3M_StoreFrameSA",[1,"Lazarus International Security Supply",["0.0737401 * safezoneW + safezoneX","0.0642782 * safezoneH + safezoneY","0.830978 * safezoneW","0.913225 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1613,"A3M_exitbutton",[1,"Exit",["0.113001 * safezoneW + safezoneX","0.918117 * safezoneH + safezoneY","0.0401102 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Exit Store Interface","-1"],["action = |closeDialog 0; [] call A3M_fnc_silence; |;"]],
 	[1614,"A3M_Btn_Med",[1,"Medical",["0.0816454 * safezoneW + safezoneX","0.753062 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action = |[] spawn DoAddMedical|;"]],
 	[1615,"A3M_Btn_Elect",[1,"Electronics",["0.0816454 * safezoneW + safezoneX","0.797073 * safezoneH + safezoneY","0.108887 * safezoneW","0.0330081 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"Access Electronics and Non-Weapon Tactical Items Catalogue","-1"],["action = |[] spawn DoAddElect|; "]],
-	[1616,"A3m_Btn_Buy",[2,"PURCHASE",["45.4 * GUI_GRID_W + GUI_GRID_X","-5.5 * GUI_GRID_H + GUI_GRID_Y","8 * GUI_GRID_W","1.5 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action=|[] call A3M_Fnc_BuyButton|; "]]
+	[1616,"A3m_Btn_Buy",[2,"PURCHASE",["47 * GUI_GRID_W + GUI_GRID_X","32 * GUI_GRID_H + GUI_GRID_Y","8 * GUI_GRID_W","1.5 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],["action=|[] call A3M_Fnc_BuyButton|; "]]
 ]
+*/
+
 */
 
 // Banking
@@ -164,3 +173,18 @@ $[
 	[1001,"A3M_DebitText",[1,"Debits:",["0.322428 * safezoneW + safezoneX","0.444985 * safezoneH + safezoneY","0.0400969 * safezoneW","0.0220062 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
 */
+
+// AI Recruitment
+/* #Loledu
+$[
+	1.063,
+	["AIRecruitment",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+	[1800,"A3M_Dia_PersMngr",[1,"Personnel Management ",["0.198185 * safezoneW + safezoneX","0.185425 * safezoneH + safezoneY","0.594655 * safezoneW","0.670946 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1200,"A3M_Dia_SolPic",[1,"#(argb,8,8,3)color(1,1,1,1)",["0.20274 * safezoneW + safezoneX","0.224923 * safezoneH + safezoneY","0.336521 * safezoneW","0.550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1500,"",[1,"",["0.556096 * safezoneW + safezoneX","0.225022 * safezoneH + safezoneY","0.229956 * safezoneW","0.550154 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1600,"A3M_Btn_Rcrt",[1,"Recruit",["0.275602 * safezoneW + safezoneX","0.785977 * safezoneH + safezoneY","0.0841493 * safezoneW","0.0439965 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"A3M_Btn_RcClose",[1,"Close",["0.640249 * safezoneW + safezoneX","0.785977 * safezoneH + safezoneY","0.0841493 * safezoneW","0.0439965 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+]
+*/
+
+

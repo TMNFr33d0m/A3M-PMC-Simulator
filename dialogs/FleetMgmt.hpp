@@ -64,7 +64,7 @@ class A3M_StoreFrame: RscFrame
 };
 class A3M_Exitbutton: RscButton
 {
-	action = "closeDialog 0; [] call A3M_fnc_silence;"
+	action = "closeDialog 0;"
 
 	idc = 1600;
 	text = "Exit"; //--- ToDo: Localize;

@@ -44,7 +44,7 @@ class A3M_VMS
 class Controls
 { 
 ////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Fr33d0m, v1.063, #Popofo)
+// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Naxuqo)
 ////////////////////////////////////////////////////////
 
 class M_MissionFrame: RscFrame
@@ -52,40 +52,72 @@ class M_MissionFrame: RscFrame
 	Moving = 1; 
 	idc = 1901;
 	text = "WarMail Encrypted Email Service"; //--- ToDo: Localize;
-	x = 0.270799 * safezoneW + safezoneX;
-	y = 0.224923 * safezoneH + safezoneY;
-	w = 0.45825 * safezoneW;
-	h = 0.550154 * safezoneH;
+	x = 0.152262 * safezoneW + safezoneX;
+	y = 0.114892 * safezoneH + safezoneY;
+	w = 0.605738 * safezoneW;
+	h = 0.869243 * safezoneH;
 };
 class M_EmailWindow: RscListbox
 {
+	onLBDblClick = "_this spawn A3M_fnc_Email";
 	idc = 1905;
 	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.276529 * safezoneW + safezoneX;
-	y = 0.345957 * safezoneH + safezoneY;
-	w = 0.446943 * safezoneW;
-	h = 0.363102 * safezoneH;
-	onLBDblClick = "_this spawn A3M_fnc_Email";
+	x = 0.275653 * safezoneW + safezoneX;
+	y = 0.180911 * safezoneH + safezoneY;
+	w = 0.448695 * safezoneW;
+	h = 0.209058 * safezoneH;
 };
 class M_Inbox_Text: RscText
 {
-	idc = 1935;
+	idc = 1000;
 	text = "Inbox: "; //--- ToDo: Localize;
-	x = 0.276529 * safezoneW + safezoneX;
-	y = 0.312948 * safezoneH + safezoneY;
+	x = 0.236392 * safezoneW + safezoneX;
+	y = 0.180911 * safezoneH + safezoneY;
 	w = 0.0343688 * safezoneW;
 	h = 0.0220062 * safezoneH;
 };
 class Email_Close_Button: RscButton
 {
-	idc = 1931;
+	action="closeDialog 0";
+	idc = 1600;
 	text = "Close"; //--- ToDo: Localize;
-	x = 0.276603 * safezoneW + safezoneX;
-	y = 0.742068 * safezoneH + safezoneY;
-	w = 0.045825 * safezoneW;
-	h = 0.0220062 * safezoneH;
-	action = "closeDialog 0; [] call A3M_fnc_silence";
+	x = 0.197131 * safezoneW + safezoneX;
+	y = 0.918117 * safezoneH + safezoneY;
+	w = 0.0729129 * safezoneW;
+	h = 0.0440123 * safezoneH;
 };
+class RscPicture_1200: RscPicture
+{
+	idc = 1200;
+	text = "images\inboxBlank.paa";
+	x = 0.275653 * safezoneW + safezoneX;
+	y = 0.389969 * safezoneH + safezoneY;
+	w = 0.448695 * safezoneW;
+	h = 0.583163 * safezoneH;
+};
+class A3M_Btn_AcceptMission: RscButton
+{
+	action = "_this call A3M_Fnc_AcceptMission"; 
+	idc = 1601;
+	text = "Accept Contract"; //--- ToDo: Localize;
+	x = 0.169088 * safezoneW + safezoneX;
+	y = 0.852098 * safezoneH + safezoneY;
+	w = 0.100956 * safezoneW;
+	h = 0.0440123 * safezoneH;
+};
+class A3m_Dia_MMsgTxt: RscText
+{
+	idc = 1001;
+	text = "Message: "; //--- ToDo: Localize;
+	x = 0.225175 * safezoneW + safezoneX;
+	y = 0.378966 * safezoneH + safezoneY;
+	w = 0.0448695 * safezoneW;
+	h = 0.0550154 * safezoneH;
+};
+////////////////////////////////////////////////////////
+// GUI EDITOR OUTPUT END
+////////////////////////////////////////////////////////
+
 
 };
 };

@@ -121,7 +121,7 @@ class A3M_Btn_Mail: RscClrButton
 };
 class A3M_Btn_Exit: RscClrButton
 {
-	Action = "CloseDialog 0; SwitchScreen setObjectTexture [0, 'images\LoginScreen.paa']";
+	Action = "CloseDialog 0; SwitchScreen setObjectTexture [0, 'images\LoginScreen.paa']; [] call A3M_fnc_silence;";
 	idc = 2400;
 	x = 0.892767 * safezoneW + safezoneX;
 	y = 0.0378707 * safezoneH + safezoneY;

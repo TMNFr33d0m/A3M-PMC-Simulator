@@ -166,7 +166,7 @@ _CurDmg = getDammage _object;
 _DmgWait = (_CurDmg * 10); 
 
 _LaborPrice = (_DmgWait * _RepairPrice); // 9 hours, * 20 an hour, or whatever you set Repair Price to (ParamsArray Select 5) 
-// PARTS!! At rate of 10000 per .10 of damage, or again, at 9 damage, 9000 in parts. 
+// PARTS!! At rate of 1000 per .10 of damage, or again, at 9 damage, 9000 in parts. 
 _PartsPrice = (_CurDmg * 20000); 
 // Price of all damage is Labor + Parts. 
 _DmgPrice = (_LaborPrice + _PartsPrice); 

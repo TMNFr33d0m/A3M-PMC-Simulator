@@ -317,6 +317,19 @@ class A3M_Dia_CurSelTxt: RscText
 	w = 0.123441 * safezoneW;
 	h = 0.0440123 * safezoneH;
 };
+
+class A3M_Btn_Promote: RscButton
+{
+	Action = "[] call PromotePlayer"; 
+
+	idc = 1609;
+	text = "Promote Player"; //--- ToDo: Localize;
+	x = 0.438304 * safezoneW + safezoneX;
+	y = 0.455988 * safezoneH + safezoneY;
+	w = 0.0953476 * safezoneW;
+	h = 0.0330092 * safezoneH;
+	tooltip = "Give this player purchasing power, and the ability to act as a field coordinator. Player will have access to company budget, admin panel, fleet mgmt, etc. "; //--- ToDo: Localize;
+};
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END
 ////////////////////////////////////////////////////////
