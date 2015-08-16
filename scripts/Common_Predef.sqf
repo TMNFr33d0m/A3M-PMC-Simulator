@@ -9,7 +9,6 @@
 |__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/  
 
 
-
 OPSG Common Predefines by Cody Salazar AKA Fr33d0m 
 www.A3MilSim.com
 
@@ -187,7 +186,7 @@ SARMission setTaskState "Succeeded";
 PlayMusic "Success"; 
 sleep 5; 
 player addRating 850; 
-hint "You were paid 850 rating points for this operation. Thank you for your hard work. We recognize that Outlaws PSG and it's sub-contractors are always dedicated professionals. \n ~Astral Corp HR"; 
+hint "You were paid 850 rating points for this operation. Thank you for your hard work. We recognize that Orion Private Security Group and it's sub-contractors are always dedicated professionals. \n ~Astral Corp HR"; 
 sleep 3; 
 hint "Budget Increase Secured. OPSG has been allotted $1,500,000.00";
 player setCurrentTask CO1;
@@ -290,7 +289,7 @@ sleep 5;
 player addRating 900;
 hint "You have been paid 900 rating points for your services."; 
 sleep 2; 
-hint "Outlaws PSG has been awarded $5m in operational funds from our client, NATO. Great job!"; 
+hint "Orion Private Security Group has been awarded $5m in operational funds from our client, NATO. Great job!"; 
 player setCurrentTask CO1;
 }; 
 

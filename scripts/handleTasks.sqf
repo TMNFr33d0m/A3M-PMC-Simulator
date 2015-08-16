@@ -337,9 +337,6 @@ Raid1Win setTriggerStatements ["this", "[] call A3M_fnc_RaidClear;", ""];
 
 }; 
 
-// 
-
-
 // Raid 2 
 A3M_msn_Raid2= {
 
