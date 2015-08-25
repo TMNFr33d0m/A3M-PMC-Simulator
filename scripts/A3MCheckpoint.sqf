@@ -215,7 +215,11 @@ sleep 1;
 execVM "scripts\A3MCheckpoint.sqf";
 };
 
-default { hint "Something went horribly wrong, could not determine ManType"};
+default { 
+	hint "Oh Noes! Mission Crash! Something went horribly wrong, could not determine ManType. Trying Again..." 
+	sleep 1; 
+	execVM "scripts\A3MCheckpoint.sqf";
+	};
 
 };
 }; 

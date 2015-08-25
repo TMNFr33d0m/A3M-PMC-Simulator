@@ -40,4 +40,4 @@ if (isNil "missionStatus") then {execVM "scripts\initask1.sqf";}
 
 else
 
-{hint "Welcome, JIP Player...A3M JIP Module is locating the progression of the Game In Progress. Standby."; execVM "scripts\JIPhandle.sqf";};
+{player sidechat "Welcome, JIP Player...A3M JIP Module is locating the progression of the Game In Progress. Standby."; execVM "scripts\JIPhandle.sqf";};

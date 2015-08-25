@@ -77,7 +77,6 @@ class Mission
 		"A3_Air_F_Heli_Heli_Transport_04",
 		"A3_Modules_F_Sites",
 		"A3_Structures_F_System",
-		"task_force_radio_items",
 		"A3_Structures_F_Heli_Ind_Machines",
 		"A3_Structures_F_Heli_Items_Airport",
 		"A3_Structures_F_Heli_Ind_AirPort",
@@ -7732,7 +7731,7 @@ class Mission
 			vehicle="Flag_Blue_F";
 			skill=0.60000002;
 			text="Flag1_3_1_1";
-			init="this setFlagTexture ""images\OPSG_FlagA.jpg"";";
+			init="this setFlagTexture ""images\OPSG_FlagA.paa"";";
 		};
 		class Item289
 		{
@@ -7743,7 +7742,7 @@ class Mission
 			vehicle="Flag_Blue_F";
 			skill=0.60000002;
 			text="Flag1_3_1_3";
-			init="this setFlagTexture ""images\OPSG_FlagA.jpg"";";
+			init="this setFlagTexture ""images\OPSG_FlagA.paa"";";
 		};
 		class Item290
 		{
@@ -7772,7 +7771,7 @@ class Mission
 			vehicle="Flag_Blue_F";
 			skill=0.60000002;
 			text="Flag1_3_1_4";
-			init="this setFlagTexture ""images\OPSG_FlagB.jpg"";";
+			init="this setFlagTexture ""images\OPSG_FlagB.paa"";";
 		};
 		class Item293
 		{
@@ -7867,7 +7866,7 @@ class Mission
 			vehicle="Flag_Blue_F";
 			skill=0.60000002;
 			text="Flag1_3_1_5";
-			init="this setFlagTexture ""images\flag1.jpg"";";
+			init="this setFlagTexture ""images\flag1.paa"";";
 		};
 		class Item302
 		{
@@ -9358,7 +9357,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Flag_US_F";
 			skill=0.60000002;
-			init="this setFlagTexture ""images\OPSG_FlagA.jpg"";";
+			init="this setFlagTexture ""images\OPSG_FlagA.paa"";";
 		};
 		class Item452
 		{
@@ -9368,7 +9367,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Flag_UNO_F";
 			skill=0.60000002;
-			init="this setFlagTexture ""images\Loadimg.jpg"";";
+			init="this setFlagTexture ""images\Loadimg.paa"";";
 		};
 		class Item453
 		{
@@ -10010,7 +10009,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			skill=0.60000002;
 			text="LuchtComp";
-			init="this setObjectTexture [0, ""images\BeachGirl.jpg""];  this addAction [""Access Internet"", { [LuchtComp] execVM ""scripts\homepage.sqf""}]; ";
+			init="this setObjectTexture [0, ""images\BeachGirl.paa""];  this addAction [""Access Internet"", { [LuchtComp] execVM ""scripts\homepage.sqf""}]; ";
 		};
 		class Item514
 		{
@@ -10671,7 +10670,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			skill=0.60000002;
 			text="TwoWay";
-			init="this setObjectTexture [0, ""images\BlackGlass.jpg""]; ";
+			init="this setObjectTexture [0, ""images\BlackGlass.paa""]; ";
 		};
 		class Item577
 		{
@@ -10683,7 +10682,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			skill=0.60000002;
 			text="TwoWay_1";
-			init="this setObjectTexture [0, ""images\BlackGlass.jpg""]; ";
+			init="this setObjectTexture [0, ""images\BlackGlass.paa""]; ";
 		};
 		class Item578
 		{
@@ -11236,7 +11235,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Flag_White_F";
 			skill=0.60000002;
-			init="this setFlagTexture ""images\MissionFlag_C.jpg"";";
+			init="this setFlagTexture ""images\MissionFlag_C.paa"";";
 		};
 		class Item628
 		{
@@ -11429,7 +11428,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Flag_White_F";
 			skill=0.60000002;
-			init="this setFlagTexture ""images\MissionFlag_B.jpg"";";
+			init="this setFlagTexture ""images\MissionFlag_B.paa"";";
 		};
 		class Item647
 		{
@@ -11780,7 +11779,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Flag_White_F";
 			skill=0.60000002;
-			init="this setFlagTexture ""images\MissionFlag_A.jpg"";";
+			init="this setFlagTexture ""images\MissionFlag_A.paa"";";
 		};
 		class Item680
 		{

@@ -41,31 +41,39 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 
+initphase = 1; 
+player allowDamage false; 
+sleep 0.5; 
+
+titleText ["A3M | PMC SIMULATOR        ......... LOADING, PLEASE WAIT .........", "BLACK FADED",10];
+
+//The Line Below calls all the predefines for the mission. Most of the MP Compat stuff is done via predefine 
+// Load the Common Predefines (Huge!!) 
+execVM "scripts\Common_Predef.sqf";
+sleep 3; 
+execVM "scripts\Mission_Predef.sqf";
+sleep 2;
+//The line below plays the intro text at spawn in. 
+execVM "scripts\intro.sqf";
+sleep 0.5; 
+
 // The line below is very important for  A3M revive, The Sitting Script and the Base Animations. 
 switchMoveEverywhere = compileFinal " _this select 0 switchMove (_this select 1);";
 //the line below makes base animations happen
 [[[],"scripts\C12staff.sqf"],"BIS_fnc_execVM",true,true] spawn BIS_fnc_MP;
 // T9 Facility Staff 
 [[[],"scripts\T9staff.sqf"],"BIS_fnc_execVM",true,true] spawn BIS_fnc_MP;
-
-
-//The Line Below calls all the predefines for the mission. Most of the MP Compat stuff is done via predefine 
-
-//The line below plays the intro text at spawn in. 
-
-// Load the Common Predefines (Huge!!) 
-execVM "scripts\Common_Predef.sqf";
-sleep 2;
-execVM "scripts\intro.sqf";
 //the line below starts the briefing
 execVM "scripts\briefing.sqf"; 
-// Initiate Bank Account
-[] call A3M_Fnc_InitBank; 
 // the line below starts the JIP Tasker. 
 execVM "scripts\initask.sqf"; 
 
 waitUntil {player == player}; 
-[player] execVM "Scripts\PMCBasic.sqf"; 
+
+[player] execVM "Scripts\PMCBasic.sqf";
+ 
+// Initiate Bank Account
+[] call A3M_Fnc_InitBank; 
 
 //  Detention Center Predefines
 // execVM "scripts\Detention.sqf"; 
@@ -73,6 +81,11 @@ waitUntil {player == player};
 //   RHS NUKE Function !! Stupid place to save it....
 //   [position,yield,radius] call rhs_fnc_ss21_nuke
 // EX [getpos player,10000,1000] call rhs_fnc_ss21_nuke
+sleep 30; 
+
+player allowDamage true; 
+initphase = 0; 
+player sidechat "Loading A3M PMC Simulator Complete..."
 
 
 

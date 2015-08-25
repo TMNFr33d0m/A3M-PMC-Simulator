@@ -209,7 +209,7 @@ class A3M_ModTxt: RscText
 class RscPicture_1200: RscPicture
 {
 	idc = 1200;
-	text = "images\FleetMgmtImg.jpg";
+	text = "images\FleetMgmtImg.paa";
 	x = 0.111879 * safezoneW + safezoneX;
 	y = 0.130292 * safezoneH + safezoneY;
 	w = 0.482347 * safezoneW;

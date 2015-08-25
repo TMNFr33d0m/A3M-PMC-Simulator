@@ -33,9 +33,9 @@ and I hope you enjoy the things I have in the works!
 
 ################################## LET US BEGIN #################################### */
 
-
-hint "A3M JIP Manager is working....";
+player sidechat "A3M JIP Manager is working....";
 sleep 3.0; 
+
 switch (missionStatus) do 
 {
 	case "M0": {

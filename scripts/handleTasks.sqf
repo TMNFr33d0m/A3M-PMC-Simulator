@@ -107,6 +107,7 @@ VIPDead setTriggerStatements ["!Alive VIP1", "[] call A3M_EscortFailed", ""];
 }; 
 
 "C_Nikos_aged" createUnit [getPos Player, group player, "VIP1 = this", 0.9, "COLONEL" ];
+VIP addAction ["Follow Me", {VIP1 join group player}];
 
 call A3M_fnc_DestinationTrigger;
 call A3M_fnc_DeathTrigger; 
@@ -176,39 +177,6 @@ else
 { hint "A Convoy Mission is currently active. You must wait until the convoy mission is completed before you can start another." }; 
 
 };
-
-// Next Mission Set
-// *********************#################***********************
-A3M_msn_chkpt = {
-
-if (isServer) then {
-
-if isNil "MissionActive" then { MissionActive = 0; publicVariable "MissionActive"; }; 
-
-if (MissionActive == 0) then {
-
-MissionActive = 1; 
-publicVariable "MissionActive"; 
-
-if (isNil "CheckpointActive") then {CheckpointActive = 0};
-
-if (CheckpointActive == 0) then {
-
-CheckpointActive = 1;
-publicVariable "CheckpointActive"; 
-
-RightsViols= 0; 
-publicVariable "RightsViols"; 
-
-missionspassed = 0; 
-publicVariable "missionspassed"; 
-
-[ '','A3M_fnc_RoadBlock',True,False] call BIS_fnc_MP;
-
-}; 
-} else { hint "An Roadblack Shift already underway." }; 
-}; 
-}; 
 
 // Next Mission Set
 // *********************#################***********************
@@ -478,7 +446,9 @@ case 1: {
 }; 
 
 case 2: {
-[] call A3M_msn_chkpt; 
+
+["","A3M_msn_chkpt",True,False] call BIS_fnc_MP;
+
 }; 
 
 case 3: {

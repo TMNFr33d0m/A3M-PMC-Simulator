@@ -38,30 +38,38 @@ and I hope you enjoy the things I have in the works!
 
 ################################## LET US BEGIN #################################### */
 
+overviewText = "A3M PMC Simulator is a multiplayer mode designed to simulate working as a Private Military Contractor in a conflict zone. You will be required to carry out security and paramilitary operations pursuant to your contracts with OPSG, and you will be paid based on performance per operation.";
+overviewTextLocked = "If this mission is locked, something is wrong!";
+overviewPicture = "images\Loadimg.paa";
+
 author = "Cody Salazar AkA A3M Fr33d0m";
-OnLoadName = "A3M PMC Simulator"; 
+OnLoadName = "A3M | PMC Simulator"; 
 OnLoadMission = "Orion Private Security Group"; 
 onLoadIntro = "Req. ALiVE, RHS Esc, ACE3, Leights OPFOR and TFAR"; 
 
 respawn = 3;
-respawnOnStart = 0;
 respawnDelay = 30;
-respawnDialog = 1;
-respawnTemplatesWest[] = {"MenuPosition"};
-respawnButton = 1;
+
 disabledAI = 1;
+
 enableDebugConsole = 1;
+
 scriptedPlayer = 1;
+
 corpseManagerMode = 1;
 corpseLimit = 1;
 corpseRemovalMinTime = 60; //seconds
 corpseRemovalMaxTime = 1200; //seconds
+
 wreckManagerMode = 1;
 wreckLimit = 1;
 wreckRemovalMinTime = 60; //seconds
 wreckRemovalMaxTime = 1200; //seconds
+
+// Make em be real pilots
 forceRotorLibSimulation = 1; 
-loadscreen = "images\OPSG_Loadimg.jpg"; 
+
+loadscreen = "images\Loadimg.paa"; 
 
 class Header
 {

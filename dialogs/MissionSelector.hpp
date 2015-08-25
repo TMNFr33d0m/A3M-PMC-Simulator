@@ -97,7 +97,8 @@ class RscPicture_1200: RscPicture
 };
 class A3M_Btn_AcceptMission: RscButton
 {
-	action = "_this call A3M_Fnc_AcceptMission"; 
+	
+	action = "_this spawn A3M_Fnc_AcceptMission"; 
 	idc = 1601;
 	text = "Accept Contract"; //--- ToDo: Localize;
 	x = 0.169088 * safezoneW + safezoneX;
