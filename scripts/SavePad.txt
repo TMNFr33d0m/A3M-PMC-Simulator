@@ -1,6 +1,12 @@
 // I save the menu files in this pad. You can load these into the GUI editor and fuck with them. 
 
 
+		//   RHS NUKE Function !! Stupid place to save it....
+		//   [position,yield,radius] call rhs_fnc_ss21_nuke
+		// EX [getpos player,10000,1000] call rhs_fnc_ss21_nuke
+		
+		
+
 // Remix!! Fleet Management Screen
 
 /* #Fexejy

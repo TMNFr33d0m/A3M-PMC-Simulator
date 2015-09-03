@@ -33,14 +33,13 @@ and I hope you enjoy the things I have in the works!
 
 ################################## LET US BEGIN #################################### */
 
-player sidechat "A3M JIP Manager is working....";
-sleep 3.0; 
+systemChat "A3M JIP Manager is working....";
 
 switch (missionStatus) do 
 {
 	case "M0": {
-CO1 = player createSimpleTask ["Report to briefing area."]; 
-CO1 setSimpleTaskDescription ["Report to briefing area","Report","Briefing Area"]; 
+CO1 = player createSimpleTask ["Report to Operations HQ."]; 
+CO1 setSimpleTaskDescription ["Report to Operations HQ","Report","Operations HQ"]; 
 CO1 setSimpleTaskDestination (getPos Laptop1);
 CO1 setTaskState "Created";
 player setCurrentTask CO1;

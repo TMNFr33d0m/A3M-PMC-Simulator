@@ -41,6 +41,7 @@ and I hope you enjoy the things I have in the works!
 ################################## LET US BEGIN #################################### */
 
 ShiftLength = ParamsArray Select 2; 
+
 if ((CheckPointActive == 1) AND (missionspassed < ShiftLength)) then {	
 
 // Make server pick random car from list of cars below: 
@@ -73,10 +74,11 @@ RCPickedNumber= RCRandomNumber select floor random count RCRandomNumber;
 		EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 		EnPres= EnChance select floor random count EnChance;
 		if (EnPres == 1) then {
-		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Soldier_TL", "LOP_ChDKZ_Soldier", "LOP_ChDKZ_Soldier_AR", "LOP_ChDKZ_Soldier_AT"]] call BIS_fnc_spawnGroup;
-		[_RBen, getMarkerPos "RBC"] call BIS_fnc_taskAttack; 		
-					}; 
-					}; 
+		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_AT"]] call BIS_fnc_spawnGroup;
+		[_RBen, getMarkerPos "RBC"] call BIS_fnc_taskAttack; 
+		EnPres = nil; 			
+						}; 
+				}; 
 
 		Case "M3": { 
 		//hint "Case M3 selected, Box Truck"; 
@@ -94,8 +96,9 @@ RCPickedNumber= RCRandomNumber select floor random count RCRandomNumber;
 		EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 		EnPres= EnChance select floor random count EnChance;
 		if (EnPres == 1) then {
-		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Soldier_TL", "LOP_ChDKZ_Soldier", "LOP_ChDKZ_Soldier_AR", "LOP_ChDKZ_Soldier_AT"]] call BIS_fnc_spawnGroup;
+		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_AT"]] call BIS_fnc_spawnGroup;
 		[_RBen, getMarkerPos "RBC"] call BIS_fnc_taskAttack; 
+		EnPres = nil; 	
 							}; 
 					}; 
 }; 
@@ -110,11 +113,21 @@ publicVariable "RAPickedNumber";
 
 // Random Haji Maker
 doPickRandomHaji = {
-RHClassArray = ["LOP_Afg_civ_01", "LOP_Afg_civ_02", "LOP_Afg_civ_03", "LOP_Afg_civ_04", "LOP_AFR_CIV_01", "LOP_AFR_CIV_02", "LOP_AFR_CIV_03", "LOP_AFR_CIV_04", "LOP_AFR_CIV_05", "C_man_1", "C_man_p_beggar_F", "C_man_polo_2_F", "C_man_polo_3_F", "C_man_polo_4_F", "C_man_polo_5_F", "C_man_polo_6_F", "C_man_1_1_F", "C_journalist_F", "C_journalist_F", "C_scientist_F", "C_man_shorts_2_F", "C_man_shorts_3_F", "C_man_w_worker_F"]; 
+
+RHClassArray = ["LOP_Tak_Civ_Man_01", "LOP_Tak_Civ_Man_02","LOP_Tak_Civ_Man_04","C_man_1", "C_man_p_beggar_F", "C_man_polo_2_F", "C_man_polo_3_F", "C_man_polo_4_F", "C_man_polo_5_F", "C_man_polo_6_F", "C_man_1_1_F", "C_journalist_F", "C_journalist_F", "C_scientist_F", "C_man_shorts_2_F", "C_man_shorts_3_F", "C_man_w_worker_F"]; 
 ChosenHaji = RHClassArray select floor random count RHClassArray; 
 CivHaji= createGroup Civilian;
 ChosenHaji createUnit [getMarkerPos "RBStage1B", CivHaji, "RBVehD = this" , 0.8, "COLONEL"];
-sleep .5; 
+}; 
+
+// Clap Clap - Make it all happen in order. 
+
+_DPRC= [] spawn DoPickRandomCar;
+waitUntil {scriptDone _DPRC};
+_DPRA= [] spawn doPickRandomAttitude;
+waitUntil {scriptDone _DPRA};
+_DPRH= [] spawn doPickRandomHaji; 
+waitUntil {scriptDone _DPRH};
 
 // Make him jump in the hooptie and approach the checkpoint
 
@@ -129,97 +142,23 @@ _wp2 setWaypointType "MOVE";
 _wp2 setWaypointBehaviour "CARELESS";
 _wp2 setWaypointSpeed "FULL";
 
-}; 
-
-// Clap Clap - Make it all happen in order. 
-
-[] call DoPickRandomCar;
-[] call doPickRandomAttitude;
-[] spawn doPickRandomHaji; 
-
-sleep 1; 
-
-// Create his attitude / rig it with a bomb. 
-
+// Create his attitude for all players/ rig it with a bomb. 
 [ '','MP_Roadblock_Attitude',True,False] call BIS_fnc_MP;
 
-sleep .5; 
+// Tell Death Check Loop that Man is Alive, so no duplication. 
+CPManAlive = 1; 
 
-// Dont think this makes anything actually happen, but I tried. Should make the haji stop. 
-FuckingStop= createTrigger ["EmptyDetector", getMarkerPos "RB"]; 
-FuckingStop setTriggerArea [15, 15, 0, false]; 
-FuckingStop setTriggerActivation ["ANY", "PRESENT", True]; 
-FuckingStop setTriggerType "NONE";
-FuckingStop setTriggerStatements ["RBVeh in ThisList", "doStop RBVeh", ""]; 
+
 } else {
-deleteVehicle FuckingStop; 
+// End Mission for All 
 [ '','A3M_fnc_rbmissionend',True,False] call BIS_fnc_MP;
-sleep 2; 
+
+// Deactive Checkpoint
 CheckpointActive = 0; 
-publicVariable "CheckpointActive";
+
+
+// Reset Car Counter
 missionspassed = 0; 
 publicVariable "missionspassed"; 
+
  }; 
-
- 
-A3M_fnc_HandleSol= {
-switch (mantype) do {
-
-case "M0": {
-hint "No mantype was found. Phantom Exec"; 
-};
-
-case "M1": {
-missionspassed= (missionspassed + 1); 
-publicVariable "missionspassed"; 
-['','A3M_FNC_CRIMMP',True,False] call BIS_fnc_MP;
-sleep 1; 
-execVM "scripts\A3MCheckpoint.sqf";
-};
-
-case "M2": {
-missionspassed= (missionspassed + 1); 
-publicVariable "missionspassed"; 
-RightsViols = (RightsViols+1); 
-publicVariable "RightsViols";
-['','A3M_FNC_CIVMP',True,False] call BIS_fnc_MP;
-sleep 1; 
-execVM "scripts\A3MCheckpoint.sqf";
-};
-
-case "M3": {
-[ '','RemAllAct',True,False] call BIS_fnc_MP;
-missionspassed= (missionspassed + 1) ; 
-publicVariable "missionspassed";
-['','A3M_fnc_TERRMP',True,False] call BIS_fnc_MP;
-sleep 5; 
-deleteVehicle RBVeh;
-sleep 1; 
-execVM "scripts\A3MCheckpoint.sqf";
-};
-
-case "M4": {
-missionspassed= (missionspassed + 1); 
-publicVariable "missionspassed";
-RightsViols = (RightsViols+1); 
-publicVariable "RightsViols"; 
-['','A3M_FNC_PRISMP',True,False] call BIS_fnc_MP; 
-sleep 1; 
-execVM "scripts\A3MCheckpoint.sqf";
-};
-
-case "M5": {
-missionspassed= (missionspassed + 1); 
-publicVariable "missionspassed"; 
-sleep 1; 
-execVM "scripts\A3MCheckpoint.sqf";
-};
-
-default { 
-	hint "Oh Noes! Mission Crash! Something went horribly wrong, could not determine ManType. Trying Again..." 
-	sleep 1; 
-	execVM "scripts\A3MCheckpoint.sqf";
-	};
-
-};
-}; 

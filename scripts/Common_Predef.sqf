@@ -49,6 +49,7 @@ B_defensebudget = (B_defensebudget - GlobalPushAmount);
 publicVariable "B_defensebudget"; 
 B_totalcost= (B_totalcost+GlobalPushAmount); 
 publicVariable "B_totalcost"; 
+["InformationGreen", ["Cash Advance Received!"]] call bis_fnc_showNotification;
 Hint Format ["You've been advanced $%1.00 from the Operation Budget by your Team Coordinator.", GlobalPushAmount]; 
 }; 
 
@@ -63,6 +64,7 @@ _SubRate = Rating player;
 Player AddRating -_SubRate; 
 Player addRating _PreRate; 
 // Done Compensating
+["InformationGreen", ["You have been promoted!"]] call bis_fnc_showNotification;
 hint format ["Congratulations %1, You have been promoted! \n \n You are vested with purchasing power within your company. Purchase wisely and work to make your company the best in the business! \n \n You may now act as a Team Coordinator.", TargetPlayer]; 
 }; 
 };
@@ -77,6 +79,7 @@ B_defensebudget = (B_defensebudget + GlobalPushAmount);
 publicVariable "B_defensebudget"; 
 B_totalcost= (B_totalcost-GlobalPushAmount); 
 publicVariable "B_totalcost"; 
+["InformationRed", ["You have been fined!"]] call bis_fnc_showNotification;
 Hint Format ["You've been fined for $%1.00 from your personal account by your Team Coordinator. Contact your team coordinator for details about this fine / deduction.", GlobalPushAmount]; 
 }; 
 
@@ -85,6 +88,7 @@ Hint Format ["You've been fined for $%1.00 from your personal account by your Te
 A3M_Fnc_GoToJail = {
 if (name player == TargetPlayer) then {
 Player SetPos (GetMarkerPos "Jail");
+["InformationRed", ["You have been Incarcerated!"]] call bis_fnc_showNotification;
 }; 
 }; 
 
@@ -96,6 +100,7 @@ Wallet = (Wallet + 10000);
     publicVariable "B_defensebudget"; 
 	B_totalcost= (B_totalcost+10000); 
     publicVariable "B_totalcost"; 
+	["InformationGreen", ["Cash Advance Received!"]] call bis_fnc_showNotification;
    	hint "You've been advanced $10,000.00 from the Operation Budget by your Team Coordinator."; 
 }; 
 
@@ -107,6 +112,7 @@ RBduty2 setTaskState "Failed";
 SARMission setTaskState "Failed";
 A3MRaid1 setTaskState "Failed";
 sleep 2; 
+["InformationRed", ["Return To Base Immediately!"]] call bis_fnc_showNotification;
 Hint "Your mission was cancelled by the Team Coordinator. Return to Base Immediately for further instructions."; 
 player setCurrentTask CO1; 
 }; 
@@ -258,6 +264,7 @@ hint Format ["You have messaged %1 with the following message: \n \n %2", Target
 CashAdvance = { 
 hint "You have advanced $10,000.00 to each player in the game. This money has been subtracted from the Operational Budget. "; 
 sleep 1; 
+["InformationGreen", ["Global Cash Advance Issued"]] call bis_fnc_showNotification;
 [ '','A3M_fnc_MoneyToAll',True,False] spawn BIS_fnc_MP; 
 [] call DoBudget;
 [] call DoTotal; 
@@ -276,6 +283,7 @@ if (isNil "TargetPlayer") then { hint "Please Select an Active Operative First"}
 			if (GlobalPushAmount < 1) then {Hint "You must advance more than that, cheapskate!"} else {
 				if (GlobalPushAmount >= 1) then {
 				['','A3M_fnc_MoneyToYou',True,False] spawn BIS_fnc_MP; 
+				["InformationGreen", ["Cash Advance Issued"]] call bis_fnc_showNotification;
 				sleep 1; 
 				[] call DoBudget;
 				[] call DoTotal;
@@ -298,6 +306,7 @@ if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First"
 			if (GlobalPushAmount < 1) then {Hint "You must deduct more than that, light-hand!"} else {
 				if (GlobalPushAmount >= 1) then {
 				['','A3M_fnc_MoneyFromYou',True,False] spawn BIS_fnc_MP; 
+				["InformationRed", ["Fine Assessed"]] call bis_fnc_showNotification;
 				sleep 1; 
 				[] call DoBudget;
 				[] call DoTotal;
@@ -314,6 +323,7 @@ PromotePlayer = {
 
 if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First"} else {
 ['','A3M_Fnc_GrantPower',True,False] spawn BIS_fnc_MP; 
+["InformationGreen", ["Promotion Issued"]] call bis_fnc_showNotification;
 hint format ["You have promoted %1", TargetPlayer];
 }; 
 
@@ -398,13 +408,14 @@ sleep 1;
 
 sleep 1; 
 
+["InformationRed", ["All Missions Cancelled!"]] call bis_fnc_showNotification;
 hint "All Missions Force Cancelled Successfully."; 
 
 };
 
 // Force Cleanup
 A3M_Fnc_Cleanup = {
-hint "Cleanup Initiated...Removing Waste...";
+["InformationRed", ["Cleanup Initiated"]] call bis_fnc_showNotification;
 { if (!alive _x) then { deletevehicle _x } } foreach (nearestObjects [center, ["Man", "Car", "Tank", "Helicopter"], 7500]);
 
 };
@@ -413,6 +424,7 @@ hint "Cleanup Initiated...Removing Waste...";
 A3M_fnc_Incarcerate = {
 if (isNil "TargetPlayer") then { hint " Please Select an Active Operative First!"} else {
 ['','A3M_Fnc_GoToJail',True,False] spawn BIS_fnc_MP; 
+["InformationRed", ["Player Incarcerated!"]] call bis_fnc_showNotification;
 hint format ["You have incarcerated %1 in the C-12 Detention Facility.", TargetPlayer];
 };
 }; 
@@ -511,7 +523,6 @@ if ((_foreachindex - _modBase) % (_mod) == 0 && _foreachindex != _digitsCount) t
 _numberText
 };
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////
 //Update Account Balance in GUI
 
@@ -558,6 +569,7 @@ multiplyer = plyscore * PM;
 Wallet = (Wallet + Multiplyer); 
 profileNamespace setVariable ["SavedMoney", Wallet]; 
 hint format ["Payday! You were paid $%1.00 for services rendered. The money has been direct deposited to your account.", multiplyer]; 
+["InformationGreen", ["Payday!"]] call bis_fnc_showNotification;
 player addRating -plyscore; 
 plyscore = rating player;
 SaveProfileNamespace;
@@ -589,9 +601,8 @@ signedin= 1;
  
  [] call DoDebits;  
  [] call DoBalance;  
- 
- 
- };  
+
+};  
 
 
 
@@ -610,6 +621,21 @@ DRI_HQmsg = {
 	] spawn BIS_fnc_typeText2;
 
 }; 
+
+DRI_M4RMsg = {
+[
+		
+		[
+			["Altis ","align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+			["Rifle Club","align = 'center' shadow = '1' size = '0.7'","#aaaaaa"],
+			["","<br/>"],
+			["Firing Range","align = 'center' shadow = '1' size = '1.0'"]
+		]
+
+	] spawn BIS_fnc_typeText2;
+
+}; 
+
 DRI_ArmoryMsg = {
 [
 		
@@ -637,6 +663,19 @@ DRI_MPHQMsg = {
 
 }; 
 
+DRI_HspMsg = {
+[
+		
+		[
+			["Orion Private ","align = 'center' shadow = '1' size = '0.7' font='PuristaBold'"],
+			["Security Group","align = 'center' shadow = '1' size = '0.7'","#aaaaaa"],
+			["","<br/>"],
+			["Medical Center","align = 'center' shadow = '1' size = '1.0'"]
+		]
+
+	] spawn BIS_fnc_typeText2;
+
+}; 
 // HQ Radio (Plays music) 
 DRI_ABCT2_HQRadio = {
 HQ_MusicSource say3D "Showdown"; 
@@ -1750,7 +1789,7 @@ ResetIdentRem= player addAction ["Nevermind, I want to live! (Leave Reset Mode)"
 
 A3M_Fnc_ResetIdent = {
 
-
+["InformationRed", ["Identity Reset Initiated!"]] call bis_fnc_showNotification;
 
 deathrating = rating player;
  
@@ -1774,7 +1813,7 @@ hint "You pass on to your reward with a positive rating. You were a good person.
 sleep 2;  
 
 player setDamage 1; 
-hint format ["SACRIFICE! Your player identity has been deleted. Your bank account has been closed. Your rating has been reset to 0. Your soul has been claimed. Sign in to the bank to start a new persistent identity.", multiplyer]; 
+hint format ["SACRIFICE! Your player identity has been deleted. Your bank account has been closed. Your rating has been reset to 0. Your stash has been emptied. Your soul has been claimed. Sign in to the bank to start a new persistent identity.", multiplyer]; 
 
 ResetIdentActive = 0; 
 player removeAction ResetIdentAct; 
@@ -1794,11 +1833,11 @@ B_initialbudget= paramsArray select 1;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 if (isnil"B_defensebudget") then {
 B_defensebudget= B_initialbudget;
-publicVariable"B_defensebudget";
+publicVariable "B_defensebudget";
 };
 if (isnil"B_totalcost") then {
 B_totalcost= 0;
-publicVariable"B_totalcost";
+publicVariable "B_totalcost";
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -1816,7 +1855,7 @@ _index0 = lbadd [2560, "Operative I ~ $6,500.00"];
 _index1 = lbadd [2560, "Operative II ~ $8,500.00"];
 _index2 = lbadd [2560, "Operative III ~ $10,500.00"];
 _index3 = lbadd [2560, "Operative IV ~ $12,500.00"];
-_index4 = lbadd [2560, "Operat V ~ $15,000.00"];
+_index4 = lbadd [2560, "Operative V ~ $15,000.00"];
 
 A3M_fnc_AIRhandleClick= {
 

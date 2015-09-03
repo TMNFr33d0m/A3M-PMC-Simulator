@@ -33,11 +33,15 @@ And last, but definitely not least, the A3 community, who through over 250+ enco
 and I hope you enjoy the things I have in the works! 
 
 ################################## LET US BEGIN #################################### */
-
-waitUntil {!isNull player};
  
-if (isNil "missionStatus") then {execVM "scripts\initask1.sqf";}
+if (isNil "missionStatus") then {
 
-else
-
-{player sidechat "Welcome, JIP Player...A3M JIP Module is locating the progression of the Game In Progress. Standby."; execVM "scripts\JIPhandle.sqf";};
+	Systemchat "Welcome, JIP Player...No active mission was detected.";
+	execVM "scripts\initask1.sqf";
+	
+	}else{
+	
+		Systemchat "Welcome, JIP Player...A3M JIP Module is locating the progression of the Game In Progress. Standby."; 
+		execVM "scripts\JIPhandle.sqf";
+		
+	};
