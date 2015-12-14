@@ -47,6 +47,7 @@ Calvin disableAI "ANIM";
 Devon disableAI "ANIM"; 
 Edwin disableAI "ANIM"; 
 Fred disableAI "ANIM"; 
+
 Allen switchMove "LHD_krajPaluby";
 Chip switchMove "HubStandingUB_idle1";
 Brent switchMove "acts_StandingSpeakingUnarmed"; 
@@ -57,3 +58,10 @@ Brad switchMove "InBaseMoves_repairVehicleKnl";
 Devon switchMove "InBaseMoves_repairVehicleKnl"; 
 Edwin switchMove "InBaseMoves_assemblingVehicleErc"; 
 Fred SwitchMove "HubBriefing_stretch"; 
+
+T9_CinematicMP= {
+Jeff say3D "A3M_T9Cinematic1";
+Jeff switchMove "Acts_PointingLeftUnarmed";
+Calvin switchMove "LHD_krajPaluby";
+Floyd switchMove "HubStandingUC_idle1";  
+};

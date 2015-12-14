@@ -43,12 +43,12 @@ overviewTextLocked = "If this mission is locked, something is wrong!";
 overviewPicture = "images\Loadimg.paa";
 
 author = "Cody Salazar AkA A3M Fr33d0m";
-OnLoadName = "A3M | PMC Simulator"; 
-OnLoadMission = "Orion Private Security Group"; 
-onLoadIntro = "Req. ALiVE, RHS Esc, ACE3, Leights OPFOR and TFAR"; 
+OnLoadName = "A3M PMC Simulator Lite"; 
+OnLoadMission = "Official Website: www.a3milsim.com"; 
+onLoadIntro = "Req. ALiVE, RHS Esc, ACE3, and TFAR"; 
 
 respawn = 3;
-respawnDelay = 15;
+respawnDelay = 10;
 
 disabledAI = 1;
 
@@ -64,9 +64,6 @@ class Header
 	maxPlayers = 42;
 };
 
-disableChannels[]={0,1,2,3,6};
-
-
 #include "dialogs\A3M_Normals.hpp"
 #include "dialogs\FleetMgmt.hpp"
 #include "dialogs\MissionSelector.hpp"
@@ -80,9 +77,10 @@ disableChannels[]={0,1,2,3,6};
 
 class CfgSounds
 {
-	sounds[] = {deuce, RTB, Standby, MissionAccepted, MissionFailed, WFP, T9Cinematic1, alarmed, PLChant, Showdown};
+	sounds[] = {A3M_Buy, A3M_deuce, A3M_RTB, A3M_Standby, A3M_MissionAccepted, A3M_MissionFailed, A3M_WFP, A3M_T9Cinematic1, A3M_alarmed, A3M_PLChant, A3M_GetDown, A3M_KYHD};
 	
-	class buy
+
+	class A3M_buy
 	{
 		// how the sound is referred to in the editor (e.g. trigger effects)
 		name = "buy";
@@ -92,68 +90,84 @@ class CfgSounds
 		titles[] = {1, "*You have made a purchase*"};
 	};
 	
-		class deuce
+		class A3M_deuce
 	{
 		name = "deuce";
 		sound[] = {"\sounds\deuce.ogg", 0.8, 1.0};
 		titles[] = {1, "*Travelling to Destination: Standby*"};
 	};
 	
-		class RTB
+		class A3M_RTB
 	{
 		name = "RTB";
 		sound[] = {"\sounds\AORTB.ogg", 0.8, 1.0};
 		titles[] = {1, "*Radio Message: Return To Base*"};
 	};
 	
-		class Standby
+		class A3M_Standby
 	{
 		name = "Standby";
 		sound[] = {"\sounds\AOSB.ogg", 0.8, 1.0};
 		titles[] = {1, "*Radio Message: Standby for Transmission*"};
 	};
 	
-		class MissionAccepted
+		class A3M_MissionAccepted
 	{
 		name = "MissionAccepted";
 		sound[] = {"\sounds\MissionAcc.ogg", 0.5, 1.0};
 		titles[] = {1, "*You have accepted a contract*"};
 	};
 	
-		class MissionFailed
+		class A3M_MissionFailed
 	{
 		name = "MissionFailed";
 		sound[] = {"\sounds\MissionFail.ogg", 0.5, 1.0};
 		titles[] = {1, "*You have failed to complete this contract*"};
 	};
 	
-		class WFP
+		class A3M_WFP
 	{
 		name = "Wildfire";
 		sound[] = {"\sounds\WildProEvac.ogg", 0.5, 1.0};
 		titles[] = {1, "* Radio Message: WILDFIRE PROTOCOL. EVACUATE! *"};
 	};
 	
-	class T9Cinematic1
+	class A3M_T9Cinematic1
 	{
 		name = "T9Cinematic1";
 		sound[] = {"\sounds\T9Cinematic1.ogg", 0.3, 1.0};
 		titles[] = {};
 	};
 	
-	class alarmed
+	class A3M_alarmed
 	{
 		name = "alarmed";
 		sound[] = {"\sounds\alarmc1.ogg", db+0.95, 1.0};
 		titles[]= {}; 
 	};
 	
-	class PLChant
+	class A3M_PLChant
 	{
 		name = "PLChant";
 		sound[] = {"\sounds\noPL.ogg", db+0.75, 1.0};
 		titles[]= {}; 
 	};
+	
+		class A3M_GetDown
+	{
+		name = "Get Down";
+		sound[] = {"sounds\GetDown.ogg", 1, 1.0};
+		titles[] = {};
+	};
+	
+	
+	class A3M_KYHD
+	{
+		name = "Keep Your Head Down";
+		sound[] = {"sounds\KeepYourHeadDown.ogg", 1, 1.0};
+		titles[] = {};
+	};
+	
 	
 };
 

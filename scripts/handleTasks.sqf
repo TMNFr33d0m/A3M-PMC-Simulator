@@ -10,15 +10,13 @@
 |__/  |__/ \______/ |__/     |__/      |__/      |__/     |__/ \______/        \______/ |__/|__/ |__/ |__/ \______/ |__/ \_______/   \___/   \______/ |__/    
 
 
-Email Based Mission Deployment System (EBDMS) V 1.0 by Cody Salazar AKA Fr33d0m 
+Email Based Mission Deployment System (EBDMS) V 1.2 by Cody Salazar AKA Fr33d0m 
 www.A3MilSim.com
 
 License:
 You can do whatever you were going to do anyway. Just give me the credit i'm due, and don't steal my shit. I'll be pissed. 
 If you want to repay me for all my hard work, come and play arma with me! I hang out at a MilSim unit known as A3M (A3 MilSim) 
 Come and visit us at ts3.a3milsim.com:1911
-
-WE LOVE JOINT OPS WITH OTHER UNITS!! 
 
 www.A3MilSim.com (A3 MilSim)
 All Rights Reserved
@@ -41,18 +39,10 @@ BIS_Fnc_MP:
 
 disableSerialization;
 debug = 1; 
-
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Open Dialog
 _handle= CreateDialog "A3M_VMS";
-//playMusic "gearup"; 
 
-///////////////////////////////////////////////////////////////////////////////////////////
-//Menu Music Killer
-//A3M_fnc_silence = {
-//playMusic ""; 
-//};
- 
 DoAddMissions = {
 lbClear 1905; 
 _index0= lbAdd [1905,"V.I.P. Escort Contract"];
@@ -63,41 +53,37 @@ _index4= lbAdd [1905,"Terrorist Cell Raid I (Assault Compound)"];
 _index5= lbAdd [1905,"Terrorist Cell Raid II (Assault City)"]; 
 _index6 = lbAdd [1905,"*Urgent* Stranded unit requires E&E support"]; 
 _index7 = lbAdd [1905,"Premise Security Shift (T-9 Facility)"]; 
+
 };
-
 []call doAddMissions;
-
 // Mission Functions below: 
 A3M_msn_VIPEscort = {
 
 if (isNil "EscortActive") then { EscortActive = 0; };
 
 if (EscortActive == 0) then {
+
 // Bells and Whistles to signal mission accepted
 hint "Mission Accepted";
-playSound "MissionAccepted"; 
+playSound "A3M_MissionAccepted"; 
 
 // Create Random VIP Model (Contains Leights Opfor)
-RandomVIP= ["C_Nikos_aged","LOP_CHR_Civ_Functionary_01","LOP_CHR_Civ_Doctor_01", "LOP_CHR_Civ_Profiteer_01", "C_scientist_F" ];
+RandomVIP= ["C_Nikos_aged","C_scientist_F"];
 RandomVIPSel= RandomVIP select floor random count RandomVIP;
 
 // Create Randomly selected VIP
 RandomVIPSel createUnit [getMarkerPos "AIR_Spawn", group player, "VIP1 = this", 0.9, "COLONEL" ];
-VIP1 addAction ["Follow Me", {[VIP1] join (group player)}];
 
 // Call Server Side Scripting
-
 ["", "A3M_Svr_VIPEscort",false,false,false] call bis_fnc_MP; 
 
-
+// Add VIP Control Actions to VIP for all players 
+[[VIP1],'A3M_MP_EscVIPCmds',True,False] call BIS_fnc_MP;
 
 	} else { 
 		hint "An Escort Mission is currently active. You must wait until the escort mission is completed before you can start another";
 		}; 
 }; 		
-// Next Mission Set
-// *********************#################************************
-
 A3M_msn_TRKEscort = {
 if (isNil "ConvoyActive") then {convoyActive = 0}; 
 
@@ -105,15 +91,14 @@ if (convoyActive == 0) then {
 
 // Bells and Whistles to signal mission accepted
 hint "Mission Accepted";
-playSound "MissionAccepted"; 
+playSound "A3M_MissionAccepted"; 
  
-["", "A3M_Svr_TRKEscort",false,false,false] call bis_fnc_MP; 
+_cunt = ["", "A3M_svr_TRKEscort",false,false,false] call bis_fnc_MP; 
 
 	}else { 
 		hint "A Convoy Mission is currently active. You must wait until the convoy mission is completed before you can start another.";
 		}; 
 };
-
 // Next Mission Set
 // *********************#################***********************
 A3M_msn_SandE= {
@@ -122,7 +107,7 @@ if (isNil "SEActive") then {SEActive = 0};
 	if (SEActive == 0) then {
 
 	hint "Mission Accepted"; 
-	playSound "MissionAccepted"; 
+	playSound "A3M_MissionAccepted"; 
 
 	["", "A3M_Svr_SandE",false,false,false] call bis_fnc_MP; 
 
@@ -130,29 +115,6 @@ if (isNil "SEActive") then {SEActive = 0};
 			hint "A Snatch and Extract Mission is already in progress. You must wait until the current Snatch and Extract operation is completed before you can start";
 		}; 
 };
-
-// Next Mission Set
-// *********************#################***********************
-
-// Raid Mission  1
-A3M_fnc_RaidClear = {
-
-[ '','A3M_fnc_RaidClearMP',True,False] spawn BIS_fnc_MP;
-
-B_defensebudget= (B_defensebudget + 2000000); 
-
-publicVariable "B_defensebudget"; 
-MissionStatus = "M0"; 
-
-publicVariable "MissionStatus";
-raid1Active = 0; 
-
-publicVariable "raid1Active"; 
-deleteVehicle Raid1Win; 
-
-}; 
-
-
 A3M_msn_Raid1= {
 
 if (isNil "raid1Active") then {raid1Active= 0}; 
@@ -160,35 +122,29 @@ if (isNil "raid1Active") then {raid1Active= 0};
 	if (raid1Active == 0) then { 
 
 	hint "Mission Accepted"; 
-	playSound "MissionAccepted"; 
+	playSound "A3M_MissionAccepted"; 
 
 	["", "A3M_Svr_Raid1",false,false,false] call bis_fnc_MP; 
 
 		} else { hint "A raid is currently underway. Contact your team coordinator for information and possible assignment on this objective.";
 			}; 
 }; 
-
-// Raid 2 
 A3M_msn_Raid2= {
 
-if (isNil "raid2Active") then {raid2Active= 0}; 
+if (isNil "raid1Active") then {raid1Active= 0}; 
 
-	if (raid2Active == 0) then { 
+	if (raid1Active == 0) then { 
 
 	hint "Mission Accepted"; 
-	playSound "MissionAccepted"; 
+	playSound "A3M_MissionAccepted"; 
 
 	["", "A3M_Svr_Raid2",false,false,false] call bis_fnc_MP; 
 
 		} else { 
-			hint "A raid is currently underway. Contact your team coordinator for information and possible assignment on this objective.";
+			hint "A raid is currently underway. You may only conduct one raid at a time. Contact your team coordinator for information and possible assignment on this objective.";
 			}; 
 
 }; 
-
-
-
-
 // Next Mission Set
 // *********************#################***********************
 A3M_msn_reinforce = {
@@ -198,7 +154,7 @@ A3M_msn_reinforce = {
 		if (NSARActive == 0) then { 
 
 		hint "Mission Accepted"; 
-		playSound "MissionAccepted"; 
+		playSound "A3M_MissionAccepted"; 
 
 		["", "A3M_Svr_reinforce",false,false,false] call bis_fnc_MP; 
 
@@ -215,9 +171,9 @@ if (isNil "T9Active") then {T9Active= 0};
 if (T9Active == 0) then { 
 
 hint "Mission Accepted"; 
-playSound "MissionAccepted"; 
+playSound "A3M_MissionAccepted"; 
 
-	["", "A3M_Svr_T9sec",false,false,false] call bis_fnc_MP; 
+	["", "A3M_svr_T9sec",false,false,false] call bis_fnc_MP; 
 	
 } else { hint "A security force is currently working a shift at the T9 facility. Contact your team coordinator for information and possible assignment on this objective."}; 
 }; 
@@ -267,7 +223,6 @@ case 7: {
 }; 
 
 }; 
-
 A3M_Fnc_AcceptMission = {
 
 switch (TheSelection) do {
@@ -308,5 +263,4 @@ case 7: {
 
 }; 
 }; 
-
 // EOF 

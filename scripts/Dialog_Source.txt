@@ -4,6 +4,57 @@
 		//   RHS NUKE Function !! Stupid place to save it....
 		//   [position,yield,radius] call rhs_fnc_ss21_nuke
 		// EX [getpos player,10000,1000] call rhs_fnc_ss21_nuke
+
+
+AthiraObjArray = [
+Athira_Camera_AIATP_1",
+"AP_Speech_Unit_2",
+"AP_Speech_Unit_3",
+"AP_Speech_Unit_4",
+"AP_Speech_Unit_5",
+"AP_Speech_Unit_6",
+"AP_Speech_Unit_7",
+"AP_Speech_Unit_8",
+"AP_Speech_Unit_9"];
+
+ZarosObjArray = [
+"Zaros_Camera_AIATP_1",
+"ZP_Speech_Unit_2",
+"ZP_Speech_Unit_3",
+"ZP_Speech_Unit_4",
+"ZP_Speech_Unit_5",
+"ZP_Speech_Unit_6",
+"ZP_Speech_Unit_7",
+"ZP_Speech_Unit_8",
+"ZP_Speech_Unit_9",
+"ZP_Speech_Unit_10",
+"ZP_Speech_Unit_11",
+"ZP_Speech_Unit_12",
+"ZP_Speech_Unit_13",
+"ZP_Speech_Unit_14",
+"ZP_Speech_Unit_15",
+"ZP_Speech_Unit_16",
+"ZP_Speech_Unit_17"]; 
+
+PyrgosObjArray = [
+"Pyrgos_Camera_AIATP_1",
+"civilianCar1",
+"civilianCar2",
+"Policeveh1",
+"Policeveh2",
+"PS_Speech_Unit_2",
+"PS_Speech_Unit_3",
+"PS_Speech_Unit_4",
+"PS_Speech_Unit_5",
+"PS_Speech_Unit_6",
+"PS_Speech_Unit_7",
+"PS_Speech_Unit_8",
+"PS_Speech_Unit_9",
+"PS_Speech_Unit_10",
+"PS_Speech_Unit_11",
+"PS_Speech_Unit_12",
+"PS_Speech_Unit_13",
+"PS_Speech_Unit_14"];
 		
 		
 

@@ -209,7 +209,7 @@ class A3M_Btn_MovePlyrToJail: RscButton
 };
 class A3M_Btn_Cleanup: RscButton
 {
-	action="[] call A3M_Fnc_Cleanup;";
+	action="[1] call A3M_Fnc_Cleanup;";
 
 	idc = 1607;
 	text = "Force Cleanup"; //--- ToDo: Localize;

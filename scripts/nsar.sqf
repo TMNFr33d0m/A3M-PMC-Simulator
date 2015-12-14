@@ -66,7 +66,7 @@ NSAR move Getmarkerpos NSARDestNo;
 EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 EnPres= EnChance select floor random count EnChance;
 		if (EnPres == 1) then {
-		_SARWen= [getMarkerPos NSARDestNo, EAST, ["B_G_Soldier_F", "B_G_Soldier_F", "B_G_Soldier_A_F", "B_G_Soldier_A_F","B_G_Soldier_F","B_G_Soldier_F","B_G_Soldier_F","B_G_Soldier_F"]] call BIS_fnc_spawnGroup;
+		_SARWen= [getMarkerPos NSARDestNo, EAST, ["O_G_Soldier_F", "O_G_Soldier_F", "O_G_Soldier_A_F", "O_G_Soldier_A_F","O_G_Soldier_F","O_G_Soldier_F","O_G_Soldier_F","O_G_Soldier_F"]] call BIS_fnc_spawnGroup;
 		[_SARWen, getPos player] call BIS_fnc_taskAttack;
 		}; 
 
@@ -104,7 +104,7 @@ sleep 1;
 NSARlead = NSAR createUnit ["B_officer_F", getMarkerPos NSARPickedNo, [], 0, "FORM"];
 sleep 1; 
 
-NSARen= [getMarkerPos "oreo", EAST, ["B_G_Soldier_F", "B_G_Soldier_F", "B_G_Soldier_A_F", "B_G_Soldier_A_F", "B_G_Soldier_F", "B_G_Soldier_F", "B_G_Soldier_A_F", "B_G_Soldier_A_F"]] call BIS_fnc_spawnGroup;
+NSARen= [getMarkerPos "oreo", EAST, ["O_G_Soldier_F", "O_G_Soldier_F", "O_G_Soldier_A_F", "O_G_Soldier_A_F", "O_G_Soldier_F", "O_G_Soldier_F", "O_G_Soldier_A_F", "O_G_Soldier_A_F"]] call BIS_fnc_spawnGroup;
 [NSARen, getMarkerPos NSARPickedNo] call BIS_fnc_taskAttack;
 
 while {(NSARActive == 1)} do {

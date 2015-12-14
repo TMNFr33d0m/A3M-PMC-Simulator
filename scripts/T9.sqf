@@ -33,13 +33,13 @@ and I hope you enjoy the things I have in the works!
 
 ################################## LET US BEGIN #################################### */
 
-[ '','A3M_fnc_StartTaskT9MP',True,False] call BIS_fnc_MP;
+[ '','A3M_MP_StartTaskT9',True,False] call BIS_fnc_MP;
 
 T9trg= createTrigger ["EmptyDetector", getMarkerPos "T9"]; 
 T9trg setTriggerArea [10, 10, 0, false]; 
 T9trg setTriggerActivation ["WEST", "PRESENT", false]; 
 T9trg setTriggerType "NONE";
-T9trg setTriggerStatements ["player in ThisList"," ['','A3M_fnc_T9ShiftMP',True,False] call BIS_fnc_MP; nul2 = [] call A3M_fnc_SelectIncident;",""]; 
+T9trg setTriggerStatements ["player in ThisList"," ['','A3M_MP_T9Shift',True,False] call BIS_fnc_MP; nul2 = [] call A3M_fnc_SelectIncident;",""]; 
 
 // Protestors Incident
 A3M_fnc_Protest = {
@@ -49,7 +49,6 @@ _wp1 = T9Pros addWaypoint [getMarkerPos "protest", 0];
 _wp1 setWaypointType "MOVE"; 
 _wp1 setWaypointFormation "DIAMOND";
 [] call A3M_fnc_ProtestTrg;
-
 }; 
 
 A3M_fnc_ProtestTrg = {
@@ -58,7 +57,7 @@ T9ProsTrg= createTrigger ["EmptyDetector", getMarkerPos "Protest"];
 T9ProsTrg setTriggerArea [30, 30, 0, false]; 
 T9ProsTrg setTriggerActivation ["CIV", "PRESENT", True]; 
 T9ProsTrg setTriggerType "NONE";
-T9ProsTrg setTriggerStatements ["ProtestLeader in ThisList", "[ '','T9_Protest_ChantMP',True,False] call BIS_fnc_MP; ", ""]; 
+T9ProsTrg setTriggerStatements ["ProtestLeader in ThisList", "[ '','A3M_MP_T9ProtestChant',True,False] call BIS_fnc_MP; ", ""]; 
 }; 
 
 // End Protestors Incident
@@ -77,7 +76,7 @@ T9wpE1= createTrigger ["EmptyDetector", getMarkerPos "Protest"];
 T9wpE1 setTriggerArea [30, 30, 0, false]; 
 T9wpE1 setTriggerActivation ["CIV", "PRESENT", True]; 
 T9wpE1 setTriggerType "NONE";
-T9wpE1 setTriggerStatements ["({alive _x} count units _T9EF) < 1", "[ '','A3M_fnc_T9_Enemy_Elim',True,False] call BIS_fnc_MP; ", ""]; 
+T9wpE1 setTriggerStatements ["({alive _x} count units _T9EF) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
 }; 
 //  End Hostile Attack
 
@@ -95,7 +94,7 @@ T9wpE2= createTrigger ["EmptyDetector", getMarkerPos "Protest"];
 T9wpE2 setTriggerArea [30, 30, 0, false]; 
 T9wpE2 setTriggerActivation ["ANY", "PRESENT", True]; 
 T9wpE2 setTriggerType "NONE";
-T9wpE2 setTriggerStatements ["({alive _x} count units _T9EF2) < 1", "[ '','A3M_fnc_T9_Enemy_Elim',True,False] call BIS_fnc_MP; ", ""]; 
+T9wpE2 setTriggerStatements ["({alive _x} count units _T9EF2) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
 
 T9HostArray= ["T9_HostL1", "T9_HostL2", "T9_HostL3", "T9_HostL4"]; 
 T9EnSource= T9HostArray select floor random count T9HostArray; 
@@ -109,8 +108,7 @@ T9wpE3= createTrigger ["EmptyDetector", getMarkerPos "Protest"];
 T9wpE3 setTriggerArea [30, 30, 0, false]; 
 T9wpE3 setTriggerActivation ["ANY", "PRESENT", True]; 
 T9wpE3 setTriggerType "NONE";
-T9wpE3 setTriggerStatements ["({alive _x} count units _T9EF3) < 1", "[ '','A3M_fnc_T9_Enemy_Elim',True,False] call BIS_fnc_MP; ", ""]; 
-
+T9wpE3 setTriggerStatements ["({alive _x} count units _T9EF3) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
 }; 
 
 // Incident Randomizer
@@ -150,7 +148,7 @@ if (timearrayCounter < 1200) then {
 sleep RandomTime;
 [] call A3M_fnc_SelectIncident; 
 } else {
-[ '','A3M_fnc_T9SuccessMP',True,False] call BIS_fnc_MP;
+[ '','A3M_MP_T9Success',True,False] call BIS_fnc_MP;
 MissionStatus = "M0"; 
 publicVariable "MissionStatus";
 T9Active = 0; 

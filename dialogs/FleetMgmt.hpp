@@ -47,7 +47,7 @@ class Controls
 
 
 ////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Salazar, v1.063, #Zynuso)
+// GUI EDITOR OUTPUT START (by TMNFr33d0m, v1.063, #Kojyqa)
 ////////////////////////////////////////////////////////
 
 class A3M_StoreFrame: RscFrame
@@ -56,8 +56,8 @@ class A3M_StoreFrame: RscFrame
 
 	idc = 1800;
 	text = "Internet Voyager V 1.69.420"; //--- ToDo: Localize;
-	x = 0.0988381 * safezoneW + safezoneX;
-	y = 0.0818968 * safezoneH + safezoneY;
+	x = 0.101173 * safezoneW + safezoneX;
+	y = 0.0819149 * safezoneH + safezoneY;
 	w = 0.7794 * safezoneW;
 	h = 0.825204 * safezoneH;
 	sizeEx = 1 * GUI_GRID_H;
@@ -72,7 +72,7 @@ class A3M_Exitbutton: RscButton
 	y = 0.86309 * safezoneH + safezoneY;
 	w = 0.0401102 * safezoneW;
 	h = 0.0330092 * safezoneH;
-	tooltip = "Exit the Internet"; //--- ToDo: Localize;
+	tooltip = "Exit the Store"; //--- ToDo: Localize;
 };
 class A3M_BalanceTitle: RscText
 {
@@ -103,7 +103,7 @@ class A3M_TotalTitle: RscText
 };
 class A3M_TotalBalance: RscStructuredText
 {
-	idc = 1171;
+	idc = 1101;
 	x = 0.75789 * safezoneW + safezoneX;
 	y = 0.143511 * safezoneH + safezoneY;
 	w = 0.114601 * safezoneW;
@@ -134,10 +134,10 @@ class A3M_SelectWheeled: RscButton
 
 	idc = 1604;
 	text = "Auto Dealership"; //--- ToDo: Localize;
-	x = 0.219563 * safezoneW + safezoneX;
-	y = 0.411975 * safezoneH + safezoneY;
-	w = 0.108887 * safezoneW;
-	h = 0.0330081 * safezoneH;
+	x = 0.188804 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0898764 * safezoneW;
+	h = 0.0330067 * safezoneH;
 	tooltip = "Jump into the Motor Fleet UI to purchase wheeled vehicles"; //--- ToDo: Localize;
 };
 class A3M_SelectArmor: RscButton
@@ -146,10 +146,10 @@ class A3M_SelectArmor: RscButton
 
 	idc = 1605;
 	text = "Armor Depot"; //--- ToDo: Localize;
-	x = 0.1103 * safezoneW + safezoneX;
-	y = 0.411978 * safezoneH + safezoneY;
-	w = 0.103156 * safezoneW;
-	h = 0.0330081 * safezoneH;
+	x = 0.107916 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0730246 * safezoneW;
+	h = 0.0330067 * safezoneH;
 	tooltip = "Browse our Armored Vehicle Fleet"; //--- ToDo: Localize;
 };
 class A3M_RotaryVeh: RscButton
@@ -158,10 +158,10 @@ class A3M_RotaryVeh: RscButton
 
 	idc = 1606;
 	text = "Helicopters"; //--- ToDo: Localize;
-	x = 0.451116 * safezoneW + safezoneX;
-	y = 0.411978 * safezoneH + safezoneY;
-	w = 0.108887 * safezoneW;
-	h = 0.0330081 * safezoneH;
+	x = 0.356199 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0674073 * safezoneW;
+	h = 0.0330067 * safezoneH;
 	tooltip = "Browse our Rotary Aircraft Fleet"; //--- ToDo: Localize;
 };
 class A3M_SelectPlanes: RscButton
@@ -170,10 +170,10 @@ class A3M_SelectPlanes: RscButton
 
 	idc = 1607;
 	text = "Aircraft"; //--- ToDo: Localize;
-	x = 0.334771 * safezoneW + safezoneX;
-	y = 0.411978 * safezoneH + safezoneY;
-	w = 0.108887 * safezoneW;
-	h = 0.0330081 * safezoneH;
+	x = 0.286543 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0617901 * safezoneW;
+	h = 0.0330067 * safezoneH;
 	tooltip = "Browse Fixed-Wing Assets"; //--- ToDo: Localize;
 };
 class A3M_SelectionWindow: RscListbox
@@ -181,28 +181,30 @@ class A3M_SelectionWindow: RscListbox
 	onLBDblClick = "_this spawn A3M_fnc_VhandleClick";
 
 	idc = 1575;
-	x = 0.1103 * safezoneW + safezoneX;
-	y = 0.464793 * safezoneH + safezoneY;
+	x = 0.109177 * safezoneW + safezoneX;
+	y = 0.466993 * safezoneH + safezoneY;
 	w = 0.756477 * safezoneW;
 	h = 0.374092 * safezoneH;
 };
 class A3M_VehMod: RscCombo
 {
+	
 	onLBSelChanged = "_this spawn A3M_fnc_handleModClick";
 	
 	idc = 2175;
 	text = "Supported Vehicle Mods"; //--- ToDo: Localize;
-	x = 0.654709 * safezoneW + safezoneX;
-	y = 0.411978 * safezoneH + safezoneY;
+	x = 0.658396 * safezoneW + safezoneX;
+	y = 0.315162 * safezoneH + safezoneY;
 	w = 0.206312 * safezoneW;
 	h = 0.0330081 * safezoneH;
+	tooltip = "Select a supported modification, then click a category"; //--- ToDo: Localize;
 };
 class A3M_ModTxt: RscText
 {
 	idc = 1003;
 	text = "Supported Modifications: "; //--- ToDo: Localize;
-	x = 0.654734 * safezoneW + safezoneX;
-	y = 0.37897 * safezoneH + safezoneY;
+	x = 0.655024 * safezoneW + safezoneX;
+	y = 0.279955 * safezoneH + safezoneY;
 	w = 0.149003 * safezoneW;
 	h = 0.0330081 * safezoneH;
 };
@@ -220,14 +222,52 @@ class A3M_Btn_Prch: RscButton
 	action="[] call A3M_Fnc_VBuyButton";
 	idc = 1601;
 	text = "Purchase"; //--- ToDo: Localize;
-	x = 0.575156 * safezoneW + safezoneX;
-	y = 0.411975 * safezoneH + safezoneY;
-	w = 0.0673042 * safezoneW;
-	h = 0.0330092 * safezoneH;
+	x = 0.797716 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0674073 * safezoneW;
+	h = 0.0330067 * safezoneH;
+	tooltip = "Purchase selected asset(s) "; //--- ToDo: Localize;
+};
+class A3M_Btn_Robotics: RscButton
+{
+	action = "[] call DoAddRobotics";
+
+	idc = 1602;
+	text = "Robotics"; //--- ToDo: Localize;
+	x = 0.430347 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0674073 * safezoneW;
+	h = 0.0330067 * safezoneH;
+	tooltip = "Autonomous Equipment"; //--- ToDo: Localize;
+};
+class A3M_Btn_Sprt: RscButton
+{
+	action = "[] call DoAddSupport";
+
+	idc = 1603;
+	text = "Support"; //--- ToDo: Localize;
+	x = 0.503369 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0617901 * safezoneW;
+	h = 0.0330067 * safezoneH;
+	tooltip = "Fleet and Personnel Support "; //--- ToDo: Localize;
+};
+class A3M_Btn_Upgrades: RscButton
+{
+	action = "[] call DoAddUpgrades";
+
+	idc = 1608;
+	text = "Upgrades"; //--- ToDo: Localize;
+	x = 0.570776 * safezoneW + safezoneX;
+	y = 0.422984 * safezoneH + safezoneY;
+	w = 0.0674073 * safezoneW;
+	h = 0.0330067 * safezoneH;
+	tooltip = "Base Upgrades"; //--- ToDo: Localize;
 };
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END
 ////////////////////////////////////////////////////////
+
 
 };
 //EOF bitches

@@ -1,12 +1,20 @@
-// MISSION PREDEFINES
-
-// Cleanup Script
-coroner = {
-{ if (!alive _x) then { deletevehicle _x } } foreach (nearestObjects [center, ["Man", "Car", "Tank", "Helicopter"], 2600]);
-}; 
 // Server Side Scripting (Things Only The Server Should Be Doing)
 
-A3M_Svr_VIPEscort = {
+// Force Cleanup
+A3M_Fnc_Cleanup = {
+
+_A3MCleanupIsForced = _This Select 0; 
+if (_A3MCleanupIsForced == 1) then {["InformationRed", ["Cleanup Initiated"]] call bis_fnc_showNotification;}; 
+
+{ if (!alive _x) then { deletevehicle _x } } foreach (nearestObjects [center, ["Man", "Car", "Tank", "Helicopter"], 7500]);
+
+};
+
+ALiVEBudgetPush = {
+["P_defensebudget", B_defensebudget] call ALiVE_fnc_setData;
+};
+
+A3M_svr_VIPEscort= {
 
 // JIP Handler Mission Status
 MissionStatus= "M1"; 
@@ -23,7 +31,7 @@ PublicDestination= HVTDestination;
 publicVariable "PublicDestination";
 
 // Create task for all players
-["","A3M_fnc_EscortTask",True,False] spawn BIS_fnc_MP; 
+["","A3M_MP_EscortTask",True,False] spawn BIS_fnc_MP; 
 
 // Random chance of enemy presence at Destination
 
@@ -32,7 +40,7 @@ EnPres= EnChance select floor random count EnChance;
 
 // Create Cadre on Random Chance (Contains Leights Opfor)
 if (EnPres == 1) then {
-_HVTen= [getMarkerPos "PublicDestination", EAST, ["OP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_GL", "LOP_ChDKZ_Infantry_Corpsman"]] call BIS_fnc_spawnGroup;
+_HVTen= [getMarkerPos "PublicDestination", EAST, ["O_G_Soldier_F", "O_G_Soldier_SL_F","O_G_Soldier_AR_F", "O_G_Soldier_GL_F"]] call BIS_fnc_spawnGroup;
 [_HVTen, getMarkerPos "PublicDestination"] call BIS_fnc_taskDefend; 
 }; 
 
@@ -43,7 +51,7 @@ VIPDest= createTrigger ["EmptyDetector", getMarkerPos PublicDestination];
 VIPDest setTriggerArea [12, 12, 0, false]; 
 VIPDest setTriggerActivation ["ANY", "PRESENT", True]; 
 VIPDest setTriggerType "NONE";
-VIPDest setTriggerStatements ["VIP1 in thislist", "[] spawn A3M_fnc_EscortSuccess", "" ]; 
+VIPDest setTriggerStatements ["VIP1 in thislist", "[] spawn A3M_svr_EscortSuccess", "" ]; 
 
 }; 
 
@@ -54,7 +62,7 @@ VIPDead= createTrigger ["EmptyDetector", getMarkerPos PublicDestination];
 VIPDead setTriggerArea [0, 0, 0, false]; 
 VIPDead setTriggerActivation ["ANY", "PRESENT", True]; 
 VIPDead setTriggerType "NONE";
-VIPDead setTriggerStatements ["!Alive VIP1", "[] call A3M_EscortFailed", ""]; 
+VIPDead setTriggerStatements ["!Alive VIP1", "[] call A3M_svr_EscortFailed", ""]; 
 
 }; 
 
@@ -64,8 +72,7 @@ VIPDead setTriggerStatements ["!Alive VIP1", "[] call A3M_EscortFailed", ""];
 while {EscortActive == 1} do {"VIP1ICO" setmarkerpos getpos VIP1; sleep 0.5;};
 
 };
-
-A3M_Svr_TRKEscort = {
+A3M_svr_TRKEscort= {
 
 // JIP Handler Mission Status
 MissionStatus = "M2"; 
@@ -87,7 +94,7 @@ EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 EnPres= EnChance select floor random count EnChance;
 
 if (EnPres == 1) then {
-_HVTen= [getMarkerPos "PubDelDestination", EAST, ["OP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_GL", "LOP_ChDKZ_Infantry_Corpsman"]] call BIS_fnc_spawnGroup;
+_HVTen= [getMarkerPos "PubDelDestination", EAST, ["O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_AR_F","O_G_Soldier_GL_F"]] call BIS_fnc_spawnGroup;
 [_HVTen, getMarkerPos "PubDelDestination"] call BIS_fnc_taskDefend; 
 }; 
 
@@ -97,7 +104,7 @@ DelDest= createTrigger ["EmptyDetector", getMarkerPos PubDelDestination];
 DelDest setTriggerArea [10, 10, 0, false]; 
 DelDest setTriggerActivation ["ANY", "PRESENT", True]; 
 DelDest setTriggerType "NONE";
-DelDest setTriggerStatements ["DEL1 in thislist", "[] spawn A3M_fnc_ConvoySuccess", ""]; 
+DelDest setTriggerStatements ["DEL1 in thislist", '["", "A3M_svr_ConvoySuccess", false, false, false] call bis_fnc_MP', ""]; 
 }; 
 
 // Create Trigger to handle mission failure
@@ -106,7 +113,7 @@ DelDead= createTrigger ["EmptyDetector", getMarkerPos PubDelDestination];
 DelDead setTriggerArea [0, 0, 0, false]; 
 DelDead setTriggerActivation ["ANY", "PRESENT", True]; 
 DelDead setTriggerType "NONE";
-DelDead setTriggerStatements ["!Alive DEL1", "[] call A3M_fnc_ConvoyFailed", ""]; 
+DelDead setTriggerStatements ["!Alive DEL1", "[] call A3M_svr_ConvoyFailed", ""]; 
 }; 
 
 // Create Box Truck for Delivery
@@ -117,12 +124,10 @@ call A3M_fnc_DelDestinationTrigger;
 call A3M_fnc_DelDeathTrigger; 
 
 // Create Task for all players
-["","A3M_fnc_ConvoyTask",True,False] spawn BIS_fnc_MP; 
-
+["","A3M_MP_ConvoyTask",True,False] spawn BIS_fnc_MP; 
 
 };
-
-A3M_Svr_SandE= {
+A3M_svr_SandE= {
 
 SEActive = 1; 
 PublicVariable "SEActive"; 
@@ -142,7 +147,7 @@ SARDead= createTrigger ["EmptyDetector", (getMarkerPos PublicLoc)];
 SARDead setTriggerArea [0, 0, 0, false]; 
 SARDead setTriggerActivation ["ANY", "PRESENT", True]; 
 SARDead setTriggerType "NONE";
-SARDead setTriggerStatements ["!Alive SAR1", "[] call A3M_fnc_SEFailed;", ""]; 
+SARDead setTriggerStatements ["!Alive SAR1", "[] call A3M_svr_SEFailed;", ""]; 
 }; 
 
 A3M_fnc_SEVIPSaved = {
@@ -150,25 +155,24 @@ SAResc= createTrigger ["EmptyDetector", (getMarkerPos "BA")];
 SAResc setTriggerArea [30, 30, 0, false]; 
 SAResc setTriggerActivation ["ANY", "PRESENT", True]; 
 SAResc setTriggerType "NONE";
-SAResc setTriggerStatements ["SAR1 in ThisList", "[] call A3M_fnc_SESucceeded;", ""]; 
+SAResc setTriggerStatements ["SAR1 in ThisList", "[] call A3M_svr_SESucceeded;", ""]; 
 }; 
 
 // Random Select Hostage 
-RandomVIP2= ["C_Nikos_aged","LOP_CHR_Civ_Functionary_01","LOP_CHR_Civ_Doctor_01","LOP_CHR_Civ_Profiteer_01","C_scientist_F" ];
+RandomVIP2= ["C_Nikos_aged","C_scientist_F"];
 RandomVIPSel2= RandomVIP2 select floor random count RandomVIP2;
 
+CO= createGroup civilian; 
 RandomVIPSel2 createUnit [getMarkerPos PublicLoc, group CO, "SAR1 = this", 0.9, "COLONEL" ];
+
 sleep 1; 
 (group SAR1) setBehaviour "CARELESS"; 
 sleep 0.5; 
 
-SAR1 addAction ["Come With Me" , {
-		_subject = _this select 0;
-		_ply = _this select 1;
-		_subject setCaptive true;
-		sleep 0.5;
-		[_subject] joinSilent player;
-		[ '','A3M_fnc_ChangeSARDest',True,False] spawn BIS_fnc_MP;
+RescueAction = SAR1 addAction ["Rescue" , {
+		[[SAR1],'A3M_MP_EscVIPCmds',True,False] call BIS_fnc_MP;
+		[ '','A3M_MP_ChangeSARDest',True,False] spawn BIS_fnc_MP;
+		
 	}];  
 
 [] call A3M_fnc_SEVIPDead; 
@@ -177,16 +181,29 @@ SAR1 addAction ["Come With Me" , {
 sleep 1; 
 
 // Create Hostage Takers / Captors (Contains Leights Opfor)
-_HSTF= [getPos SAR1, EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_HSTF= [getPos SAR1, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_HSTF, getPos SAR1] call BIS_fnc_taskDefend; 
 
-[ '','A3M_fnc_SARmission',True,False] spawn BIS_fnc_MP;
+_bluNums = west countSide allPlayers;
+
+if (_bluNums > 10) then {
+_HSTF2= [getPos SAR1, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
+[_HSTF2, getPos SAR1, 200] call BIS_fnc_taskPatrol; 
+
+_HSTF3= [getPos SAR1, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
+[_HSTF3, getPos SAR1, 200] call BIS_fnc_taskPatrol; 
+};
+if (_bluNums > 20) then {
+_HSTF4= [getPos SAR1, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
+[_HSTF4, getPos SAR1] call BIS_fnc_taskDefend; 
+}; 
+
+[ '','A3M_mp_SARmission',True,False] spawn BIS_fnc_MP;
 
 while {SEActive == 1} do {"SAR1ICO" setmarkerpos getpos SAR1; sleep 0.5;};
 
 };
-
-A3M_Svr_Raid1={
+A3M_svr_Raid1={
 
 MissionStatus = "M5"; 
 publicVariable "MissionStatus";
@@ -194,73 +211,101 @@ publicVariable "MissionStatus";
 raid1Active = 1; 
 publicVariable "raid1Active"; 
 
+_bluNums = west countSide allPlayers;
+
 // Create Enemy Presence (Contains Leights Opfor)
-_GH1tm= [getMarkerPos "GH1", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH1tm= [getMarkerPos "GH1", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH1tm, getMarkerPos "GH1"] call BIS_fnc_taskDefend; 
 
-_GH2tm= [getMarkerPos "GH2", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH2tm= [getMarkerPos "GH2", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH2tm, getMarkerPos "GH2"] call BIS_fnc_taskDefend; 
 
-_GH3tm= [getMarkerPos "GH3", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+if (_bluNums > 10) then {
+_GH3tm= [getMarkerPos "GH3", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH3tm, getMarkerPos "GH3"] call BIS_fnc_taskDefend; 
 
-_GH4tm= [getMarkerPos "GH4", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH4tm= [getMarkerPos "GH4", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH4tm, getMarkerPos "sg1"] call BIS_fnc_taskDefend; 
+};
 
-_GH5tm= [getMarkerPos "GH5", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+if (_bluNums > 20) then {
+_GH5tm= [getMarkerPos "GH5", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH5tm, getMarkerPos "GH5", 200] call BIS_fnc_taskPatrol; 
 
-_GH6tm= [getMarkerPos "GH6", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH6tm= [getMarkerPos "GH6", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH6tm, getMarkerPos "GH6", 200] call BIS_fnc_taskPatrol; 
+};
 
-[ '','A3M_Raid_1MP',True,False] spawn BIS_fnc_MP;
+[ '','A3M_MP_Raid1',True,False] spawn BIS_fnc_MP;
 
 Raid1Win= createTrigger ["EmptyDetector", (getMarkerPos "sg1")]; 
 Raid1Win setTriggerArea [250, 250, 0, false]; 
 Raid1Win setTriggerActivation ["WEST SEIZED", "EAST D", false]; 
 Raid1Win setTriggerType "NONE";
-Raid1Win setTriggerStatements ["this", "[] call A3M_fnc_RaidClear;", ""]; 
+Raid1Win setTriggerStatements ["this", "[[], 'A3M_svr_RaidClear', false, false, false] call bis_fnc_MP",""]; 
 
 };
-
-A3M_Svr_Raid2 = {
+A3M_svr_Raid2= {
 
 MissionStatus = "M6"; 
 publicVariable "MissionStatus";
 
-raid2Active = 1; 
-publicVariable "raid2Active"; 
+raid1Active = 1; 
+publicVariable "raid1Active"; 
+
+_bluNums = west countSide allPlayers;
 
 // Create Enemy Presence (Contains Leights Opfor)
-_GH1tm= [getMarkerPos "RO1", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH1tm= [getMarkerPos "RO1", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH1tm, getMarkerPos "RO1"] call BIS_fnc_taskDefend; 
 
-_GH2tm= [getMarkerPos "RO2", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH2tm= [getMarkerPos "RO2", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH2tm, getMarkerPos "RO2"] call BIS_fnc_taskDefend; 
 
-_GH3tm= [getMarkerPos "RO3", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+if (_bluNums > 10) then {
+_GH3tm= [getMarkerPos "RO3", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH3tm, getMarkerPos "RO3"] call BIS_fnc_taskDefend; 
 
-_GH4tm= [getMarkerPos "RO4", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH4tm= [getMarkerPos "RO4", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH4tm, getMarkerPos "sg2"] call BIS_fnc_taskDefend; 
+};
 
-_GH5tm= [getMarkerPos "RO5", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+if (_bluNums > 20) then {
+_GH5tm= [getMarkerPos "RO5", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH5tm, getMarkerPos "RO5"] call BIS_fnc_taskDefend; 
 
-_GH6tm= [getMarkerPos "RO6", EAST, ["LOP_ChDKZ_Infantry_TL", "LOP_ChDKZ_Infantry_AT", "LOP_ChDKZ_Infantry_Engineer", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_GL"]] call BIS_fnc_spawnGroup;
+_GH6tm= [getMarkerPos "RO6", EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F", "O_G_Soldier_AR_F"]] call BIS_fnc_spawnGroup;
 [_GH6tm, getMarkerPos "RO6"] call BIS_fnc_taskDefend; 
+};
 
-[ '','A3M_Raid_2MP',True,False] spawn BIS_fnc_MP;
+[ '','A3M_MP_Raid2',True,False] spawn BIS_fnc_MP;
 
 Raid2Win= createTrigger ["EmptyDetector", (getMarkerPos "sg2")]; 
 Raid2Win setTriggerArea [450, 450, 0, false]; 
 Raid2Win setTriggerActivation ["WEST SEIZED", "EAST D", false]; 
 Raid2Win setTriggerType "NONE";
-Raid2Win setTriggerStatements ["this", "[] call A3M_fnc_RaidClear;", ""]; 
+Raid2Win setTriggerStatements ["this", "[[], 'A3M_svr_RaidClear', false, false, false] call bis_fnc_MP",""]; 
 
 };
+A3M_svr_RaidClear= {
 
-A3M_Svr_reinforce= {
+[ '','A3M_MP_RaidClear',True,False] spawn BIS_fnc_MP;
+
+B_defensebudget= (B_defensebudget + 2000000); 
+
+publicVariable "B_defensebudget"; 
+MissionStatus = "M0"; 
+
+publicVariable "MissionStatus";
+
+raid1Active = 0; 
+publicVariable "raid1Active"; 
+
+if (!isNull Raid1Win) then {deleteVehicle Raid1Win};
+if (!IsNull Raid2Win) then {deleteVehicle Raid2Win};  
+
+}; 
+A3M_svr_reinforce= {
 
 MissionStatus = "M7"; 
 publicVariable "MissionStatus";
@@ -272,8 +317,7 @@ sleep 1;
 execVM "scripts\nsar.sqf"; 
 
 };
-
-A3M_Svr_T9sec={
+A3M_svr_T9sec={
 
 MissionStatus = "M8"; 
 publicVariable "MissionStatus";
@@ -281,45 +325,255 @@ publicVariable "MissionStatus";
 T9Active = 1; 
 publicVariable "T9Active"; 
 
-sleep 1; 
-timearrayCounter = 0; 
+TimearrayCounter = 0; 
 
-// May need to move this to server side only, might be executing wrong 
-execVM "scripts\T9.sqf"; 
+[ '','A3M_MP_StartTaskT9',True,False] call BIS_fnc_MP;
+
+T9trg= createTrigger ["EmptyDetector", getMarkerPos "T9"]; 
+T9trg setTriggerArea [40, 40, 0, false]; 
+T9trg setTriggerActivation ["WEST", "PRESENT", false]; 
+T9trg setTriggerType "NONE";
+T9trg setTriggerStatements ["This","['', 'A3M_svr_T9sec2', false, false, false] call bis_fnc_MP",""]; 
+}; 
+
+A3M_svr_T9sec2 = {
+
+['','A3M_MP_T9Shift',True,False] call BIS_fnc_MP; 
+
+['', 'A3M_fnc_SelectIncident', false, false, false] call bis_fnc_MP;
+};
+// Protestors Incident
+A3M_fnc_Protest = {
+if (!IsNull "T9Pros") then { {deleteVehicle _x} foreach (units T9Pros)};
+
+T9Pros= [getMarkerPos "Prostart", civilian, ["C_man_1", "C_man_polo_2_F", "C_man_polo_4_F", "C_man_polo_5_F", "C_man_polo_6_F", "C_man_p_fugitive_F"]] call BIS_fnc_spawnGroup;
+"C_Nikos_aged" createUnit [getMarkerPos "Prostart", T9Pros, "ProtestLeader = this", 0.9, "COLONEL" ];
+_wp1 = T9Pros addWaypoint [getMarkerPos "protest", 0]; 
+_wp1 setWaypointType "MOVE"; 
+_wp1 setWaypointFormation "DIAMOND";
+[] call A3M_fnc_ProtestTrg;
+}; 
+A3M_fnc_ProtestTrg = {
+
+T9ProsTrg= createTrigger ["EmptyDetector", getMarkerPos "Protest"]; 
+T9ProsTrg setTriggerArea [30, 30, 0, false]; 
+T9ProsTrg setTriggerActivation ["CIV", "PRESENT", True]; 
+T9ProsTrg setTriggerType "NONE";
+T9ProsTrg setTriggerStatements ["ProtestLeader in ThisList", "[ '','A3M_MP_T9ProtestChant',True,False] call BIS_fnc_MP;", 'ProtestActive = 0; PublicVariable "ProtestActive";']; 
+}; 
+A3M_fnc_AttackT9 = {
+T9HostArray= ["T9_HostL1", "T9_HostL2", "T9_HostL3", "T9_HostL4"]; 
+T9EnSource= T9HostArray select floor random count T9HostArray; 
+
+T9EF= [getMarkerPos T9EnSource, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F"]] call BIS_fnc_spawnGroup;
+_wpE1 = T9EF addWaypoint [getMarkerPos "T9", 0]; 
+_wpE1 setWaypointType "SAD"; 
+_wpE1 setWaypointFormation "DIAMOND";
+
+T9wpE1= createTrigger ["EmptyDetector", getMarkerPos "Protest"]; 
+T9wpE1 setTriggerArea [30, 30, 0, false]; 
+T9wpE1 setTriggerActivation ["CIV", "PRESENT", True]; 
+T9wpE1 setTriggerType "NONE";
+T9wpE1 setTriggerStatements ["({alive _x} count units T9EF) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
+}; 
+//  End Hostile Attack
+// Double Hostile Attack
+A3M_fnc_dblAttackT9 = {
+
+T9HostArray= ["T9_HostL1", "T9_HostL2", "T9_HostL3", "T9_HostL4"]; 
+T9EnSource= T9HostArray select floor random count T9HostArray; 
+
+T9EF2= [getMarkerPos T9EnSource, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F"]] call BIS_fnc_spawnGroup;
+_wpE2 = T9EF2 addWaypoint [getMarkerPos "T9", 0]; 
+_wpE2 setWaypointType "SAD"; 
+_wpE2 setWaypointFormation "DIAMOND";
+
+T9wpE2= createTrigger ["EmptyDetector", getMarkerPos "Protest"]; 
+T9wpE2 setTriggerArea [30, 30, 0, false]; 
+T9wpE2 setTriggerActivation ["ANY", "PRESENT", True]; 
+T9wpE2 setTriggerType "NONE";
+T9wpE2 setTriggerStatements ["({alive _x} count units T9EF2) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
+
+T9HostArray= ["T9_HostL1", "T9_HostL2", "T9_HostL3", "T9_HostL4"]; 
+T9EnSource= T9HostArray select floor random count T9HostArray; 
+
+T9EF3= [getMarkerPos T9EnSource, EAST, ["O_G_Soldier_AR_F", "O_G_Soldier_LAT_F", "O_G_Soldier_F", "O_G_Soldier_SL_F", "O_G_Soldier_GL_F"]] call BIS_fnc_spawnGroup;
+_wpE3 = T9EF3 addWaypoint [getMarkerPos "T9", 0]; 
+_wpE3 setWaypointType "SAD"; 
+_wpE3 setWaypointFormation "DIAMOND";
+
+T9wpE3= createTrigger ["EmptyDetector", getMarkerPos "Protest"]; 
+T9wpE3 setTriggerArea [30, 30, 0, false]; 
+T9wpE3 setTriggerActivation ["ANY", "PRESENT", True]; 
+T9wpE3 setTriggerType "NONE";
+T9wpE3 setTriggerStatements ["({alive _x} count units T9EF3) < 1", "[ '','A3M_MP_T9EnemyElim',True,False] call BIS_fnc_MP; ", ""]; 
+
+}; 
+A3M_Fnc_Delivery = {
+
+if (IsNil "T9GateOpen") then {T9GateOpen = 0};
+DeliveryComplete = 0; 
+PublicVariable "DeliveryComplete";
+
+T9DelGrp = createGroup Civilian; 
+
+T9DelTrk= "C_Van_01_box_F" createVehicle GetMarkerPos "T9Stage1";
+T9DelTrk_crew = [T9DelTrk, T9DelGrp] call BIS_fnc_spawnCrew;
+
+_wpT1 = T9DelGrp addWaypoint [GetMarkerPos "T9Stop1", 1];
+_wpT1 setWaypointType "MOVE";
+_wpT1 setWaypointBehaviour "CARELESS";
+_wpT1 setWaypointSpeed "NORMAL";
+
+T9wpT2= createTrigger ["EmptyDetector", getMarkerPos "T9Stop1"]; 
+T9wpT2 setTriggerArea [10, 10, 0, false]; 
+T9wpT2 setTriggerActivation ["ANY", "PRESENT", True]; 
+T9wpT2 setTriggerType "NONE";
+T9wpT2 setTriggerStatements ["T9DelTrk in ThisList", "[ '','A3M_MP_T9TrkInPos',True,False] call BIS_fnc_MP; ", ""]; 
+
+waitUntil {T9GateOpen == 1};
+
+_wpT2 = T9DelGrp addWaypoint [GetMarkerPos "T9TrkDest", 2];
+_wpT2 setWaypointType "MOVE";
+_wpT2 setWaypointBehaviour "CARELESS";
+_wpT2 setWaypointSpeed "LIMITED";
+
+T9wpT3= createTrigger ["EmptyDetector", getMarkerPos "T9TrkDest"]; 
+T9wpT3 setTriggerArea [20, 20, 0, false]; 
+T9wpT3 setTriggerActivation ["ANY", "PRESENT", True]; 
+T9wpT3 setTriggerType "NONE";
+T9wpT3 setTriggerStatements ["T9DelTrk in ThisList", "[ '','A3M_MP_T9TrkDelIP',True,False] call BIS_fnc_MP; ", ""]; 
+
+waitUntil {TriggerActivated T9wpT3}; 
+
+DeleteVehicle T9wpT2;
+Sleep 60; 
+["","A3M_MP_T9TrkDelIP2",True,False] call BIS_fnc_MP; 
+
+WaitUntil {DeliveryComplete == 1};
+
+_wpT3 = T9DelGrp addWaypoint [GetMarkerPos "T9Stop2", 3];
+_wpT3 setWaypointType "MOVE";
+_wpT3 setWaypointBehaviour "CARELESS";
+_wpT3 setWaypointSpeed "NORMAL";
+
+waitUntil {T9GateOpen == 1};
+
+_wpT3 = T9DelGrp addWaypoint [GetMarkerPos "T9Return", 4];
+_wpT3 setWaypointType "MOVE";
+_wpT3 setWaypointBehaviour "CARELESS";
+_wpT3 setWaypointSpeed "FULL";
+
+T9wpT4= createTrigger ["EmptyDetector", getMarkerPos "T9Return"]; 
+T9wpT4 setTriggerArea [20, 20, 0, false]; 
+T9wpT4 setTriggerActivation ["ANY", "PRESENT", True]; 
+T9wpT4 setTriggerType "NONE";
+T9wpT4 setTriggerStatements ["T9DelTrk in ThisList", "[ '','A3M_MP_T9TrkDelCplt',True,False] call BIS_fnc_MP; ", ""]; 
+
+waitUntil {TriggerActivated T9wpT4};
+sleep 10; 
+[] Spawn A3M_Svr_T9Cleanup
+}; 
+A3M_Svr_T9Cleanup = {
+DeleteVehicle T9DelTrk; 
+{DeleteVehicle _x} Foreach (Units T9DelGrp);
+DeleteVehicle T9wpT3;
+DeleteVehicle T9wpT4;
 
 };
+// Incident Randomizer
+A3M_fnc_SelectIncident= { 
 
-// Escort Mission Pre-Defines:"
+T9IncidentArray= ["I0","I1","I2","I3", "I4"]; 
+T9Incident= T9IncidentArray select floor random count T9IncidentArray;
 
-A3M_fnc_EscortTask = {
+switch (T9Incident) do {
 
-VIPEscort=player createSimpleTask ["Escort VIP"]; 
-VIPEscort SetSimpleTaskDescription ["Escort the Astral Corporation Executive to his Destination. Protect him at all costs.", "Escort VIP", "VIP's Destination"];
-VIPEscort SetSimpleTaskDestination (getMarkerPos PublicDestination);
-VIPEscort setTaskState "Assigned"; 
-player setCurrentTask VIPEscort; 
-
-playMusic "Assigned";
-
-["TaskAssigned", ["Escort the VIP to his destination. See map."]] call bis_fnc_showNotification;
-
+case "I0": {
+// Nothing
+[] Spawn A3M_fnc_Incident_Causer;
 };
 
-A3M_fnc_EscortSuccessMP = {
+case "I1": {
+[] spawn A3M_fnc_Protest; 
+[] Spawn A3M_fnc_Incident_Causer;
+};
 
-VIPEscort setTaskState "Succeeded"; 
-["TaskDone", ["OPSG has safely escorted the executive to his destination."]] call bis_fnc_showNotification;
-playMusic "Success"; 
-player addRating 300; 
-["ScoreAdded",["Executive Escort Complete!",300]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $50,000.00."]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
+case "I2": {
+[] spawn A3M_fnc_AttackT9; 
+[] Spawn A3M_fnc_Incident_Causer;
+}; 
+
+case "I3": {
+[] spawn A3M_fnc_dblAttackT9; 
+[] Spawn A3M_fnc_Incident_Causer;
+};
+
+case "I4": {
+[] spawn A3M_fnc_Delivery; 
+[] Spawn A3M_fnc_Incident_Causer;
+};
+
+}; 
+}; 
+// End Incident Randomizer
+A3M_fnc_Incident_Causer = {
+
+TimeArray = [60,90,120,130,150,180,210,270]; 
+RandomTime= TimeArray select floor random count TimeArray;
+
+timearrayCounter = (timearrayCounter + RandomTime); 
+
+if (timearrayCounter < 1200) then {
+
+sleep RandomTime;
+[] call A3M_fnc_SelectIncident; 
+
+} else {
+
+[ '','A3M_MP_T9Success',True,False] call BIS_fnc_MP;
+
+MissionStatus = "M0"; 
+publicVariable "MissionStatus";
+
+T9Active = 0; 
+publicVariable "T9Active"; 
+
+B_defensebudget= (B_defensebudget + 750000); 
+publicVariable "B_defensebudget"; 
+
+timearrayCounter = nil; 
+publicVariable "TimearrayCounter";
+}; 
+
+}; 
+// 
+
+A3M_svr_EscortFailed= {
+
+['','A3M_MP_EscortFailed',True,False] call BIS_fnc_MP;
+
+"VIP1ICO" setmarkerpos (getMarkerpos "offmap");
+[VIP1] joinSilent grpnull; 
+
+deleteVehicle VIPDest;
+deleteVehicle VIPDead; 
+
+sleep 10; 
+
+deleteVehicle VIP1;
+
+escortActive = 0; 
+publicVariable "escortActive";
+ 
+missionStatus = "M0"; 
+publicVariable "missionStatus";
 
 }; 
 
-A3M_fnc_EscortSuccess = {
+A3M_svr_EscortSuccess= {
 
-['','A3M_fnc_EscortSuccessMP',True,False] call BIS_fnc_MP;
+['','A3M_MP_EscortSuccess',True,False] call BIS_fnc_MP;
 
 "VIP1ICO" setmarkerpos (getMarkerpos "offmap");
 
@@ -352,63 +606,40 @@ sleep 30;
 deleteVehicle VIP1;
 
 }; 
-
-A3M_EscortFailedMP= {
-VIPEscort setTaskState "Failed"; 
-playSound "MissionFailed"; 
-playMusic "Failure";
-["TaskFailed", ["OPSG has failed to safely escort the Executive."]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-};
-
-A3M_EscortFailed= {
-
-['','A3M_EscortFailedMP',True,False] call BIS_fnc_MP;
-
-"VIP1ICO" setmarkerpos (getMarkerpos "offmap");
-[VIP1] joinSilent grpnull; 
-
-deleteVehicle VIPDest;
-deleteVehicle VIPDead; 
-
-sleep 10; 
-
-deleteVehicle VIP1;
-
-escortActive = 0; 
-publicVariable "escortActive";
- 
-missionStatus = "M0"; 
-publicVariable "missionStatus";
-
+A3M_svr_ConvoyFailed= {
+['','A3M_MP_ConvoyFailed',True,False] call BIS_fnc_MP;
+deleteVehicle DelDest;
+deleteVehicle DelDead; 
+sleep 10.0; 
+deleteVehicle DEL1;
+convoyActive = 0; 
+publicVariable "convoyActive"; 
+missionStatus = "M0";
+publicVariable "missionStatus";  
 }; 
- 
-// Delivery Truck Mission: 
-A3M_fnc_ConvoyTask = {
-DELEscort=player createSimpleTask ["Deliver Astral Corp Supplies to Destination"]; 
-DELEscort SetSimpleTaskDescription ["Escort the Astral Corp Supplies to their Destination. Protect them at all costs.", "Deliver Supplies", "Supply Destination"];
-DELEscort SetSimpleTaskDestination (getMarkerPos PubDelDestination);
-DELEscort setTaskState "Assigned"; 
-
-player setCurrentTask DELEscort; 
-playMusic "Assigned";
-["TaskAssigned", ["Drive the supply truck to it's destination. See map."]] call bis_fnc_showNotification;
-
-};
-
-A3M_fnc_ConvoySuccessMP = {
-DELEscort setTaskState "Succeeded"; 
-["TaskDone", ["OPSG has safely delivered the Supplies to their destination"]] call bis_fnc_showNotification;
-playMusic "Success"; 
-player addRating 500; 
-["ScoreAdded",["Delivery Complete!",500]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $75,000.00"]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
+A3M_svr_SEFailed= {
+['','A3M_MP_SEFailed',True,False] call BIS_fnc_MP;
+SEActive = 0; 
+PublicVariable "SEActive"; 
+"SAR1ICO" setmarkerpos (getMarkerpos "offmap");
+deleteVehicle SAR1; 
+MissionStatus = "M0";
+publicVariable "MissionStatus"; 
 }; 
-
-
-A3M_fnc_ConvoySuccess = {
-['','A3M_fnc_ConvoySuccessMP',True,False] call BIS_fnc_MP;
+A3M_svr_SESucceeded= {
+['','A3M_MP_SESucceeded',True,False] call BIS_fnc_MP;
+SEActive = 0; 
+publicVariable "SEActive"; 
+"SAR1ICO" setmarkerpos (getMarkerpos "offmap");
+deleteVehicle SARDead;
+B_DefenseBudget = (B_DefenseBudget+ 1500000); 
+publicVariable "B_defensebudget"; 
+deleteVehicle SAR1; 
+MissionStatus = "M0";
+publicVariable "MissionStatus"; 
+}; 
+A3M_svr_ConvoySuccess = {
+['','A3M_MP_ConvoySuccess',True,False] call BIS_fnc_MP;
 deleteVehicle DelDest;
 deleteVehicle DelDead;
 sleep 5.0; 
@@ -421,237 +652,8 @@ B_defensebudget = (B_defensebudget+ 75000);
 publicVariable "B_defensebudget"; 
 };
 
-
-A3M_fnc_ConvoyFailedMP = {
-DELEscort setTaskState "Failed";
-playSound "MissionFailed";  
-playMusic "Failure";
-["TaskFailed", ["OPSG has failed to safely escort the truck to it's destination."]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-
-A3M_fnc_ConvoyFailed = {
-['','A3M_fnc_ConvoyFailedMP',True,False] call BIS_fnc_MP;
-deleteVehicle DelDest;
-deleteVehicle DelDead; 
-sleep 10.0; 
-deleteVehicle DEL1;
-convoyActive = 0; 
-publicVariable "convoyActive"; 
-missionStatus = "M0";
-publicVariable "missionStatus";  
-}; 
-
-// S&E Mission
-A3M_fnc_SEFailedMP = {
-["TaskFailed", ["The Hostage was Killed."]] call bis_fnc_showNotification;
-hint format ["Message: \n \n Our Vital Monitors indicate that the Astral Corp Executive you were commissioned to rescue has been killed. The mission is FUBAR. Return to Base."]; 
-SARMission setTaskState "FAILED";
-playSound "MissionFailed";  
-PlayMusic "Failure"; 
-player setCurrentTask CO1;
-}; 
-
-
-A3M_fnc_SEFailed = {
-['','A3M_fnc_SEFailedMP',True,False] call BIS_fnc_MP;
-SEActive = 0; 
-PublicVariable "SEActive"; 
-"SAR1ICO" setmarkerpos (getMarkerpos "offmap");
-deleteVehicle SAR1; 
-MissionStatus = "M0";
-publicVariable "MissionStatus"; 
-}; 
-
-A3M_fnc_SESucceededMP = {
-["TaskDone", ["OPSG has successfully returned the executive to the OPSG compound."]] call bis_fnc_showNotification;
-hint "We'll take him from here. He will be debriefed and receive medical treatment. Great job!"; 
-SARMission setTaskState "Succeeded"; 
-PlayMusic "Success"; 
-player addRating 850; 
-["ScoreAdded",["Executive Recovered!",850]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $1,500,000.00"]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-
-
-A3M_fnc_SESucceeded= {
-['','A3M_fnc_SESucceededMP',True,False] call BIS_fnc_MP;
-SEActive = 0; 
-publicVariable "SEActive"; 
-"SAR1ICO" setmarkerpos (getMarkerpos "offmap");
-deleteVehicle SARDead;
-B_DefenseBudget = (B_DefenseBudget+ 1500000); 
-publicVariable "B_defensebudget"; 
-deleteVehicle SAR1; 
-MissionStatus = "M0";
-publicVariable "MissionStatus"; 
-}; 
-
-
-A3M_fnc_SARmission= {
-
-SARMission=player createSimpleTask ["Locate and Extract kidnapped Astral Corp Executive."]; 
-SARMission SetSimpleTaskDescription ["An Astral Corporation executive has been confirmed capture by a high tech anti-pharmaceutical extremist faction. We've been contrated to bring him back to our compound alive. ", "Snatch and Extract", " Last Known Location"];
-SARMission SetSimpleTaskDestination (getMarkerPos PublicLoc);
-SARMission setTaskState "Assigned"; 
-player setCurrentTask SARMission; 
-playMusic "Assigned";
-
-["TaskAssigned", ["Rescue the captured Astral Corporation executive. See map."]] call bis_fnc_showNotification;
-
-}; 
-
-A3M_fnc_ChangeSARDest= {
-SARMission SetSimpleTaskDescription ["An Astral Corporation executive has been rescued. Return him to the C-12 compound safe and sound. ", "Snatch and Extract", " RTB"];
-SARMission SetSimpleTaskDestination (getMarkerPos "BA");
-["InformationGreen", ["The Package has been secured. Move to HQ immediately!"]] call bis_fnc_showNotification;
-}; 
-
-// Raid Mission
-A3M_Raid_1MP = {
-
-A3MRaid1=player createSimpleTask ["Move to the Enemy Terrorist Compound and eliminate the enemy forces."]; 
-A3MRaid1 SetSimpleTaskDescription ["The Altian Government requests assistance in dealing with a foreign terrorist cell that has taken over a compound. The Altian Government cannot risk an international incident by stepping in, but the Altian police forces are unprepared and ill equipped to handle this situation. OPSG is hereby contracted to eliminate all terror cells operating in Altis. ", "Eliminate Terror Cell", "Terrorist Compound"];
-A3MRaid1 SetSimpleTaskDestination (getMarkerPos "sg1");
-A3MRaid1 setTaskState "Assigned"; 
-player setCurrentTask A3MRaid1; 
-playMusic "Assigned";
-["TaskAssigned", ["Eliminate the rogue military unit. Clear the area. See map."]] call bis_fnc_showNotification;
-}; 
-
-A3M_Raid_2MP = {
-A3MRaid2=player createSimpleTask ["Move to the Enemy Terrorist City and eliminate the enemy forces."]; 
-A3MRaid2 SetSimpleTaskDescription ["The Altian Government requests assistance in dealing with a foreign terrorist cell that has taken over an entire city. The Altian Government cannot risk an international incident by stepping in, but the Altian police forces are unprepared and ill equipped to handle this situation. OPSG is hereby contracted to eliminate all terror cells operating in Altis. ", "Eliminate Terror Cell", "Terrorist City"];
-A3MRaid2 SetSimpleTaskDestination (getMarkerPos "sg2");
-A3MRaid2 setTaskState "Assigned"; 
-player setCurrentTask A3MRaid2; 
-playMusic "Assigned";
-["TaskAssigned", ["Eliminate the rogue military unit. Clear the area. See map."]] call bis_fnc_showNotification;
-}; 
-
-A3M_fnc_RaidClearMP = {
-["TaskDone", ["OPSG has successfully eliminated the Terror Cell."]] call bis_fnc_showNotification;
-A3MRaid1 setTaskState "Succeeded"; 
-playMusic "Success";
-player addRating 2000; 
-["ScoreAdded",["Terror Cell Eliminated!",2000]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $2,000,000.00"]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-// End Raid Missions
-
-// NATO Reinforcement
-
-A3M_fnc_StartTaskNSARMP = {
-NSARTask=player createSimpleTask ["Assist the stranded NATO forces."]; 
-NSARTask SetSimpleTaskDescription ["A distress call from a NATO unit in the mountains was received by an AAF telecommunications center. The message attached indicated that the unit is currently combat ineffective and awaiting an extraction that failed. The United States has contracted OPSG to insert and assist the NATO operatives in their extract.  ", "Assist NATO Operatives", "NATO Operatives"];
-NSARTask SetSimpleTaskDestination (getMarkerPos NSARPickedNo);
-NSARTask setTaskState "Assigned"; 
-player setCurrentTask NSARTask; 
-playMusic "Assigned";
-["TaskAssigned", ["Extract NATO Team. Time Sensitive. See map."]] call bis_fnc_showNotification;
-};
-
-A3M_fnc_SARfoundMP = {
-
-NSARTask setTaskState "Succeded"; 
-["TaskDone", ["OPSG has located the NATO team."]] call bis_fnc_showNotification;
-["TaskAssigned", ["Escort the NATO team to their extraction point."]] call bis_fnc_showNotification; 
-NSARTask=player createSimpleTask ["Escort NATO forces to their Extraction Point."]; 
-NSARTask SetSimpleTaskDescription ["OPSG has located the straded NATO forces. Escort them to as they egress to their destination. These are soldiers, and they will fight, but you're being paid to make sure they make it safe! Stay sharp! ", "Assist NATO Operatives", "NATO Extract"];
-NSARTask SetSimpleTaskDestination (getMarkerPos NSARDestNo);
-NSARTask setTaskState "Assigned"; 
-player setCurrentTask NSARTask; 
-playMusic "Assigned";
-hint "OPSG has located the NATO team. Move with them to their designated extraction point, and keep them alive. Most importantly, keep the officer with the group alive at all costs. He has intelligence secret NATO needs. ";
-}; 
-
-A3M_fnc_SARSuccessMP = {
-NSARTask setTaskState "Succeded"; 
-["TaskDone", ["OPSG has safely escorted the NATO team."]] call bis_fnc_showNotification;
-playMusic "Success"; 
-player addRating 900;
-["ScoreAdded",["NATO Team Escorted!",900]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $5,000,000.00"]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-
-A3M_fnc_SARfailedMP = {
-NSARTask setTaskState "Failed"; 
-playMusic "Failure"; 
-["TaskFailed", ["OPSG has failed to safely escorted the NATO team."]] call bis_fnc_showNotification;
-hint "The NATO team has been decimated...the ranking officers killed. OPSG has failed to meet the conditions of your contract. The contract has been cancelled and you are to RTB Immediately"; 
-player setCurrentTask CO1;
-}; 
-
-// T9 Security Shift
-
-A3M_fnc_T9_Enemy_Elim= {
-["TaskDone", ["OPSG has eliminated a terror cell attacking the T-9 facility."]] call bis_fnc_showNotification;
-}; 
-
-T9_Protest_ChantMP= {
-ProtestLead say3d "PLChant"; 
-sleep 30; 
-ProtestLead say3d "PLChant"; 
-sleep 30; 
-ProtestLead say3d "PLChant"; 
-sleep 30; 
-ProtestLead say3d "PLChant"; 
-};
-
-T9_Alarm1_MP= {
-T9Spkr say3D "alarmed"; 
-}; 
-
-T9_CinematicMP= {
-Jeff say3D "T9Cinematic1";
-Jeff switchMove "Acts_PointingLeftUnarmed";
-Calvin switchMove "LHD_krajPaluby";
-Floyd switchMove "HubStandingUC_idle1";  
-};
-
-A3M_fnc_StartTaskT9MP = {
-T9Task=player createSimpleTask ["T9 Premise Security Shift"]; 
-T9Task SetSimpleTaskDescription ["The T9 Facility is a highly classified facility operated by Astral Corp by contract of the United States Air Force.  ", "Perform Security Detail at T9 Facility", "T9 Facility"];
-T9Task SetSimpleTaskDestination (getMarkerPos "T9");
-T9Task setTaskState "Assigned"; 
-player setCurrentTask T9Task; 
-playMusic "Assigned";
-["TaskAssigned", ["Perform Premise Security Detail at the T-9 Facility. See Map."]] call bis_fnc_showNotification; 
-};
-
-A3M_fnc_T9ShiftMP = {
-["TaskAssigned", ["OPSG has commenced a T-9 security shift."]] call bis_fnc_showNotification;
-T9Task SetSimpleTaskDescription ["Man the front gate, patrol the perimeter and keep the facility safe and secure. You need to stay here for the duration of one shift. Keep productivity high by minimizing threats inside the facility.", "Perform Security Detail at T9 Facility", "T9 Facility"];
-T9Task SetSimpleTaskDestination (getMarkerPos "T9");
-T9Task setTaskState "Assigned"; 
-player setCurrentTask T9Task; 
-hint "Man the front gate, patrol the perimeter and keep the facility safe and secure. You need to stay here for the duration of one shift. Keep productivity high by minimizing threats inside the facility.";
-};
-
-A3M_fnc_T9SuccessMP = {
-
-T9Task setTaskState "Succeded"; 
-playMusic "Success"; 
-["TaskDone", ["OPSG has completed a security shift at the T-9 Facility."]] call bis_fnc_showNotification;
-player addRating 1000;
-["ScoreAdded",["NATO Team Escorted!",1000]] call bis_fnc_showNotification;
-["InformationGreen", ["Budget Increase Secured. OPSG has been allotted $750,000.00"]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-
-A3M_fnc_T9failedMP = {
-T9Task setTaskState "Failed"; 
-playMusic "Failure"; 
-["TaskDone", ["OPSG has allowed chaos at the T-9 facility."]] call bis_fnc_showNotification;
-player setCurrentTask CO1;
-}; 
-
-// Roadblock MP Pre-Defines
-// 
-A3M_fnc_Roadblock = {
+// Roadblock Mission - This one works differently, and, pending a total re-write, transcends the rules of _svr_ and _MP_ names, as every call is a hybrid of server and client calls. Ignore naming rules below...
+A3M_fnc_RoadBlock = {
 
 RBduty=player createSimpleTask ["Move To Checkpoint Duty"]; 
 RBduty SetSimpleTaskDescription ["Stand at the checkpoint and perform stop and search checkpoint duties with the authority of the Altis Armed Forces.", "Move To Checkpoint Duty", " Checkpoint C-12N"];
@@ -671,8 +673,6 @@ RBtrg setTriggerStatements ["This","[[], 'A3M_fnc_Checkpoint', True, False, Fals
 }; 
 
 }; 
-
-//MP Task: Stand at checkpoint (Active mission task at site) 
 A3M_fnc_checkpoint = {
 
 RBduty setTaskState "Succeeded"; 
@@ -712,7 +712,6 @@ systemChat "A Checkpoint Mission is currently active.";
 }; 
 
 };
-
 A3M_fnc_HandleSol= {
 
 switch (mantype) do {
@@ -777,7 +776,6 @@ default {
 
 };
 }; 
-
 MP_Roadblock_Attitude = {
 
 switch (RAPickedNumber) do { 
@@ -930,15 +928,10 @@ goNorth= RBveh addAction ["Order To Turn Around", {hint "Are you kidding me? But
 
 }; 
 };
-
-//This function removes all actions from the vehicle
 RemAllAct = {
 removeAllActions RBVeh;
 removeAllActions RBVehD; 
 }; 
-
-
-//This function handles letting the car go South 
 DoExitStopSouth = {
 
 // Remove Options from Vehicle (Encounter Complete) 
@@ -956,8 +949,6 @@ sleep 5;
 deleteVehicle RBVeh;
 deleteVehicle RBVehD; 
 }; 
-
-//This function handles letting the car go North
 DoExitStopNorth = {
 // Remove Options from Vehicle (Encounter Complete) 
 [ '','RemAllAct',True,False] call BIS_fnc_MP;
@@ -972,8 +963,6 @@ sleep 5;
 deleteVehicle RBVeh;
 deleteVehicle RBVehD; 
 }; 
-
-// Arrest / Move to Jail Triggers / Launch JailTask MP
 A3M_fnc_jailtrigger= {
 [ '','RemAllAct',True,False] call BIS_fnc_MP;
 deleteVehicle RBVeh; 
@@ -986,16 +975,12 @@ MoveToJail = MJMP;
 PublicVariable "MoveToJail"; 
 [ '','A3M_fnc_jailtask',True,False] call BIS_fnc_MP;
 }; 
-
-//Prisoner Booked MP Msgs
 A3M_Booked_MP = {
 hint "Prisoner has been booked into Altian Police Custody. Thank you!";
 ALTEscort setTaskState "Succeeded";  
 playMusic "Success";
 mantype = "M0";
 }; 
-
-// A3M FNC BOOKED
 A3M_fnc_booked= {
 RBVehD setPos (GetMarkerPos "AAF_Jail"); 
 deleteVehicle MoveToJail; 
@@ -1005,8 +990,6 @@ deleteVehicle RBVehD;
 ['','A3M_Booked_MP',True,False] call BIS_fnc_MP;
 
 };
-
-// ESCORT TO JAIL MP TASK
 A3M_fnc_jailtask= {
 deleteVehicle RBVeh; 
 hint "Suspect's Vehicle has been Impounded"; 
@@ -1019,37 +1002,27 @@ playMusic "Assigned";
 ["TaskAssigned", ["Escort the law breaker to jail."]] call bis_fnc_showNotification; 
 RBVehD addAction ["Fast Transport", {[] call A3M_fnc_booked} ]; 
 }; 
-
-//PRIS MP 
 A3M_FNC_PRISMP= { 
 ["TaskFailed", ["The prisoner has been killed in custody."]] call bis_fnc_showNotification; 
 ALTEscort setTaskState "Failed"; 
 mantype = "M0";
 }; 
-
-// CIV MP
 A3M_FNC_CIVMP= {
 removeAllActions RBVeh; 
 ["TaskFailed", ["The Driver has been killed."]] call bis_fnc_showNotification; 
 hint "This is a major civil rights violation. Expect backlash! "; 
 mantype = "M0";
 }; 
-
-// TERR MP
 A3M_fnc_TerrMP= {
 ["TaskDone", ["The Terrorist has been killed."]] call bis_fnc_showNotification;
 hint "The terrorist has been neutralized. Great Job. The shooting was in policy, and the terrorist was killed before he could detonate a very lethal bomb.";
 mantype = "M0";
 };
-
-//CRIM MP
 A3M_FNC_CRIMMP= {
 ["InformationRed", ["The suspect has been neutralized."]] call bis_fnc_showNotification;
 hint "The shooting will come under investigation by command staff, but for your moral sake, we hope it was an in policy shooting. You know the truth in your heart."; 
 mantype = "M0";
 };
-
-// This triggers when the missionCompleted Variable reaches the limit. 
 A3M_fnc_rbmissionend = { 
 
 if (CheckPointActive == 1) then {
@@ -1061,12 +1034,11 @@ hint format ["Checkpoint Duty Complete. \n \n You had %1 Rights Violation Compla
 RBduty2 setTaskState "Succeeded";
 player addRating 1500;
 }; 
+
 CheckpointActive = 0; 
-
 MissionActive = 0; 
-publicVariable "MissionActive"; 
 
-[] call coroner;
+[0] call A3M_Fnc_Cleanup;
 sleep 2; 
 
 if (isServer) then {
@@ -1077,8 +1049,6 @@ publicVariable "B_DefenseBudget";
 player setCurrentTask CO1;
 
 };
-
-// Execution 
 A3M_msn_chkpt = {
 
 if (IsServer) then {
@@ -1110,8 +1080,8 @@ if (IsServer) then {
 
 			}; 
 			
-	} else {systemChat "A Mission is already active, and cannot be duplicated."}; 
+	} else {systemChat "A Mission of this type is already active, and cannot be duplicated."}; 
 	
   } else {systemChat "A Checkpoint Mission has been activated. "};
 }; 
-
+// End of Roadblock Debacle. Seriously, at some point, I need to re-write this with what I know now. The checkpoint was a helluva learning experience in it's time, and now, It's time to update it. Soon...Soon. 

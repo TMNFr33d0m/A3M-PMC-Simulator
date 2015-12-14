@@ -53,13 +53,21 @@ RHS_Support_Enabled = 0;
 /////////////////////////////////////////////////////////////////////////////////////
 //Initial Budget for Side - Change in ParamsArray! 
 B_initialbudget= paramsArray select 1;
-//Rating to Purchase Values - This value changes with game performance! 
+//Rating to Purchase Values 
 B_vaslimit= 0;
 B_Mlimit= 3500;
 B_Llimit= 5500;
 
 // Big Ticket Item Rank (Expensive Shit Locked to a rank)
 B_maxrank ="MAJOR";
+
+// Pre-Define Add-on Suport to Off Position 
+RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////
 //Monetary Costs of Things:
@@ -245,27 +253,28 @@ O_Heli_Attack_02_F=21300000;
 O_Heli_Attack_02_black_F=23000000;
 
 // RHS: Escalation - USA Rotary Aircraft 
-rhs_ah1z_wd_10 =27550000;
-rhs_ah1z_wd_gs_10 =27157500;
-rhs_ah1z_wd_cs_10 =27350000;
-rhs_ah1z_wd =31550000;
-rhs_ah1z_wd_gs=31157500;
-rhs_ah1z_wd_cs =31350000;
-rhs_ah64dgrey =65325950;
-rhs_ah64d_wd=35950000;
-rhs_ah64d_wd_gs =35725950;
-rhs_ah64d_wd_cs =35695500;
-rhs_ah64d_wd_aa =0;
-rhs_ch_47f_10 =0;
-rhs_ch_47f_light_10 =0;
-rhs_ch_47f =38550000;
-rhs_ch_47f_light =38550000;
-rhs_uh1y =21600000;
-rhs_uh1y_ffar =21600000;
-rhs_uh1y_unarmed =21600000;
-rhs_uh60m =21300000;
-rhs_uh60m_mev2 =21300000;
-rhs_uh60m_mev =21300000;
+RHS_AH1Z= 27550000;
+RHS_AH1Z_GS= 27157500;
+RHS_AH1Z_CS= 27350000;
+rhs_ah1z_wd = 31550000;
+rhs_ah1z_wd_gs= 31157500;
+rhs_ah1z_wd_cs = 31350000;
+RHS_AH64DGrey= 65325950;
+rhs_ah64d_wd = 35950000;
+rhs_ah64d_wd_gs = 35725950;
+rhs_ah64d_wd_cs = 35695500;
+RHS_AH64D_wd_AA= 35725950;
+rhs_ch_47f_10 = 38550000;
+rhs_ch_47f_light_10 = 38550000;
+rhs_ch_47f = 38550000;
+rhs_ch_47f_light = 38550000;
+rhs_uh1y = 21600000;
+rhs_uh1y_ffar = 21600000;
+rhs_uh1y_unarmed = 21600000;
+rhs_uh60m = 21300000;
+rhs_uh60m_mev2 = 21300000;
+rhs_uh60m_mev = 21300000;
+
 
 // RHS: Escalation - RUS Rotary Aircraft
 RHS_Ka52_vvs=16000000;
@@ -301,6 +310,51 @@ RHS_Su25SM_vvsc=11000000;
 rhs_a10=11800000;
 RHS_C130J=70370000;
 
+// Autonomous / Robotic 
+B_UAV_01_F=	369;
+B_UGV_01_F=	3210526;
+B_UGV_01_rcws_F= 3225550;
+B_UAV_02_F=	16900000;
+B_UAV_02_CAS_F=	17300000;
+UAV_Drakon=	15750000;
+rq11_zerlegt=232000;
+rq11b_zerlegt=232000;
+rq11_camera=8400;
+rq11b_camera=8400;
+
+
+// Personnel and Maritime / Motor Support 
+					
+B_Truck_01_fuel_F=	1200000;		// HEMTT Fuel Truck 
+Box_NATO_Ammo_F=6720;		// Basic Ammo (NATO) 
+Box_NATO_Wps_F=	91800;		// Basic Weapons (NATO) 
+B_Boat_Armed_01_minigun_F=	1275000;		//Patrol Boat w/ Minigun 
+B_Boat_Transport_01_F=	1275;		//RHIB Boat 
+B_SDV_01_F=	1200000;		//SDV (NATO) 	
+
+ACE_Wheel=525;		//Spare Tire
+ACE_Track=175;		//Spare Track
+ACE_Box_Ammo=392378;		//Office Supply Crate 
+ACE_medicalSupplyCrate_advanced=9895;		//Medical Supply Crate
+ACE_Item_Sandbag_empty=	1;		//Empty Sandbag
+
+USS_Iowa_Battleship=100000000; //Iowa-class battleship (U.S. Navy) 
+
+SMA_Weapon_Box=2185995;		// 120 Assorted Weapons, Ammo, Accessories
+
+HLC_MP5_ammobox=6340000;		// 180 HK MP5 Submachineguns, Accessories, Ammo
+
+rhs_weapon_crate=2106000;		// 330 Assorted Russian Weapons / Ammunition 
+rhsusf_weapon_crate=6900000;		// 460  Assorted U.S. Weapons / Ammunition
+
+
+
+
+// Base Upgrades, Safehouse Upgrades
+
+
+
+
 if (isNil"_MATV") then {_MATV ="";};
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //Initial Budget Creator
@@ -313,23 +367,7 @@ if (isnil"B_totalcost") then {
 B_totalcost= 0;
 publicVariable"B_totalcost";
 };
-///////////////////////////////////////////////////////////////////////////////////////////
-//Number Conversion by Corello
-A3M_handle_number=
-{
-private ["_number","_mod","_digots","_digitsCount","_modBase","_numberText"];
-_number = [_this,0,0,[0]] call bis_fnc_param;
-_mod = [_this,1,3,[0]] call bis_fnc_param;
-_digits = _number call bis_fnc_numberDigits;
-_digitsCount = count _digits - 1;
-_modBase = _digitsCount % _mod;
-_numberText ="";
-{
-_numberText = _numberText + str _x;
-if ((_foreachindex - _modBase) % (_mod) == 0 && _foreachindex != _digitsCount) then {_numberText = _numberText +",";};
-} foreach _digits;
-_numberText
-};
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Open Dialog
 _handle= CreateDialog"A3M_store";
@@ -346,6 +384,10 @@ _ChildControl = _Bdisplay displayCtrl 1170;
 //Change It
 form_B_defensebudget= [B_defensebudget] call A3M_handle_number;
 _ChildControl ctrlSetStructuredText parseText format ["$%1", form_B_defensebudget];
+
+// Send Current Budget to ALiVE Server
+["", "ALiVEBudgetPush", false, false, false] call bis_fnc_MP; 
+
 };
 };
 [] call DoBudget;
@@ -384,6 +426,12 @@ _ChildControl3 ctrlSetStructuredText parseText format ["Rank is %1<br />Rating i
 // Supported Modifications:
 _indexSM0= lbAdd [2175,"Stock A3"];
 _indexSM1= lbAdd [2175,"RHS: Escalation"];
+_indexSM2= lbAdd [2175,"Ace 3"];
+_indexSM3= lbAdd [2175,"Apex Drakon"];
+_indexSM4= lbAdd [2175,"USS Iowa"];
+_indexSM5= lbAdd [2175,"Specialist Military Arms"];
+_indexSM6= lbAdd [2175,"HLC / Toadie2k"];
+
 // End Supported Mods.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Add Wheeled Vehicles to Main List
@@ -392,6 +440,9 @@ wheelson = 1;
 wingson = 0;
 helion = 0;
 armoredon = 0;
+RoboticsOn = 0; 
+SupportOn = 0; 
+UpgradesOn = 0; 
 lbClear 1575;
 _index0 =   lbAdd   [1575,"MAT-V Unarmed Vehicle                                                    Price:   $470,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_MRAP_01_F">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
 _index1 =   lbAdd   [1575,"MAT-V Armed (.50 HMG)                                                    Price:   $500,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "B_MRAP_01_hmg_F">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
@@ -475,6 +526,9 @@ wheelson = 0;
 wingson = 1;
 helion = 0;
 armoredon = 0;
+RoboticsOn = 0; 
+SupportOn = 0; 
+UpgradesOn = 0; 
 lbClear 1575;
 _index0 =   lbAdd   [1575,"A-164 Wipeout Anti-Tank Aircraft                                         Price:   $11,800,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_Plane_CAS_01_F">> "picture");    lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
 _index1 =   lbAdd   [1575,"To-199 Neophron                                                          Price:   $11,000,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "O_Plane_CAS_02_F">> "picture");    lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
@@ -495,6 +549,9 @@ wheelson = 0;
 wingson = 0;
 helion = 1;
 armoredon = 0;
+RoboticsOn = 0; 
+SupportOn = 0; 
+UpgradesOn = 0; 
 lbClear 1575;
 _index0 =   lbAdd   [1575,"AH-99 Blackfoot Attack Helicopter                             Price:  $35,700,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_Heli_Attack_01_F">> "picture");  lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
 _index1 =   lbAdd   [1575,"UH-80 Ghosthawk Combat Transport Helicopter                   Price:  $30,500,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "B_Heli_Transport_01_F">> "picture");   lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
@@ -506,27 +563,27 @@ _index6 =   lbAdd   [1575,"Mi-48 Kajman                                         
 _index7 =   lbAdd   [1575,"Mi-48 Kajman (Black)                                          Price:  $23,000,000.00"]; _Pic8= getText( configFile  >> "CfgVehicles">> "O_Heli_Attack_02_black_F">> "picture");    lbSetPicture    [1575, 7    , _Pic8   ];  lbSetPictureColor   [1575, 7 ,[0.738,0.714,0.417,1 ]];
 
 if (RHS_Support_Enabled == 1) then {
-_index8 =   lbAdd   [1575, "USA (USMC 2010)  AH-1Z (Multi-Role)                        Price:   $27,550,000.00 "];     _Pic1= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd_10">> "picture"); lbSetPicture    [1575, 8    , _Pic1   ];  lbSetColor  [1575, 8 ,[0.738,0.714,0.417,1 ]];
-_index9 =   lbAdd   [1575, "USA (USMC 2010)  AH-1Z (Ground-Suppression)                Price:   $27,150,000.00 "];     _Pic2= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd_gs_10">>  "picture"); lbSetPicture    [1575, 9    , _Pic2   ];  lbSetColor  [1575, 9 ,[   0.9  , 0.9  , 0.9  , 0.8     ]];
-_index10 =lbAdd   [1575, "USA (USMC 2010)  AH-1Z (Close-Support)                       Price:   $27,350,000.00 "];     _Pic3= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd_cs_10">>  "picture"); lbSetPicture    [1575, 10   , _Pic3   ];  lbSetColor  [1575, 10,[   0.9  , 0.9  , 0.9  , 0.8     ]];
-_index11 =lbAdd   [1575, "USA (USMC 2014)  AH-1Z (Multi-Role)                          Price:   $31,550,000.00 "];     _Pic4= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd">> "picture"); lbSetPicture    [1575, 11   , _Pic4   ];  lbSetColor  [1575, 11,[   0.9  , 0.9  , 0.9  , 0.8     ]];
-_index12 =lbAdd   [1575, "USA (USMC 2014)  AH-1Z (Ground-Suppression)                  Price:   $31,150,000.00 "];     _Pic5= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd_gs">> "picture"); lbSetPicture    [1575, 12   , _Pic5   ];  lbSetColor  [1575, 12,[   0.9  , 0.9  , 0.9  , 0.8     ]];
-_index13 =lbAdd   [1575, "USA (USMC 2014)  AH-1Z (Close-Support)                       Price:   $31,350,000.00 "];     _Pic6= getText( configFile  >> "CfgVehicles">> "rhs_ah1z_wd_cs">> "picture"); lbSetPicture    [1575, 13   , _Pic6   ];  lbSetColor  [1575, 13,[   0.9  , 0.9  , 0.9  , 0.8     ]];
-_index14 =lbAdd   [1575, "USA (Army 2010)  AH-64D (grey)                               Price:   $65,325,950.00 "];     _Pic7= getText( configFile  >> "CfgVehicles">> "rhs_ah64dgrey">>  "picture"); lbSetPicture    [1575, 14   , _Pic7   ];  lbSetPictureColor   [1575, 14,[0.738,0.714,0.417,1 ]];
-_index15 =lbAdd   [1575, "USA (Army 2014)  AH-64D (Multi-Role)                         Price:   $35,950,000.00 "];     _Pic8= getText( configFile  >> "CfgVehicles">> "rhs_ah64d_wd">>   "picture"); lbSetPicture    [1575, 15   , _Pic8   ];  lbSetPictureColor   [1575, 15,[0.738,0.714,0.417,1 ]];
-_index16 =lbAdd   [1575, "USA (Army 2014)  AH-64D (Ground-Suppression)                 Price:   $35,725,950.00 "];     _Pic9= getText( configFile  >> "CfgVehicles">> "rhs_ah64d_wd_gs">> "picture"); lbSetPicture    [1575, 16   , _Pic9   ];  lbSetPictureColor   [1575, 16,[0.738,0.714,0.417,1 ]];
-_index17 =lbAdd   [1575, "USA (Army 2014)  AH-64D (Close-Support)                      Price:   $35,695,500.00 "];     _Pic10= getText( configFile  >> "CfgVehicles">> "rhs_ah64d_wd_cs">> "picture"); lbSetPicture    [1575, 17   , _Pic10  ];  lbSetPictureColor   [1575, 17,[0.738,0.714,0.417,1 ]];
-_index18 =lbAdd   [1575, "USA (Army 2014)  AH-64D (AA)                                 Price:   $35,725,950.00 "];     _Pic11= getText( configFile  >> "CfgVehicles">> "rhs_ah64d_wd_aa">> "picture"); lbSetPicture    [1575, 18   , _Pic11  ];  lbSetPictureColor   [1575, 18,[0.738,0.714,0.417,1 ]];
-_index19 =lbAdd   [1575, "USA (Army 2010)  CH-47                                       Price:   $38,550,000.00 "];     _Pic12= getText( configFile  >> "CfgVehicles">> "rhs_ch_47f_10">>  "picture"); lbSetPicture    [1575, 19   , _Pic12  ];  lbSetPictureColor   [1575, 19,[0.738,0.714,0.417,1 ]];
-_index20 =lbAdd   [1575, "USA (Army 2010)  CH-47 (D)                                   Price:   $38,550,000.00 "];     _Pic13= getText( configFile  >> "CfgVehicles">> "rhs_ch_47f_light_10">> "picture"); lbSetPicture    [1575, 20   , _Pic13  ];  lbSetPictureColor   [1575, 20,[0.738,0.714,0.417,1 ]];
-_index21 =lbAdd   [1575, "USA (Army 2014)  CH-47                                       Price:   $38,550,000.00 "];     _Pic14= getText( configFile  >> "CfgVehicles">> "rhs_ch_47f">> "picture"); lbSetPicture    [1575, 21   , _Pic14  ];  lbSetPictureColor   [1575, 21,[0.738,0.714,0.417,1 ]];
-_index22 =lbAdd   [1575, "USA (Army 2014)  CH-47 (D)                                   Price:   $38,550,000.00 "];     _Pic15= getText( configFile  >> "CfgVehicles">> "rhs_ch_47f_light">>   "picture"); lbSetPicture    [1575, 22   , _Pic15  ];  lbSetPictureColor   [1575, 22,[0.738,0.714,0.417,1 ]];
-_index23 =lbAdd   [1575, "USA (USMC 2010)  UH-1Y (FFAR/MG)                             Price:   $21,600,000.00 "];     _Pic16= getText( configFile  >> "CfgVehicles">> "rhs_uh1y">>   "picture"); lbSetPicture    [1575, 23   , _Pic16  ];  lbSetPictureColor   [1575, 23,[0.738,0.714,0.417,1 ]];
-_index24 =lbAdd   [1575, "USA (USMC 2010)  UH-1Y (FFAR)                                Price:   $21,600,000.00 "];     _Pic17= getText( configFile  >> "CfgVehicles">> "rhs_uh1y_ffar">>  "picture"); lbSetPicture    [1575, 24   , _Pic17  ];  lbSetPictureColor   [1575, 24,[0.738,0.714,0.417,1 ]];
-_index25 =lbAdd   [1575, "USA (USMC 2010)  UH-1Y (Unarmed)                             Price:   $21,600,000.00 "];     _Pic18= getText( configFile  >> "CfgVehicles">> "rhs_uh1y_unarmed">>   "picture"); lbSetPicture    [1575, 25   , _Pic18  ];  lbSetPictureColor   [1575, 25,[0.738,0.714,0.417,1 ]];
-_index26 =lbAdd   [1575, "USA (Army 2014)  UH-60M                                      Price:   $21,300,000.00 "];     _Pic19= getText( configFile  >> "CfgVehicles">> "rhs_uh60m">>  "picture"); lbSetPicture    [1575, 26   , _Pic19  ];  lbSetPictureColor   [1575, 26,[0.738,0.714,0.417,1 ]];
-_index27 =lbAdd   [1575, "USA (Army 2014)  UH-60M MEV                                  Price:   $21,300,000.00 "];     _Pic20= getText( configFile  >> "CfgVehicles">> "rhs_uh60m_mev2">> "picture"); lbSetPicture    [1575, 27   , _Pic20  ];  lbSetPictureColor   [1575, 27,[0.738,0.714,0.417,1 ]];
-_index28 =lbAdd   [1575, "USA (Army 2014)  UH-60M MEV (ESSS)                           Price:   $21,300,000.00 "];     _Pic21= getText( configFile  >> "CfgVehicles">> "rhs_uh60m_mev">>  "picture"); lbSetPicture    [1575, 28   , _Pic21  ];  lbSetPictureColor   [1575, 28,[0.738,0.714,0.417,1 ]];
+_index8=lbAdd	[1575,	"USA (Desert)  AH-1Z (Multi-Role) 								Price: 	$27,550,000.00	"	];		_Pic1	=	getText	(	configFile >>	"CfgVehicles"	>>	"RHS_AH1Z">>	"picture");	lbSetPicture	[	1575	,	8	,	_Pic1	];	lbSetColor	[	1575	,	8	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index9=lbAdd	[1575,	"USA (Desert)  AH-1Z (Ground-Suppression)						Price: 	$27,150,000.00	"];		_Pic2	=	getText	(	configFile >>	"CfgVehicles">>	"RHS_AH1Z_GS">>	"picture");	lbSetPicture	[	1575	,	9	,	_Pic2	];	lbSetColor	[	1575	,	9	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index10=lbAdd	[1575,	"USA (Desert)  AH-1Z (Close-Support) 							Price: 	$27,350,000.00	"];		_Pic3=getText	(	configFile >>	"CfgVehicles">>	"RHS_AH1Z_CS">>	"picture");	lbSetPicture	[	1575	,	10	,	_Pic3	];	lbSetColor	[	1575	,	10	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index11=lbAdd	[1575,	"USA (Woodland)  AH-1Z (Multi-Role) 							Price: 	$31,550,000.00	"];		_Pic4=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah1z_wd">>	"picture");	lbSetPicture	[	1575	,	11	,	_Pic4	];	lbSetColor	[	1575	,	11	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index12=lbAdd	[1575,	"USA (Woodland)  AH-1Z (Ground-Suppression)						Price: 	$31,150,000.00	"];		_Pic5=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah1z_wd_gs">>	"picture");	lbSetPicture	[	1575	,	12	,	_Pic5	];	lbSetColor	[	1575	,	12	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index13=lbAdd	[1575,	"USA (Woodland)  AH-1Z (Close-Support)							Price: 	$31,350,000.00	"];		_Pic6=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah1z_wd_cs">>	"picture");	lbSetPicture	[	1575	,	13	,	_Pic6	];	lbSetColor	[	1575	,	13	,	[	0.9	,	0.2	,	0.2	,	0.5	]];
+_index14=lbAdd	[1575,	"USA (Army 2010)  AH-64D (grey) 								Price: 	$65,325,950.00	"];		_Pic7=getText	(	configFile >>	"CfgVehicles">>	"RHS_AH64DGrey">>	"picture");	lbSetPicture	[	1575	,	14	,	_Pic7	];	lbSetPictureColor	[	1575	,	14	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index15=lbAdd	[1575,	"USA (Army 2014)  AH-64D (Multi-Role) 							Price: 	$35,950,000.00	"];		_Pic8=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah64d_wd">>	"picture");	lbSetPicture	[	1575	,	15	,	_Pic8	];	lbSetPictureColor	[	1575	,	15	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index16=lbAdd	[1575,	"USA (Army 2014)  AH-64D (Ground-Suppression)					Price: 	$35,725,950.00	"];		_Pic9=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah64d_wd_gs">>	"picture");	lbSetPicture	[	1575	,	16	,	_Pic9	];	lbSetPictureColor	[	1575	,	16	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index17=lbAdd	[1575,	"USA (Army 2014)  AH-64D (Close-Support) 						Price: 	$35,695,500.00	"];		_Pic10=getText	(	configFile >>	"CfgVehicles">>	"rhs_ah64d_wd_cs">>	"picture");	lbSetPicture	[	1575	,	17	,	_Pic10	];	lbSetPictureColor	[	1575	,	17	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index18=lbAdd	[1575,	"USA (Army 2014)  AH-64D (AA) 									Price: 	$35,725,950.00	"];		_Pic11=getText	(	configFile >>	"CfgVehicles">>	"RHS_AH64D_wd_AA">>	"picture");	lbSetPicture	[	1575	,	18	,	_Pic11	];	lbSetPictureColor	[	1575	,	18	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index19=lbAdd	[1575,	"USA (Army 2010)  CH-47 										Price: 	$38,550,000.00	"];		_Pic12=getText	(	configFile >>	"CfgVehicles">>	"rhs_ch_47f_10">>	"picture");	lbSetPicture	[	1575	,	19	,	_Pic12	];	lbSetPictureColor	[	1575	,	19	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index20=lbAdd	[1575,	"USA (Army 2010)  CH-47 (D)										Price: 	$38,550,000.00	"];		_Pic13=getText	(	configFile >>	"CfgVehicles">>	"rhs_ch_47f_light_10">>	"picture");	lbSetPicture	[	1575	,	20	,	_Pic13	];	lbSetPictureColor	[	1575	,	20	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index21=lbAdd	[1575,	"USA (Army 2014)  CH-47											Price: 	$38,550,000.00	"];		_Pic14=getText	(	configFile >>	"CfgVehicles">>	"rhs_ch_47f">>	"picture");	lbSetPicture	[	1575	,	21	,	_Pic14	];	lbSetPictureColor	[	1575	,	21	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index22=lbAdd	[1575,	"USA (Army 2014)  CH-47 (D)										Price: 	$38,550,000.00	"];		_Pic15=getText	(	configFile >>	"CfgVehicles">>	"rhs_ch_47f_light">>	"picture");	lbSetPicture	[	1575	,	22	,	_Pic15	];	lbSetPictureColor	[	1575	,	22	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index23=lbAdd	[1575,	"USA (USMC 2010)  UH-1Y (FFAR/MG)								Price: 	$21,600,000.00	"];		_Pic16=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh1y">>	"picture");	lbSetPicture	[	1575	,	23	,	_Pic16	];	lbSetPictureColor	[	1575	,	23	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index24=lbAdd	[1575,	"USA (USMC 2010)  UH-1Y (FFAR) 								   Price: 	$21,600,000.00	"];		_Pic17=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh1y_ffar">>	"picture");	lbSetPicture	[	1575	,	24	,	_Pic17	];	lbSetPictureColor	[	1575	,	24	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index25=lbAdd	[1575,	"USA (USMC 2010)  UH-1Y (Unarmed) 							   Price: 	$21,600,000.00	"];		_Pic18=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh1y_unarmed">>	"picture");	lbSetPicture	[	1575	,	25	,	_Pic18	];	lbSetPictureColor	[	1575	,	25	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index26=lbAdd	[1575,	"USA (Army 2014)  UH-60M 									   Price: 	$21,300,000.00	"];		_Pic19=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh60m">>	"picture");	lbSetPicture	[	1575	,	26	,	_Pic19	];	lbSetPictureColor	[	1575	,	26	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index27=lbAdd	[1575,	"USA (Army 2014)  UH-60M MEV 								   Price: 	$21,300,000.00	"];		_Pic20=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh60m_mev2">>	"picture");	lbSetPicture	[	1575	,	27	,	_Pic20	];	lbSetPictureColor	[	1575	,	27	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
+_index28=lbAdd	[1575,	"USA (Army 2014)  UH-60M MEV (ESSS)							   Price: 	$21,300,000.00	"];		_Pic21=getText	(	configFile >>	"CfgVehicles">>	"rhs_uh60m_mev">>	"picture");	lbSetPicture	[	1575	,	28	,	_Pic21	];	lbSetPictureColor	[	1575	,	28	,	[	0.9	,	0.9	,	0.9	,	0.8	]];
 _index29 =lbAdd   [1575, "RUS Ka-52 (Grey)                                             Price:   $16,000,000"];     _Pic22= getText( configFile  >> "CfgVehicles">> "RHS_Ka52_vvs">>   "picture"); lbSetPicture    [1575, 29   , _Pic22  ];  lbSetPictureColor   [1575, 29,[0.738,0.714,0.417,1 ]];
 _index30 =lbAdd   [1575, "RUS Ka-52 (Camo)                                             Price:   $16,000,000"];     _Pic23= getText( configFile  >> "CfgVehicles">> "RHS_Ka52_vvsc">>  "picture"); lbSetPicture    [1575, 30   , _Pic23  ];  lbSetPictureColor   [1575, 30,[0.738,0.714,0.417,1 ]];
 _index31 =lbAdd   [1575, "RUS Ka-60 (Grey)                                             Price:   $21,500,000"];     _Pic24= getText( configFile  >> "CfgVehicles">> "rhs_ka60_grey">>  "picture"); lbSetPicture    [1575, 31   , _Pic24  ];  lbSetPictureColor   [1575, 31,[0.738,0.714,0.417,1 ]];
@@ -559,6 +616,9 @@ wheelson = 0;
 wingson = 0;
 helion = 0;
 armoredon = 1;
+RoboticsOn = 0; 
+SupportOn = 0; 
+UpgradesOn = 0; 
 lbClear 1575;
 _index0 =   lbAdd   [1575,"M2A1 Slammer Battle Tank                                     Price:   $6,000,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_MBT_01_cannon_F">> "picture");   lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
 _index1 =   lbAdd   [1575,"M5 Sandstorm MLRS                                            Price:   $2,410,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "B_MBT_01_mlrs_F">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
@@ -650,11 +710,104 @@ _index83 =lbAdd   [1575,"RUS ZSU-23-4 (TV)                                      
 
 }; 
 };
+
+DoAddRobotics = {
+wheelson = 0;
+wingson = 0;
+helion = 0;
+armoredon = 0;
+RoboticsOn = 1; 
+SupportOn = 0; 
+UpgradesOn = 0; 
+lbClear 1575;
+
+	if (Apex_Enabled == 1) then {
+		_index0 =   lbAdd   [1575,"Apex Drakon                                                                  Price:   $15,000,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "UAV_Drakon">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+		} else {
+			if (RHS_Support_Enabled == 1) then { 
+			_index0 =   lbAdd   [1575,"RHS RQ-11 A Blanket                                                          Price:   $232,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "rq11_zerlegt">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+			_index1 =   lbAdd   [1575,"RHS RQ-11 B Blanket                                                          Price:   $232,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "rq11b_zerlegt">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
+			_index2 =   lbAdd   [1575,"RQ-11 A Camera Package                                                       Price:   $8,400.00"]; _Pic3= getText( configFile  >> "CfgVehicles">> "rq11_camera">> "picture"); lbSetPicture    [1575, 2    , _Pic3   ];  lbSetPictureColor   [1575, 2 ,[0.738,0.714,0.417,1 ]];
+			_index3 =   lbAdd   [1575,"RQ-11 B Camera Package                                                       Price:   $8,400.00"]; _Pic4= getText( configFile  >> "CfgVehicles">> "rq11b_camera">> "picture");    lbSetPicture    [1575, 3    , _Pic4   ];  lbSetPictureColor   [1575, 3 ,[0.738,0.714,0.417,1 ]];
+				} else {
+					_index0 =   lbAdd   [1575,"AR-2 Darter                                                                         Price:   $369.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_UAV_01_F">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+					_index1 =   lbAdd   [1575,"UGV Stomper                                                                         Price:   $3,210,526.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "B_UGV_01_F">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
+					_index2 =   lbAdd   [1575,"UGV Stomper RCWS                                                                    Price:   $3,225,550.00"]; _Pic3= getText( configFile  >> "CfgVehicles">> "B_UGV_01_rcws_F">> "picture"); lbSetPicture    [1575, 2    , _Pic3   ];  lbSetPictureColor   [1575, 2 ,[0.738,0.714,0.417,1 ]];
+					_index3 =   lbAdd   [1575,"Yabhon R3                                                                           Price:   $16,900,000.00"]; _Pic4= getText( configFile  >> "CfgVehicles">> "B_UAV_02_F">> "picture");    lbSetPicture    [1575, 3    , _Pic4   ];  lbSetPictureColor   [1575, 3 ,[0.738,0.714,0.417,1 ]];
+					_index4 =   lbAdd   [1575,"Yabhon R3 (CAS)                                                                     Price:   $17,300,000.00"]; _Pic5= getText( configFile  >> "CfgVehicles">> "B_UAV_02_CAS_F">> "picture");  lbSetPicture    [1575, 4    , _Pic5   ];  lbSetPictureColor   [1575, 4 ,[0.738,0.714,0.417,1 ]];
+				};
+	
+			};
+
+
+};
+
+DoAddSupport = {
+wheelson = 0;
+wingson = 0;
+helion = 0;
+armoredon = 0;
+RoboticsOn = 0; 
+SupportOn = 1; 
+UpgradesOn = 0; 
+lbClear 1575;
+
+	if (Ace3_Enabled == 1) then {
+		_index0 =   lbAdd   [1575,"Replacement Wheel                                                                                                      Price:   $525.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "ACE_Wheel">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+		_index1 =   lbAdd   [1575,"Replacement Track                                                                                                      Price:   $175.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "ACE_Track">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
+		_index2 =   lbAdd   [1575,"Match Grade Ammo Crate (Small Ammo Shipment)                                                                           Price:   $392,378.00"]; _Pic3= getText( configFile  >> "CfgVehicles">> "ACE_Box_Ammo">> "picture"); lbSetPicture    [1575, 2    , _Pic3   ];  lbSetPictureColor   [1575, 2 ,[0.738,0.714,0.417,1 ]];
+		_index3 =   lbAdd   [1575,"Medical Supply Shipment                                                                                                Price:   $9,895.00"]; _Pic4= getText( configFile  >> "CfgVehicles">> "ACE_medicalSupplyCrate_advanced">> "picture");    lbSetPicture    [1575, 3    , _Pic4   ];  lbSetPictureColor   [1575, 3 ,[0.738,0.714,0.417,1 ]];
+		_index4 =   lbAdd   [1575,"Empty Sandbag                                                                                                          Price:   $1.00"]; _Pic5= getText( configFile  >> "CfgVehicles">> "ACE_Item_Sandbag_empty">> "picture");  lbSetPicture    [1575, 4    , _Pic5   ];  lbSetPictureColor   [1575, 4 ,[0.738,0.714,0.417,1 ]];
+		} else {
+			if (Iowa_Enabled == 1) then { 
+			_index0 =   lbAdd   [1575,"Iowa Class Battleship                                                                                              Price:   $100,000,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "USS_Iowa_Battleship">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+				} else {
+					if (SMA_Enabled == 1) then { 
+						_index0 =   lbAdd   [1575,"120 + Assorted Weapons, Ammo, Accessories (SMA)                                                        Price:   $2,185,995.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "SMA_Weapon_Box">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];					
+						} else {
+							if (HLC_Enabled == 1) then { 
+							_index0 =   lbAdd   [1575,"180 HK MP5 Submachineguns, Accessories, Ammo (HLC)                                                 Price:   $6,340,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "HLC_MP5_ammobox">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];					
+								} else {
+									if (RHS_Support_Enabled == 1) then { 
+										_index0 =   lbAdd   [1575,"330 Assorted Russian Weapons / Ammunition                                               Price:   $2,106,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "rhs_weapon_crate">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+										_index1 =   lbAdd   [1575,"460 Assorted U.S. Weapons / Ammunition                                                  Price:   $6,900,000.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "rhsusf_weapon_crate">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];	
+										} else {
+											_index0 =   lbAdd   [1575,"HEMTT A4 M978A4 Fuel Servicing Truck (Tanker)                                       Price:   $1,200,000.00"]; _Pic1= getText( configFile  >> "CfgVehicles">> "B_Truck_01_fuel_F">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+											_index1 =   lbAdd   [1575,"Assorted Small Ammo Shipment (NATO)                                                 Price:   $6,720.00"]; _Pic2= getText( configFile  >> "CfgVehicles">> "Box_NATO_Ammo_F">> "picture"); lbSetPicture    [1575, 1    , _Pic2   ];  lbSetPictureColor   [1575, 1 ,[0.738,0.714,0.417,1 ]];
+											_index2 =   lbAdd   [1575,"Assorted Small Weapons Shipment (NATO)                                              Price:   $91,800.00"]; _Pic3= getText( configFile  >> "CfgVehicles">> "Box_NATO_Wps_F">> "picture"); lbSetPicture    [1575, 2    , _Pic3   ];  lbSetPictureColor   [1575, 2 ,[0.738,0.714,0.417,1 ]];
+											_index3 =   lbAdd   [1575,"Patrol Boat w/ Minigun                                                              Price:   $1,275,000.00"]; _Pic4= getText( configFile  >> "CfgVehicles">> "B_Boat_Armed_01_minigun_F">> "picture");    lbSetPicture    [1575, 3    , _Pic4   ];  lbSetPictureColor   [1575, 3 ,[0.738,0.714,0.417,1 ]];
+											_index4 =   lbAdd   [1575,"RHIB Boat                                                                           Price:   $1,275.00"]; _Pic5= getText( configFile  >> "CfgVehicles">> "B_Boat_Transport_01_F">> "picture");  lbSetPicture    [1575, 4    , _Pic5   ];  lbSetPictureColor   [1575, 4 ,[0.738,0.714,0.417,1 ]];
+											_index5 =   lbAdd   [1575,"SDV (NATO)                                                                          Price:   $1,200,000.00"]; _Pic6= getText( configFile  >> "CfgVehicles">> "B_SDV_01_F">> "picture");  lbSetPicture    [1575, 5    , _Pic6   ];  lbSetPictureColor   [1575, 5 ,[0.738,0.714,0.417,1 ]];
+										}; 
+				
+								};
+						};
+	
+				};
+
+
+		};
+
+}; 
+		
+DoAddUpgrades = {
+wheelson = 0;
+wingson = 0;
+helion = 0;
+armoredon = 0;
+RoboticsOn = 0; 
+SupportOn = 0; 
+UpgradesOn = 1; 
+lbClear 1575;
+
+_index0 =   lbAdd   [1575,"Base Upgrades Coming Soon! "]; _Pic1= getText( configFile  >> "CfgVehicles">> "Replace_me">> "picture"); lbSetPicture    [1575, 0    , _Pic1   ];  lbSetPictureColor   [1575, 0 ,[0.738,0.714,0.417,1 ]];
+};
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Handle the menu clicks (Parent class)
 A3M_fnc_VhandleClick = {
 TheSelection = _this select 1;
-hint"You have made a selection. Click *Purchase* button to buy.";
+hint "You have made a selection. Click *Purchase* button to buy.";
 }; 
 
 A3M_Fnc_VBuyButton = {
@@ -665,6 +818,9 @@ if (wheelson == 1) then {_this call A3M_fnc_wheeled;};
 if (wingson == 1) then {_this call A3M_fnc_winged;};
 if (helion == 1) then {_this call A3M_fnc_heli;};
 if (armoredon == 1) then {_this call A3M_fnc_Armor};
+if (RoboticsOn == 1) then {_this call A3M_Fnc_Robotics};
+if (SupportOn == 1) then {_this call A3M_Fnc_Support};
+if (UpgradesOn == 1) then {_this call A3M_Fnc_Upgrades};
 };
 
 }; 
@@ -677,15 +833,87 @@ switch (ModSelection) do {
 case 0: {
 hint"No mods are required to access this content. Official DLCs may be required in some cases.";
 RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
 lbClear 1575;
-_Msg1 = lbAdd [1575,"Stock A3 - Select a Vehicle Source (Armor Depot, Auto Dealership)" ]; 
+_Msg1 = lbAdd [1575,"Stock A3 - Select a Category" ]; 
 };
 case 1: {
 hint"Use of this selection requires a mod to be installed. Please be sure the selected mod is installed prior to purchase";
 RHS_Support_Enabled = 1;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
 lbClear 1575;
-_Msg2 = lbAdd [1575,"RHS: Escalation - Select a Vehicle Source (Armor Depot, Auto Dealership)" ]; 
+_Msg2 = lbAdd [1575,"RHS: Escalation - Select a Category" ]; 
 };
+
+case 2: {
+hint "Use of this content may require a mod to be installed. Please be sure the selected mod is installed prior to purchase";
+RHS_Support_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
+Ace3_Enabled = 1;
+lbClear 1575;
+_Msg3 = lbAdd [1575,"Ace 3 - Select Support Category." ]; 
+};
+
+case 3: {
+hint "Use of this content may require a mod to be installed. Please be sure the selected mod is installed prior to purchase";
+RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
+Apex_Enabled = 1;
+lbClear 1575;
+_Msg4 = lbAdd [1575,"Apex Drakon - Select Robotics Category." ]; 
+};
+
+case 4: {
+hint "Use of this content may require a mod to be installed. Please be sure the selected mod is installed prior to purchase";
+RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 1;
+SMA_Enabled = 0;
+HLC_Enabled = 0;
+lbClear 1575;
+_Msg5 = lbAdd [1575,"U.S.S. Iowa- Select Support Category." ]; 
+};
+
+case 5: {
+hint "Use of this content may require a mod to be installed. Please be sure the selected mod is installed prior to purchase";
+RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+HLC_Enabled = 0;
+SMA_Enabled = 1;
+lbClear 1575;
+_Msg5 = lbAdd [1575,"Specialist Military Arms - Select Support Category." ]; 
+};
+
+
+case 6: {
+hint "Use of this content may require a mod to be installed. Please be sure the selected mod is installed prior to purchase";
+HLC_Enabled = 1;
+RHS_Support_Enabled = 0;
+Ace3_Enabled = 0;
+Apex_Enabled = 0;
+Iowa_Enabled = 0;
+SMA_Enabled = 0;
+lbClear 1575;
+_Msg5 = lbAdd [1575,"HLC / Toadie2k - Select Support Category." ]; 
+};
+
 // End HandleModClick
 };
 };
@@ -3867,7 +4095,7 @@ Case 68 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_m2_usmc_wd) OR ( 
                 [] call DoTotal; clearWeaponCargoGlobal _MATV; clearMagazineCargoGlobal _MATV;          }; 
         };
         
-Case 69 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_d) OR ( _prat != B_Maxrank)) then { 
+Case 69 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_usmc_d) OR ( _prat != B_Maxrank)) then { 
         hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rhsusf_rg33_d]
             } else {
                 _MATV="rhsusf_rg33_d" createVehicle (getMarkerPos"vehspawn");   
@@ -3882,7 +4110,7 @@ Case 69 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_d) OR ( _prat != 
             }; 
         };
         
-Case 70 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_m2_d) OR ( _prat != B_Maxrank)) then { 
+Case 70 :{_prat = Rank Player;if ((B_defensebudget<rhsusf_rg33_m2_usmc_d) OR ( _prat != B_Maxrank)) then { 
         hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rhsusf_rg33_m2_d]
         } else {
             _MATV="rhsusf_rg33_m2_d" createVehicle (getMarkerPos"vehspawn"); 
@@ -3931,3 +4159,560 @@ default { hint "Something went wrong...Couldn't find case for selection!" };
 // Last Bracket For Wheeled Case
 };
 };
+
+A3M_Fnc_Robotics = {
+
+	if (Apex_Enabled == 1) then {
+		switch (TheSelection) do {
+			Case 0: {
+			_prat = Rank Player;
+			
+			if ((B_defensebudget<UAV_Drakon ) OR ( _prat != B_Maxrank)) then {
+			hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,UAV_Drakon ]
+            } else {
+                RoboGroup = createGroup west; 
+				Robo = createVehicle ['UAV_Drakon',getMarkerPos "AAutSpwn", [], 0, 'CAN_COLLIDE']; 
+				createVehicleCrew Robo; 
+				(crew Robo) join RoboGroup; 
+				
+				Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+				
+                B_defensebudget= (B_defensebudget- UAV_Drakon );  
+                publicVariable"B_defensebudget"; 
+                B_totalcost= (B_totalcost+UAV_Drakon );
+                publicVariable"B_totalcost";
+                hint format ["You have purchased an APEX Drakon UAV for $%1",UAV_Drakon ]; 
+                
+					[] call doBudget; 
+					[] call DoTotal; 
+				}; 
+			};
+			
+			}; 
+	} else { 
+	
+			if ( RHS_Support_Enabled == 1) then {
+				
+				switch (TheSelection) do {
+				
+				Case 0: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<rq11_zerlegt ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rq11_zerlegt ]
+						} else {
+							Robo = createVehicle ['rq11_zerlegt',getMarkerPos "SGAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- rq11_zerlegt );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+rq11_zerlegt );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an RHS RQ-11 A Blanket for $%1",rq11_zerlegt ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+						
+					
+						Case 1: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<rq11b_zerlegt ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rq11b_zerlegt ]
+						} else {
+							Robo = createVehicle ['rq11b_zerlegt',getMarkerPos "SGAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- rq11b_zerlegt );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+rq11b_zerlegt );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an RHS RQ-11 B Blanket  for $%1",rq11b_zerlegt ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+						
+					
+						Case 2: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<rq11_camera ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rq11_camera ]
+						} else {
+							Robo = createVehicle ['rq11_camera',getMarkerPos "SGAutSpwn", [], 0, 'CAN_COLLIDE'];  
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- rq11_camera );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+rq11_camera );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an RQ-11 A Camera Package for $%1",rq11_camera ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						}; 
+						
+						Case 3: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<rq11b_camera ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rq11b_camera ]
+						} else {
+							Robo = createVehicle ['rq11b_camera',getMarkerPos "SGAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+rq11b_camera );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an RQ-11 B Camera Package for $%1",rq11b_camera ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+
+				}; 
+				
+			} else {
+					switch (TheSelection) do {
+						
+						Case 0: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<B_UAV_01_F ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_UAV_01_F ]
+						} else {
+							RoboGroup = createGroup west; 
+							Robo = createVehicle ['B_UAV_01_F',getMarkerPos "SGAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							createVehicleCrew Robo; 
+							(crew Robo) join RoboGroup; 
+
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- B_UAV_01_F );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+B_UAV_01_F );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an AR-2 Darter for $%1",B_UAV_01_F ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+						
+					
+						Case 1: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<B_UGV_01_F ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_UGV_01_F ]
+						} else {
+							RoboGroup = createGroup west; 
+							Robo = createVehicle ['B_UGV_01_F',getMarkerPos "GAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							createVehicleCrew Robo; 
+							(crew Robo) join RoboGroup; 
+							
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- B_UGV_01_F );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+B_UGV_01_F );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a UGV Stomper for $%1",B_UGV_01_F ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+						
+					
+						Case 2: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<B_UGV_01_rcws_F ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_UGV_01_rcws_F ]
+						} else {
+							RoboGroup = createGroup west; 
+							Robo = createVehicle ['B_UGV_01_rcws_F',getMarkerPos "GAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							createVehicleCrew Robo; 
+							(crew Robo) join RoboGroup; 
+							
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- B_UGV_01_rcws_F );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+B_UGV_01_rcws_F );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a UGV Stomper RCWS for $%1",B_UGV_01_rcws_F ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						}; 
+						
+						Case 3: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<B_UAV_02_F ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_UAV_02_F ]
+						} else {
+							RoboGroup = createGroup west; 
+							Robo = createVehicle ['B_UAV_02_F',getMarkerPos "AAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							createVehicleCrew Robo; 
+							(crew Robo) join RoboGroup; 
+							; 
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							
+							B_defensebudget= (B_defensebudget- B_UAV_02_F );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+B_UAV_02_F );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Yabhon R3 for $%1",B_UAV_02_F ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+						
+						Case 4: {
+						_prat = Rank Player;
+			
+						if ((B_defensebudget<B_UAV_02_CAS_F ) OR ( _prat != B_Maxrank)) then {
+						hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_UAV_02_CAS_F ]
+						} else {
+							RoboGroup = createGroup west; 
+							Robo = createVehicle ['B_UAV_02_CAS_F',getMarkerPos "AAutSpwn", [], 0, 'CAN_COLLIDE']; 
+							createVehicleCrew Robo; 
+							(crew Robo) join RoboGroup; 
+							
+							Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
+							
+							B_defensebudget= (B_defensebudget- B_UAV_02_CAS_F );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+B_UAV_02_CAS_F );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Yabhon R3 (CAS) for $%1",B_UAV_02_CAS_F ]; 
+                
+								[] call doBudget; 
+								[] call DoTotal; 
+							}; 
+						};
+					}; 
+				};
+		};
+}; 
+	
+A3M_Fnc_Support = {
+
+if (Ace3_Enabled == 1) then {
+			switch (TheSelection) do {
+				Case 0: {
+					if (B_defensebudget < ACE_Wheel) then {
+						hint format ["Your company does not have sufficient money (Costs $%) to do this.", ACE_Wheel];
+							} else {
+							_SpareTire= "ACE_Wheel" createVehicle (getMarkerPos "SvcSpwn"); 
+							B_defensebudget= (B_defensebudget- ACE_Wheel);  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+ACE_Wheel);
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Spare Wheel for $%1 \n \n It will be delivered to the Vehicle Service Location at the C-12 Facility. ",ACE_Wheel ]; 
+                
+						[] call doBudget; 
+						[] call DoTotal; 
+						}; 
+				}; 
+				Case 1: {
+					if (B_defensebudget < ACE_Track) then {
+						hint format ["Your company does not have sufficient money (Costs $%) to do this.", ACE_Track];
+							} else {
+							_SpareTrack= "ACE_Track" createVehicle (getMarkerPos "SvcSpwn"); 
+							B_defensebudget= (B_defensebudget-ACE_Track);  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+ACE_Track);
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Spare Track for $%1 \n \n It will be delivered to the Vehicle Service Location at the C-12 Facility. ",ACE_Track ]; 
+                
+						[] call doBudget; 
+						[] call DoTotal; 
+						}; 
+				
+				};
+				
+				Case 2: {
+					if (B_defensebudget < ACE_Box_Ammo) then {
+						hint format ["Your company does not have sufficient money (Costs $%) to do this.", ACE_Box_Ammo];
+							} else {
+							_SpareTrack= "ACE_Box_Ammo" createVehicle (getMarkerPos "ArmrySpwn"); 
+							B_defensebudget= (B_defensebudget- ACE_Box_Ammo );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+ACE_Box_Ammo);
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Spare Track for $%1 \n \n It will be delivered to the Vehicle Service Location at the C-12 Facility. ",ACE_Box_Ammo ]; 
+                
+						[] call doBudget; 
+						[] call DoTotal; 
+						}; 
+				
+				};
+				
+				Case 3: {
+					if (B_defensebudget < ACE_medicalSupplyCrate_advanced) then {
+						hint format ["Your company does not have sufficient money (Costs $%) to do this.", ACE_medicalSupplyCrate_advanced];
+							} else {
+							_SpareTrack= "ACE_medicalSupplyCrate_advanced" createVehicle (getMarkerPos "ArmrySpwn"); 
+							B_defensebudget= (B_defensebudget- ACE_medicalSupplyCrate_advanced );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+ACE_medicalSupplyCrate_advanced );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Spare Track for $%1 \n \n It will be delivered to the Vehicle Service Location at the C-12 Facility. ",ACE_medicalSupplyCrate_advanced ]; 
+                
+						[] call doBudget; 
+						[] call DoTotal; 
+						}; 
+				
+				};
+				
+				Case 4: {
+					if (B_defensebudget < ACE_Item_Sandbag_empty) then {
+						hint format ["Your company does not have sufficient money (Costs $%) to do this.", ACE_Item_Sandbag_empty];
+							} else {
+							_SpareTrack= "ACE_Item_Sandbag_empty" createVehicle (getMarkerPos "ArmrySpwn"); 
+							B_defensebudget= (B_defensebudget- ACE_Item_Sandbag_empty );  
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+ACE_Item_Sandbag_empty );
+							publicVariable"B_totalcost";
+							hint format ["You have purchased a Spare Track for $%1 \n \n It will be delivered to the Vehicle Service Location at the C-12 Facility. ",ACE_Item_Sandbag_empty ]; 
+                
+						[] call doBudget; 
+						[] call DoTotal; 
+						}; 
+				
+				};
+			}; 
+
+		} else {
+			if (Iowa_Enabled == 1) then { 
+				switch (TheSelection) do {
+				
+				Case 0: {
+				_prat = Rank Player;
+				if ((B_defensebudget < USS_Iowa_Battleship) OR ( _prat != B_Maxrank)) then {
+					hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,USS_Iowa_Battleship];
+						} else {
+							_MATV="USS_Iowa_Battleship"createVehicle (getMarkerPos"ShipSpawn");
+							B_defensebudget= (B_defensebudget-USS_Iowa_Battleship); 
+							publicVariable"B_defensebudget"; 
+							B_totalcost= (B_totalcost+USS_Iowa_Battleship); 
+							publicVariable"B_totalcost";
+							hint format ["You have purchased an Iowa Class Battleship for $%1 \n \n It will be delivered to the Pefkas Bay.",USS_Iowa_Battleship]; 
+							
+								[] call doBudget; 
+								[] call DoTotal;
+						}; 
+				
+					};
+				}; 
+			} else {
+					if (SMA_Enabled == 1) then { 
+					switch (TheSelection) do {
+						Case 0: {
+							_prat = Rank Player;
+							if ((B_defensebudget < SMA_Weapon_Box) OR ( _prat != B_Maxrank)) then {
+							hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,SMA_Weapon_Box]
+								} else {
+									_SMABox = "SMA_Weapon_Box" createVehicle (getMarkerPos "ArmrySpwn");
+									B_defensebudget= (B_defensebudget-SMA_Weapon_Box); 
+									publicVariable "B_defensebudget"; 
+									B_totalcost= (B_totalcost+SMA_Weapon_Box); 
+									publicVariable "B_totalcost";
+									hint format ["You have purchased a shipment of 120 Assorted Specialist Military Arms for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",SMA_Weapon_Box]; 
+						
+										[] call doBudget; 
+										[] call DoTotal;
+							};
+						}; 
+					}; 	
+				} else {
+						if (HLC_Enabled == 1) then { 
+								switch (TheSelection) do {
+									Case 0: {	
+										_prat = Rank Player;
+										if ((B_defensebudget<HLC_MP5_ammobox) OR ( _prat != B_Maxrank)) then {
+										hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,HLC_MP5_ammobox]
+											} else {								
+												_SMABox = "HLC_MP5_ammobox" createVehicle (getMarkerPos "ArmrySpwn");
+												B_defensebudget= (B_defensebudget-HLC_MP5_ammobox); 
+												publicVariable "B_defensebudget"; 
+												B_totalcost= (B_totalcost+HLC_MP5_ammobox); 
+												publicVariable "B_totalcost";
+												hint format ["You have purchased a shipment of 180 Assorted Heckler and Koch MP-5 Submachinesguns for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",SMA_Weapon_Box]; 
+						
+													[] call doBudget; 
+													[] call DoTotal;
+											};
+									}; 
+								};
+							} else {
+									if (RHS_Support_Enabled == 1) then {
+										switch (TheSelection) do {
+											Case 0: {
+												_prat = Rank Player;
+												if ((B_defensebudget<rhs_weapon_crate) OR ( _prat != B_Maxrank)) then {
+												hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rhs_weapon_crate]
+													} else {	
+													_SMABox = "rhs_weapon_crate" createVehicle (getMarkerPos "ArmrySpwn");
+													B_defensebudget= (B_defensebudget-rhs_weapon_crate); 
+													publicVariable "B_defensebudget"; 
+													B_totalcost= (B_totalcost+rhs_weapon_crate); 
+													publicVariable "B_totalcost";
+													hint format ["You have purchased a shipment of 330 Assorted Russian Military Arms for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",SMA_Weapon_Box]; 
+							
+														[] call doBudget; 
+														[] call DoTotal;
+											};
+										}; 	
+											Case 1: {
+											_prat = Rank Player;
+											if ((B_defensebudget<rhsusf_weapon_crate) OR ( _prat != B_Maxrank)) then {
+											hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,rhsusf_weapon_crate]
+											} else {	
+												_SMABox = "rhsusf_weapon_crate" createVehicle (getMarkerPos"ArmrySpwn");
+												B_defensebudget= (B_defensebudget-rhsusf_weapon_crate); 
+												publicVariable "B_defensebudget"; 
+												B_totalcost= (B_totalcost+rhsusf_weapon_crate); 
+												publicVariable "B_totalcost";
+												hint format ["You have purchased a shipment of 460 Assorted U.S. Military Arms for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",SMA_Weapon_Box]; 
+						
+													[] call doBudget; 
+													[] call DoTotal;
+												};
+											}; 	
+										}; 		
+									} else {
+										switch (TheSelection) do {
+											Case 0: {
+												_prat = Rank Player;
+													if ((B_defensebudget<B_Truck_01_fuel_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_Truck_01_fuel_F]
+														} else {	
+															_SMABox = "B_Truck_01_fuel_F" createVehicle (getMarkerPos "VehSpawn");
+															B_defensebudget= (B_defensebudget-B_Truck_01_fuel_F); 
+															publicVariable "B_defensebudget"; 
+															B_totalcost= (B_totalcost+B_Truck_01_fuel_F); 
+															publicVariable "B_totalcost";
+															hint format ["You have purchased a Military Fuel Truck for $%1 \n \n It will be delivered to the Fleet Delivery Area at the C-12 Facility.",B_Truck_01_fuel_F]; 
+						
+																[] call doBudget; 
+																[] call DoTotal;
+													};
+												}; 	
+													Case 1: {
+													_prat = Rank Player;
+													if ((B_defensebudget<Box_NATO_Ammo_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,Box_NATO_Ammo_F]
+														} else {	
+														_SMABox = "Box_NATO_Ammo_F" createVehicle (getMarkerPos "ArmrySpwn");
+														B_defensebudget= (B_defensebudget-Box_NATO_Ammo_F); 
+														publicVariable "B_defensebudget"; 
+														B_totalcost= (B_totalcost+Box_NATO_Ammo_F); 
+														publicVariable "B_totalcost";
+														hint format ["You have purchased a small shipment of Ammo for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",Box_NATO_Ammo_F]; 
+									
+														[] call doBudget; 
+														[] call DoTotal;
+													};
+												}; 	
+													Case 2: {
+													_prat = Rank Player;
+													if ((B_defensebudget<Box_NATO_Wps_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,Box_NATO_Wps_F]
+														} else {	
+														_SMABox = "Box_NATO_Wps_F" createVehicle (getMarkerPos "ArmrySpwn");
+														B_defensebudget= (B_defensebudget-Box_NATO_Wps_F); 
+														publicVariable "B_defensebudget"; 
+														B_totalcost= (B_totalcost+Box_NATO_Wps_F); 
+														publicVariable "B_totalcost";
+														hint format ["You have purchased a small shipment of weapons for $%1 \n \n It will be delivered to the Tactical Readiness Area at the C-12 Facility.",Box_NATO_Wps_F]; 
+									
+														[] call doBudget; 
+														[] call DoTotal;
+													};
+												}; 	
+													Case 3: {
+													_prat = Rank Player;
+													if ((B_defensebudget<B_Boat_Armed_01_minigun_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_Boat_Armed_01_minigun_F]
+														} else {	
+															_Boat = "B_Boat_Armed_01_minigun_F" createVehicle (getMarkerPos "SBoatSpawn");
+															B_defensebudget= (B_defensebudget-B_Boat_Armed_01_minigun_F); 
+															publicVariable "B_defensebudget"; 
+															B_totalcost= (B_totalcost+B_Boat_Armed_01_minigun_F); 
+															publicVariable "B_totalcost";
+															hint format ["You have purchased an armed patrol boat (Minigun) for $%1 \n \n It will be delivered to the C-12 Facility Port.",B_Boat_Armed_01_minigun_F]; 
+									
+														[] call doBudget; 
+														[] call DoTotal;
+													};
+												}; 	
+													Case 4: {
+													_prat = Rank Player;
+													if ((B_defensebudget<B_Boat_Transport_01_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_Boat_Transport_01_F]
+														} else {	
+														_SBoat = "B_Boat_Transport_01_F" createVehicle (getMarkerPos "SBoatSpawn");
+														B_defensebudget= (B_defensebudget-B_Boat_Transport_01_F); 
+														publicVariable "B_defensebudget"; 
+														B_totalcost= (B_totalcost+B_Boat_Transport_01_F); 
+														publicVariable "B_totalcost";
+														hint format ["You have purchased a RHIB for $%1 \n \n It will be delivered to the C-12 Facility Port.",B_Boat_Transport_01_F]; 
+									
+														[] call doBudget; 
+														[] call DoTotal;
+													};
+												}; 	
+													Case 5: {
+													_prat = Rank Player;
+													if ((B_defensebudget<B_SDV_01_F) OR ( _prat != B_Maxrank)) then {
+													hint format ["You do not have sufficient rank (Min Rank %1) or money (Costs $%2) to do this.", B_maxrank,B_SDV_01_F]
+														} else {	
+														_Boat = "B_SDV_01_F" createVehicle (getMarkerPos "SBoatSpawn");
+														B_defensebudget= (B_defensebudget-B_SDV_01_F); 
+														publicVariable "B_defensebudget"; 
+														B_totalcost= (B_totalcost+B_SDV_01_F); 
+														publicVariable "B_totalcost";
+														hint format ["You have purchased an SDV for $%1 \n \n It will be delivered to the C-12 Facility Port.",B_SDV_01_F]; 
+									
+														[] call doBudget; 
+														[] call DoTotal;
+															};
+												
+													}; 												
+												}; 		
+											}; 
+				
+									};
+						};
+	
+					};
+
+
+				};
+}; 
+
+A3M_Fnc_Upgrades = {
+switch (TheSelection) do {
+
+
+}; 
+};
+
+
+
+
+//EOF

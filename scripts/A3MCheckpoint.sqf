@@ -74,7 +74,7 @@ RCPickedNumber= RCRandomNumber select floor random count RCRandomNumber;
 		EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 		EnPres= EnChance select floor random count EnChance;
 		if (EnPres == 1) then {
-		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_AT"]] call BIS_fnc_spawnGroup;
+		_RBen= [getMarkerPos "ENStage1", EAST, ["O_G_Soldier_F", "O_G_Soldier_F", "O_G_Soldier_AR_F",  "O_G_Soldier_M_F ", "O_G_Soldier_LAT_F"]] call BIS_fnc_spawnGroup;
 		[_RBen, getMarkerPos "RBC"] call BIS_fnc_taskAttack; 
 		EnPres = nil; 			
 						}; 
@@ -96,7 +96,7 @@ RCPickedNumber= RCRandomNumber select floor random count RCRandomNumber;
 		EnChance = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0];
 		EnPres= EnChance select floor random count EnChance;
 		if (EnPres == 1) then {
-		_RBen= [getMarkerPos "ENStage1", EAST, ["LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_Rifleman", "LOP_ChDKZ_Infantry_MG", "LOP_ChDKZ_Infantry_Marksman", "LOP_ChDKZ_Infantry_AT"]] call BIS_fnc_spawnGroup;
+		_RBen= [getMarkerPos "ENStage1", EAST, ["O_G_Soldier_F","O_G_Soldier_F", "O_G_Soldier_AR_F",  "O_G_Soldier_M_F ", "O_G_Soldier_LAT_F"]] call BIS_fnc_spawnGroup;
 		[_RBen, getMarkerPos "RBC"] call BIS_fnc_taskAttack; 
 		EnPres = nil; 	
 							}; 
@@ -114,7 +114,7 @@ publicVariable "RAPickedNumber";
 // Random Haji Maker
 doPickRandomHaji = {
 
-RHClassArray = ["LOP_Tak_Civ_Man_01", "LOP_Tak_Civ_Man_02","LOP_Tak_Civ_Man_04","C_man_1", "C_man_p_beggar_F", "C_man_polo_2_F", "C_man_polo_3_F", "C_man_polo_4_F", "C_man_polo_5_F", "C_man_polo_6_F", "C_man_1_1_F", "C_journalist_F", "C_journalist_F", "C_scientist_F", "C_man_shorts_2_F", "C_man_shorts_3_F", "C_man_w_worker_F"]; 
+RHClassArray = ["C_man_1", "C_man_p_beggar_F", "C_man_polo_2_F", "C_man_polo_3_F", "C_man_polo_4_F", "C_man_polo_5_F", "C_man_polo_6_F", "C_man_1_1_F", "C_journalist_F", "C_journalist_F", "C_scientist_F", "C_man_shorts_2_F", "C_man_shorts_3_F", "C_man_w_worker_F"]; 
 ChosenHaji = RHClassArray select floor random count RHClassArray; 
 CivHaji= createGroup Civilian;
 ChosenHaji createUnit [getMarkerPos "RBStage1B", CivHaji, "RBVehD = this" , 0.8, "COLONEL"];

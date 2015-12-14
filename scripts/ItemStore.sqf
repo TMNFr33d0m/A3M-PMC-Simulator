@@ -902,6 +902,9 @@ rhs_assault_umbts =130;
 rhs_sidor =35;
 rhs_rpg =25;
 
+ACE_TacticalLadder_Pack = 344;
+
+
 // Magazines
 M_30Rnd_65x39_caseless_green= 20;
 M_30Rnd_65x39_caseless_green_mag_Tracer= 35;
@@ -1412,12 +1415,19 @@ if (BackPacksOn == 1) then {
      _this Spawn A3M_fnc_RHSBackpacks;
      
       } else {
+			
+			if (ACE3_Enabled == 1) then {
+			
+				_this spawn A3M_fnc_Ace3Backpacks;
+			
+			} else {
       
        _this Spawn A3M_fnc_Backpacks;
        
-       };
+			};
        
-      };
+		};
+	}; 	  
 
 if (ElecOn == 1) then {
      if (RHSESC == 1) then {
@@ -2651,38 +2661,45 @@ _index695=lbAdd[1850,"RPG Carrier                  Price:   $25.00"];_Pic145=get
 
 
 
-} else {
-_index449=lbAdd[1850,"Assault Pack (Black)                                Price:   $125.00"];_Pic112=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk">>"picture");lbSetPicture[1850,0,_Pic112];lbSetPictureColor[1850,0,[0.9,0.9,0.9,0.8]];
-_index450=lbAdd[1850,"Assault Pack (Black) - Diver Team Leader            Price:   $1,575.00"];_Pic113=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk_DiverTL">>"picture");lbSetPicture[1850,1,_Pic113];lbSetPictureColor[1850,1,[0.9,0.9,0.9,0.8]];
-_index451=lbAdd[1850,"Assault Pack (Black) - Diver Explosives             Price:   $1,525.00"];_Pic114=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk_DiverExp">>"picture");lbSetPicture[1850,2,_Pic114];lbSetPictureColor[1850,2,[0.9,0.9,0.9,0.8]];
-_index452=lbAdd[1850,"Assault Pack (Coyote)                               Price:   $225.00"];_Pic115=getText(configFile >>"CfgVehicles">>"B_AssaultPack_cbr">>"picture");lbSetPicture[1850,3,_Pic115];lbSetPictureColor[1850,3,[0.9,0.9,0.9,0.8]];
-_index453=lbAdd[1850,"Assault Pack (Digi)                                 Price:   $225.00"];_Pic116=getText(configFile >>"CfgVehicles">>"B_AssaultPack_dgtl">>"picture");lbSetPicture[1850,4,_Pic116];lbSetPictureColor[1850,4,[0.9,0.9,0.9,0.8]];
-_index454=lbAdd[1850,"Assault Pack (Green)                                Price:   $225.00"];_Pic117=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr">>"picture");lbSetPicture[1850,5,_Pic117];lbSetPictureColor[1850,5,[0.9,0.9,0.9,0.8]];
-_index455=lbAdd[1850,"Assault Pack (Green) - Engineer                     Price:   $1,225.00"];_Pic118=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr_Repair">>"picture");lbSetPicture[1850,6,_Pic118];lbSetPictureColor[1850,6,[0.9,0.9,0.9,0.8]];
-_index456=lbAdd[1850,"Assault Pack (Green) - Medic                        Price:   $1,225.00"];_Pic119=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr_Medic">>"picture");lbSetPicture[1850,7,_Pic119];lbSetPictureColor[1850,7,[0.9,0.9,0.9,0.8]];
-_index457=lbAdd[1850,"Assault Pack (Hex)                                  Price:   $225.00"];_Pic120=getText(configFile >>"CfgVehicles">>"B_AssaultPack_ocamo">>"picture");lbSetPicture[1850,8,_Pic120];lbSetPictureColor[1850,8,[0.9,0.9,0.9,0.8]];
-_index458=lbAdd[1850,"Assault Pack (Khaki)                                Price:   $225.00"];_Pic121=getText(configFile >>"CfgVehicles">>"B_AssaultPack_khk">>"picture");lbSetPicture[1850,9,_Pic121];lbSetPictureColor[1850,9,[0.9,0.9,0.9,0.8]];
-_index459=lbAdd[1850,"Assault Pack (MTP)                                  Price:   $225.00"];_Pic122=getText(configFile >>"CfgVehicles">>"B_AssaultPack_mcamo">>"picture");lbSetPicture[1850,10,_Pic122];lbSetPictureColor[1850,10,[0.9,0.9,0.9,0.8]];
-_index460=lbAdd[1850,"Assault Pack (Sage)                                 Price:   $225.00"];_Pic123=getText(configFile >>"CfgVehicles">>"B_AssaultPack_sgg">>"picture");lbSetPicture[1850,11,_Pic123];lbSetPictureColor[1850,11,[0.9,0.9,0.9,0.8]];
-_index461=lbAdd[1850,"Bergen (Sage) - Explosives                          Price:   $1,350.00"];_Pic124=getText(configFile >>"CfgVehicles">>"B_Bergen_sgg_Exp">>"picture");lbSetPicture[1850,12,_Pic124];lbSetPictureColor[1850,12,[0.9,0.9,0.9,0.8]];
-_index462=lbAdd[1850,"Bergen (Sage)                                       Price:   $350.00"];_Pic125=getText(configFile >>"CfgVehicles">>"B_Bergen_sgg">>"picture");lbSetPicture[1850,13,_Pic125];lbSetPictureColor[1850,13,[0.9,0.9,0.9,0.8]];
-_index463=lbAdd[1850,"Carryall (Hex)                                      Price:   $500.00"];_Pic126=getText(configFile >>"CfgVehicles">>"B_Carryall_ocamo">>"picture");lbSetPicture[1850,14,_Pic126];lbSetPictureColor[1850,14,[0.9,0.9,0.9,0.8]];
-_index464=lbAdd[1850,"Carryall (Urban)                                    Price:   $500.00"];_Pic127=getText(configFile >>"CfgVehicles">>"B_Carryall_oucamo">>"picture");lbSetPicture[1850,15,_Pic127];lbSetPictureColor[1850,15,[0.9,0.9,0.9,0.8]];
-_index465=lbAdd[1850,"Carryall (Urban) - Explosives                       Price:   $1,500.00"];_Pic128=getText(configFile >>"CfgVehicles">>"B_Carryall_oucamo_Exp">>"picture");lbSetPicture[1850,16,_Pic128];lbSetPictureColor[1850,16,[0.9,0.9,0.9,0.8]];
-_index466=lbAdd[1850,"Field Pack (Black)                                  Price:   $325.00"];_Pic129=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk">>"picture");lbSetPicture[1850,17,_Pic129];lbSetPictureColor[1850,17,[0.9,0.9,0.9,0.8]];
-_index467=lbAdd[1850,"Field Pack (Black) - Diver Team Leader              Price:   $1,525.00"];_Pic130=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk_DiverTL">>"picture");lbSetPicture[1850,18,_Pic130];lbSetPictureColor[1850,18,[0.9,0.9,0.9,0.8]];
-_index468=lbAdd[1850,"Field Pack (Black) - Diver Explosives               Price:   $1,425.00"];_Pic131=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk_DiverExp">>"picture");lbSetPicture[1850,19,_Pic131];lbSetPictureColor[1850,19,[0.9,0.9,0.9,0.8]];
-_index469=lbAdd[1850,"Field Pack (Coyote)                                 Price:   $325.00"];_Pic132=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr">>"picture");lbSetPicture[1850,20,_Pic132];lbSetPictureColor[1850,20,[0.9,0.9,0.9,0.8]];
-_index470=lbAdd[1850,"Field Pack (Coyote) - Anti-Tank                     Price:   $1,325.00"];_Pic133=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr_AT">>"picture");lbSetPicture[1850,21,_Pic133];lbSetPictureColor[1850,21,[0.9,0.9,0.9,0.8]];
-_index471=lbAdd[1850,"Field Pack (Coyote) - Engineer                      Price:   $1,325.00"];_Pic134=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr_Repair">>"picture");lbSetPicture[1850,22,_Pic134];lbSetPictureColor[1850,22,[0.9,0.9,0.9,0.8]];
-_index472=lbAdd[1850,"Field Pack (Hex)                                    Price:   $325.00"];_Pic135=getText(configFile >>"CfgVehicles">>"B_FieldPack_ocamo">>"picture");lbSetPicture[1850,23,_Pic135];lbSetPictureColor[1850,23,[0.9,0.9,0.9,0.8]];
-_index473=lbAdd[1850,"Field Pack (Hex) - Medic                            Price:   $1,325.00"];_Pic136=getText(configFile >>"CfgVehicles">>"B_FieldPack_ocamo_Medic">>"picture");lbSetPicture[1850,24,_Pic136];lbSetPictureColor[1850,24,[0.9,0.9,0.9,0.8]];
-_index474=lbAdd[1850,"Field Pack (Urban)                                  Price:   $325.00"];_Pic137=getText(configFile >>"CfgVehicles">>"B_FieldPack_oucamo">>"picture");lbSetPicture[1850,25,_Pic137];lbSetPictureColor[1850,25,[0.9,0.9,0.9,0.8]];
-_index475=lbAdd[1850,"Kitbag (Coyote)                                     Price:   $450.00"];_Pic138=getText(configFile >>"CfgVehicles">>"B_Kitbag_cbr">>"picture");lbSetPicture[1850,26,_Pic138];lbSetPictureColor[1850,26,[0.9,0.9,0.9,0.8]];
-_index476=lbAdd[1850,"Kitbag (MTP)                                        Price:   $450.00"];_Pic139=getText(configFile >>"CfgVehicles">>"B_Kitbag_mcamo">>"picture");lbSetPicture[1850,27,_Pic139];lbSetPictureColor[1850,27,[0.9,0.9,0.9,0.8]];
-_index477=lbAdd[1850,"Kitbag (Sage)                                       Price:   $450.00"];_Pic140=getText(configFile >>"CfgVehicles">>"B_Kitbag_sgg">>"picture");lbSetPicture[1850,28,_Pic140];lbSetPictureColor[1850,28,[0.9,0.9,0.9,0.8]];
-_index478=lbAdd[1850,"Mk6Mortar                                           Price:   $9,500.00"];_Pic141=getText(configFile >>"CfgVehicles">>"B_Mk6Mortar_Wpn">>"picture");lbSetPicture[1850,29,_Pic141];lbSetPictureColor[1850,29,[0.9,0.9,0.9,0.8]];
-};
+	} else {
+		if (ACE3_Enabled == 1) then {
+		_index747= lbAdd	[1850,"Tactical Ladder Pack 	                                 Price:	   $344.00"]; _Pic1	= getText ( configFile >>"CfgVehicles">>"ACE_TacticalLadder_Pack" >> "picture"); lbSetPicture[1850,1,_Pic1];	lbSetPictureColor	[1850,1,[0.9,0.9,0.9,0.8]];
+
+		//ACE_TacticalLadder_Pack
+		
+		} else {
+				_index449=lbAdd[1850,"Assault Pack (Black)                                Price:   $125.00"];_Pic112=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk">>"picture");lbSetPicture[1850,0,_Pic112];lbSetPictureColor[1850,0,[0.9,0.9,0.9,0.8]];
+				_index450=lbAdd[1850,"Assault Pack (Black) - Diver Team Leader            Price:   $1,575.00"];_Pic113=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk_DiverTL">>"picture");lbSetPicture[1850,1,_Pic113];lbSetPictureColor[1850,1,[0.9,0.9,0.9,0.8]];
+				_index451=lbAdd[1850,"Assault Pack (Black) - Diver Explosives             Price:   $1,525.00"];_Pic114=getText(configFile >>"CfgVehicles">>"B_AssaultPack_blk_DiverExp">>"picture");lbSetPicture[1850,2,_Pic114];lbSetPictureColor[1850,2,[0.9,0.9,0.9,0.8]];
+				_index452=lbAdd[1850,"Assault Pack (Coyote)                               Price:   $225.00"];_Pic115=getText(configFile >>"CfgVehicles">>"B_AssaultPack_cbr">>"picture");lbSetPicture[1850,3,_Pic115];lbSetPictureColor[1850,3,[0.9,0.9,0.9,0.8]];
+				_index453=lbAdd[1850,"Assault Pack (Digi)                                 Price:   $225.00"];_Pic116=getText(configFile >>"CfgVehicles">>"B_AssaultPack_dgtl">>"picture");lbSetPicture[1850,4,_Pic116];lbSetPictureColor[1850,4,[0.9,0.9,0.9,0.8]];
+				_index454=lbAdd[1850,"Assault Pack (Green)                                Price:   $225.00"];_Pic117=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr">>"picture");lbSetPicture[1850,5,_Pic117];lbSetPictureColor[1850,5,[0.9,0.9,0.9,0.8]];
+				_index455=lbAdd[1850,"Assault Pack (Green) - Engineer                     Price:   $1,225.00"];_Pic118=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr_Repair">>"picture");lbSetPicture[1850,6,_Pic118];lbSetPictureColor[1850,6,[0.9,0.9,0.9,0.8]];
+				_index456=lbAdd[1850,"Assault Pack (Green) - Medic                        Price:   $1,225.00"];_Pic119=getText(configFile >>"CfgVehicles">>"B_AssaultPack_rgr_Medic">>"picture");lbSetPicture[1850,7,_Pic119];lbSetPictureColor[1850,7,[0.9,0.9,0.9,0.8]];
+				_index457=lbAdd[1850,"Assault Pack (Hex)                                  Price:   $225.00"];_Pic120=getText(configFile >>"CfgVehicles">>"B_AssaultPack_ocamo">>"picture");lbSetPicture[1850,8,_Pic120];lbSetPictureColor[1850,8,[0.9,0.9,0.9,0.8]];
+				_index458=lbAdd[1850,"Assault Pack (Khaki)                                Price:   $225.00"];_Pic121=getText(configFile >>"CfgVehicles">>"B_AssaultPack_khk">>"picture");lbSetPicture[1850,9,_Pic121];lbSetPictureColor[1850,9,[0.9,0.9,0.9,0.8]];
+				_index459=lbAdd[1850,"Assault Pack (MTP)                                  Price:   $225.00"];_Pic122=getText(configFile >>"CfgVehicles">>"B_AssaultPack_mcamo">>"picture");lbSetPicture[1850,10,_Pic122];lbSetPictureColor[1850,10,[0.9,0.9,0.9,0.8]];
+				_index460=lbAdd[1850,"Assault Pack (Sage)                                 Price:   $225.00"];_Pic123=getText(configFile >>"CfgVehicles">>"B_AssaultPack_sgg">>"picture");lbSetPicture[1850,11,_Pic123];lbSetPictureColor[1850,11,[0.9,0.9,0.9,0.8]];
+				_index461=lbAdd[1850,"Bergen (Sage) - Explosives                          Price:   $1,350.00"];_Pic124=getText(configFile >>"CfgVehicles">>"B_Bergen_sgg_Exp">>"picture");lbSetPicture[1850,12,_Pic124];lbSetPictureColor[1850,12,[0.9,0.9,0.9,0.8]];
+				_index462=lbAdd[1850,"Bergen (Sage)                                       Price:   $350.00"];_Pic125=getText(configFile >>"CfgVehicles">>"B_Bergen_sgg">>"picture");lbSetPicture[1850,13,_Pic125];lbSetPictureColor[1850,13,[0.9,0.9,0.9,0.8]];
+				_index463=lbAdd[1850,"Carryall (Hex)                                      Price:   $500.00"];_Pic126=getText(configFile >>"CfgVehicles">>"B_Carryall_ocamo">>"picture");lbSetPicture[1850,14,_Pic126];lbSetPictureColor[1850,14,[0.9,0.9,0.9,0.8]];
+				_index464=lbAdd[1850,"Carryall (Urban)                                    Price:   $500.00"];_Pic127=getText(configFile >>"CfgVehicles">>"B_Carryall_oucamo">>"picture");lbSetPicture[1850,15,_Pic127];lbSetPictureColor[1850,15,[0.9,0.9,0.9,0.8]];
+				_index465=lbAdd[1850,"Carryall (Urban) - Explosives                       Price:   $1,500.00"];_Pic128=getText(configFile >>"CfgVehicles">>"B_Carryall_oucamo_Exp">>"picture");lbSetPicture[1850,16,_Pic128];lbSetPictureColor[1850,16,[0.9,0.9,0.9,0.8]];
+				_index466=lbAdd[1850,"Field Pack (Black)                                  Price:   $325.00"];_Pic129=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk">>"picture");lbSetPicture[1850,17,_Pic129];lbSetPictureColor[1850,17,[0.9,0.9,0.9,0.8]];
+				_index467=lbAdd[1850,"Field Pack (Black) - Diver Team Leader              Price:   $1,525.00"];_Pic130=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk_DiverTL">>"picture");lbSetPicture[1850,18,_Pic130];lbSetPictureColor[1850,18,[0.9,0.9,0.9,0.8]];
+				_index468=lbAdd[1850,"Field Pack (Black) - Diver Explosives               Price:   $1,425.00"];_Pic131=getText(configFile >>"CfgVehicles">>"B_FieldPack_blk_DiverExp">>"picture");lbSetPicture[1850,19,_Pic131];lbSetPictureColor[1850,19,[0.9,0.9,0.9,0.8]];
+				_index469=lbAdd[1850,"Field Pack (Coyote)                                 Price:   $325.00"];_Pic132=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr">>"picture");lbSetPicture[1850,20,_Pic132];lbSetPictureColor[1850,20,[0.9,0.9,0.9,0.8]];
+				_index470=lbAdd[1850,"Field Pack (Coyote) - Anti-Tank                     Price:   $1,325.00"];_Pic133=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr_AT">>"picture");lbSetPicture[1850,21,_Pic133];lbSetPictureColor[1850,21,[0.9,0.9,0.9,0.8]];
+				_index471=lbAdd[1850,"Field Pack (Coyote) - Engineer                      Price:   $1,325.00"];_Pic134=getText(configFile >>"CfgVehicles">>"B_FieldPack_cbr_Repair">>"picture");lbSetPicture[1850,22,_Pic134];lbSetPictureColor[1850,22,[0.9,0.9,0.9,0.8]];
+				_index472=lbAdd[1850,"Field Pack (Hex)                                    Price:   $325.00"];_Pic135=getText(configFile >>"CfgVehicles">>"B_FieldPack_ocamo">>"picture");lbSetPicture[1850,23,_Pic135];lbSetPictureColor[1850,23,[0.9,0.9,0.9,0.8]];
+				_index473=lbAdd[1850,"Field Pack (Hex) - Medic                            Price:   $1,325.00"];_Pic136=getText(configFile >>"CfgVehicles">>"B_FieldPack_ocamo_Medic">>"picture");lbSetPicture[1850,24,_Pic136];lbSetPictureColor[1850,24,[0.9,0.9,0.9,0.8]];
+				_index474=lbAdd[1850,"Field Pack (Urban)                                  Price:   $325.00"];_Pic137=getText(configFile >>"CfgVehicles">>"B_FieldPack_oucamo">>"picture");lbSetPicture[1850,25,_Pic137];lbSetPictureColor[1850,25,[0.9,0.9,0.9,0.8]];
+				_index475=lbAdd[1850,"Kitbag (Coyote)                                     Price:   $450.00"];_Pic138=getText(configFile >>"CfgVehicles">>"B_Kitbag_cbr">>"picture");lbSetPicture[1850,26,_Pic138];lbSetPictureColor[1850,26,[0.9,0.9,0.9,0.8]];
+				_index476=lbAdd[1850,"Kitbag (MTP)                                        Price:   $450.00"];_Pic139=getText(configFile >>"CfgVehicles">>"B_Kitbag_mcamo">>"picture");lbSetPicture[1850,27,_Pic139];lbSetPictureColor[1850,27,[0.9,0.9,0.9,0.8]];
+				_index477=lbAdd[1850,"Kitbag (Sage)                                       Price:   $450.00"];_Pic140=getText(configFile >>"CfgVehicles">>"B_Kitbag_sgg">>"picture");lbSetPicture[1850,28,_Pic140];lbSetPictureColor[1850,28,[0.9,0.9,0.9,0.8]];
+				_index478=lbAdd[1850,"Mk6Mortar                                           Price:   $9,500.00"];_Pic141=getText(configFile >>"CfgVehicles">>"B_Mk6Mortar_Wpn">>"picture");lbSetPicture[1850,29,_Pic141];lbSetPictureColor[1850,29,[0.9,0.9,0.9,0.8]];
+			};
+	}; 
 }; 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Medical Supplies
@@ -2836,7 +2853,7 @@ switch (TheSelection) Do {
 Case 0: { 
   if (Wallet<Binoculars) then {
    Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Binoculars]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered Tasco 12x Binocularsfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Binoculars];
     Wallet= (wallet - Binoculars);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2849,7 +2866,7 @@ Case 0: {
 Case 1: { 
   if (Wallet<ItemCompass) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemCompass]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Outdoorsman Compassfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemCompass]; 
    Wallet= (wallet - ItemCompass);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2862,7 +2879,7 @@ Case 1: {
 Case 2: { 
   if (Wallet<ItemMap) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemMap]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Geosat Wilderness Mapfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemMap];
    Wallet= (wallet - ItemMap);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2875,7 +2892,7 @@ Case 2: {
 Case 3: { 
   if (Wallet<ToolKit) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ToolKit]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Craftsman Tool Kitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ToolKit];
   Wallet= (wallet - ToolKit);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2888,7 +2905,7 @@ Case 3: {
 Case 4: { 
   if (Wallet<Chemlight_blue) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Chemlight_blue]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PoliceSupply Blue ChemLightfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Chemlight_blue];
    Wallet= (wallet - Chemlight_blue);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2901,7 +2918,7 @@ Case 4: {
 Case 5: { 
   if (Wallet<Chemlight_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Chemlight_green]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PoliceSupply Green ChemLightfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Chemlight_green];
    Wallet= (wallet - Chemlight_green);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2914,7 +2931,7 @@ Case 5: {
 Case 6: { 
   if (Wallet<Chemlight_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Chemlight_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PoliceSupply Red Chemlightfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Chemlight_red ];
    Wallet= (wallet - Chemlight_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2926,7 +2943,7 @@ Case 6: {
 Case 7: {
   if (Wallet<Chemlight_yellow) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Chemlight_yellow]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PoliceSupply Yellow Chemlightfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Chemlight_yellow];
    Wallet= (wallet - Chemlight_yellow);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2945,7 +2962,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<ACE_MapTools) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_MapTools]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Map Toolsfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_MapTools];
    Wallet= (wallet - ACE_MapTools);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2957,7 +2974,7 @@ Case 0: { if (Wallet<ACE_MapTools) then {
   
 Case 1: { if (Wallet<ACE_CableTie) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_CableTie]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ZipCuff Cable Restraintfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_CableTie];
    Wallet= (wallet - ACE_CableTie);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2969,7 +2986,7 @@ Case 1: { if (Wallet<ACE_CableTie) then {
   
 Case 2: { if (Wallet<ACE_EarPlugs) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_EarPlugs]; } else {
-   PlaySound "buy";Hint format ["You have ordered Ear Plugsfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_EarPlugs];
+   PlaySound "A3M_buy";Hint format ["You have ordered Ear Plugsfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_EarPlugs];
    Wallet= (wallet - ACE_EarPlugs);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
    SaveProfileNamespace;
@@ -2980,7 +2997,7 @@ Case 2: { if (Wallet<ACE_EarPlugs) then {
   
 Case 3: { if (Wallet<ACE_wirecutter) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_wirecutter]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Wire Cuttersfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_wirecutter];
    Wallet= (wallet - ACE_wirecutter);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -2991,7 +3008,7 @@ Case 3: { if (Wallet<ACE_wirecutter) then {
   }; 
 Case 4: { if (Wallet<ACE_SpareBarrel) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_SpareBarrel]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Spare Barrelfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_SpareBarrel];
    Wallet= (wallet - ACE_SpareBarrel);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3009,7 +3026,7 @@ switch (TheSelection) Do {
 
 Case 0: { if (Wallet<tf_anprc152) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_anprc152]; } else  {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered a Harris Falcon III® AN/PRC-152 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_anprc152 ];  
    Wallet= (wallet -   tf_anprc152 );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3021,7 +3038,7 @@ Case 0: { if (Wallet<tf_anprc152) then {
   
 Case 1: { if (Wallet<tf_rf7800str) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rf7800str]; } else  { 
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered a Harris RF-7800S for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rf7800str ];  
   Wallet= (wallet -   tf_rf7800str);  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3033,7 +3050,7 @@ Case 1: { if (Wallet<tf_rf7800str) then {
  
 Case 2: { if (Wallet<tf_rt1523g) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g]; } else  { 
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered an Exelis SINCGARS RT-1523G for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g ];  
   Wallet= (wallet -   tf_rt1523g  );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3046,7 +3063,7 @@ Case 2: { if (Wallet<tf_rt1523g) then{
  
 Case 3: { if (Wallet<tf_rt1523g_big) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_big]; } else  { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1702G for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_big ];  
    Wallet= (wallet -   tf_rt1523g_big  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3058,7 +3075,7 @@ Case 3: { if (Wallet<tf_rt1523g_big) then{
  
 Case 4: { if (Wallet<tf_rt1523g_black) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_black]; } else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1523G (Black) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_black ];
    Wallet= (wallet - tf_rt1523g_black  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3070,7 +3087,7 @@ Case 4: { if (Wallet<tf_rt1523g_black) then {
  
 Case 5: { if (Wallet<tf_rt1523g_fabric)  then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_fabric]; } else  { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1523G (Fabric) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_fabric];
    Wallet= (wallet - tf_rt1523g_fabric );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3082,7 +3099,7 @@ Case 5: { if (Wallet<tf_rt1523g_fabric)  then {
  
 Case 6: { if (Wallet<tf_rt1523g_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_green]; } else  { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1523G (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_green ];  
    Wallet= (wallet - tf_rt1523g_green  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3094,7 +3111,7 @@ Case 6: { if (Wallet<tf_rt1523g_green) then {
  
 Case 7: { if (Wallet<tf_rt1523g_rhs) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_rhs]; } else  { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1523G (RHS) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_rhs ];
    Wallet= (wallet - tf_rt1523g_rhs);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3106,7 +3123,7 @@ Case 7: { if (Wallet<tf_rt1523g_rhs) then{
  
 Case 8: { if (Wallet<tf_rt1523g_sage) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_rt1523g_sage]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered an Exelis SINCGARS RT-1523G (Sage) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_rt1523g_sage ];
    Wallet= (wallet - tf_rt1523g_sage   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3125,7 +3142,7 @@ switch (TheSelection) Do {
 
 Case 0: { if (Wallet<V_BandollierB_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_BandollierB_blk   ]; }else {
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  Bianchi Light Duty Belt - blk   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_BandollierB_blk   ];  
   Wallet= (wallet -   V_BandollierB_blk   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3137,7 +3154,7 @@ Case 0: { if (Wallet<V_BandollierB_blk   ) then {
  
 Case 1: { if (Wallet<V_BandollierB_cbr   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_BandollierB_cbr   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedBianchi Light Duty Belt - cbr   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_BandollierB_cbr   ];  
    Wallet= (wallet -   V_BandollierB_cbr   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3149,7 +3166,7 @@ Case 1: { if (Wallet<V_BandollierB_cbr   ) then {
   
 Case 2: { if (Wallet<V_BandollierB_khk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_BandollierB_khk   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Bianchi Light Duty Belt - khk   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_BandollierB_khk   ];
    Wallet= (wallet -   V_BandollierB_khk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3161,7 +3178,7 @@ Case 2: { if (Wallet<V_BandollierB_khk   ) then {
  
 Case 3: { if (Wallet<V_BandollierB_oli   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_BandollierB_oli   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Bianchi Light Duty Belt - oli   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_BandollierB_oli   ];  Wallet= (wallet -   V_BandollierB_oli   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
    SaveProfileNamespace;   
@@ -3172,7 +3189,7 @@ Case 3: { if (Wallet<V_BandollierB_oli   ) then {
  
 Case 4: { if (Wallet<V_BandollierB_rgr   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_BandollierB_rgr   ]; }else { 
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  Bianchi Light Duty Belt - rgr   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_BandollierB_rgr   ]; 
   Wallet= (wallet -   V_BandollierB_rgr   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3184,7 +3201,7 @@ Case 4: { if (Wallet<V_BandollierB_rgr   ) then {
  
 Case 5: { if (Wallet<V_Chestrig_blk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_Chestrig_blk  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Uncle Mike's Light Tactical - blk   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_Chestrig_blk  ];  
    Wallet= (wallet -   V_Chestrig_blk  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3196,7 +3213,7 @@ Case 5: { if (Wallet<V_Chestrig_blk  ) then {
   
 Case 6: { if (Wallet<V_Chestrig_khk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_Chestrig_khk  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Uncle Mike's Light Tactical - khk   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_Chestrig_khk  ];  
    Wallet= (wallet -   V_Chestrig_khk  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3208,7 +3225,7 @@ Case 6: { if (Wallet<V_Chestrig_khk  ) then {
  
 Case 7: { if (Wallet<V_Chestrig_oli  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_Chestrig_oli  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Uncle Mike's Light Tactical - oli   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_Chestrig_oli  ];  
    Wallet= (wallet -   V_Chestrig_oli  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3220,7 +3237,7 @@ Case 7: { if (Wallet<V_Chestrig_oli  ) then {
  
 Case 8: { if (Wallet<V_Chestrig_rgr  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_Chestrig_rgr  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Uncle Mike's Light Tactical - rgr   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_Chestrig_rgr  ];  
    Wallet= (wallet -   V_Chestrig_rgr  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3232,7 +3249,7 @@ Case 8: { if (Wallet<V_Chestrig_rgr  ) then {
   
 Case 9: { if (Wallet<V_HarnessO_gry  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_HarnessO_gry  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  TacticalOne Eagle Light Tactical  - Brn for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_HarnessO_gry  ];  
    Wallet= (wallet -   V_HarnessO_gry  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3243,7 +3260,7 @@ Case 9: { if (Wallet<V_HarnessO_gry  ) then {
   };
 Case 10:  { if (Wallet<  V_HarnessOGL_brn) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_HarnessOGL_brn]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  TacticalOne Talon Light Tactical  - Brn for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_HarnessOGL_brn];  
    Wallet= (wallet -   V_HarnessOGL_brn);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3255,7 +3272,7 @@ Case 10:  { if (Wallet<  V_HarnessOGL_brn) then {
  
 Case 11:  { if (Wallet<  V_HarnessOSpec_brn  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_HarnessOSpec_brn  ]; }else {
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  TacticalOne Eagle Two Light Tactical  - Brn for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_HarnessOSpec_brn  ]; 
    Wallet= (wallet -   V_HarnessOSpec_brn  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3267,7 +3284,7 @@ Case 11:  { if (Wallet<  V_HarnessOSpec_brn  ) then {
   
 Case 12:  { if (Wallet<  V_I_G_resistanceLeader_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_I_G_resistanceLeader_F]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  GenII Assault Vest  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_I_G_resistanceLeader_F];  
    Wallet= (wallet -   V_I_G_resistanceLeader_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3279,7 +3296,7 @@ Case 12:  { if (Wallet<  V_I_G_resistanceLeader_F) then {
  
 Case 13:  { if (Wallet<  V_PlateCarrier1_blk ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrier1_blk ]; }else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  SecondChance Tactical Armor - BLK   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrier1_blk ];  
    Wallet= (wallet -   V_PlateCarrier1_blk );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3290,7 +3307,7 @@ Case 13:  { if (Wallet<  V_PlateCarrier1_blk ) then {
   };
 Case 14:  { if (Wallet<  V_PlateCarrier1_rgr ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrier1_rgr ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance Tactical Armor - RGR   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrier1_rgr ]; 
    Wallet= (wallet -   V_PlateCarrier1_rgr );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3302,7 +3319,7 @@ Case 14:  { if (Wallet<  V_PlateCarrier1_rgr ) then {
   
 Case 15:  { if (Wallet<  V_PlateCarrier2_rgr ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrier2_rgr ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  SecondChance Defender Armor - RGR   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrier2_rgr ];  
    Wallet= (wallet -   V_PlateCarrier2_rgr );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3313,7 +3330,7 @@ Case 15:  { if (Wallet<  V_PlateCarrier2_rgr ) then {
   };
 Case 16:  { if (Wallet<  V_PlateCarrier3_rgr ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrier3_rgr ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance Interceptor  Armor - RGR   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrier3_rgr ];  
    Wallet= (wallet -   V_PlateCarrier3_rgr );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3325,7 +3342,7 @@ Case 16:  { if (Wallet<  V_PlateCarrier3_rgr ) then {
   
 Case 17:  { if (Wallet<  V_PlateCarrierGL_rgr) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierGL_rgr]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance MXL Armor - RGRfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierGL_rgr];  
    Wallet= (wallet -   V_PlateCarrierGL_rgr);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3337,7 +3354,7 @@ Case 17:  { if (Wallet<  V_PlateCarrierGL_rgr) then {
   
 Case 18:  { if (Wallet<  V_PlateCarrierH_CTRG) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierH_CTRG]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance Tactical Armor - CTRG  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierH_CTRG];  
    Wallet= (wallet -   V_PlateCarrierH_CTRG);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3349,7 +3366,7 @@ Case 18:  { if (Wallet<  V_PlateCarrierH_CTRG) then {
   
 Case 19: { if (Wallet<V_PlateCarrierIA1_dgtl  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierIA1_dgtl  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance Tactical II Armor - DGTL   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierIA1_dgtl  ];  
    Wallet= (wallet -   V_PlateCarrierIA1_dgtl  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3361,7 +3378,7 @@ Case 19: { if (Wallet<V_PlateCarrierIA1_dgtl  ) then {
   
 Case 20: { if (Wallet<V_PlateCarrierIA2_dgtl  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierIA2_dgtl  ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  SecondChance Defender II Armor - DGTL   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierIA2_dgtl  ];  
    Wallet= (wallet -   V_PlateCarrierIA2_dgtl  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3373,7 +3390,7 @@ Case 20: { if (Wallet<V_PlateCarrierIA2_dgtl  ) then {
   
 Case 21: { if (Wallet<V_PlateCarrierIAGL_dgtl ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierIAGL_dgtl ]; }else {
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance MXL II Armor - DGTLfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierIAGL_dgtl ];  
    Wallet= (wallet -   V_PlateCarrierIAGL_dgtl );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3385,7 +3402,7 @@ Case 21: { if (Wallet<V_PlateCarrierIAGL_dgtl ) then {
   
 Case 22: { if (Wallet<V_PlateCarrierL_CTRG) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierL_CTRG]; } else { 
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  SecondChance Tactical Armor - CTRG  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierL_CTRG];  
   Wallet= (wallet -   V_PlateCarrierL_CTRG);  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3397,7 +3414,7 @@ Case 22: { if (Wallet<V_PlateCarrierL_CTRG) then {
  
 Case 23: { if (Wallet<V_PlateCarrierSpec_rgr  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_PlateCarrierSpec_rgr  ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedSecondChance MAXIMUS Armor - RGRfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_PlateCarrierSpec_rgr  ];  
    Wallet= (wallet -   V_PlateCarrierSpec_rgr  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3409,7 +3426,7 @@ Case 23: { if (Wallet<V_PlateCarrierSpec_rgr  ) then {
   
 Case 24: { if (Wallet<V_RebreatherIA  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_RebreatherIA  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SCUBAChoice Rebreather Kit  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_RebreatherIA  ];  
    Wallet= (wallet -   V_RebreatherIA  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3421,7 +3438,7 @@ Case 24: { if (Wallet<V_RebreatherIA  ) then {
  
 Case 25: { if (Wallet<V_TacVest_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_blk   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Intelitec Load Bearing Vest IIA  - BLK  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_blk   ];  
    Wallet= (wallet -   V_TacVest_blk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3433,7 +3450,7 @@ Case 25: { if (Wallet<V_TacVest_blk   ) then {
   
 Case 26: { if (Wallet<V_TacVest_blk_POLICE) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_blk_POLICE]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SecondChance BreachTech Armor - BLK for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_blk_POLICE];  
    Wallet= (wallet -   V_TacVest_blk_POLICE); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3445,7 +3462,7 @@ Case 26: { if (Wallet<V_TacVest_blk_POLICE) then {
  
 Case 27: { if (Wallet<V_TacVest_brn   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_brn   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Intelitec Load Bearing Vest IIA  - BRN  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_brn   ];  
    Wallet= (wallet -   V_TacVest_brn   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3456,7 +3473,7 @@ Case 27: { if (Wallet<V_TacVest_brn   ) then {
   };
 Case 28: { if (Wallet<V_TacVest_camo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_camo  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Intelitec Load Bearing Vest IIA - CAMO  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_camo  ]; 
    Wallet= (wallet -   V_TacVest_camo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3468,7 +3485,7 @@ Case 28: { if (Wallet<V_TacVest_camo  ) then {
   
 Case 29: { if (Wallet<V_TacVest_khk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_khk   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Intelitec Load Bearing Vest IIA - KHK   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_khk   ];  
    Wallet= (wallet -   V_TacVest_khk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3480,7 +3497,7 @@ Case 29: { if (Wallet<V_TacVest_khk   ) then {
   
 Case 30: { if (Wallet<V_TacVest_oli   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVest_oli   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Intelitec Load Bearing Vest IIA - OLI   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVest_oli   ];  
    Wallet= (wallet -   V_TacVest_oli   );  
    profileNamespace setVariable ["SavedMoney", Wallet];SaveProfileNamespace;  
@@ -3491,7 +3508,7 @@ Case 30: { if (Wallet<V_TacVest_oli   ) then {
   
 Case 31: { if (Wallet<V_TacVestCamo_khk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVestCamo_khk   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  General Protection IIIA Armor - CAMOfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVestCamo_khk   ];  
    Wallet= (wallet -   V_TacVestCamo_khk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3503,7 +3520,7 @@ Case 31: { if (Wallet<V_TacVestCamo_khk   ) then {
  
 Case 32: { if (Wallet<V_TacVestIR_blk ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", V_TacVestIR_blk ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Raven Tactical Supply Stealth Armor - BLK   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",V_TacVestIR_blk ];
    Wallet= (wallet -   V_TacVestIR_blk ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3523,7 +3540,7 @@ switch (TheSelection) Do {
 
 Case 0: { if (Wallet<rhsusf_iotv_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp ];
    Wallet= (wallet - rhsusf_iotv_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3534,7 +3551,7 @@ Case 0: { if (Wallet<rhsusf_iotv_ucp ) then {
   
 Case 1: { if (Wallet<rhsusf_iotv_ucp_grenadier ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_grenadier ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Grenadier) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_grenadier ];
    Wallet= (wallet - rhsusf_iotv_ucp_grenadier );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3545,7 +3562,7 @@ Case 1: { if (Wallet<rhsusf_iotv_ucp_grenadier ) then {
   
 Case 2: { if (Wallet<rhsusf_iotv_ucp_medic ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_medic ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Medic) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_medic ];
    Wallet= (wallet - rhsusf_iotv_ucp_medic );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3557,7 +3574,7 @@ Case 2: { if (Wallet<rhsusf_iotv_ucp_medic ) then {
   
 Case 3: { if (Wallet<rhsusf_iotv_ucp_repair ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_repair ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Repair) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_repair ];
    Wallet= (wallet - rhsusf_iotv_ucp_repair );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3569,7 +3586,7 @@ Case 3: { if (Wallet<rhsusf_iotv_ucp_repair ) then {
   
 Case 4: { if (Wallet<rhsusf_iotv_ucp_rifleman ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_rifleman ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Rifleman) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_rifleman ];
    Wallet= (wallet - rhsusf_iotv_ucp_rifleman );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3581,7 +3598,7 @@ Case 4: { if (Wallet<rhsusf_iotv_ucp_rifleman ) then {
   
 Case 5: { if (Wallet<rhsusf_iotv_ucp_SAW ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_SAW ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (SAW) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_SAW ];
    Wallet= (wallet - rhsusf_iotv_ucp_SAW );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3593,7 +3610,7 @@ Case 5: { if (Wallet<rhsusf_iotv_ucp_SAW ) then {
   
 Case 6: { if (Wallet<rhsusf_iotv_ucp_squadleader ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_squadleader ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Squad Leader) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_squadleader ];
    Wallet= (wallet - rhsusf_iotv_ucp_squadleader );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3605,7 +3622,7 @@ Case 6: { if (Wallet<rhsusf_iotv_ucp_squadleader ) then {
   
 Case 7: { if (Wallet<rhsusf_iotv_ucp_teamleader ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ucp_teamleader ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV UCP (Team leader) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ucp_teamleader ];
    Wallet= (wallet - rhsusf_iotv_ucp_teamleader );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3616,7 +3633,7 @@ Case 7: { if (Wallet<rhsusf_iotv_ucp_teamleader ) then {
   
 Case 8: { if (Wallet<rhsusf_iotv_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp ];
    Wallet= (wallet - rhsusf_iotv_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3628,7 +3645,7 @@ Case 8: { if (Wallet<rhsusf_iotv_ocp ) then {
   
 Case 9: { if (Wallet<rhsusf_iotv_ocp_grenadier ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_grenadier ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Grenadier) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_grenadier ];
    Wallet= (wallet - rhsusf_iotv_ocp_grenadier );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3640,7 +3657,7 @@ Case 9: { if (Wallet<rhsusf_iotv_ocp_grenadier ) then {
   
 Case 10: { if (Wallet<rhsusf_iotv_ocp_medic ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_medic ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Medic) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_medic ];
    Wallet= (wallet - rhsusf_iotv_ocp_medic );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3652,7 +3669,7 @@ Case 10: { if (Wallet<rhsusf_iotv_ocp_medic ) then {
   
 Case 11: { if (Wallet<rhsusf_iotv_ocp_repair ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_repair ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Repair) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_repair ];
    Wallet= (wallet - rhsusf_iotv_ocp_repair );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3664,7 +3681,7 @@ Case 11: { if (Wallet<rhsusf_iotv_ocp_repair ) then {
   
 Case 12: { if (Wallet<rhsusf_iotv_ocp_rifleman ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_rifleman ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Rifleman) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_rifleman ];
    Wallet= (wallet - rhsusf_iotv_ocp_rifleman );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3675,7 +3692,7 @@ Case 12: { if (Wallet<rhsusf_iotv_ocp_rifleman ) then {
   
 Case 13: { if (Wallet<rhsusf_iotv_ocp_SAW) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_SAW]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (SAW) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_SAW];
    Wallet= (wallet - rhsusf_iotv_ocp_SAW);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3687,7 +3704,7 @@ Case 13: { if (Wallet<rhsusf_iotv_ocp_SAW) then {
   
 Case 14: { if (Wallet<rhsusf_iotv_ocp_squadleader ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_squadleader ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Squad Leader) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_squadleader ];
    Wallet= (wallet - rhsusf_iotv_ocp_squadleader );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3699,7 +3716,7 @@ Case 14: { if (Wallet<rhsusf_iotv_ocp_squadleader ) then {
   
 Case 15: { if (Wallet<rhsusf_iotv_ocp_teamleader ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_iotv_ocp_teamleader ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IOTV OCP (Team leader) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_iotv_ocp_teamleader ];
    Wallet= (wallet - rhsusf_iotv_ocp_teamleader );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3711,7 +3728,7 @@ Case 15: { if (Wallet<rhsusf_iotv_ocp_teamleader ) then {
   
 Case 16: { if (Wallet<rhsusf_spc ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_spc ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered SPC (Coyote) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_spc ];
    Wallet= (wallet - rhsusf_spc );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3723,7 +3740,7 @@ Case 16: { if (Wallet<rhsusf_spc ) then {
   
 Case 17: { if (Wallet<rhs_6sh92 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 Florafor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92 ];
    Wallet= (wallet - rhs_6sh92 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3735,7 +3752,7 @@ Case 17: { if (Wallet<rhs_6sh92 ) then {
   
 Case 18: { if (Wallet<rhs_6sh92_radio ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_radio ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 Flora (Radio )for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_radio ];
    Wallet= (wallet - rhs_6sh92_radio );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3747,7 +3764,7 @@ Case 18: { if (Wallet<rhs_6sh92_radio ) then {
   
 Case 19: { if (Wallet<rhs_6sh92_vog ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_vog ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 Flora (VOG)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_vog ];
    Wallet= (wallet - rhs_6sh92_vog );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3758,7 +3775,7 @@ Case 19: { if (Wallet<rhs_6sh92_vog ) then {
   }; 
 Case 20: { if (Wallet<rhs_6sh92_vog_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_vog_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 Flora (VOG+Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_vog_headset ];
    Wallet= (wallet - rhs_6sh92_vog_headset );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3770,7 +3787,7 @@ Case 20: { if (Wallet<rhs_6sh92_vog_headset ) then {
   
 Case 21: { if (Wallet<rhs_6sh92_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 Flora (Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_headset ];
    Wallet= (wallet - rhs_6sh92_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3782,7 +3799,7 @@ Case 21: { if (Wallet<rhs_6sh92_headset ) then {
   
 Case 22: { if (Wallet<rhs_6sh92_digi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_digi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 EMR Summerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_digi ];
    Wallet= (wallet - rhs_6sh92_digi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3793,7 +3810,7 @@ Case 22: { if (Wallet<rhs_6sh92_digi ) then {
   
 Case 23: { if (Wallet<rhs_6sh92_digi_radio ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_digi_radio ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 EMR Summer (Radio )for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_digi_radio ];
    Wallet= (wallet - rhs_6sh92_digi_radio );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3805,7 +3822,7 @@ Case 23: { if (Wallet<rhs_6sh92_digi_radio ) then {
   
 Case 24: { if (Wallet<rhs_6sh92_digi_vog ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_digi_vog ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 EMR Summer (VOG)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_digi_vog ];
    Wallet= (wallet - rhs_6sh92_digi_vog );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3817,7 +3834,7 @@ Case 24: { if (Wallet<rhs_6sh92_digi_vog ) then {
   
 Case 25: { if (Wallet<rhs_6sh92_digi_vog_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_digi_vog_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 EMR Summer (VOG+Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_digi_vog_headset ];
    Wallet= (wallet - rhs_6sh92_digi_vog_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3829,7 +3846,7 @@ Case 25: { if (Wallet<rhs_6sh92_digi_vog_headset ) then {
   
 Case 26: { if (Wallet<rhs_6sh92_digi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6sh92_digi_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 6sh92 EMR Summer (Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6sh92_digi_headset ];
    Wallet= (wallet - rhs_6sh92_digi_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -3848,7 +3865,7 @@ switch (TheSelection) Do {
 
 Case 0 : { if (Wallet< M_3Rnd_HE_Grenade_shell ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_3Rnd_HE_Grenade_shell ]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  3GL 40mm HE Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_3Rnd_HE_Grenade_shell ];  
   Wallet= (wallet -   M_3Rnd_HE_Grenade_shell );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3860,7 +3877,7 @@ Case 0 : { if (Wallet< M_3Rnd_HE_Grenade_shell ) then {
  
 Case 1 : { if (Wallet< M_1Rnd_HE_Grenade_shell ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_HE_Grenade_shell ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  40mm HE Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_HE_Grenade_shell ];  
    Wallet= (wallet -   M_1Rnd_HE_Grenade_shell );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3872,7 +3889,7 @@ Case 1 : { if (Wallet< M_1Rnd_HE_Grenade_shell ) then {
   
 Case 2 : { if (Wallet< APERSBoundingMine_Range_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", APERSBoundingMine_Range_Mag ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  APERS Bounding Mine for $%1.00. Your order will be delivered soon! Check the deliveries box often!",APERSBoundingMine_Range_Mag ];  
    Wallet= (wallet -   APERSBoundingMine_Range_Mag );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3884,7 +3901,7 @@ Case 2 : { if (Wallet< APERSBoundingMine_Range_Mag ) then {
   
 Case 3 : { if (Wallet< APERSMine_Range_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", APERSMine_Range_Mag ]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  APERS Mine  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",APERSMine_Range_Mag ];  
   Wallet= (wallet -   APERSMine_Range_Mag );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3896,7 +3913,7 @@ Case 3 : { if (Wallet< APERSMine_Range_Mag ) then {
  
 Case 4 : { if (Wallet< APERSTripMine_Wire_Mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", APERSTripMine_Wire_Mag  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  APERS Tripwire Mine for $%1.00. Your order will be delivered soon! Check the deliveries box often!",APERSTripMine_Wire_Mag  ];  
    Wallet= (wallet -   APERSTripMine_Wire_Mag  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3908,7 +3925,7 @@ Case 4 : { if (Wallet< APERSTripMine_Wire_Mag  ) then {
   
 Case 5 : { if (Wallet< ATMine_Range_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ATMine_Range_Mag]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  AT Mine for $%1.00. Your order will be delivered soon! Check the deliveries box often!",ATMine_Range_Mag];  
    Wallet= (wallet -   ATMine_Range_Mag);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3920,7 +3937,7 @@ Case 5 : { if (Wallet< ATMine_Range_Mag) then {
   
 Case 6 : { if (Wallet< DemoCharge_Remote_Mag   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", DemoCharge_Remote_Mag   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  C4 Demolition Chargefor $%1.00. Your order will be delivered soon! Check the deliveries box often!",DemoCharge_Remote_Mag   ]; 
    Wallet= (wallet -   DemoCharge_Remote_Mag   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3932,7 +3949,7 @@ Case 6 : { if (Wallet< DemoCharge_Remote_Mag   ) then {
   
 Case 7 : { if (Wallet< SatchelCharge_Remote_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SatchelCharge_Remote_Mag]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  C4 Satchel Charge   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SatchelCharge_Remote_Mag];  
    Wallet= (wallet -   SatchelCharge_Remote_Mag); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3944,7 +3961,7 @@ Case 7 : { if (Wallet< SatchelCharge_Remote_Mag) then {
   
 Case 8 : { if (Wallet< SLAMDirectionalMine_Wire_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SLAMDirectionalMine_Wire_Mag]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  SLAM Directional Mine   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SLAMDirectionalMine_Wire_Mag];  
    Wallet= (wallet -   SLAMDirectionalMine_Wire_Mag);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3956,7 +3973,7 @@ Case 8 : { if (Wallet< SLAMDirectionalMine_Wire_Mag) then {
   
 Case 9 : { if (Wallet< MiniGrenade ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", MiniGrenade ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  10 oz. Hand Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",MiniGrenade ];  
    Wallet= (wallet -   MiniGrenade );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3968,7 +3985,7 @@ Case 9 : { if (Wallet< MiniGrenade ) then {
   
 Case 10 :   { if (Wallet< HandGrenade ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", HandGrenade ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  16 oz. Hand Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",HandGrenade ];  
    Wallet= (wallet -   HandGrenade ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3980,7 +3997,7 @@ Case 10 :   { if (Wallet< HandGrenade ) then {
   
 Case 11 :   { if (Wallet< HandGrenade_Stone   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", HandGrenade_Stone   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  20 oz. Hand Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",HandGrenade_Stone   ];  
    Wallet= (wallet -   HandGrenade_Stone   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -3999,7 +4016,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhs_VOG25  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_VOG25  ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-25 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_VOG25  ];
    Wallet= (wallet - rhs_VOG25  );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4011,7 +4028,7 @@ Case 0: { if (Wallet<rhs_VOG25  ) then {
   
 Case 1: { if (Wallet<rhs_VOG25p  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_VOG25p  ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-25P (Bouncing) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_VOG25p  ];
    Wallet= (wallet - rhs_VOG25p  );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4023,7 +4040,7 @@ Case 1: { if (Wallet<rhs_VOG25p  ) then {
   
 Case 2: { if (Wallet<rhs_vg40tb ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_vg40tb ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-25TB (Thermobaric)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_vg40tb ];
    Wallet= (wallet - rhs_vg40tb );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4035,7 +4052,7 @@ Case 2: { if (Wallet<rhs_vg40tb ) then {
   
 Case 3: { if (Wallet<rhs_g_vg40sz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_g_vg40sz]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-40SZ (Flashbang)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_g_vg40sz];
    Wallet= (wallet - rhs_g_vg40sz);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4047,7 +4064,7 @@ Case 3: { if (Wallet<rhs_g_vg40sz) then {
   
 Case 4: { if (Wallet<rhs_mag_rgd5) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_rgd5]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered RGD-5 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_rgd5];
     Wallet= (wallet - rhs_mag_rgd5);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4059,7 +4076,7 @@ Case 4: { if (Wallet<rhs_mag_rgd5) then {
   
 Case 5: { if (Wallet<rhs_mag_fakel) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_fakel]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Fakel for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_fakel];
    Wallet= (wallet - rhs_mag_fakel);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4071,7 +4088,7 @@ Case 5: { if (Wallet<rhs_mag_fakel) then {
  
 Case 6: { if (Wallet<rhs_mag_fakels) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_fakels]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Fakel-S for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_fakels];
    Wallet= (wallet - rhs_mag_fakels);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4083,7 +4100,7 @@ Case 6: { if (Wallet<rhs_mag_fakels) then {
  
 Case 7: { if (Wallet<rhs_mag_zarya2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_zarya2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Zarya-2 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_zarya2];
    Wallet= (wallet - rhs_mag_zarya2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4095,7 +4112,7 @@ Case 7: { if (Wallet<rhs_mag_zarya2) then {
  
 Case 8: { if (Wallet<rhs_mag_plamyam) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_plamyam]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Plamya-M for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_plamyam];
    Wallet= (wallet - rhs_mag_plamyam);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4107,7 +4124,7 @@ Case 8: { if (Wallet<rhs_mag_plamyam) then {
  
 Case 9: { if (Wallet<rhs_mag_M433_HEDP ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M433_HEDP ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M433 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M433_HEDP ];Wallet= (wallet - rhs_mag_M433_HEDP );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
    SaveProfileNamespace;
@@ -4118,7 +4135,7 @@ Case 9: { if (Wallet<rhs_mag_M433_HEDP ) then {
  
 Case 10: { if (Wallet<rhs_mag_M4009 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M4009 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Stun grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M4009 ];
    Wallet= (wallet - rhs_mag_M4009 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4130,7 +4147,7 @@ Case 10: { if (Wallet<rhs_mag_M4009 ) then {
   
 Case 11: { if (Wallet<rhs_mag_m576 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m576 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M576 Buckshot for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m576 ];
    Wallet= (wallet - rhs_mag_m576 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4142,7 +4159,7 @@ Case 11: { if (Wallet<rhs_mag_m576 ) then {
   
 Case 12: { if (Wallet<rhs_mag_m67 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m67 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M67 Frag Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m67 ];
    Wallet= (wallet - rhs_mag_m67 );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4154,7 +4171,7 @@ Case 12: { if (Wallet<rhs_mag_m67 ) then {
   
 Case 13: { if (Wallet<rhs_mag_mk84) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_mk84]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Mk84 Stun Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_mk84];
    Wallet= (wallet - rhs_mag_mk84);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4166,7 +4183,7 @@ Case 13: { if (Wallet<rhs_mag_mk84) then {
   
 Case 14: { if (Wallet<rhs_mag_an_m14_th3) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_an_m14_th3]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M14/Th3 incendiary for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_an_m14_th3];
    Wallet= (wallet - rhs_mag_an_m14_th3);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4178,7 +4195,7 @@ Case 14: { if (Wallet<rhs_mag_an_m14_th3) then {
   
 Case 15: { if (Wallet<rhs_mag_m7a3_cs) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m7a3_cs]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M7A3 Gas CS for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m7a3_cs];
    Wallet= (wallet - rhs_mag_m7a3_cs);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4190,7 +4207,7 @@ Case 15: { if (Wallet<rhs_mag_m7a3_cs) then {
  
 Case 16: { if (Wallet<rhs_mag_mk3a2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_mk3a2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M84 Stun Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_mk3a2 ];
    Wallet= (wallet - rhs_mag_mk3a2 );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4201,7 +4218,7 @@ Case 16: { if (Wallet<rhs_mag_mk3a2 ) then {
   }; 
 Case 17: { if (Wallet<rhs_mag_m69) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m69]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M69 Practice Grenadefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m69];
    Wallet= (wallet - rhs_mag_m69);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4220,7 +4237,7 @@ Switch (TheSelection) Do {
 
 Case 0 : { if (Wallet< SmokeShellBlue  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellBlue  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Blue Smoke Grenade  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellBlue  ]; 
    Wallet= (wallet -   SmokeShellBlue  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4231,7 +4248,7 @@ Case 0 : { if (Wallet< SmokeShellBlue  ) then {
  };
 Case 1 : { if (Wallet< SmokeShellGreen ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellGreen ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Green Smoke Grenade for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellGreen ]; 
    Wallet= (wallet -   SmokeShellGreen ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4243,7 +4260,7 @@ Case 1 : { if (Wallet< SmokeShellGreen ) then {
   
 Case 2 : { if (Wallet< SmokeShellOrange) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellOrange]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Orange Smoke Grenadefor $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellOrange];  
    Wallet= (wallet -   SmokeShellOrange); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4255,7 +4272,7 @@ Case 2 : { if (Wallet< SmokeShellOrange) then {
   
 Case 3 : { if (Wallet< SmokeShellPurple) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellPurple]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Purple Smoke Grenadefor $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellPurple];  
    Wallet= (wallet -   SmokeShellPurple); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4267,7 +4284,7 @@ Case 3 : { if (Wallet< SmokeShellPurple) then {
   
 Case 4 : { if (Wallet< SmokeShellRed   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellRed   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Red Smoke Grenade   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellRed   ];  
    Wallet= (wallet -   SmokeShellRed   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4279,7 +4296,7 @@ Case 4 : { if (Wallet< SmokeShellRed   ) then {
   
 Case 5 : { if (Wallet< SmokeShell  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShell  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  White (Standard) Smoke Grenade  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShell  ];  
    Wallet= (wallet -   SmokeShell  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4291,7 +4308,7 @@ Case 5 : { if (Wallet< SmokeShell  ) then {
   
 Case 6 : { if (Wallet< SmokeShellYellow) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SmokeShellYellow]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Yellow Smoke Grenadefor $%1.00. Your order will be delivered soon! Check the deliveries box often!",SmokeShellYellow];  
    Wallet= (wallet -   SmokeShellYellow);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4303,7 +4320,7 @@ Case 6 : { if (Wallet< SmokeShellYellow) then {
   
 Case 7 : { if (Wallet< M_1Rnd_SmokeBlue_Grenade_shell  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokeBlue_Grenade_shell  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  40mm Smoke Grenade (Blue)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokeBlue_Grenade_shell  ]; 
    Wallet= (wallet -   M_1Rnd_SmokeBlue_Grenade_shell  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4315,7 +4332,7 @@ Case 7 : { if (Wallet< M_1Rnd_SmokeBlue_Grenade_shell  ) then {
  
 Case 8 : { if (Wallet< M_1Rnd_SmokeGreen_Grenade_shell ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokeGreen_Grenade_shell ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  40mm Smoke Grenade (Green)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokeGreen_Grenade_shell ]; 
    Wallet= (wallet -   M_1Rnd_SmokeGreen_Grenade_shell );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4327,7 +4344,7 @@ Case 8 : { if (Wallet< M_1Rnd_SmokeGreen_Grenade_shell ) then {
   
 Case 9 : { if (Wallet< M_1Rnd_SmokeOrange_Grenade_shell) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokeOrange_Grenade_shell]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  40mm Smoke Grenade (Orange) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokeOrange_Grenade_shell];  
    Wallet= (wallet -   M_1Rnd_SmokeOrange_Grenade_shell);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4339,7 +4356,7 @@ Case 9 : { if (Wallet< M_1Rnd_SmokeOrange_Grenade_shell) then {
   
 Case 10 :   { if (Wallet< M_1Rnd_SmokePurple_Grenade_shell) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokePurple_Grenade_shell]; }else { 
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  40mm Smoke Grenade (Purple) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokePurple_Grenade_shell];  
   Wallet= (wallet -   M_1Rnd_SmokePurple_Grenade_shell); 
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4351,7 +4368,7 @@ Case 10 :   { if (Wallet< M_1Rnd_SmokePurple_Grenade_shell) then {
  
 Case 11 :   { if (Wallet< M_1Rnd_SmokeRed_Grenade_shell   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokeRed_Grenade_shell   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  40mm Smoke Grenade (Red)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokeRed_Grenade_shell   ];  
    Wallet= (wallet -   M_1Rnd_SmokeRed_Grenade_shell   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4363,7 +4380,7 @@ Case 11 :   { if (Wallet< M_1Rnd_SmokeRed_Grenade_shell   ) then {
   
 Case 12 :   { if (Wallet< M_1Rnd_Smoke_Grenade_shell  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_Smoke_Grenade_shell  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  40mm Smoke Grenade (White)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_Smoke_Grenade_shell  ];  
    Wallet= (wallet -   M_1Rnd_Smoke_Grenade_shell  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4375,7 +4392,7 @@ Case 12 :   { if (Wallet< M_1Rnd_Smoke_Grenade_shell  ) then {
   
 Case 13 :   { if (Wallet< M_1Rnd_SmokeYellow_Grenade_shell) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_1Rnd_SmokeYellow_Grenade_shell]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  40mm Smoke Grenade (Yellow) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_1Rnd_SmokeYellow_Grenade_shell]; 
   Wallet= (wallet -   M_1Rnd_SmokeYellow_Grenade_shell);  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4394,7 +4411,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhs_vg40op_white ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_vg40op_white ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-40 (White Flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_vg40op_white ];
    Wallet= (wallet - rhs_vg40op_white );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4406,7 +4423,7 @@ Case 0: { if (Wallet<rhs_vg40op_white ) then {
   
 Case 1: { if (Wallet<rhs_vg40op_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_vg40op_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-40 (Green Flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_vg40op_green ];
    Wallet= (wallet - rhs_vg40op_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4418,7 +4435,7 @@ Case 1: { if (Wallet<rhs_vg40op_green ) then {
   
 Case 2: { if (Wallet<rhs_vg40op_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_vg40op_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered VOG-40 (Red Flare)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_vg40op_red ];
    Wallet= (wallet - rhs_vg40op_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4430,7 +4447,7 @@ Case 2: { if (Wallet<rhs_vg40op_red ) then {
   
 Case 3: { if (Wallet<rhs_GRD40_white ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_GRD40_white ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered GRD-40 (White Smoke)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_GRD40_white ];
    Wallet= (wallet - rhs_GRD40_white );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4442,7 +4459,7 @@ Case 3: { if (Wallet<rhs_GRD40_white ) then {
   
 Case 4: { if (Wallet<rhs_GRD40_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_GRD40_green]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered GRD-40 (Green Smoke)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_GRD40_green];
    Wallet= (wallet - rhs_GRD40_green);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4453,7 +4470,7 @@ Case 4: { if (Wallet<rhs_GRD40_green) then {
   
 Case 5: { if (Wallet<rhs_GRD40_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_GRD40_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered GRD-40 (Red Smoke)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_GRD40_red ];
    Wallet= (wallet - rhs_GRD40_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4465,7 +4482,7 @@ Case 5: { if (Wallet<rhs_GRD40_red ) then {
  
 Case 6: { if (Wallet<rhs_weap_rsp30_white) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_rsp30_white]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RSP (White) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_rsp30_white];
    Wallet= (wallet - rhs_weap_rsp30_white);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4477,7 +4494,7 @@ Case 6: { if (Wallet<rhs_weap_rsp30_white) then {
   
 Case 7: { if (Wallet<rhs_weap_rsp30_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_rsp30_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RSP (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_rsp30_green ];
    Wallet= (wallet - rhs_weap_rsp30_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4489,7 +4506,7 @@ Case 7: { if (Wallet<rhs_weap_rsp30_green ) then {
   
 Case 8: { if (Wallet<rhs_weap_rsp30_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_rsp30_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RSP (Red) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_rsp30_red ];
    Wallet= (wallet - rhs_weap_rsp30_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4501,7 +4518,7 @@ Case 8: { if (Wallet<rhs_weap_rsp30_red ) then {
   
 Case 9: { if (Wallet<rhs_mag_M585_white ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M585_white ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M585 (White flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M585_white ];
    Wallet= (wallet - rhs_mag_M585_white );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4513,7 +4530,7 @@ Case 9: { if (Wallet<rhs_mag_M585_white ) then {
   
 Case 10: { if (Wallet<rhs_mag_M661_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M661_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M661 (Green flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M661_green ];
    Wallet= (wallet - rhs_mag_M661_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4525,7 +4542,7 @@ Case 10: { if (Wallet<rhs_mag_M661_green ) then {
   
 Case 11: { if (Wallet<rhs_mag_M662_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M662_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M662 (Red flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M662_red ];
    Wallet= (wallet - rhs_mag_M662_red );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4537,7 +4554,7 @@ Case 11: { if (Wallet<rhs_mag_M662_red ) then {
   
 Case 12: { if (Wallet<rhs_mag_M713_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M713_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M713 (Red Smoke)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M713_red ];
    Wallet= (wallet - rhs_mag_M713_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4549,7 +4566,7 @@ Case 12: { if (Wallet<rhs_mag_M713_red ) then {
   
 Case 13: { if (Wallet<rhs_mag_M714_white ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M714_white ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M714 (White Smoke) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M714_white ];
    Wallet= (wallet - rhs_mag_M714_white );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4561,7 +4578,7 @@ Case 13: { if (Wallet<rhs_mag_M714_white ) then {
   
 Case 14: { if (Wallet<rhs_mag_M715_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M715_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M715 (Green Smoke) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M715_green ];
    Wallet= (wallet - rhs_mag_M715_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4572,7 +4589,7 @@ Case 14: { if (Wallet<rhs_mag_M715_green ) then {
   
 Case 15: { if (Wallet<rhs_mag_M716_yellow) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_M716_yellow]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M716 (Yellow Smoke) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_M716_yellow];
    Wallet= (wallet - rhs_mag_M716_yellow);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4584,7 +4601,7 @@ Case 15: { if (Wallet<rhs_mag_M716_yellow) then {
   
 Case 16: { if (Wallet<rhs_mag_an_m8hc) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_an_m8hc]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M8HC Smoke (white) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_an_m8hc];
    Wallet= (wallet - rhs_mag_an_m8hc);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4596,7 +4613,7 @@ Case 16: { if (Wallet<rhs_mag_an_m8hc) then {
   
 Case 17: { if (Wallet<rhs_mag_m18_purple) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m18_purple]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M18 Smoke (Purple) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m18_purple];
    Wallet= (wallet - rhs_mag_m18_purple);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4608,7 +4625,7 @@ Case 17: { if (Wallet<rhs_mag_m18_purple) then {
   
 Case 18: { if (Wallet<rhs_mag_m18_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m18_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M18 Smoke (Green)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m18_green ];
    Wallet= (wallet - rhs_mag_m18_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4620,7 +4637,7 @@ Case 18: { if (Wallet<rhs_mag_m18_green ) then {
   
 Case 19: { if (Wallet<rhs_mag_m18_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m18_red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M18 Smoke (Red) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m18_red ];
    Wallet= (wallet - rhs_mag_m18_red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4632,7 +4649,7 @@ Case 19: { if (Wallet<rhs_mag_m18_red ) then {
   
 Case 20: { if (Wallet<rhs_mag_m18_yellow ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_m18_yellow ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M18 Smoke (Yellow)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_m18_yellow ];
    Wallet= (wallet - rhs_mag_m18_yellow );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4644,7 +4661,7 @@ Case 20: { if (Wallet<rhs_mag_m18_yellow ) then {
   
 Case 21: { if (Wallet<rhs_mag_rdg2_white) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_rdg2_white]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RGD-2 (white smoke) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_rdg2_white];
    Wallet= (wallet - rhs_mag_rdg2_white);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4656,7 +4673,7 @@ Case 21: { if (Wallet<rhs_mag_rdg2_white) then {
   
 Case 22: { if (Wallet<rhs_mag_rdg2_black) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_rdg2_black]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RGD-2 (black smoke)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_rdg2_black];
    Wallet= (wallet - rhs_mag_rdg2_black);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4668,7 +4685,7 @@ Case 22: { if (Wallet<rhs_mag_rdg2_black) then {
   
 Case 23: { if (Wallet<rhs_mag_nspn_yellow) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_nspn_yellow]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered NSP-N (yellow flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_nspn_yellow];
    Wallet= (wallet - rhs_mag_nspn_yellow);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4680,7 +4697,7 @@ Case 23: { if (Wallet<rhs_mag_nspn_yellow) then {
   
 Case 24: { if (Wallet<rhs_mag_nspn_red) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_nspn_red]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered NSP-N (red flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_nspn_red];
    Wallet= (wallet - rhs_mag_nspn_red);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4692,7 +4709,7 @@ Case 24: { if (Wallet<rhs_mag_nspn_red) then {
   
 Case 25: { if (Wallet<rhs_mag_nspn_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_nspn_green]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered NSP-N (green flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_nspn_green];
    Wallet= (wallet - rhs_mag_nspn_green);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4704,7 +4721,7 @@ Case 25: { if (Wallet<rhs_mag_nspn_green) then {
   
 Case 26: { if (Wallet<rhs_mag_nspd) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_nspd]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered NSP-D (red flare) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_nspd];
    Wallet= (wallet - rhs_mag_nspd);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4724,7 +4741,7 @@ switch (TheSelection) do {
 
 Case 0 : { if (Wallet< muzzle_snds_acp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_acp ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  .45 ACP Sound Suppressorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_acp ]; 
    Wallet= (wallet -   muzzle_snds_acp );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4736,7 +4753,7 @@ Case 0 : { if (Wallet< muzzle_snds_acp ) then {
   
 Case 1 : { if (Wallet< muzzle_snds_B   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_B   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  7.62 Sound Suppressor   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_B   ];  
    Wallet= (wallet -   muzzle_snds_B   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4748,7 +4765,7 @@ Case 1 : { if (Wallet< muzzle_snds_B   ) then {
   
 Case 2 : { if (Wallet< muzzle_snds_H   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_H   ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered6.5mm Sound Suppressor  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_H   ];  
    Wallet= (wallet -   muzzle_snds_H   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4760,7 +4777,7 @@ Case 2 : { if (Wallet< muzzle_snds_H   ) then {
   
 Case 3 : { if (Wallet< muzzle_snds_H_MG) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_H_MG]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedHRF 6.5mm Sound Suppressor (LMG)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_H_MG];  
    Wallet= (wallet -   muzzle_snds_H_MG);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4772,7 +4789,7 @@ Case 3 : { if (Wallet< muzzle_snds_H_MG) then {
   
 Case 4 : { if (Wallet< muzzle_snds_L   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_L   ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered9mm Sound Suppressorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_L   ];  
    Wallet= (wallet -   muzzle_snds_L   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4784,7 +4801,7 @@ Case 4 : { if (Wallet< muzzle_snds_L   ) then {
   
 Case 5 : { if (Wallet< muzzle_snds_M   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", muzzle_snds_M   ]; }else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered5.56mm Sound Suppressor for $%1.00. Your order will be delivered soon! Check the deliveries box often!",muzzle_snds_M   ]; 
    Wallet= (wallet -   muzzle_snds_M   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4802,7 +4819,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhsusf_acc_M2010S ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_M2010S ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Suppressor M2010Sfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_M2010S ];
    Wallet= (wallet - rhsusf_acc_M2010S );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4814,7 +4831,7 @@ Case 0: { if (Wallet<rhsusf_acc_M2010S ) then {
   
 Case 1: { if (Wallet<rhsusf_acc_rotex5_grey ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_rotex5_grey ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Suppressor rotex 5 (grey) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_rotex5_grey ];
    Wallet= (wallet - rhsusf_acc_rotex5_grey );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4826,7 +4843,7 @@ Case 1: { if (Wallet<rhsusf_acc_rotex5_grey ) then {
   
 Case 2: { if (Wallet<rhsusf_acc_rotex5_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_rotex5_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Suppressor rotex 5 (tan)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_rotex5_tan ];
    Wallet= (wallet - rhsusf_acc_rotex5_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4838,7 +4855,7 @@ Case 2: { if (Wallet<rhsusf_acc_rotex5_tan ) then {
   
 Case 3: { if (Wallet<rhsusf_acc_SFMB556 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_SFMB556 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Surfire SFMBfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_SFMB556 ];
    Wallet= (wallet - rhsusf_acc_SFMB556 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4849,7 +4866,7 @@ Case 3: { if (Wallet<rhsusf_acc_SFMB556 ) then {
   
 Case 4: { if (Wallet<rhsusf_acc_SF3P556 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_SF3P556 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Surfire SF3P rotex 5for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_SF3P556 ];
    Wallet= (wallet - rhsusf_acc_SF3P556 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4868,7 +4885,7 @@ switch (TheSelection) do {
 
  Case 0 : { if (Wallet< SMA_supp2btanSCAR_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp2btanSCAR_556 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  Gemtech 5.56 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp2btanSCAR_556 ]; 
             Wallet= (wallet -  SMA_supp2btanSCAR_556 ); 
             profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -4880,7 +4897,7 @@ switch (TheSelection) do {
         
  Case 1 : { if (Wallet< SMA_supp2bSCAR_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp2bSCAR_556 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  Gemtech 5.56 Suppressor Black for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp2bSCAR_556 ]; 
             Wallet= (wallet -  SMA_supp2bSCAR_556 ); 
             profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -4892,7 +4909,7 @@ switch (TheSelection) do {
         
  Case 2 : { if (Wallet< SMA_spSCARtan_762 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_spSCARtan_762 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  Gemtech 7.62 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_spSCARtan_762 ];
             Wallet= (wallet -  SMA_spSCARtan_762 ); 
             profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -4904,7 +4921,7 @@ switch (TheSelection) do {
         
  Case 3 : { if (Wallet< SMA_spSCAR_762 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_spSCAR_762 ]; }  else { 
-            PlaySound "buy";
+            PlaySound "A3M_buy";
             Hint format ["You have ordered  Gemtech 7.62 Suppressor Black for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_spSCAR_762 ]; 
             Wallet= (wallet -  SMA_spSCAR_762 );
             profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4916,7 +4933,7 @@ switch (TheSelection) do {
         
  Case 4 : { if (Wallet< SMA_supptan_762 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supptan_762 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  Gemtech 7.62 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supptan_762 ]; 
             Wallet= (wallet -  SMA_supptan_762 ); 
             profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4928,7 +4945,7 @@ switch (TheSelection) do {
         
  Case 5 : { if (Wallet< SMA_supp_762 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp_762 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  Gemtech 7.62 Suppressor Black for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp_762 ];
             Wallet= (wallet -  SMA_supp_762 ); 
             profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4940,7 +4957,7 @@ switch (TheSelection) do {
         
  Case 6 : { if (Wallet< SMA_supp2btan_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp2btan_556 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  M4QD 5.56 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp2btan_556 ];
             Wallet= (wallet -  SMA_supp2btan_556 ); 
             profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -4952,7 +4969,7 @@ switch (TheSelection) do {
         
  Case 7 : { if (Wallet< SMA_supp1tan_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp1tan_556 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  MQ4D 5.56 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp1tan_556 ]; 
             Wallet= (wallet -  SMA_supp1tan_556 );
             profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4964,7 +4981,7 @@ switch (TheSelection) do {
         
  Case 8 : { if (Wallet< SMA_supp1b_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_supp1b_556 ]; }  else { 
-            PlaySound "buy";
+            PlaySound "A3M_buy";
             Hint format ["You have ordered  MQ4D 5.56 Suppressor Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_supp1b_556 ];
             Wallet= (wallet -  SMA_supp1b_556 );
             profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -4976,7 +4993,7 @@ switch (TheSelection) do {
         
  Case 9 : { if (Wallet< SMA_Silencer_556 ) then {
         Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Silencer_556 ]; }  else { 
-            PlaySound "buy"; 
+            PlaySound "A3M_buy"; 
             Hint format ["You have ordered  SMA 5.56 Suppressor for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Silencer_556 ]; 
             Wallet= (wallet -  SMA_Silencer_556 ); 
             profileNamespace setVariable ["SavedMoney", Wallet];
@@ -4994,7 +5011,7 @@ A3M_fnc_ToadieSuppr={
 switch (TheSelection) do {
 Case 0 : { if (Wallet< hlc_muzzle_Agendasix ) then {
 		Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_muzzle_Agendasix ]; }  else { 
-			PlaySound "buy"; 
+			PlaySound "A3M_buy"; 
 			Hint format ["You have ordered  Agenda 6 9mm Suppressor for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_muzzle_Agendasix ];
 			Wallet= (wallet -  hlc_muzzle_Agendasix );
 			profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5006,7 +5023,7 @@ Case 0 : { if (Wallet< hlc_muzzle_Agendasix ) then {
 		
 Case 1 : { if (Wallet< hlc_muzzle_Tundra ) then {
 		Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_muzzle_Tundra ]; }  else { 
-			PlaySound "buy"; 
+			PlaySound "A3M_buy"; 
 			Hint format ["You have ordered  Tundra 9mm Suppressor for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_muzzle_Tundra ]; 
 			Wallet= (wallet -  hlc_muzzle_Tundra );
 			profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5018,7 +5035,7 @@ Case 1 : { if (Wallet< hlc_muzzle_Tundra ) then {
 		
 Case 2 : { if (Wallet< hlc_muzzle_Agendasix10mm ) then {
 		Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_muzzle_Agendasix10mm ]; }  else {
-			PlaySound "buy"; 
+			PlaySound "A3M_buy"; 
 			Hint format ["You have ordered  Agenda 6 10mm Suppressor for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_muzzle_Agendasix10mm ]; 
 			Wallet= (wallet -  hlc_muzzle_Agendasix10mm );
 			profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5039,7 +5056,7 @@ switch (TheSelection) do {
 
 Case 0 : { if (Wallet< optic_Aco   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Aco   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ACO (Red)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Aco   ]; 
    Wallet= (wallet -   optic_Aco   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5051,7 +5068,7 @@ Case 0 : { if (Wallet< optic_Aco   ) then {
   
 Case 1 : { if (Wallet< optic_ACO_grn   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_ACO_grn   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ACO (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_ACO_grn   ];  
    Wallet= (wallet -   optic_ACO_grn   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5063,7 +5080,7 @@ Case 1 : { if (Wallet< optic_ACO_grn   ) then {
   
 Case 2 : { if (Wallet< optic_ACO_grn_smg   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_ACO_grn_smg   ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedACO Mini Pic (Fits SMG) (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_ACO_grn_smg   ]; 
    Wallet= (wallet -   optic_ACO_grn_smg   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5075,7 +5092,7 @@ Case 2 : { if (Wallet< optic_ACO_grn_smg   ) then {
   
 Case 3 : { if (Wallet< optic_Aco_smg   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Aco_smg   ]; }else {
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have orderedACO Mini Pic (Fits SMG) (Red)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Aco_smg   ];  
   Wallet= (wallet -   optic_Aco_smg   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5087,7 +5104,7 @@ Case 3 : { if (Wallet< optic_Aco_smg   ) then {
  
 Case 4 : { if (Wallet< optic_Arco  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Arco  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ARCOfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Arco  ]; 
    Wallet= (wallet -   optic_Arco  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5099,7 +5116,7 @@ Case 4 : { if (Wallet< optic_Arco  ) then {
   
 Case 5 : { if (Wallet< optic_DMS   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_DMS   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered   DMS for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_DMS   ]; 
    Wallet= (wallet -   optic_DMS   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5111,7 +5128,7 @@ Case 5 : { if (Wallet< optic_DMS   ) then {
   
 Case 6 : { if (Wallet< optic_Hamr  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Hamr  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  RCO for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Hamr  ];  
    Wallet= (wallet -   optic_Hamr  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5123,7 +5140,7 @@ Case 6 : { if (Wallet< optic_Hamr  ) then {
   
 Case 7 : { if (Wallet< optic_Holosight ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Holosight ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered a Holosight for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Holosight ];  
    Wallet= (wallet -   optic_Holosight );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5135,7 +5152,7 @@ Case 7 : { if (Wallet< optic_Holosight ) then {
   
 Case 8 : { if (Wallet< optic_Holosight_smg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Holosight_smg ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  MK17 Holosight SMG  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Holosight_smg ];  
    Wallet= (wallet -   optic_Holosight_smg );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5147,7 +5164,7 @@ Case 8 : { if (Wallet< optic_Holosight_smg ) then {
   
 Case 9 : { if (Wallet< optic_LRPS  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_LRPS  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  LRPSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_LRPS  ];  
    Wallet= (wallet -   optic_LRPS  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5159,7 +5176,7 @@ Case 9 : { if (Wallet< optic_LRPS  ) then {
   
 Case 10: { if (Wallet< optic_MRCO  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_MRCO  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  MRCOfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_MRCO  ];  
    Wallet= (wallet -   optic_MRCO  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5171,7 +5188,7 @@ Case 10: { if (Wallet< optic_MRCO  ) then {
   
 Case 11: { if (Wallet< optic_MRD   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_MRD   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  MRD for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_MRD   ];  
    Wallet= (wallet -   optic_MRD   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5183,7 +5200,7 @@ Case 11: { if (Wallet< optic_MRD   ) then {
   
 Case 12: { if (Wallet< optic_Nightstalker  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Nightstalker  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Nightstalkerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Nightstalker  ];  
    Wallet= (wallet -   optic_Nightstalker  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5195,7 +5212,7 @@ Case 12: { if (Wallet< optic_Nightstalker  ) then {
   
 Case 13: { if (Wallet< optic_NVS   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_NVS   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  NVS for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_NVS   ];  
    Wallet= (wallet -   optic_NVS   );  
    profileNamespace setVariable ["SavedMoney", Wallet];SaveProfileNamespace;   
@@ -5206,7 +5223,7 @@ Case 13: { if (Wallet< optic_NVS   ) then {
   
 Case 14: { if (Wallet< optic_SOS   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_SOS   ]; }else { 
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  SOS for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_SOS   ]; 
   Wallet= (wallet -   optic_SOS   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5218,7 +5235,7 @@ Case 14: { if (Wallet< optic_SOS   ) then {
  
 Case 15: { if (Wallet< optic_tws   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_tws   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  TWS for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_tws   ]; 
    Wallet= (wallet -   optic_tws   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5230,7 +5247,7 @@ Case 15: { if (Wallet< optic_tws   ) then {
   
 Case 16: { if (Wallet< optic_tws_mg) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_tws_mg]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  TWS MG  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_tws_mg];  
    Wallet= (wallet -   optic_tws_mg);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5242,7 +5259,7 @@ Case 16: { if (Wallet< optic_tws_mg) then {
   
 Case 17: { if (Wallet< optic_Yorris) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", optic_Yorris]; }else { 
-   PlaySound "buy";  Hint format ["You have ordered  Yorris J2   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Yorris];  
+   PlaySound "A3M_buy";  Hint format ["You have ordered  Yorris J2   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",optic_Yorris];  
    Wallet= (wallet -   optic_Yorris);  
    profileNamespace setVariable ["SavedMoney", Wallet];
    SaveProfileNamespace;   
@@ -5260,7 +5277,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhs_acc_1p29 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_1p29 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 1P29 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_1p29 ];
    Wallet= (wallet - rhs_acc_1p29 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5271,7 +5288,7 @@ Case 0: { if (Wallet<rhs_acc_1p29 ) then {
   }; 
 Case 1: { if (Wallet<rhs_acc_1p63 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_1p63 ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered 1P63for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_1p63 ];
   Wallet= (wallet - rhs_acc_1p63 );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5283,7 +5300,7 @@ Case 1: { if (Wallet<rhs_acc_1p63 ) then {
  
 Case 2: { if (Wallet<rhs_acc_1pn93_1 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_1pn93_1 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 1PN93-1 (Night vision) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_1pn93_1 ];
    Wallet= (wallet - rhs_acc_1pn93_1 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5295,7 +5312,7 @@ Case 2: { if (Wallet<rhs_acc_1pn93_1 ) then {
   
 Case 3: { if (Wallet<rhs_acc_1pn93_2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_1pn93_2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 1PN93-2 (Night vision - RPG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_1pn93_2 ];
    Wallet= (wallet - rhs_acc_1pn93_2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5307,7 +5324,7 @@ Case 3: { if (Wallet<rhs_acc_1pn93_2 ) then {
   
 Case 4: { if (Wallet<rhs_acc_ekp1 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_ekp1 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered EKP-1 Kobra for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_ekp1 ];
    Wallet= (wallet - rhs_acc_ekp1 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5319,7 +5336,7 @@ Case 4: { if (Wallet<rhs_acc_ekp1 ) then {
   
 Case 5: { if (Wallet<rhs_acc_pgo7v ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_pgo7v ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PGO-7V (RPG optic) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_pgo7v ];
    Wallet= (wallet - rhs_acc_pgo7v );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5331,7 +5348,7 @@ Case 5: { if (Wallet<rhs_acc_pgo7v ) then {
   
 Case 6: { if (Wallet<rhs_acc_pkas ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_pkas ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PK-AS (Reflex) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_pkas ];
    Wallet= (wallet - rhs_acc_pkas );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5343,7 +5360,7 @@ Case 6: { if (Wallet<rhs_acc_pkas ) then {
   
 Case 7: { if (Wallet<rhs_acc_pso1m2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_acc_pso1m2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PSO-1M2 (4x24 tele) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_acc_pso1m2 ];
    Wallet= (wallet - rhs_acc_pso1m2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5355,7 +5372,7 @@ Case 7: { if (Wallet<rhs_acc_pso1m2 ) then {
   
 Case 8: { if (Wallet<rhsusf_acc_EOTECH ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_EOTECH ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered EOtech XPS3 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_EOTECH ];
    Wallet= (wallet - rhsusf_acc_EOTECH );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5367,7 +5384,7 @@ Case 8: { if (Wallet<rhsusf_acc_EOTECH ) then {
   
 Case 9: { if (Wallet<rhsusf_acc_eotech_552) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_eotech_552]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered EOtech M552 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_eotech_552];
    Wallet= (wallet - rhsusf_acc_eotech_552);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5378,7 +5395,7 @@ Case 9: { if (Wallet<rhsusf_acc_eotech_552) then {
   
 Case 10: { if (Wallet<rhsusf_acc_LEUPOLDMK4 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_LEUPOLDMK4 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Leupold Mk4 (3.5-10x40mm)* for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_LEUPOLDMK4 ];
    Wallet= (wallet - rhsusf_acc_LEUPOLDMK4 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5390,7 +5407,7 @@ Case 10: { if (Wallet<rhsusf_acc_LEUPOLDMK4 ) then {
   
 Case 11: { if (Wallet<rhsusf_acc_LEUPOLDMK4_2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_LEUPOLDMK4_2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Leupold Mk4 (6.5-20x50mm) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_LEUPOLDMK4_2 ];
    Wallet= (wallet - rhsusf_acc_LEUPOLDMK4_2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5402,7 +5419,7 @@ Case 11: { if (Wallet<rhsusf_acc_LEUPOLDMK4_2 ) then {
   
 Case 12: { if (Wallet<rhsusf_acc_ELCAN ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ELCAN ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M145 MGO Elcan for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ELCAN ];
    Wallet= (wallet - rhsusf_acc_ELCAN );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5414,7 +5431,7 @@ Case 12: { if (Wallet<rhsusf_acc_ELCAN ) then {
   
 Case 13: { if (Wallet<rhsusf_acc_ELCAN_PIP) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ELCAN_PIP]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M145 MGO Elcan (PiP) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ELCAN_PIP];
    Wallet= (wallet - rhsusf_acc_ELCAN_PIP);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5426,7 +5443,7 @@ Case 13: { if (Wallet<rhsusf_acc_ELCAN_PIP) then {
   
 Case 14: { if (Wallet<rhsusf_acc_ACOG ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M150 RCO ACOG for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG ];
    Wallet= (wallet - rhsusf_acc_ACOG );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5438,7 +5455,7 @@ Case 14: { if (Wallet<rhsusf_acc_ACOG ) then {
   
 Case 15: { if (Wallet<rhsusf_acc_ACOG_PIP) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG_PIP]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M150 RCO ACOG (PiP) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG_PIP];
    Wallet= (wallet - rhsusf_acc_ACOG_PIP);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5450,7 +5467,7 @@ Case 15: { if (Wallet<rhsusf_acc_ACOG_PIP) then {
   
 Case 16: { if (Wallet<rhsusf_acc_ACOG2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M150 RCO ACOG (ARD) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG2 ];
    Wallet= (wallet - rhsusf_acc_ACOG2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5462,7 +5479,7 @@ Case 16: { if (Wallet<rhsusf_acc_ACOG2 ) then {
   
 Case 17: { if (Wallet<rhsusf_acc_ACOG3 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG3 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M150 RCO ACOG (ARD/Lens Cover) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG3 ];
    Wallet= (wallet - rhsusf_acc_ACOG3 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5474,7 +5491,7 @@ Case 17: { if (Wallet<rhsusf_acc_ACOG3 ) then {
   
 Case 18: { if (Wallet<rhsusf_acc_ACOG_USMC) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG_USMC]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PVQ-31 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG_USMC];
    Wallet= (wallet - rhsusf_acc_ACOG_USMC);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5486,7 +5503,7 @@ Case 18: { if (Wallet<rhsusf_acc_ACOG_USMC) then {
   
 Case 19: { if (Wallet<rhsusf_acc_ACOG2_USMC ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG2_USMC ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered AN/PVQ-31 (ARD) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG2_USMC ];
    Wallet= (wallet - rhsusf_acc_ACOG2_USMC );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5498,7 +5515,7 @@ Case 19: { if (Wallet<rhsusf_acc_ACOG2_USMC ) then {
   
 Case 20: { if (Wallet<rhsusf_acc_ACOG3_USMC) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_ACOG3_USMC]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PVQ-31 (ARD/Lens Cover) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_ACOG3_USMC];
    Wallet= (wallet - rhsusf_acc_ACOG3_USMC);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5510,7 +5527,7 @@ Case 20: { if (Wallet<rhsusf_acc_ACOG3_USMC) then {
   
 Case 21: { if (Wallet<rhsusf_acc_compm4 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_compm4 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M68 CCO Aimpoint M4 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_compm4 ];
    Wallet= (wallet - rhsusf_acc_compm4 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5529,7 +5546,7 @@ switch (TheSelection) do {
 
 Case 0 : { if (Wallet< SMA_eotech552 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552 ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552 ]; 
    Wallet= (wallet -  SMA_eotech552 ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5541,7 +5558,7 @@ Case 0 : { if (Wallet< SMA_eotech552 ) then {
 
 Case 1 : { if (Wallet< SMA_eotech552_kf ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_kf ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_kf ]; 
    Wallet= (wallet -  SMA_eotech552_kf ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5553,7 +5570,7 @@ Case 1 : { if (Wallet< SMA_eotech552_kf ) then {
   
 Case 2 : { if (Wallet< SMA_eotech552_kf_wdl ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_kf_wdl ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_kf_wdl ]; 
    Wallet= (wallet -  SMA_eotech552_kf_wdl ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5566,7 +5583,7 @@ Case 2 : { if (Wallet< SMA_eotech552_kf_wdl ) then {
   
 Case 3 : { if (Wallet< SMA_eotech552_kf_des ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_kf_des ]; } else{
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_kf_des ]; 
   Wallet= (wallet -  SMA_eotech552_kf_des ); 
   profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5578,7 +5595,7 @@ Case 3 : { if (Wallet< SMA_eotech552_kf_des ) then {
  
 Case 4 : { if (Wallet< SMA_eotech552_3XDOWN ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XDOWN ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XDOWN ]; 
    Wallet= (wallet -  SMA_eotech552_3XDOWN ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5590,7 +5607,7 @@ Case 4 : { if (Wallet< SMA_eotech552_3XDOWN ) then {
   
 Case 5 : { if (Wallet< SMA_eotech552_3XDOWN_wdl ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XDOWN_wdl ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XDOWN_wdl ]; 
    Wallet= (wallet -SMA_eotech552_3XDOWN_wdl ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5602,7 +5619,7 @@ Case 5 : { if (Wallet< SMA_eotech552_3XDOWN_wdl ) then {
   
 Case 6 : { if (Wallet< SMA_eotech552_3XDOWN_des ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XDOWN_des ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XDOWN_des ];
    Wallet= (wallet -  SMA_eotech552_3XDOWN_des ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5614,7 +5631,7 @@ Case 6 : { if (Wallet< SMA_eotech552_3XDOWN_des ) then {
   
 Case 7 : { if (Wallet< SMA_eotech552_3XUP ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XUP ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XUP ];
    Wallet= (wallet -  SMA_eotech552_3XUP );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5626,7 +5643,7 @@ Case 7 : { if (Wallet< SMA_eotech552_3XUP ) then {
   
 Case 8 : { if (Wallet< SMA_eotech552_3XUP_wdl ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XUP_wdl ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XUP_wdl ]; 
    Wallet= (wallet -  SMA_eotech552_3XUP_wdl ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5638,7 +5655,7 @@ Case 8 : { if (Wallet< SMA_eotech552_3XUP_wdl ) then {
   
 Case 9 : { if (Wallet< SMA_eotech552_3XUP_des ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_eotech552_3XUP_des ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  EOTech 552 Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_eotech552_3XUP_des ];
    Wallet= (wallet -  SMA_eotech552_3XUP_des );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5650,7 +5667,7 @@ Case 9 : { if (Wallet< SMA_eotech552_3XUP_des ) then {
   
 Case 10 : { if (Wallet< SMA_Spitfire_01_sc_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_sc_black ]; } else {
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_sc_black ]; 
   Wallet= (wallet -  SMA_Spitfire_01_sc_black );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5662,7 +5679,7 @@ Case 10 : { if (Wallet< SMA_Spitfire_01_sc_black ) then {
  
 Case 11 : { if (Wallet< SMA_Spitfire_01_sc_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_sc_green ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_sc_green ]; 
    Wallet= (wallet -  SMA_Spitfire_01_sc_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -5674,7 +5691,7 @@ Case 11 : { if (Wallet< SMA_Spitfire_01_sc_green ) then {
   
 Case 12 : { if (Wallet< SMA_Spitfire_01_sc_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_sc_red ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_sc_red ];
    Wallet= (wallet -  SMA_Spitfire_01_sc_red ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5686,7 +5703,7 @@ Case 12 : { if (Wallet< SMA_Spitfire_01_sc_red ) then {
   
 Case 13 : { if (Wallet< SMA_Spitfire_01_sc_closed ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_sc_closed ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_sc_closed ]; 
    Wallet= (wallet -  SMA_Spitfire_01_sc_closed ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5698,7 +5715,7 @@ Case 13 : { if (Wallet< SMA_Spitfire_01_sc_closed ) then {
   
 Case 14 : { if (Wallet< SMA_Spitfire_01_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_black ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_black ];
    Wallet= (wallet -  SMA_Spitfire_01_black ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5710,7 +5727,7 @@ Case 14 : { if (Wallet< SMA_Spitfire_01_black ) then {
   
 Case 15 : { if (Wallet< SMA_Spitfire_01_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_green ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_green ]; 
    Wallet= (wallet -  SMA_Spitfire_01_green ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5722,7 +5739,7 @@ Case 15 : { if (Wallet< SMA_Spitfire_01_green ) then {
   
 Case 16 : { if (Wallet< SMA_Spitfire_01_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Spitfire_01_red ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Vortex Spitfire Prism Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Spitfire_01_red ]; 
    Wallet= (wallet -  SMA_Spitfire_01_red ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5734,7 +5751,7 @@ Case 16 : { if (Wallet< SMA_Spitfire_01_red ) then {
   
 Case 17 : { if (Wallet< SMA_AIMPOINT ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AIMPOINT ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Aimpoint Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AIMPOINT ]; 
    Wallet= (wallet -  SMA_AIMPOINT ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5746,7 +5763,7 @@ Case 17 : { if (Wallet< SMA_AIMPOINT ) then {
   
 Case 18 : { if (Wallet< SMA_AIMPOINT_GLARE ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AIMPOINT_GLARE ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Aimpoint Glare Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AIMPOINT_GLARE ];
    Wallet= (wallet -  SMA_AIMPOINT_GLARE ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5758,7 +5775,7 @@ Case 18 : { if (Wallet< SMA_AIMPOINT_GLARE ) then {
   
 Case 19 : { if (Wallet<"SMA_ELCAN_SPECTER") then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.","SMA_ELCAN_SPECTER"]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Elcan Specter Optic for $%1.00. Your order will be delivered soon! Check the deliveries box often!","SMA_ELCAN_SPECTER"]; 
    Wallet= (wallet -"SMA_ELCAN_SPECTER"); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -5770,7 +5787,7 @@ Case 19 : { if (Wallet<"SMA_ELCAN_SPECTER") then {
   
 Case 20 : { if (Wallet< SMA_ELCAN_SPECTER_TAN ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ELCAN_SPECTER_TAN ]; } else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Elcan Specter Optic (Tan)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ELCAN_SPECTER_TAN ];
    Wallet= (wallet -  SMA_ELCAN_SPECTER_TAN ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5792,7 +5809,7 @@ switch (TheSelection) do {
 
 Case 0 : { if (Wallet< M_30Rnd_65x39_caseless_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_65x39_caseless_green]; }else {
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  6.5 x 39mm Caseless Green (30 rds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_65x39_caseless_green];  
    Wallet= (wallet -   M_30Rnd_65x39_caseless_green);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5804,7 +5821,7 @@ Case 0 : { if (Wallet< M_30Rnd_65x39_caseless_green) then {
   
 Case 1 : { if (Wallet< M_30Rnd_65x39_caseless_green_mag_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_65x39_caseless_green_mag_Tracer ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  6.5 x 39mm Caseless (30 rds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_65x39_caseless_green_mag_Tracer ]; 
    Wallet= (wallet -   M_30Rnd_65x39_caseless_green_mag_Tracer );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5816,7 +5833,7 @@ Case 1 : { if (Wallet< M_30Rnd_65x39_caseless_green_mag_Tracer ) then {
   
 Case 2 : { if (Wallet< M_30Rnd_556x45_Stanag   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_556x45_Stanag   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  5.56 x 45mm STANAG (30 rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_556x45_Stanag   ];  
    Wallet= (wallet -   M_30Rnd_556x45_Stanag   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5828,7 +5845,7 @@ Case 2 : { if (Wallet< M_30Rnd_556x45_Stanag   ) then {
   
 Case 3 : { if (Wallet< M_30Rnd_556x45_Stanag_Tracer_Green  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_556x45_Stanag_Tracer_Green  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  5.56 x 45mm STANAG (30 rds) Tracer  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_556x45_Stanag_Tracer_Green  ];  
    Wallet= (wallet -   M_30Rnd_556x45_Stanag_Tracer_Green  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5840,7 +5857,7 @@ Case 3 : { if (Wallet< M_30Rnd_556x45_Stanag_Tracer_Green  ) then {
   
 Case 4 : { if (Wallet< M_30Rnd_65x39_caseless_mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_65x39_caseless_mag  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  6.5x39 Caseless Mag (30 rds)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_65x39_caseless_mag  ];  
    Wallet= (wallet -   M_30Rnd_65x39_caseless_mag  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5852,7 +5869,7 @@ Case 4 : { if (Wallet< M_30Rnd_65x39_caseless_mag  ) then {
   
 Case 5 : { if (Wallet< M_30Rnd_65x39_caseless_mag_Tracer   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_65x39_caseless_mag_Tracer   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  6.5x39 Caseless Mag (30 rds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_65x39_caseless_mag_Tracer ]; 
    Wallet= (wallet -   M_30Rnd_65x39_caseless_mag_Tracer   );  
    profileNamespace setVariable ["SavedMoney", Wallet];SaveProfileNamespace;  
@@ -5863,7 +5880,7 @@ Case 5 : { if (Wallet< M_30Rnd_65x39_caseless_mag_Tracer   ) then {
   
 Case 6 : { if (Wallet< M_30Rnd_45ACP_Mag_SMG_01) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_45ACP_Mag_SMG_01]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  .45 ACP SMG (30 rds)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_45ACP_Mag_SMG_01]; 
    Wallet= (wallet -   M_30Rnd_45ACP_Mag_SMG_01);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5875,7 +5892,7 @@ Case 6 : { if (Wallet< M_30Rnd_45ACP_Mag_SMG_01) then {
   
 Case 7 : { if (Wallet< M_30Rnd_45ACP_Mag_SMG_01_Tracer_Green   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_45ACP_Mag_SMG_01_Tracer_Green   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  .45 ACP SMG (30 rds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_45ACP_Mag_SMG_01_Tracer_Green   ]; 
    Wallet= (wallet -   M_30Rnd_45ACP_Mag_SMG_01_Tracer_Green   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5887,7 +5904,7 @@ Case 7 : { if (Wallet< M_30Rnd_45ACP_Mag_SMG_01_Tracer_Green   ) then {
   
 Case 8 : { if (Wallet< M_100Rnd_65x39_caseless_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_100Rnd_65x39_caseless_mag ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  6.5 x 39mm Caseless High Vol (100 rds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_100Rnd_65x39_caseless_mag ];  
    Wallet= (wallet -   M_100Rnd_65x39_caseless_mag ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5899,7 +5916,7 @@ Case 8 : { if (Wallet< M_100Rnd_65x39_caseless_mag ) then {
    
 Case 9 : { if (Wallet< M_100Rnd_65x39_caseless_mag_Tracer  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_100Rnd_65x39_caseless_mag_Tracer  ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  6.5 x 39mm Caseless High Vol (100 rds) Tracer   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_100Rnd_65x39_caseless_mag_Tracer  ]; 
    Wallet= (wallet -   M_100Rnd_65x39_caseless_mag_Tracer  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5911,7 +5928,7 @@ Case 9 : { if (Wallet< M_100Rnd_65x39_caseless_mag_Tracer  ) then {
   
 Case 10 :   { if (Wallet< M_150Rnd_762x51_Box ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_150Rnd_762x51_Box ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  7.62x51mm Ammo Belt (150 rds)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_150Rnd_762x51_Box ];  
    Wallet= (wallet -   M_150Rnd_762x51_Box );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5923,7 +5940,7 @@ Case 10 :   { if (Wallet< M_150Rnd_762x51_Box ) then {
   
 Case 11 :   { if (Wallet< M_150Rnd_762x51_Box_Tracer  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_150Rnd_762x51_Box_Tracer  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  7.62x51mm Ammo Belt (150 rds) Tracerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_150Rnd_762x51_Box_Tracer  ];  
    Wallet= (wallet -   M_150Rnd_762x51_Box_Tracer  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5935,7 +5952,7 @@ Case 11 :   { if (Wallet< M_150Rnd_762x51_Box_Tracer  ) then {
   
 Case 12 :   { if (Wallet< M_200Rnd_65x39_cased_Box) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_200Rnd_65x39_cased_Box]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  6.5 x 39mm Cased High Vol (200 Rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_200Rnd_65x39_cased_Box]; 
    Wallet= (wallet -   M_200Rnd_65x39_cased_Box);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5947,7 +5964,7 @@ Case 12 :   { if (Wallet< M_200Rnd_65x39_cased_Box) then {
    
 Case 13 :   { if (Wallet< M_200Rnd_65x39_cased_Box_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_200Rnd_65x39_cased_Box_Tracer ]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  6.5 x 39mm Cased High Vol (200 Rds) Tracer  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_200Rnd_65x39_cased_Box_Tracer ];  
   Wallet= (wallet -   M_200Rnd_65x39_cased_Box_Tracer );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5959,7 +5976,7 @@ Case 13 :   { if (Wallet< M_200Rnd_65x39_cased_Box_Tracer ) then {
  
 Case 14 :   { if (Wallet< M_20Rnd_556x45_UW_mag   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_20Rnd_556x45_UW_mag   ]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  5.56x45mm Underwater (20 rds)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_20Rnd_556x45_UW_mag   ];  
   Wallet= (wallet -   M_20Rnd_556x45_UW_mag   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5971,7 +5988,7 @@ Case 14 :   { if (Wallet< M_20Rnd_556x45_UW_mag   ) then {
  
 Case 15 :   { if (Wallet< M_20Rnd_762x51_Mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_20Rnd_762x51_Mag  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  7.62 x 51mm (20 rds)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_20Rnd_762x51_Mag  ];  
    Wallet= (wallet -   M_20Rnd_762x51_Mag  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5983,7 +6000,7 @@ Case 15 :   { if (Wallet< M_20Rnd_762x51_Mag  ) then {
   
 Case 16 :   { if (Wallet< M_16Rnd_9x21_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_16Rnd_9x21_Mag]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  9x21mm (16 Rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_16Rnd_9x21_Mag];  
    Wallet= (wallet -   M_16Rnd_9x21_Mag);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -5995,7 +6012,7 @@ Case 16 :   { if (Wallet< M_16Rnd_9x21_Mag) then {
   
 Case 17 :   { if (Wallet< M_30Rnd_9x21_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_30Rnd_9x21_Mag]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  9x21mm SMG (30 rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_30Rnd_9x21_Mag];  
    Wallet= (wallet -   M_30Rnd_9x21_Mag);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6007,7 +6024,7 @@ Case 17 :   { if (Wallet< M_30Rnd_9x21_Mag) then {
   
 Case 18 :   { if (Wallet< M_11Rnd_45ACP_Mag   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_11Rnd_45ACP_Mag   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  .45 +P JHP (11 Rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_11Rnd_45ACP_Mag   ];  
    Wallet= (wallet -   M_11Rnd_45ACP_Mag   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6019,7 +6036,7 @@ Case 18 :   { if (Wallet< M_11Rnd_45ACP_Mag   ) then {
   
 Case 19 :   { if (Wallet< M_6Rnd_45ACP_Cylinder   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_6Rnd_45ACP_Cylinder   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  .45 FMJ (6 rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_6Rnd_45ACP_Cylinder   ];  
    Wallet= (wallet -   M_6Rnd_45ACP_Cylinder   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6031,7 +6048,7 @@ Case 19 :   { if (Wallet< M_6Rnd_45ACP_Cylinder   ) then {
   
 Case 20 :   { if (Wallet< M_10Rnd_762x51_Mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_10Rnd_762x51_Mag  ]; }else {
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  7.62x51 (10 rds)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_10Rnd_762x51_Mag  ]; 
    Wallet= (wallet -   M_10Rnd_762x51_Mag  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6043,7 +6060,7 @@ Case 20 :   { if (Wallet< M_10Rnd_762x51_Mag  ) then {
   
 Case 21 :   { if (Wallet< M_9Rnd_45ACP_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_9Rnd_45ACP_Mag]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  .45 +P JHP Black Talons (9 rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_9Rnd_45ACP_Mag];  
    Wallet= (wallet -   M_9Rnd_45ACP_Mag);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6055,7 +6072,7 @@ Case 21 :   { if (Wallet< M_9Rnd_45ACP_Mag) then {
   
 Case 22 :   { if (Wallet< M_7Rnd_408_Mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_7Rnd_408_Mag  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  .408 Lapua (7 rds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_7Rnd_408_Mag  ]; 
    Wallet= (wallet -   M_7Rnd_408_Mag  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6067,7 +6084,7 @@ Case 22 :   { if (Wallet< M_7Rnd_408_Mag  ) then {
   
 Case 23 :   { if (Wallet< M_5Rnd_127x108_APDS_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_5Rnd_127x108_APDS_Mag ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  12.7x108mm APDS (5 Rds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_5Rnd_127x108_APDS_Mag ]; 
    Wallet= (wallet -   M_5Rnd_127x108_APDS_Mag ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6079,7 +6096,7 @@ Case 23 :   { if (Wallet< M_5Rnd_127x108_APDS_Mag ) then {
   
 Case 24 :   { if (Wallet< M_5Rnd_127x108_Mag  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", M_5Rnd_127x108_Mag  ]; }else {  
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  12.7x108mm AP FMJ (5 Rds)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",M_5Rnd_127x108_Mag  ];  
   Wallet= (wallet -   M_5Rnd_127x108_Mag  );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6098,7 +6115,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhs_mag_9x19_17 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_9x19_17 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 9x19mm (17 Rds)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_9x19_17 ];
    Wallet= (wallet - rhs_mag_9x19_17 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6110,7 +6127,7 @@ Case 0: { if (Wallet<rhs_mag_9x19_17 ) then {
   
 Case 1: { if (Wallet<rhs_100Rnd_762x54mmR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",rhs_100Rnd_762x54mmR ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PKM (100rd) 762x54mmRfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_100Rnd_762x54mmR ];
    Wallet= (wallet - rhs_100Rnd_762x54mmR );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6122,7 +6139,7 @@ Case 1: { if (Wallet<rhs_100Rnd_762x54mmR ) then {
   
 Case 2: { if (Wallet<rhs_100Rnd_762x54mmR_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_100Rnd_762x54mmR_green]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PKM (100rd) 762x54mmR (Green)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_100Rnd_762x54mmR_green];
    Wallet= (wallet - rhs_100Rnd_762x54mmR_green);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6134,7 +6151,7 @@ Case 2: { if (Wallet<rhs_100Rnd_762x54mmR_green) then {
   
 Case 3: { if (Wallet<rhs_30Rnd_762x39mm ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_762x39mm ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7.62x39mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_762x39mm ];
    Wallet= (wallet - rhs_30Rnd_762x39mm );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6146,7 +6163,7 @@ Case 3: { if (Wallet<rhs_30Rnd_762x39mm ) then {
   
 Case 4: { if (Wallet<rhs_30Rnd_762x39mm_tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_762x39mm_tracer ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7.62x39mm (tracer)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_762x39mm_tracer ];
    Wallet= (wallet - rhs_30Rnd_762x39mm_tracer );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6158,7 +6175,7 @@ Case 4: { if (Wallet<rhs_30Rnd_762x39mm_tracer ) then {
   
 Case 5: { if (Wallet<rhs_30Rnd_762x39mm_89 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_762x39mm_89 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7.62x39mm (89) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_762x39mm_89 ];
    Wallet= (wallet - rhs_30Rnd_762x39mm_89 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6170,7 +6187,7 @@ Case 5: { if (Wallet<rhs_30Rnd_762x39mm_89 ) then {
   
 Case 6: { if (Wallet<rhs_30Rnd_545x39_AK  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_545x39_AK  ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 5N7 AK-74 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_545x39_AK  ];
    Wallet= (wallet - rhs_30Rnd_545x39_AK  );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6182,7 +6199,7 @@ Case 6: { if (Wallet<rhs_30Rnd_545x39_AK  ) then {
   
 Case 7: { if (Wallet<rhs_30Rnd_545x39_AK_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_545x39_AK_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7T3M AK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_545x39_AK_green ];
    Wallet= (wallet - rhs_30Rnd_545x39_AK_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6194,7 +6211,7 @@ Case 7: { if (Wallet<rhs_30Rnd_545x39_AK_green ) then {
   
 Case 8: { if (Wallet<rhs_30Rnd_545x39_7n10_AK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_545x39_7n10_AK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7N10 AK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_545x39_7n10_AK ];
    Wallet= (wallet - rhs_30Rnd_545x39_7n10_AK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6206,7 +6223,7 @@ Case 8: { if (Wallet<rhs_30Rnd_545x39_7n10_AK ) then {
   
 Case 9: { if (Wallet<rhs_30Rnd_545x39_7n22_AK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_30Rnd_545x39_7n22_AK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7N22 AK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_30Rnd_545x39_7n22_AK ];
    Wallet= (wallet - rhs_30Rnd_545x39_7n22_AK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6218,7 +6235,7 @@ Case 9: { if (Wallet<rhs_30Rnd_545x39_7n22_AK ) then {
   
 Case 10: { if (Wallet<rhs_45Rnd_545X39_AK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_45Rnd_545X39_AK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 5N7 RPK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_45Rnd_545X39_AK ];
    Wallet= (wallet - rhs_45Rnd_545X39_AK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6230,7 +6247,7 @@ Case 10: { if (Wallet<rhs_45Rnd_545X39_AK ) then {
   
 Case 11: { if (Wallet<rhs_45Rnd_545X39_AK_Green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_45Rnd_545X39_AK_Green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7T3M RPK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_45Rnd_545X39_AK_Green ];
    Wallet= (wallet - rhs_45Rnd_545X39_AK_Green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6242,7 +6259,7 @@ Case 11: { if (Wallet<rhs_45Rnd_545X39_AK_Green ) then {
   
 Case 12: { if (Wallet<rhs_45Rnd_545X39_7N10_AK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_45Rnd_545X39_7N10_AK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7N10 RPK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_45Rnd_545X39_7N10_AK ];
    Wallet= (wallet - rhs_45Rnd_545X39_7N10_AK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6254,7 +6271,7 @@ Case 12: { if (Wallet<rhs_45Rnd_545X39_7N10_AK ) then {
   
 Case 13: { if (Wallet<rhs_45Rnd_545X39_7N22_AK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_45Rnd_545X39_7N22_AK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7N22 RPK-74for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_45Rnd_545X39_7N22_AK ];
    Wallet= (wallet - rhs_45Rnd_545X39_7N22_AK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6266,7 +6283,7 @@ Case 13: { if (Wallet<rhs_45Rnd_545X39_7N22_AK ) then {
   
 Case 14: { if (Wallet<rhs_10Rnd_762x54mmR_7N1 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_10Rnd_762x54mmR_7N1 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 7N1 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_10Rnd_762x54mmR_7N1 ];
    Wallet= (wallet - rhs_10Rnd_762x54mmR_7N1 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6277,7 +6294,7 @@ Case 14: { if (Wallet<rhs_10Rnd_762x54mmR_7N1 ) then {
   
 Case 15: { if (Wallet<rhsusf_20Rnd_762x51_m118_special_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_20Rnd_762x51_m118_special_Mag ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M118 Special 20 Rndsfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_20Rnd_762x51_m118_special_Mag ];
     Wallet= (wallet - rhsusf_20Rnd_762x51_m118_special_Mag );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6289,7 +6306,7 @@ Case 15: { if (Wallet<rhsusf_20Rnd_762x51_m118_special_Mag ) then {
    
 Case 16: { if (Wallet<rhsusf_20Rnd_762x51_m993_Mag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_20Rnd_762x51_m993_Mag]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M993 20 Rnds  for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_20Rnd_762x51_m993_Mag];
    Wallet= (wallet - rhsusf_20Rnd_762x51_m993_Mag);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6301,7 +6318,7 @@ Case 16: { if (Wallet<rhsusf_20Rnd_762x51_m993_Mag) then {
   
 Case 17: { if (Wallet<rhs_mag_30Rnd_556x45_Mk262_Stanag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_Mk262_Stanag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Mk262 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_Mk262_Stanag ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_Mk262_Stanag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6313,7 +6330,7 @@ Case 17: { if (Wallet<rhs_mag_30Rnd_556x45_Mk262_Stanag ) then {
   
 Case 18: { if (Wallet<rhs_mag_30Rnd_556x45_Mk318_Stanag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_Mk318_Stanag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Mk318 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_Mk318_Stanag ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_Mk318_Stanag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6325,7 +6342,7 @@ Case 18: { if (Wallet<rhs_mag_30Rnd_556x45_Mk318_Stanag ) then {
   
 Case 19: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M855A1_Stanag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M885A1 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M855A1_Stanag ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M855A1_Stanag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6337,7 +6354,7 @@ Case 19: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag ) then {
   
 Case 20: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M885A1 (no tracers) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6349,7 +6366,7 @@ Case 20: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_No_Tracer ) then {
   
 Case 21: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M885A1 (red) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6361,7 +6378,7 @@ Case 21: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red ) then {
   
 Case 22: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M885A1 (green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Green ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6373,7 +6390,7 @@ Case 22: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Green ) then {
   
 Case 23: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Yellow ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Yellow ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M885A1 (yellow) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Yellow ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Yellow );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6385,7 +6402,7 @@ Case 23: { if (Wallet<rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Yellow ) then {
   
 Case 24: { if (Wallet<rhs_mag_30Rnd_556x45_M200_Stanag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_30Rnd_556x45_M200_Stanag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M200 (blanks) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_30Rnd_556x45_M200_Stanag ];
    Wallet= (wallet - rhs_mag_30Rnd_556x45_M200_Stanag );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6397,7 +6414,7 @@ Case 24: { if (Wallet<rhs_mag_30Rnd_556x45_M200_Stanag ) then {
   
 Case 25: { if (Wallet<rhsusf_5Rnd_300winmag_xm2010 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_5Rnd_300winmag_xm2010 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered .300 Win Mag for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_5Rnd_300winmag_xm2010 ];
    Wallet= (wallet - rhsusf_5Rnd_300winmag_xm2010 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6409,7 +6426,7 @@ Case 25: { if (Wallet<rhsusf_5Rnd_300winmag_xm2010 ) then {
   
 Case 26: { if (Wallet<rhsusf_100Rnd_762x51 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_100Rnd_762x51 ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered M240 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_100Rnd_762x51 ];
   Wallet= (wallet - rhsusf_100Rnd_762x51 );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6420,7 +6437,7 @@ Case 26: { if (Wallet<rhsusf_100Rnd_762x51 ) then {
  }; 
 Case 27: { if (Wallet<rhsusf_100Rnd_556x45_soft_pouch ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_100Rnd_556x45_soft_pouch ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M249 soft pouch (100Rnd) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_100Rnd_556x45_soft_pouch ];
    Wallet= (wallet - rhsusf_100Rnd_556x45_soft_pouch );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6432,7 +6449,7 @@ Case 27: { if (Wallet<rhsusf_100Rnd_556x45_soft_pouch ) then {
   
 Case 28: { if (Wallet<rhsusf_100Rnd_556x45_M200_soft_pouch ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_100Rnd_556x45_M200_soft_pouch ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M249 soft pouch (100Rnd Blanks)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_100Rnd_556x45_M200_soft_pouch ];
    Wallet= (wallet - rhsusf_100Rnd_556x45_M200_soft_pouch );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6444,7 +6461,7 @@ Case 28: { if (Wallet<rhsusf_100Rnd_556x45_M200_soft_pouch ) then {
  
 Case 29: { if (Wallet<rhsusf_200Rnd_556x45_soft_pouch ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_200Rnd_556x45_soft_pouch ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M249 soft pouch (200Rnd) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_200Rnd_556x45_soft_pouch ];
    Wallet= (wallet - rhsusf_200Rnd_556x45_soft_pouch );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6456,7 +6473,7 @@ Case 29: { if (Wallet<rhsusf_200Rnd_556x45_soft_pouch ) then {
   
 Case 30: { if (Wallet<rhsusf_5Rnd_00Buck ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_5Rnd_00Buck ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 5Rnd .00 Buckshot for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_5Rnd_00Buck ];
    Wallet= (wallet - rhsusf_5Rnd_00Buck );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6468,7 +6485,7 @@ Case 30: { if (Wallet<rhsusf_5Rnd_00Buck ) then {
   
 Case 31: { if (Wallet<rhsusf_8Rnd_00Buck ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_8Rnd_00Buck ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 8Rnd .00 Buckshot for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_8Rnd_00Buck ];
    Wallet= (wallet - rhsusf_8Rnd_00Buck );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6480,7 +6497,7 @@ Case 31: { if (Wallet<rhsusf_8Rnd_00Buck ) then {
   
 Case 32: { if (Wallet<rhsusf_20Rnd_762x51_m118_special_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_20Rnd_762x51_m118_special_Mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M118 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_20Rnd_762x51_m118_special_Mag ];
    Wallet= (wallet - rhsusf_20Rnd_762x51_m118_special_Mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6492,7 +6509,7 @@ Case 32: { if (Wallet<rhsusf_20Rnd_762x51_m118_special_Mag ) then {
    
 Case 33: { if (Wallet<rhsusf_20Rnd_762x51_m993_Mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_20Rnd_762x51_m993_Mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M993 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_20Rnd_762x51_m993_Mag ];
    Wallet= (wallet - rhsusf_20Rnd_762x51_m993_Mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6510,7 +6527,7 @@ switch (TheSelection) do {
 
 Case 0 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR ) then {
  Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_M80A1_EPR ]; } else{
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered M80A1 EPR 7.62x51mm (20 rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_M80A1_EPR ]; 
   Wallet= (wallet - SMA_20Rnd_762x51mm_M80A1_EPR ); 
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6522,7 +6539,7 @@ Case 0 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR ) then {
  
 Case 1 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_M80A1_EPR_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered M80A1 EPR 7.62x51mm (20 rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_M80A1_EPR_Tracer ]; 
    Wallet= (wallet - SMA_20Rnd_762x51mm_M80A1_EPR_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6534,7 +6551,7 @@ Case 1 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR_Tracer ) then {
   
 Case 2 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_M80A1_EPR_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered M80A1 EPR 7.62x51mm (20 rnds)  IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_M80A1_EPR_IR ]; 
    Wallet= (wallet - SMA_20Rnd_762x51mm_M80A1_EPR_IR ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6546,7 +6563,7 @@ Case 2 :{if (Wallet< SMA_20Rnd_762x51mm_M80A1_EPR_IR ) then {
   
 Case 3 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk316 Mod0 Spc Lng Rng 7.62x51mm (20 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range ];
    Wallet= (wallet - SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6558,7 +6575,7 @@ Case 3 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range ) then {
   
 Case 4 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk316 Mod0 Spc Lng Rng 7.62x51mm (20 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_Tracer ]; 
    Wallet= (wallet - SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6570,7 +6587,7 @@ Case 4 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_Tracer ) 
   
 Case 5 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_IR ]; } else{
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered Mk316 Mod0 Spc Lng Rng 7.62x51mm (20 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_IR ]; 
   Wallet= (wallet - SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_IR );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6582,7 +6599,7 @@ Case 5 :{if (Wallet< SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range_IR ) then
  
 Case 6 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk319 Mod0 Ball Barrier 7.62x51mm (20 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier ];
    Wallet= (wallet - SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6594,7 +6611,7 @@ Case 6 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier ) then {
   
 Case 7 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk319 Mod0 Ball Barrier 7.62x51mm (20 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_Tracer ];
    Wallet= (wallet - SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6606,7 +6623,7 @@ Case 7 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_Tracer ) then {
   
 Case 8 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk319 Mod0 Ball Barrier 7.62x51mm (20 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_IR ]; 
    Wallet= (wallet - SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_IR ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6618,7 +6635,7 @@ Case 8 :{if (Wallet< SMA_20Rnd_762x51mm_Mk319_Mod_0_Ball_Barrier_IR ) then {
   
 Case 9 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Lapua SubSonic FMJ 7.62x51mm (20 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic ]; 
    Wallet= (wallet - SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6630,7 +6647,7 @@ Case 9 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic ) then {
   
 Case 10 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Lapua SubSonic FMJ 7.62x51mm (20 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer ];
    Wallet= (wallet - SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6642,7 +6659,7 @@ Case 10 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_Tracer ) then {
   
 Case 11 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Lapua SubSonic FMJ 7.62x51mm (20 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR ];
    Wallet= (wallet - SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6654,7 +6671,7 @@ Case 11 :{if (Wallet< SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic_IR ) then {
   
 Case 12 :{if (Wallet< SMA_30Rnd_762x39_SKS ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_762x39_SKS ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered 7.62x39 SKS (30 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_762x39_SKS ]; 
    Wallet= (wallet - SMA_30Rnd_762x39_SKS ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6666,7 +6683,7 @@ Case 12 :{if (Wallet< SMA_30Rnd_762x39_SKS ) then {
   
 Case 13 :{if (Wallet< SMA_30Rnd_762x39_SKS_Red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_762x39_SKS_Red ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered 7.62x39 SKS (30 Rnds)  Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_762x39_SKS_Red ]; 
    Wallet= (wallet - SMA_30Rnd_762x39_SKS_Red ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6678,7 +6695,7 @@ Case 13 :{if (Wallet< SMA_30Rnd_762x39_SKS_Red ) then {
   
 Case 14 :{if (Wallet< SMA_30Rnd_556x45_M855A1 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_M855A1 ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered M885A1 (30 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_M855A1 ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_M855A1 ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6690,7 +6707,7 @@ Case 14 :{if (Wallet< SMA_30Rnd_556x45_M855A1 ) then {
   
 Case 15 :{if (Wallet< SMA_30Rnd_556x45_M855A1_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_M855A1_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered M885A2 (30 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_M855A1_Tracer ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_M855A1_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6702,7 +6719,7 @@ Case 15 :{if (Wallet< SMA_30Rnd_556x45_M855A1_Tracer ) then {
   
 Case 16 :{if (Wallet< SMA_30Rnd_556x45_M855A1_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_M855A1_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered M885A3 (30 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_M855A1_IR ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_M855A1_IR );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6714,7 +6731,7 @@ Case 16 :{if (Wallet< SMA_30Rnd_556x45_M855A1_IR ) then {
   
 Case 17 :{if (Wallet< SMA_30Rnd_556x45_Mk318 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk318 ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk318 (30 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk318 ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_Mk318 ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6726,7 +6743,7 @@ Case 17 :{if (Wallet< SMA_30Rnd_556x45_Mk318 ) then {
   
 Case 18 :{if (Wallet< SMA_30Rnd_556x45_Mk318_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk318_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk318 (30 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk318_Tracer ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_Mk318_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6738,7 +6755,7 @@ Case 18 :{if (Wallet< SMA_30Rnd_556x45_Mk318_Tracer ) then {
   
 Case 19 :{if (Wallet< SMA_30Rnd_556x45_Mk318_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk318_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk318 (30 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk318_IR ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_Mk318_IR ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6750,7 +6767,7 @@ Case 19 :{if (Wallet< SMA_30Rnd_556x45_Mk318_IR ) then {
   
 Case 20 :{if (Wallet< SMA_30Rnd_556x45_Mk262 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk262 ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk262 (30 Rnds) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk262 ];
    Wallet= (wallet - SMA_30Rnd_556x45_Mk262 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6762,7 +6779,7 @@ Case 20 :{if (Wallet< SMA_30Rnd_556x45_Mk262 ) then {
   
 Case 21 :{if (Wallet< SMA_30Rnd_556x45_Mk262_Tracer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk262_Tracer ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk262 (30 Rnds) Tracer for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk262_Tracer ];
    Wallet= (wallet - SMA_30Rnd_556x45_Mk262_Tracer ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6774,7 +6791,7 @@ Case 21 :{if (Wallet< SMA_30Rnd_556x45_Mk262_Tracer ) then {
   
 Case 22 :{if (Wallet< SMA_30Rnd_556x45_Mk262_IR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMA_30Rnd_556x45_Mk262_IR ]; } else{
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered Mk262 (30 Rnds) IR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", SMA_30Rnd_556x45_Mk262_IR ]; 
    Wallet= (wallet - SMA_30Rnd_556x45_Mk262_IR );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6792,7 +6809,7 @@ A3M_fnc_ToadieAmmo = {
  switch (TheSelection) do {
 	 Case 0 : { if (Wallet< hlc_30Rnd_9x19_B_MP5 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_30Rnd_9x19_B_MP5 ]; }  else {
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  9x19mm M882 NATO Ball (30 Rnds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_30Rnd_9x19_B_MP5 ]; 
 				Wallet= (wallet -  hlc_30Rnd_9x19_B_MP5 );
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -6804,7 +6821,7 @@ A3M_fnc_ToadieAmmo = {
 			
 	 Case 1 : { if (Wallet< hlc_30Rnd_9x19_GD_MP5 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_30Rnd_9x19_GD_MP5 ]; }  else { 
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered   9x19mm LE Jacketed Hollowpoints (30 Rnds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_30Rnd_9x19_GD_MP5 ];
 				Wallet= (wallet -  hlc_30Rnd_9x19_GD_MP5 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6816,7 +6833,7 @@ A3M_fnc_ToadieAmmo = {
 			
 	 Case 2 : { if (Wallet< hlc_30Rnd_9x19_SD_MP5 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_30Rnd_9x19_SD_MP5 ]; }  else { 
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  9x19mm M882 Ball loaded to subsonic rates (30 Rnds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_30Rnd_9x19_SD_MP5 ];
 				Wallet= (wallet -  hlc_30Rnd_9x19_SD_MP5 );
 				profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6828,7 +6845,7 @@ A3M_fnc_ToadieAmmo = {
 			
 	 Case 3 : { if (Wallet< hlc_30Rnd_10mm_B_MP5 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_30Rnd_10mm_B_MP5 ]; }  else { 
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  10mm Auto FMJ (30 Rnds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_30Rnd_10mm_B_MP5 ];
 				Wallet= (wallet -  hlc_30Rnd_10mm_B_MP5 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6840,7 +6857,7 @@ A3M_fnc_ToadieAmmo = {
 			
 	 Case 4 : { if (Wallet< hlc_30Rnd_10mm_JHP_MP5 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_30Rnd_10mm_JHP_MP5 ]; }  else {
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  10mm Auto LE Jacketed Hollowpoints (30 Rnds)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_30Rnd_10mm_JHP_MP5 ];
 				Wallet= (wallet -  hlc_30Rnd_10mm_JHP_MP5 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6860,7 +6877,7 @@ switch (TheSelection) do {
 
 Case 0 : { if (Wallet< launch_I_Titan_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", launch_I_Titan_F]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Titan Launcher (Full Size)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",launch_I_Titan_F];  
    Wallet= (wallet -   launch_I_Titan_F); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6872,7 +6889,7 @@ Case 0 : { if (Wallet< launch_I_Titan_F) then {
   
 Case 1 : { if (Wallet< launch_I_Titan_short_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", launch_I_Titan_short_F  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Titan Launcher Compact  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",launch_I_Titan_short_F  ]; 
    Wallet= (wallet -   launch_I_Titan_short_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6884,7 +6901,7 @@ Case 1 : { if (Wallet< launch_I_Titan_short_F  ) then {
   
 Case 2 : { if (Wallet< launch_NLAW_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", launch_NLAW_F   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  NLAWfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",launch_NLAW_F   ]; 
    Wallet= (wallet -   launch_NLAW_F   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6895,7 +6912,7 @@ Case 2 : { if (Wallet< launch_NLAW_F   ) then {
   };
 Case 3 : { if (Wallet< launch_RPG32_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", launch_RPG32_F  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  RPG-32  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",launch_RPG32_F  ]; 
    Wallet= (wallet -   launch_RPG32_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6907,7 +6924,7 @@ Case 3 : { if (Wallet< launch_RPG32_F  ) then {
   
 Case 4 : { if (Wallet< NLAW_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", NLAW_F  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  PCMLfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",NLAW_F  ];  
    Wallet= (wallet -   NLAW_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6919,7 +6936,7 @@ Case 4 : { if (Wallet< NLAW_F  ) then {
   
 Case 5 : { if (Wallet< Titan_AP) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Titan_AP]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Titan AP Rocket for $%1.00. Your order will be delivered soon! Check the deliveries box often!",Titan_AP];  
    Wallet= (wallet -   Titan_AP); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6930,7 +6947,7 @@ Case 5 : { if (Wallet< Titan_AP) then {
   };
 Case 6 : { if (Wallet< Titan_AT) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Titan_AT]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedTitan AT Rocket for $%1.00. Your order will be delivered soon! Check the deliveries box often!",Titan_AT];  
    Wallet= (wallet -   Titan_AT);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6942,7 +6959,7 @@ Case 6 : { if (Wallet< Titan_AT) then {
   
 Case 7 : { if (Wallet< Titan_AA) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Titan_AA]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedTitan AA Rocket for $%1.00. Your order will be delivered soon! Check the deliveries box often!",Titan_AA];  
    Wallet= (wallet -   Titan_AA);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6954,7 +6971,7 @@ Case 7 : { if (Wallet< Titan_AA) then {
   
 Case 8 : { if (Wallet< RPG32_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", RPG32_F ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedRPG 32 Rocket   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",RPG32_F ]; 
    Wallet= (wallet -   RPG32_F );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6966,7 +6983,7 @@ Case 8 : { if (Wallet< RPG32_F ) then {
   
 Case 9 : { if (Wallet< RPG32_HE_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", RPG32_HE_F  ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedRPG 32 High Explosive Rocketfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",RPG32_HE_F  ];  
    Wallet= (wallet -   RPG32_HE_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -6985,7 +7002,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhs_weap_igla ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_igla ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 9K38 Igla AAfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_igla ];
    Wallet= (wallet - rhs_weap_igla );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -6996,7 +7013,7 @@ Case 0: { if (Wallet<rhs_weap_igla ) then {
   }; 
 Case 1: { if (Wallet<rhs_mag_9k38_rocket ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_mag_9k38_rocket ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered 9M39 Igla Rocketfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_mag_9k38_rocket ];
    Wallet= (wallet - rhs_mag_9k38_rocket );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7008,7 +7025,7 @@ Case 1: { if (Wallet<rhs_mag_9k38_rocket ) then {
   
 Case 2: { if (Wallet< rhs_weap_rpg26 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  rhs_weap_rpg26 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RPG-26 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  rhs_weap_rpg26 ];
    Wallet= (wallet -  rhs_weap_rpg26 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7020,7 +7037,7 @@ Case 2: { if (Wallet< rhs_weap_rpg26 ) then {
   
 Case 3: { if (Wallet<rhs_weap_rpg7) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_rpg7]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RPG-7 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_rpg7];
    Wallet= (wallet - rhs_weap_rpg7);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7032,7 +7049,7 @@ Case 3: { if (Wallet<rhs_weap_rpg7) then {
   
 Case 4: { if (Wallet<rhs_rpg7_PG7VL_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_rpg7_PG7VL_mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PG-7VL RPG-7V2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_rpg7_PG7VL_mag ];
    Wallet= (wallet - rhs_rpg7_PG7VL_mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7044,7 +7061,7 @@ Case 4: { if (Wallet<rhs_rpg7_PG7VL_mag ) then {
   
 Case 5: { if (Wallet<rhs_rpg7_PG7VR_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_rpg7_PG7VR_mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PG-7VR RPG-7V2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_rpg7_PG7VR_mag ];
    Wallet= (wallet - rhs_rpg7_PG7VR_mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7056,7 +7073,7 @@ Case 5: { if (Wallet<rhs_rpg7_PG7VR_mag ) then {
   
 Case 6: { if (Wallet<rhs_rpg7_OG7V_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_rpg7_OG7V_mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OG-7V RPG-7V2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_rpg7_OG7V_mag ];
    Wallet= (wallet - rhs_rpg7_OG7V_mag );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7068,7 +7085,7 @@ Case 6: { if (Wallet<rhs_rpg7_OG7V_mag ) then {
   
 Case 7: { if (Wallet<rhs_rpg7_TBG7V_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_rpg7_TBG7V_mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered TBG-7V RPG-7V2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_rpg7_TBG7V_mag ];
    Wallet= (wallet - rhs_rpg7_TBG7V_mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7080,7 +7097,7 @@ Case 7: { if (Wallet<rhs_rpg7_TBG7V_mag ) then {
   
 Case 8: { if (Wallet<rhs_weap_rshg2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_rshg2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RShG-2 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_rshg2 ];
    Wallet= (wallet - rhs_weap_rshg2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7092,7 +7109,7 @@ Case 8: { if (Wallet<rhs_weap_rshg2 ) then {
   
 Case 9: { if (Wallet<rhs_weap_fgm148) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_fgm148]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered FGM-148 Javelin for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_fgm148];
    Wallet= (wallet - rhs_weap_fgm148);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7104,7 +7121,7 @@ Case 9: { if (Wallet<rhs_weap_fgm148) then {
   
 Case 10: { if (Wallet<rhs_fgm148_magazine_AT ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_fgm148_magazine_AT ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered HEAT missile for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_fgm148_magazine_AT ];
    Wallet= (wallet - rhs_fgm148_magazine_AT );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7116,7 +7133,7 @@ Case 10: { if (Wallet<rhs_fgm148_magazine_AT ) then {
   
 Case 11: { if (Wallet<rhs_weap_fim92 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_fim92 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered FIM-92F for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_fim92 ];
    Wallet= (wallet - rhs_weap_fim92 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7128,7 +7145,7 @@ Case 11: { if (Wallet<rhs_weap_fim92 ) then {
   
 Case 12: { if (Wallet<rhs_fim92_mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_fim92_mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Stinger missile for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_fim92_mag ];
    Wallet= (wallet - rhs_fim92_mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7140,7 +7157,7 @@ Case 12: { if (Wallet<rhs_fim92_mag ) then {
   
 Case 13: { if (Wallet<rhs_weap_M136 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M136 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M136 (HEAT) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M136 ];
    Wallet= (wallet - rhs_weap_M136 );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7152,7 +7169,7 @@ Case 13: { if (Wallet<rhs_weap_M136 ) then {
   
 Case 14: { if (Wallet<rhs_weap_M136_hedp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M136_hedp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M136 (HEDP) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M136_hedp ];
    Wallet= (wallet - rhs_weap_M136_hedp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7164,7 +7181,7 @@ Case 14: { if (Wallet<rhs_weap_M136_hedp ) then {
   
 Case 15: { if (Wallet<rhs_weap_M136_hp) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M136_hp]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M136 (HP) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M136_hp];
    Wallet= (wallet - rhs_weap_M136_hp);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7184,7 +7201,7 @@ Switch (TheSelection) Do {
 
 Case 0 : { if (Wallet< arifle_Katiba_C_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Katiba_C_F   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Katiba C 6.5mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Katiba_C_F   ];  
    Wallet= (wallet -   arifle_Katiba_C_F   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7196,7 +7213,7 @@ Case 0 : { if (Wallet< arifle_Katiba_C_F   ) then {
   
 Case 1 : { if (Wallet< arifle_Katiba_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Katiba_F ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Katiba F 6.5mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Katiba_F ]; 
    Wallet= (wallet -   arifle_Katiba_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7208,7 +7225,7 @@ Case 1 : { if (Wallet< arifle_Katiba_F ) then {
   
 Case 2 : { if (Wallet< arifle_Katiba_GL_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Katiba_GL_F  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Katiba F + GL 6.5mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Katiba_GL_F  ]; 
    Wallet= (wallet -   arifle_Katiba_GL_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7220,7 +7237,7 @@ Case 2 : { if (Wallet< arifle_Katiba_GL_F  ) then {
   
 Case 3 : { if (Wallet< arifle_Mk20_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Mk20_F   ]; }else {  
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  Mk20 F 5.56mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Mk20_F   ];  
   Wallet= (wallet -   arifle_Mk20_F   );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7232,7 +7249,7 @@ Case 3 : { if (Wallet< arifle_Mk20_F   ) then {
  
 Case 4 : { if (Wallet< arifle_Mk20_GL_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Mk20_GL_F]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Mk20F + GL5.56mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Mk20_GL_F];  
    Wallet= (wallet -   arifle_Mk20_GL_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7244,7 +7261,7 @@ Case 4 : { if (Wallet< arifle_Mk20_GL_F) then {
   
 Case 5 : { if (Wallet< arifle_Mk20C_plain_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_Mk20C_plain_F]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Mk20C 5.56mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_Mk20C_plain_F];  
    Wallet= (wallet -   arifle_Mk20C_plain_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7256,7 +7273,7 @@ Case 5 : { if (Wallet< arifle_Mk20C_plain_F) then {
   
 Case 6 : { if (Wallet< arifle_MX_Black_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MX_Black_F   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  MX (Black)  6.5mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MX_Black_F   ];  
    Wallet= (wallet -   arifle_MX_Black_F   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7268,7 +7285,7 @@ Case 6 : { if (Wallet< arifle_MX_Black_F   ) then {
   
 Case 7 : { if (Wallet< arifle_MX_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MX_F ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-F 6.5mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MX_F ]; 
    Wallet= (wallet -   arifle_MX_F );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7280,7 +7297,7 @@ Case 7 : { if (Wallet< arifle_MX_F ) then {
   
 Case 8 : { if (Wallet< arifle_MX_GL_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MX_GL_F  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-F + GL  6.5mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MX_GL_F  ];  
    Wallet= (wallet -   arifle_MX_GL_F  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7292,7 +7309,7 @@ Case 8 : { if (Wallet< arifle_MX_GL_F  ) then {
   
 Case 9 : { if (Wallet< arifle_MX_SW_Black_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MX_SW_Black_F]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-SW (Black)  6.5mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MX_SW_Black_F]; 
    Wallet= (wallet -   arifle_MX_SW_Black_F); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7304,7 +7321,7 @@ Case 9 : { if (Wallet< arifle_MX_SW_Black_F) then {
   
 Case 10 :   { if (Wallet< arifle_MX_SW_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MX_SW_F  ]; }else {   
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  MX-SW-F 6.5mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MX_SW_F  ]; 
   Wallet= (wallet -   arifle_MX_SW_F  );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7316,7 +7333,7 @@ Case 10 :   { if (Wallet< arifle_MX_SW_F  ) then {
  
 Case 11 :   { if (Wallet< arifle_MXC_Black_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MXC_Black_F  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-C (Black) 6.5mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MXC_Black_F  ];  
    Wallet= (wallet -   arifle_MXC_Black_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7327,7 +7344,7 @@ Case 11 :   { if (Wallet< arifle_MXC_Black_F  ) then {
   };
 Case 12 :   { if (Wallet< arifle_MXC_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MXC_F]; }else {   
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  MX-C-F 6.5mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MXC_F]; 
   Wallet= (wallet -   arifle_MXC_F); 
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7339,7 +7356,7 @@ Case 12 :   { if (Wallet< arifle_MXC_F) then {
  
 Case 13 :   { if (Wallet< arifle_MXM_Black_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MXM_Black_F  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-M (Black) 6.5mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MXM_Black_F  ];  
    Wallet= (wallet -   arifle_MXM_Black_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7351,7 +7368,7 @@ Case 13 :   { if (Wallet< arifle_MXM_Black_F  ) then {
   
 Case 14 :   { if (Wallet< arifle_MXM_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_MXM_F]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MX-M -F 6.5mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_MXM_F]; 
    Wallet= (wallet -   arifle_MXM_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7363,7 +7380,7 @@ Case 14 :   { if (Wallet< arifle_MXM_F) then {
   
 Case 15 :   { if (Wallet< arifle_SDAR_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_SDAR_F   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  SDAR 5.56mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_SDAR_F   ];  
    Wallet= (wallet -   arifle_SDAR_F   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7375,7 +7392,7 @@ Case 15 :   { if (Wallet< arifle_SDAR_F   ) then {
   
 Case 16 :   { if (Wallet< arifle_TRG20_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_TRG20_F  ]; }else {   
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  TRG-20  5.56mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_TRG20_F  ];  
   Wallet= (wallet -   arifle_TRG20_F  );  
   profileNamespace setVariable ["SavedMoney", Wallet];SaveProfileNamespace;   
@@ -7386,7 +7403,7 @@ Case 16 :   { if (Wallet< arifle_TRG20_F  ) then {
  
 Case 17 :   { if (Wallet< arifle_TRG21_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_TRG21_F  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  TRG-21  5.56mm  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_TRG21_F  ];  
    Wallet= (wallet -   arifle_TRG21_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7398,7 +7415,7 @@ Case 17 :   { if (Wallet< arifle_TRG21_F  ) then {
   
 Case 18 :   { if (Wallet< arifle_TRG21_GL_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", arifle_TRG21_GL_F   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  TRG-21 + GL  5.56mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!",arifle_TRG21_GL_F   ];  
    Wallet= (wallet -   arifle_TRG21_GL_F   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7410,7 +7427,7 @@ Case 18 :   { if (Wallet< arifle_TRG21_GL_F   ) then {
   
 Case 19 :   { if (Wallet< LMG_Mk200_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", LMG_Mk200_F ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Mk200  6.5mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",LMG_Mk200_F ];  
    Wallet= (wallet -   LMG_Mk200_F );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7422,7 +7439,7 @@ Case 19 :   { if (Wallet< LMG_Mk200_F ) then {
   
 Case 20 :   { if (Wallet< LMG_Zafir_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", LMG_Zafir_F ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Zafir 7.62mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",LMG_Zafir_F ];  
    Wallet= (wallet -   LMG_Zafir_F );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7434,7 +7451,7 @@ Case 20 :   { if (Wallet< LMG_Zafir_F ) then {
   
 Case 21 :   { if (Wallet< srifle_DMR_01_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", srifle_DMR_01_F ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Rahim 7.62mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",srifle_DMR_01_F ];  
    Wallet= (wallet -   srifle_DMR_01_F );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7446,7 +7463,7 @@ Case 21 :   { if (Wallet< srifle_DMR_01_F ) then {
   
 Case 22 :   { if (Wallet< srifle_EBR_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", srifle_EBR_F]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  M-14 EBR 7.62mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!",srifle_EBR_F];  
    Wallet= (wallet -   srifle_EBR_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7458,7 +7475,7 @@ Case 22 :   { if (Wallet< srifle_EBR_F) then {
   
 Case 23 :   { if (Wallet< srifle_GM6_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", srifle_GM6_F]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  GM6 Lynx 12.7mm for $%1.00. Your order will be delivered soon! Check the deliveries box often!",srifle_GM6_F];  
    Wallet= (wallet -   srifle_GM6_F); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7470,7 +7487,7 @@ Case 23 :   { if (Wallet< srifle_GM6_F) then {
   
 Case 24 :   { if (Wallet< srifle_LRR_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", srifle_LRR_F]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  M320 LRR .408   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",srifle_LRR_F];  
    Wallet= (wallet -   srifle_LRR_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7489,7 +7506,7 @@ Switch (TheSelection) Do {
 
 Case 0: { if (Wallet<rhs_weap_pkm) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_pkm]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered PKMfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_pkm];
    Wallet= (wallet - rhs_weap_pkm);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7501,7 +7518,7 @@ Case 0: { if (Wallet<rhs_weap_pkm) then {
   
 Case 1: { if (Wallet<rhs_weap_ak103) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak103]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered AK-103 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak103];
   Wallet= (wallet - rhs_weap_ak103);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7513,7 +7530,7 @@ Case 1: { if (Wallet<rhs_weap_ak103) then {
  
 Case 2: { if (Wallet<rhs_weap_ak103_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak103_npz]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-103 (NPZ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak103_npz];
    Wallet= (wallet - rhs_weap_ak103_npz);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7525,7 +7542,7 @@ Case 2: { if (Wallet<rhs_weap_ak103_npz) then {
   
 Case 3: { if (Wallet<rhs_weap_ak103_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak103_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-103 1 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak103_1];
    Wallet= (wallet - rhs_weap_ak103_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7537,7 +7554,7 @@ Case 3: { if (Wallet<rhs_weap_ak103_1) then {
   
 Case 4: { if (Wallet<rhs_weap_ak103_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak103_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-103 2 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak103_2];
    Wallet= (wallet - rhs_weap_ak103_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7549,7 +7566,7 @@ Case 4: { if (Wallet<rhs_weap_ak103_2) then {
   
 Case 5: { if (Wallet<rhs_weap_ak74m ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m ];
    Wallet= (wallet - rhs_weap_ak74m );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7560,7 +7577,7 @@ Case 5: { if (Wallet<rhs_weap_ak74m ) then {
   
 Case 6: { if (Wallet<rhs_weap_ak74m_plummag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_plummag]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (Plum Mag) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_plummag];
    Wallet= (wallet - rhs_weap_ak74m_plummag);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7572,7 +7589,7 @@ Case 6: { if (Wallet<rhs_weap_ak74m_plummag) then {
   
 Case 7: { if (Wallet<rhs_weap_ak74m_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_npz]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered AK-74M (NPZ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_npz];
     Wallet= (wallet - rhs_weap_ak74m_npz);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7584,7 +7601,7 @@ Case 7: { if (Wallet<rhs_weap_ak74m_npz) then {
    
 Case 8: { if (Wallet<rhs_weap_ak74m_folded ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_folded ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (folded) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_folded ];
    Wallet= (wallet - rhs_weap_ak74m_folded );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7596,7 +7613,7 @@ Case 8: { if (Wallet<rhs_weap_ak74m_folded ) then {
   
 Case 9: { if (Wallet<rhs_weap_ak74m_camo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_camo ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered AK-74M (camo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_camo ];
   Wallet= (wallet - rhs_weap_ak74m_camo );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7608,7 +7625,7 @@ Case 9: { if (Wallet<rhs_weap_ak74m_camo ) then {
  
 Case 10: { if (Wallet<rhs_weap_ak74m_desert ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_desert ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (desert) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_desert ];
    Wallet= (wallet - rhs_weap_ak74m_desert );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7620,7 +7637,7 @@ Case 10: { if (Wallet<rhs_weap_ak74m_desert ) then {
   
 Case 11: { if (Wallet<rhs_weap_ak74m_2mag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_2mag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (2 mag) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_2mag ];
    Wallet= (wallet - rhs_weap_ak74m_2mag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7632,7 +7649,7 @@ Case 11: { if (Wallet<rhs_weap_ak74m_2mag ) then {
   
 Case 12: { if (Wallet<rhs_weap_ak74m_2mag_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_2mag_npz]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered AK-74M (2 mag/NPZ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_2mag_npz];
   Wallet= (wallet - rhs_weap_ak74m_2mag_npz);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7644,7 +7661,7 @@ Case 12: { if (Wallet<rhs_weap_ak74m_2mag_npz) then {
  
 Case 13: { if (Wallet<rhs_weap_ak74m_2mag_camo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_2mag_camo ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (2 mag and camo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_2mag_camo ];
    Wallet= (wallet - rhs_weap_ak74m_2mag_camo );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7656,7 +7673,7 @@ Case 13: { if (Wallet<rhs_weap_ak74m_2mag_camo ) then {
   
 Case 14: { if (Wallet<rhs_weap_ak74m_gp25 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_gp25 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (GP-25 Kostyor) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_gp25 ];
    Wallet= (wallet - rhs_weap_ak74m_gp25 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7668,7 +7685,7 @@ Case 14: { if (Wallet<rhs_weap_ak74m_gp25 ) then {
   
 Case 15: { if (Wallet<rhs_weap_ak74m_gp25_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_ak74m_gp25_npz]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AK-74M (GP-25 Kostyor/NPZ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_ak74m_gp25_npz];
    Wallet= (wallet - rhs_weap_ak74m_gp25_npz);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7680,7 +7697,7 @@ Case 15: { if (Wallet<rhs_weap_ak74m_gp25_npz) then {
   
 Case 16: { if (Wallet<rhs_weap_svdp  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svdp  ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered SVD-M Dragunov for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svdp  ];
   Wallet= (wallet - rhs_weap_svdp  );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7692,7 +7709,7 @@ Case 16: { if (Wallet<rhs_weap_svdp  ) then {
  
 Case 17: { if (Wallet<rhs_weap_svdp_wd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svdp_wd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered SVD-M Dragunov (camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svdp_wd ];
    Wallet= (wallet - rhs_weap_svdp_wd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7704,7 +7721,7 @@ Case 17: { if (Wallet<rhs_weap_svdp_wd ) then {
   
 Case 18: { if (Wallet<rhs_weap_svds ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svds ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered SVD-S Dragunov for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svds ];
   Wallet= (wallet - rhs_weap_svds );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7716,7 +7733,7 @@ Case 18: { if (Wallet<rhs_weap_svds ) then {
  
 Case 19: { if (Wallet<rhs_weap_svdp_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svdp_npz]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
     Hint format ["You have ordered SVD-M Dragunov for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svdp_npz];
     Wallet= (wallet - rhs_weap_svdp_npz);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7727,7 +7744,7 @@ Case 19: { if (Wallet<rhs_weap_svdp_npz) then {
   
 Case 20: { if (Wallet<rhs_weap_svdp_wd_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svdp_wd_npz]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered SVD-M Dragunov (camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svdp_wd_npz];
     Wallet= (wallet - rhs_weap_svdp_wd_npz);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7739,7 +7756,7 @@ Case 20: { if (Wallet<rhs_weap_svdp_wd_npz) then {
    
 Case 21: { if (Wallet<rhs_weap_svds_npz) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_svds_npz]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered SVD-S Dragunov for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_svds_npz];
    Wallet= (wallet - rhs_weap_svds_npz);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7751,7 +7768,7 @@ Case 21: { if (Wallet<rhs_weap_svds_npz) then {
   
 Case 22: { if (Wallet<rhs_weap_m14ebrri ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m14ebrri ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Mk14 EBR-RIfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m14ebrri ];Wallet= (wallet - rhs_weap_m14ebrri );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
    SaveProfileNamespace;
@@ -7762,7 +7779,7 @@ Case 22: { if (Wallet<rhs_weap_m14ebrri ) then {
   
 Case 23: { if (Wallet<rhs_weap_m16a4 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m16a4 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M16A4 RIS for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m16a4 ];
    Wallet= (wallet - rhs_weap_m16a4 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7774,7 +7791,7 @@ Case 23: { if (Wallet<rhs_weap_m16a4 ) then {
    
 Case 24: { if (Wallet<rhs_weap_m16a4_grip ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m16a4_grip ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M16A4 (Grippod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m16a4_grip ];
    Wallet= (wallet - rhs_weap_m16a4_grip );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7785,7 +7802,7 @@ Case 24: { if (Wallet<rhs_weap_m16a4_grip ) then {
   
 Case 25: { if (Wallet<rhs_weap_m16a4_carryhandle ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m16a4_carryhandle ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered M16A4 (Carryhandle) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m16a4_carryhandle ];
   Wallet= (wallet - rhs_weap_m16a4_carryhandle );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7797,7 +7814,7 @@ Case 25: { if (Wallet<rhs_weap_m16a4_carryhandle ) then {
  
 Case 26: { if (Wallet<rhs_weap_m16a4_carryhandle_pmag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m16a4_carryhandle_pmag ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered M16A4 (Carryhandle/Pmag) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m16a4_carryhandle_pmag ];
   Wallet= (wallet - rhs_weap_m16a4_carryhandle_pmag );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -7809,7 +7826,7 @@ Case 26: { if (Wallet<rhs_weap_m16a4_carryhandle_pmag ) then {
  
 Case 27: { if (Wallet<rhs_weap_m16a4_carryhandle_M203) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m16a4_carryhandle_M203]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M16A4 (Carryhandle/M203) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m16a4_carryhandle_M203];
    Wallet= (wallet - rhs_weap_m16a4_carryhandle_M203);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7821,7 +7838,7 @@ Case 27: { if (Wallet<rhs_weap_m16a4_carryhandle_M203) then {
   
 Case 28: { if (Wallet<rhs_weap_XM2010 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_XM2010 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M2010 ESR for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_XM2010 ];
    Wallet= (wallet - rhs_weap_XM2010 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7833,7 +7850,7 @@ Case 28: { if (Wallet<rhs_weap_XM2010 ) then {
   
 Case 29: { if (Wallet<rhs_weap_XM2010_wd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_XM2010_wd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M2010 ESR (camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_XM2010_wd ];
    Wallet= (wallet - rhs_weap_XM2010_wd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7844,7 +7861,7 @@ Case 29: { if (Wallet<rhs_weap_XM2010_wd ) then {
   
 Case 30: { if (Wallet<rhs_weap_XM2010_d ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_XM2010_d ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M2010 ESR (desert)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_XM2010_d ];
    Wallet= (wallet - rhs_weap_XM2010_d );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7856,7 +7873,7 @@ Case 30: { if (Wallet<rhs_weap_XM2010_d ) then {
   
 Case 31: { if (Wallet<rhs_weap_XM2010_sa ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_XM2010_sa ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M2010 ESR (semi-arid)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_XM2010_sa ];
    Wallet= (wallet - rhs_weap_XM2010_sa );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7868,7 +7885,7 @@ Case 31: { if (Wallet<rhs_weap_XM2010_sa ) then {
   
 Case 32: { if (Wallet<rhs_weap_m240B ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m240B ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M240B for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m240B ];
    Wallet= (wallet - rhs_weap_m240B );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7880,7 +7897,7 @@ Case 32: { if (Wallet<rhs_weap_m240B ) then {
   
 Case 33: { if (Wallet<rhs_weap_m249_pip ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m249_pip ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M249 PIP for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m249_pip ];
    Wallet= (wallet - rhs_weap_m249_pip );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7891,7 +7908,7 @@ Case 33: { if (Wallet<rhs_weap_m249_pip ) then {
   
 Case 34: { if (Wallet<rhs_weap_M320 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M320 ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M320 GLMfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M320 ];
     Wallet= (wallet - rhs_weap_M320 );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7903,7 +7920,7 @@ Case 34: { if (Wallet<rhs_weap_M320 ) then {
    
 Case 35: { if (Wallet<rhs_weap_m4 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4 ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered M4 RIS for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4 ];
   Wallet= (wallet - rhs_weap_m4 );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7915,7 +7932,7 @@ Case 35: { if (Wallet<rhs_weap_m4 ) then {
  
 Case 36: { if (Wallet<rhs_weap_m4_grip ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_grip ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (Grippod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_grip ];
    Wallet= (wallet - rhs_weap_m4_grip );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7926,7 +7943,7 @@ Case 36: { if (Wallet<rhs_weap_m4_grip ) then {
   }; 
 Case 37: { if (Wallet<rhs_weap_m4_grip2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_grip2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (AFG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_grip2 ];
    Wallet= (wallet - rhs_weap_m4_grip2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7938,7 +7955,7 @@ Case 37: { if (Wallet<rhs_weap_m4_grip2 ) then {
   
 Case 38: { if (Wallet<rhs_weap_m4_bipod ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_bipod ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4 (Bipod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_bipod ];
     Wallet= (wallet - rhs_weap_m4_bipod );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7950,7 +7967,7 @@ Case 38: { if (Wallet<rhs_weap_m4_bipod ) then {
    
 Case 39: { if (Wallet<rhs_weap_m4_carryhandle ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_carryhandle ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (Carryhandle) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_carryhandle ];
    Wallet= (wallet - rhs_weap_m4_carryhandle );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7962,7 +7979,7 @@ Case 39: { if (Wallet<rhs_weap_m4_carryhandle ) then {
   
 Case 40: { if (Wallet<rhs_weap_m4_carryhandle_pmag ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_carryhandle_pmag ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (Carryhandle/PMAG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_carryhandle_pmag ];
    Wallet= (wallet - rhs_weap_m4_carryhandle_pmag );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7974,7 +7991,7 @@ Case 40: { if (Wallet<rhs_weap_m4_carryhandle_pmag ) then {
   
 Case 41: { if (Wallet<rhs_weap_m4_m203 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_m203 ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4 (M203) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_m203 ];
     Wallet= (wallet - rhs_weap_m4_m203 );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7986,7 +8003,7 @@ Case 41: { if (Wallet<rhs_weap_m4_m203 ) then {
    
 Case 42: { if (Wallet<rhs_weap_m4_m203S ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4_m203S ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (M203S) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4_m203S ];
    Wallet= (wallet - rhs_weap_m4_m203S );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -7998,7 +8015,7 @@ Case 42: { if (Wallet<rhs_weap_m4_m203S ) then {
   
 Case 43: { if (Wallet<rhs_m4_m320 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_m4_m320 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4 (M320) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_m4_m320 ];
    Wallet= (wallet - rhs_m4_m320 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8010,7 +8027,7 @@ Case 43: { if (Wallet<rhs_m4_m320 ) then {
   
 Case 44: { if (Wallet<rhs_weap_m4a1 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 RIS for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1 ];
    Wallet= (wallet - rhs_weap_m4a1 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8022,7 +8039,7 @@ Case 44: { if (Wallet<rhs_weap_m4a1 ) then {
   
 Case 45: { if (Wallet<rhs_weap_m4a1_grip ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_grip ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Grippod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_grip ];
    Wallet= (wallet - rhs_weap_m4a1_grip );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8034,7 +8051,7 @@ Case 45: { if (Wallet<rhs_weap_m4a1_grip ) then {
   
 Case 46: { if (Wallet<rhs_weap_m4a1_grip2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_grip2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (AFG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_grip2 ];
    Wallet= (wallet - rhs_weap_m4a1_grip2 );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8046,7 +8063,7 @@ Case 46: { if (Wallet<rhs_weap_m4a1_grip2 ) then {
   
 Case 47: { if (Wallet<rhs_weap_m4a1_bipod ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_bipod ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Bipod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_bipod ];
    Wallet= (wallet - rhs_weap_m4a1_bipod );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8058,7 +8075,7 @@ Case 47: { if (Wallet<rhs_weap_m4a1_bipod ) then {
   
 Case 48: { if (Wallet<rhs_weap_m4a1_carryhandle) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Carryhandle) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle];
    Wallet= (wallet - rhs_weap_m4a1_carryhandle);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8070,7 +8087,7 @@ Case 48: { if (Wallet<rhs_weap_m4a1_carryhandle) then {
   
 Case 49: { if (Wallet<rhs_weap_m4a1_carryhandle_grip) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle_grip]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Carryhandle/Grippod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle_grip];
    Wallet= (wallet - rhs_weap_m4a1_carryhandle_grip);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8082,7 +8099,7 @@ Case 49: { if (Wallet<rhs_weap_m4a1_carryhandle_grip) then {
   
 Case 50: { if (Wallet<rhs_weap_m4a1_carryhandle_grip2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle_grip2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Carryhandle/AFG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle_grip2];
    Wallet= (wallet - rhs_weap_m4a1_carryhandle_grip2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8094,7 +8111,7 @@ Case 50: { if (Wallet<rhs_weap_m4a1_carryhandle_grip2) then {
   
 Case 51: { if (Wallet<rhs_weap_m4a1_carryhandle_bipod) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle_bipod]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4A1 (Carryhandle/Bipod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle_bipod];
     Wallet= (wallet - rhs_weap_m4a1_carryhandle_bipod);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8106,7 +8123,7 @@ Case 51: { if (Wallet<rhs_weap_m4a1_carryhandle_bipod) then {
    
 Case 52: { if (Wallet<rhs_weap_m4a1_m203 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_m203 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (M203) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_m203 ];
    Wallet= (wallet - rhs_weap_m4a1_m203 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8118,7 +8135,7 @@ Case 52: { if (Wallet<rhs_weap_m4a1_m203 ) then {
   
 Case 53: { if (Wallet<rhs_weap_m4a1_m203s ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_m203s ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4A1 (M203S) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_m203s ];
     Wallet= (wallet - rhs_weap_m4a1_m203s );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8130,7 +8147,7 @@ Case 53: { if (Wallet<rhs_weap_m4a1_m203s ) then {
    
 Case 54: { if (Wallet<rhs_weap_m4a1_carryhandle_m203 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle_m203 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (Carryhandle/M203) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle_m203 ];
    Wallet= (wallet - rhs_weap_m4a1_carryhandle_m203 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8142,7 +8159,7 @@ Case 54: { if (Wallet<rhs_weap_m4a1_carryhandle_m203 ) then {
   
 Case 55: { if (Wallet<rhs_weap_m4a1_carryhandle_m203s ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_carryhandle_m203s ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4A1 (Carryhandle/M203S) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_carryhandle_m203s ];
     Wallet= (wallet - rhs_weap_m4a1_carryhandle_m203s );
     profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8155,7 +8172,7 @@ Case 55: { if (Wallet<rhs_weap_m4a1_carryhandle_m203s ) then {
   
 Case 56: { if (Wallet<rhs_m4a1_m320 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_m4a1_m320 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 (M320) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_m4a1_m320 ];
    Wallet= (wallet - rhs_m4a1_m320 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8167,7 +8184,7 @@ Case 56: { if (Wallet<rhs_m4a1_m320 ) then {
   
 Case 57: { if (Wallet<rhs_weap_m4a1_blockII ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_blockII ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered M4A1 Block II for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_blockII ];
     Wallet= (wallet - rhs_weap_m4a1_blockII );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8179,7 +8196,7 @@ Case 57: { if (Wallet<rhs_weap_m4a1_blockII ) then {
    
 Case 58: { if (Wallet<rhs_weap_m4a1_blockII_grip2 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_blockII_grip2 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 Block II (AFG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_blockII_grip2 ];
    Wallet= (wallet - rhs_weap_m4a1_blockII_grip2 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8191,7 +8208,7 @@ Case 58: { if (Wallet<rhs_weap_m4a1_blockII_grip2 ) then {
   
 Case 59: { if (Wallet<rhs_weap_m4a1_blockII_KAC ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_blockII_KAC ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 Block II (KAC) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_blockII_KAC ];
    Wallet= (wallet - rhs_weap_m4a1_blockII_KAC );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8203,7 +8220,7 @@ Case 59: { if (Wallet<rhs_weap_m4a1_blockII_KAC ) then {
   
 Case 60: { if (Wallet<rhs_weap_m4a1_blockII_grip2_KAC ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_blockII_grip2_KAC ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 Block II (AFG/KAC) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_blockII_grip2_KAC ];
    Wallet= (wallet - rhs_weap_m4a1_blockII_grip2_KAC );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8215,7 +8232,7 @@ Case 60: { if (Wallet<rhs_weap_m4a1_blockII_grip2_KAC ) then {
   
 Case 61: { if (Wallet<rhs_weap_m4a1_blockII_M203 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_m4a1_blockII_M203 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M4A1 Block II (M203) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_m4a1_blockII_M203 ];
    Wallet= (wallet - rhs_weap_m4a1_blockII_M203 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8227,7 +8244,7 @@ Case 61: { if (Wallet<rhs_weap_m4a1_blockII_M203 ) then {
   
 Case 62: { if (Wallet<rhs_weap_M590_5RD ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M590_5RD ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M590A1 Shortfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M590_5RD ];
    Wallet= (wallet - rhs_weap_M590_5RD );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8239,7 +8256,7 @@ Case 62: { if (Wallet<rhs_weap_M590_5RD ) then {
   
 Case 63: { if (Wallet<rhs_weap_M590_8RD ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_M590_8RD ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M590A1 Longfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_M590_8RD ];
    Wallet= (wallet - rhs_weap_M590_8RD );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8251,7 +8268,7 @@ Case 63: { if (Wallet<rhs_weap_M590_8RD ) then {
   
 Case 64: { if (Wallet<rhs_weap_mk18) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_mk18]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MK18 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_mk18];
    Wallet= (wallet - rhs_weap_mk18);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8263,7 +8280,7 @@ Case 64: { if (Wallet<rhs_weap_mk18) then {
   
 Case 65: { if (Wallet<rhs_weap_mk18_grip2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_mk18_grip2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MK18 (AFG) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_mk18_grip2];
    Wallet= (wallet - rhs_weap_mk18_grip2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8275,7 +8292,7 @@ Case 65: { if (Wallet<rhs_weap_mk18_grip2) then {
   
 Case 66: { if (Wallet<rhs_weap_mk18_KAC) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_mk18_KAC]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered MK18 (KAC) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_mk18_KAC];
     Wallet= (wallet - rhs_weap_mk18_KAC);
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8287,7 +8304,7 @@ Case 66: { if (Wallet<rhs_weap_mk18_KAC) then {
    
 Case 67: { if (Wallet<rhs_weap_mk18_grip2_KAC) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_mk18_grip2_KAC]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MK18 (AFG/KAC) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_mk18_grip2_KAC];
   Wallet= (wallet - rhs_weap_mk18_grip2_KAC);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8299,7 +8316,7 @@ Case 67: { if (Wallet<rhs_weap_mk18_grip2_KAC) then {
  
 Case 68: { if (Wallet<rhs_weap_sr25) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_sr25]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered SR-25for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_sr25];
   Wallet= (wallet - rhs_weap_sr25);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8311,7 +8328,7 @@ Case 68: { if (Wallet<rhs_weap_sr25) then {
  
 Case 69: { if (Wallet<rhs_weap_sr25_ec) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_sr25_ec]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered SR-25 EC for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_sr25_ec];
   Wallet= (wallet - rhs_weap_sr25_ec);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8331,7 +8348,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet< SMA_HK416afg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK416afg ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  HK 416 w/ AFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK416afg ];
    Wallet= (wallet -  SMA_HK416afg );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8343,7 +8360,7 @@ Case 0: { if (Wallet< SMA_HK416afg ) then {
   
 Case 1: { if (Wallet< SMA_HK416vfg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK416vfg ]; }  else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 416 w/ VFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK416vfg ]; 
    Wallet= (wallet -  SMA_HK416vfg ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8355,7 +8372,7 @@ Case 1: { if (Wallet< SMA_HK416vfg ) then {
   
 Case 2: { if (Wallet< SMA_HK416GL ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK416GL ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 416 w/ UBGL for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK416GL ]; 
    Wallet= (wallet -  SMA_HK416GL ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8367,7 +8384,7 @@ Case 2: { if (Wallet< SMA_HK416GL ) then {
   
 Case 3: { if (Wallet< SMA_HK416afgQCB ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK416afgQCB ]; }  else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 416 w/ AFG and SBR for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK416afgQCB ];
    Wallet= (wallet -  SMA_HK416afgQCB ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8379,7 +8396,7 @@ Case 3: { if (Wallet< SMA_HK416afgQCB ) then {
   
 Case 4: { if (Wallet< SMA_HK417vfg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417vfg ]; }  else { 
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered  HK 417 w/VFG (12 in)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417vfg ];
   Wallet= (wallet -  SMA_HK417vfg ); 
   profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8391,7 +8408,7 @@ Case 4: { if (Wallet< SMA_HK417vfg ) then {
  
 Case 5: { if (Wallet< SMA_HK417_16in_afg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417_16in_afg ]; }  else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 417 w/ AFG (16 in)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417_16in_afg ]; 
    Wallet= (wallet -  SMA_HK417_16in_afg ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8403,7 +8420,7 @@ Case 5: { if (Wallet< SMA_HK417_16in_afg ) then {
   
 Case 6: { if (Wallet< SMA_HK417_tanafg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417_tanafg ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  HK 417 AFG w/ Tan Coating (12 in) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417_tanafg ]; 
    Wallet= (wallet -  SMA_HK417_tanafg ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8415,7 +8432,7 @@ Case 6: { if (Wallet< SMA_HK417_tanafg ) then {
   
 Case 7: { if (Wallet< SMA_HK417afg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417afg ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 417 AFG (12 In)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417afg ]; 
    Wallet= (wallet -  SMA_HK417afg ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8427,7 +8444,7 @@ Case 7: { if (Wallet< SMA_HK417afg ) then {
   
 Case 8: { if (Wallet< SMA_HK417_tanvfg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417_tanvfg ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 417 VFG w/ Tan Coating (12 In)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417_tanvfg ];
    Wallet= (wallet -  SMA_HK417_tanvfg ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8439,7 +8456,7 @@ Case 8: { if (Wallet< SMA_HK417_tanvfg ) then {
   
 Case 9: { if (Wallet< SMA_HK417_16in_afg_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_HK417_16in_afg_tan ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK 417 AFG w/ Tan Coating (16 In) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_HK417_16in_afg_tan ];
    Wallet= (wallet -  SMA_HK417_16in_afg_tan ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8451,7 +8468,7 @@ Case 9: { if (Wallet< SMA_HK417_16in_afg_tan ) then {
   
 Case 10: { if (Wallet< SMA_SAR21_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SAR21_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  IWI SAR-21 VFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SAR21_F ]; 
    Wallet= (wallet -  SMA_SAR21_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8463,7 +8480,7 @@ Case 10: { if (Wallet< SMA_SAR21_F ) then {
   
 Case 11: { if (Wallet< SMA_SAR21_AFG_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SAR21_AFG_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  IWI SAR-21 AFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SAR21_AFG_F ]; 
    Wallet= (wallet -  SMA_SAR21_AFG_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8475,7 +8492,7 @@ Case 11: { if (Wallet< SMA_SAR21_AFG_F ) then {
   
 Case 12: { if (Wallet< SMA_SAR21MMS_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SAR21MMS_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  IWI SAR-21 MMS VFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SAR21MMS_F ]; 
    Wallet= (wallet -  SMA_SAR21MMS_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8487,7 +8504,7 @@ Case 12: { if (Wallet< SMA_SAR21MMS_F ) then {
   
 Case 13: { if (Wallet< SMA_SAR21MMS_AFG_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SAR21MMS_AFG_F ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  IWI SAR-21 MMS AFG for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SAR21MMS_AFG_F ];
    Wallet= (wallet -  SMA_SAR21MMS_AFG_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8499,7 +8516,7 @@ Case 13: { if (Wallet< SMA_SAR21MMS_AFG_F ) then {
   
 Case 14: { if (Wallet< SMA_SKS_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SKS_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Norinco SKS w/ SG Works Bullpup Stock for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SKS_F ]; 
    Wallet= (wallet -  SMA_SKS_F );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8511,7 +8528,7 @@ Case 14: { if (Wallet< SMA_SKS_F ) then {
   
 Case 15: { if (Wallet< SMA_SKS_cqb_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SKS_cqb_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Norinco SKS w/ SBR Conv SG Works Bullpup Stock for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SKS_cqb_F ];
    Wallet= (wallet -  SMA_SKS_cqb_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8523,7 +8540,7 @@ Case 15: { if (Wallet< SMA_SKS_cqb_F ) then {
   
 Case 16: { if (Wallet< SMA_SKS_TAN_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_SKS_TAN_F ]; }  else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Norinco SKS w/ Tan SG Works Bullpup Stock for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_SKS_TAN_F ]; 
    Wallet= (wallet -  SMA_SKS_TAN_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8535,7 +8552,7 @@ Case 16: { if (Wallet< SMA_SKS_TAN_F ) then {
   
 Case 17: { if (Wallet< SMA_AUG_A3_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_A3_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Steyr AUG A3 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_A3_F ]; 
    Wallet= (wallet -  SMA_AUG_A3_F );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8547,7 +8564,7 @@ Case 17: { if (Wallet< SMA_AUG_A3_F ) then {
   
 Case 18: { if (Wallet< SMA_AUG_A3_MCAM_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_A3_MCAM_F ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  Steyr AUG A3 Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_A3_MCAM_F ]; 
    Wallet= (wallet -  SMA_AUG_A3_MCAM_F ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8559,7 +8576,7 @@ Case 18: { if (Wallet< SMA_AUG_A3_MCAM_F ) then {
   
 Case 19: { if (Wallet< SMA_AUG_A3_KRYPT_F ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_A3_KRYPT_F ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Steyr AUG A3 Olive for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_A3_KRYPT_F ]; 
    Wallet= (wallet -  SMA_AUG_A3_KRYPT_F );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8571,7 +8588,7 @@ Case 19: { if (Wallet< SMA_AUG_A3_KRYPT_F ) then {
   
 Case 20: { if (Wallet< SMA_AUG_EGLM_Olive ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_EGLM_Olive ]; }  else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Steyr AUG A3 Olive w/ EGLM for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_EGLM_Olive ]; 
    Wallet= (wallet -  SMA_AUG_EGLM_Olive ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8583,7 +8600,7 @@ Case 20: { if (Wallet< SMA_AUG_EGLM_Olive ) then {
   
 Case 21: { if (Wallet< SMA_AUG_EGLM_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_EGLM_tan ]; }  else { 
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered  Steyr AUG A3 Tan W/ EGLM for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_EGLM_tan ]; 
   Wallet= (wallet -  SMA_AUG_EGLM_tan );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8595,7 +8612,7 @@ Case 21: { if (Wallet< SMA_AUG_EGLM_tan ) then {
  
 Case 22: { if (Wallet< SMA_AUG_EGLM ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_AUG_EGLM ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  Steyr AUG A3 W/ EGLM for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_AUG_EGLM ];
    Wallet= (wallet -  SMA_AUG_EGLM );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8607,7 +8624,7 @@ Case 22: { if (Wallet< SMA_AUG_EGLM ) then {
   
 Case 23: { if (Wallet< SMA_MK16 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_MK16 ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 w/ Tan Coating for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_MK16 ]; 
    Wallet= (wallet -  SMA_MK16 ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8619,7 +8636,7 @@ Case 23: { if (Wallet< SMA_MK16 ) then {
   
 Case 24: { if (Wallet< SMA_Mk16_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk16_black ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk16_black ]; 
    Wallet= (wallet -  SMA_Mk16_black ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8631,7 +8648,7 @@ Case 24: { if (Wallet< SMA_Mk16_black ) then {
   
 Case 25: { if (Wallet< SMA_Mk16_EGLM ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk16_EGLM ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 w/ Tan Coating + EGLM for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk16_EGLM ]; 
    Wallet= (wallet -  SMA_Mk16_EGLM );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8643,7 +8660,7 @@ Case 25: { if (Wallet< SMA_Mk16_EGLM ) then {
   
 Case 26: { if (Wallet< SMA_MK16_EGLM_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_MK16_EGLM_black ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 w/ EGLM for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_MK16_EGLM_black ]; 
    Wallet= (wallet -  SMA_MK16_EGLM_black ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8655,7 +8672,7 @@ Case 26: { if (Wallet< SMA_MK16_EGLM_black ) then {
   
 Case 27: { if (Wallet< SMA_Mk16_blackQCB ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk16_blackQCB ]; }  else { 
-  PlaySound "buy"; 
+  PlaySound "A3M_buy"; 
   Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 SBR  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk16_blackQCB ];
   Wallet= (wallet -  SMA_Mk16_blackQCB );
   profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8667,7 +8684,7 @@ Case 27: { if (Wallet< SMA_Mk16_blackQCB ) then {
  
 Case 28: { if (Wallet< SMA_Mk16QCB ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk16QCB ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk16 SBR W/ Tan Coating for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk16QCB ]; 
    Wallet= (wallet -  SMA_Mk16QCB ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8679,7 +8696,7 @@ Case 28: { if (Wallet< SMA_Mk16QCB ) then {
   
 Case 29: { if (Wallet< SMA_Mk17_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk17_black ]; }  else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk17 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk17_black ];
    Wallet= (wallet -  SMA_Mk17_black );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8691,7 +8708,7 @@ Case 29: { if (Wallet< SMA_Mk17_black ) then {
   
 Case 30: { if (Wallet< SMA_MK17_EGLM_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_MK17_EGLM_black ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk17 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_MK17_EGLM_black ];
    Wallet= (wallet -  SMA_MK17_EGLM_black );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8703,7 +8720,7 @@ Case 30: { if (Wallet< SMA_MK17_EGLM_black ) then {
   
 Case 31: { if (Wallet< SMA_Mk17 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk17 ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk17 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk17 ]; 
    Wallet= (wallet -  SMA_Mk17 ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8715,7 +8732,7 @@ Case 31: { if (Wallet< SMA_Mk17 ) then {
   
 Case 32: { if (Wallet< SMA_Mk17_EGLM ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_Mk17_EGLM ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  FN Herstal (FNH) SCAR Mk17 for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_Mk17_EGLM ]; 
    Wallet= (wallet -  SMA_Mk17_EGLM );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8735,7 +8752,7 @@ A3M_fnc_Toadie2kRifles = {
 switch (TheSelection) do {
 	 Case 0 :{if (Wallet< hlc_smg_mp5k_PDW ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5k_PDW ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5K-PDW (Primary Weapon Slot) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5k_PDW ]; 
 				Wallet= (wallet -  hlc_smg_mp5k_PDW ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8747,7 +8764,7 @@ switch (TheSelection) do {
 			
 	 Case 1 :{if (Wallet< hlc_smg_mp5a2 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5a2 ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5A2 (Full-Stock, SEF Triggerpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5a2 ]; 
 				Wallet= (wallet -  hlc_smg_mp5a2 );
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8759,7 +8776,7 @@ switch (TheSelection) do {
 			
 	 Case 2 :{if (Wallet< hlc_smg_mp5a3 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5a3 ]; }  else{
-				PlaySound "buy"; Hint format ["You have ordered  MP5A3 (Retractable Stock, SEF Triggerpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5a3 ]; 
+				PlaySound "A3M_buy"; Hint format ["You have ordered  MP5A3 (Retractable Stock, SEF Triggerpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5a3 ]; 
 				Wallet= (wallet -  hlc_smg_mp5a3 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];  
 				SaveProfileNamespace; 
@@ -8770,7 +8787,7 @@ switch (TheSelection) do {
 			
 	 Case 3 :{if (Wallet< hlc_smg_mp5a4 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5a4 ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5A4 (Full Stock,NAVYTriggerpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5a4 ];
 				Wallet= (wallet -  hlc_smg_mp5a4 );
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8782,7 +8799,7 @@ switch (TheSelection) do {
 			
 	 Case 4 :{if (Wallet< hlc_smg_mp5n ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5n ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5N (Telescoping stock,NAVYTriggerpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5n ]; 
 				Wallet= (wallet -  hlc_smg_mp5n ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8794,7 +8811,7 @@ switch (TheSelection) do {
 			
 	 Case 5 :{if (Wallet< hlc_smg_mp510 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp510 ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5/10 (Full Stock,NAVYTriggerpack,10mm Auto) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp510 ];
 				Wallet= (wallet -  hlc_smg_mp510 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8806,7 +8823,7 @@ switch (TheSelection) do {
 			
 	 Case 6 :{if (Wallet< hlc_smg_mp5sd5  ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5sd5  ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5SD5 (Full Stock,NAVYTriggerpack, integrally suppressed) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5sd5  ];
 				Wallet= (wallet -  hlc_smg_mp5sd5  ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8818,7 +8835,7 @@ switch (TheSelection) do {
 			
 	 Case 7 :{if (Wallet< hlc_smg_mp5sd6 ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_mp5sd6 ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5SD5 (Telescoping stock,NAVYTriggerpack, integrally suppressed) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_mp5sd6 ]; 
 				Wallet= (wallet -  hlc_smg_mp5sd6 ); 
 				profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -8830,7 +8847,7 @@ switch (TheSelection) do {
 			
 	 Case 8 :{if (Wallet< hlc_smg_9mmar ) then {
 			Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  hlc_smg_9mmar ]; }  else{
-				PlaySound "buy"; 
+				PlaySound "A3M_buy"; 
 				Hint format ["You have ordered  MP5N with permenantly affixed KAC tri-rail and M203-PI.  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  hlc_smg_9mmar ]; 
 				Wallet= (wallet -  hlc_smg_9mmar );
 				profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8850,7 +8867,7 @@ A3M_fnc_pistols= {
 switch (TheSelection) do {
 Case 0 : { if (Wallet< hgun_ACPC2_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_ACPC2_F]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Colt 1911 .45 cal.  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_ACPC2_F];  
    Wallet= (wallet -   hgun_ACPC2_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8862,7 +8879,7 @@ Case 0 : { if (Wallet< hgun_ACPC2_F) then {
   
 Case 1 : { if (Wallet< hgun_P07_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_P07_F  ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Walther P 07 9mmfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_P07_F  ];  
    Wallet= (wallet -   hgun_P07_F  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8874,7 +8891,7 @@ Case 1 : { if (Wallet< hgun_P07_F  ) then {
   
 Case 2 : { if (Wallet< hgun_PDW2000_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_PDW2000_F  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  HK PDW2000 9mm SMG  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_PDW2000_F  ]; 
    Wallet= (wallet -   hgun_PDW2000_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8886,7 +8903,7 @@ Case 2 : { if (Wallet< hgun_PDW2000_F  ) then {
   
 Case 3 : { if (Wallet< hgun_Pistol_heavy_01_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_Pistol_heavy_01_F  ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  HK USP .45 cal. for $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_Pistol_heavy_01_F  ]; 
    Wallet= (wallet -   hgun_Pistol_heavy_01_F  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8898,7 +8915,7 @@ Case 3 : { if (Wallet< hgun_Pistol_heavy_01_F  ) then {
   
 Case 4 : { if (Wallet< hgun_Pistol_heavy_02_F  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_Pistol_heavy_02_F  ]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  S&W 500 .45 cal.for $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_Pistol_heavy_02_F  ]; 
    Wallet= (wallet -   hgun_Pistol_heavy_02_F  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8910,7 +8927,7 @@ Case 4 : { if (Wallet< hgun_Pistol_heavy_02_F  ) then {
   
 Case 5 : { if (Wallet< hgun_Rook40_F   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", hgun_Rook40_F   ]; }else {
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  CZ-75 9mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",hgun_Rook40_F   ];  
    Wallet= (wallet -   hgun_Rook40_F   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8922,7 +8939,7 @@ Case 5 : { if (Wallet< hgun_Rook40_F   ) then {
   
 Case 6 : { if (Wallet< SMG_01_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMG_01_F]; }else {
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have orderedVermin SMG .45  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SMG_01_F]; 
    Wallet= (wallet -   SMG_01_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8934,7 +8951,7 @@ Case 6 : { if (Wallet< SMG_01_F) then {
   
 Case 7 : { if (Wallet< SMG_02_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", SMG_02_F]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  HK MP5 Hybrid 9mm   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",SMG_02_F];  
    Wallet= (wallet -   SMG_02_F);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -8951,7 +8968,7 @@ A3M_fnc_RHSpistols= {
 switch (TheSelection) do {
 Case 0: { if (Wallet<rhs_weap_makarov_pmm) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_makarov_pmm]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Makarov PMMfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_makarov_pmm];
    Wallet= (wallet - rhs_weap_makarov_pmm);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8963,7 +8980,7 @@ Case 0: { if (Wallet<rhs_weap_makarov_pmm) then {
   
 Case 1: { if (Wallet<rhs_weap_pya) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_weap_pya]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MP-443 Grachfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_weap_pya];
    Wallet= (wallet - rhs_weap_pya);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8982,7 +8999,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<U_B_CombatUniform_mcam) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_mcam]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 1for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_mcam];
    Wallet= (wallet - U_B_CombatUniform_mcam);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -8994,7 +9011,7 @@ Case 0: { if (Wallet<U_B_CombatUniform_mcam) then {
   
 Case 1: { if (Wallet<U_B_CombatUniform_mcam_tshirt) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_mcam_tshirt]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 2  for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_mcam_tshirt];
    Wallet= (wallet - U_B_CombatUniform_mcam_tshirt);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9006,7 +9023,7 @@ Case 1: { if (Wallet<U_B_CombatUniform_mcam_tshirt) then {
    
 Case 2: { if (Wallet<U_B_CombatUniform_mcam_vest) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_mcam_vest]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 3for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_mcam_vest];
    Wallet= (wallet - U_B_CombatUniform_mcam_vest);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9018,7 +9035,7 @@ Case 2: { if (Wallet<U_B_CombatUniform_mcam_vest) then {
   
 Case 3: { if (Wallet<U_B_CombatUniform_mcam_worn) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_mcam_worn]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 4for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_mcam_worn];
    Wallet= (wallet - U_B_CombatUniform_mcam_worn);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9030,7 +9047,7 @@ Case 3: { if (Wallet<U_B_CombatUniform_mcam_worn) then {
   
 Case 4: { if (Wallet<U_B_CombatUniform_sgg) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_sgg]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 5for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_sgg];
    Wallet= (wallet - U_B_CombatUniform_sgg);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9042,7 +9059,7 @@ Case 4: { if (Wallet<U_B_CombatUniform_sgg) then {
   
 Case 5: { if (Wallet<U_B_CombatUniform_sgg_tshirt) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_sgg_tshirt]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 6for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_sgg_tshirt];
    Wallet= (wallet - U_B_CombatUniform_sgg_tshirt);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9054,7 +9071,7 @@ Case 5: { if (Wallet<U_B_CombatUniform_sgg_tshirt) then {
   
 Case 6: { if (Wallet<U_B_CombatUniform_sgg_vest) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_sgg_vest]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 7 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_sgg_vest];
    Wallet= (wallet - U_B_CombatUniform_sgg_vest);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9066,7 +9083,7 @@ Case 6: { if (Wallet<U_B_CombatUniform_sgg_vest) then {
   
 Case 7: { if (Wallet<U_B_CombatUniform_wdl) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_wdl]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. MultiCam Uni 8 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_wdl];
    Wallet= (wallet - U_B_CombatUniform_wdl);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9078,7 +9095,7 @@ Case 7: { if (Wallet<U_B_CombatUniform_wdl) then {
   
 Case 8: { if (Wallet<U_B_CombatUniform_wdl_tshirt) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_wdl_tshirt]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered U.S. MultiCam Uni 9 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_wdl_tshirt];
   Wallet= (wallet - U_B_CombatUniform_wdl_tshirt);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9090,7 +9107,7 @@ Case 8: { if (Wallet<U_B_CombatUniform_wdl_tshirt) then {
  
 Case 9: { if (Wallet<U_B_CombatUniform_wdl_vest) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CombatUniform_wdl_vest]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered U.S. MultiCam Uni 10for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CombatUniform_wdl_vest];
   Wallet= (wallet - U_B_CombatUniform_wdl_vest);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9102,7 +9119,7 @@ Case 9: { if (Wallet<U_B_CombatUniform_wdl_vest) then {
  
 Case 10: { if (Wallet<U_B_CTRG_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CTRG_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.K. Multicam Uni 1for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CTRG_1];
    Wallet= (wallet - U_B_CTRG_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9114,7 +9131,7 @@ Case 10: { if (Wallet<U_B_CTRG_1) then {
    
 Case 11: { if (Wallet<U_B_CTRG_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CTRG_2]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered U.K. Multicam Uni 2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CTRG_2];
   Wallet= (wallet - U_B_CTRG_2);
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9126,7 +9143,7 @@ Case 11: { if (Wallet<U_B_CTRG_2) then {
  
 Case 12: { if (Wallet<U_B_CTRG_3) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_CTRG_3]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.K. Multicam Uni 3for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_CTRG_3];
    Wallet= (wallet - U_B_CTRG_3);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9138,7 +9155,7 @@ Case 12: { if (Wallet<U_B_CTRG_3) then {
   
 Case 13: { if (Wallet<U_B_GhillieSuit) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_GhillieSuit]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Marksman Partial Ghillie Suitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_GhillieSuit];
    Wallet= (wallet - U_B_GhillieSuit);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9150,7 +9167,7 @@ Case 13: { if (Wallet<U_B_GhillieSuit) then {
   
 Case 14: { if (Wallet<U_B_HeliPilotCoveralls) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_HeliPilotCoveralls]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Pilot Coveralls (Heli)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_HeliPilotCoveralls];
    Wallet= (wallet - U_B_HeliPilotCoveralls);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9162,7 +9179,7 @@ Case 14: { if (Wallet<U_B_HeliPilotCoveralls) then {
  
 Case 15: { if (Wallet<U_B_PilotCoveralls) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_PilotCoveralls]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Flight Suitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_PilotCoveralls];
    Wallet= (wallet - U_B_PilotCoveralls);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9174,7 +9191,7 @@ Case 15: { if (Wallet<U_B_PilotCoveralls) then {
  
 Case 16: { if (Wallet<U_B_SpecopsUniform_sgg) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_B_SpecopsUniform_sgg]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. Specops Uni 1for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_B_SpecopsUniform_sgg];
    Wallet= (wallet - U_B_SpecopsUniform_sgg);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9186,7 +9203,7 @@ Case 16: { if (Wallet<U_B_SpecopsUniform_sgg) then {
   
 Case 17: { if (Wallet<U_BG_Guerilla1_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla1_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 1for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla1_1];
    Wallet= (wallet - U_BG_Guerilla1_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9198,7 +9215,7 @@ Case 17: { if (Wallet<U_BG_Guerilla1_1) then {
   
 Case 18: { if (Wallet<U_BG_Guerilla2_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla2_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 2for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla2_1];
    Wallet= (wallet - U_BG_Guerilla2_1);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9210,7 +9227,7 @@ Case 18: { if (Wallet<U_BG_Guerilla2_1) then {
   
 Case 19: { if (Wallet<U_BG_Guerilla2_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla2_2]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Casual Combat 3for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla2_2];
   Wallet= (wallet - U_BG_Guerilla2_2);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9222,7 +9239,7 @@ Case 19: { if (Wallet<U_BG_Guerilla2_2) then {
  
 Case 20: { if (Wallet<U_BG_Guerilla2_3) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla2_3]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 4for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla2_3];
    Wallet= (wallet - U_BG_Guerilla2_3);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9234,7 +9251,7 @@ Case 20: { if (Wallet<U_BG_Guerilla2_3) then {
   
 Case 21: { if (Wallet<U_BG_Guerilla3_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla3_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 5for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla3_1];
    Wallet= (wallet - U_BG_Guerilla3_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9246,7 +9263,7 @@ Case 21: { if (Wallet<U_BG_Guerilla3_1) then {
   
 Case 22: { if (Wallet<U_BG_Guerilla3_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_Guerilla3_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 6for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_Guerilla3_2];
    Wallet= (wallet - U_BG_Guerilla3_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9258,7 +9275,7 @@ Case 22: { if (Wallet<U_BG_Guerilla3_2) then {
   
 Case 23: { if (Wallet<U_BG_leader) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_BG_leader]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 7for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_BG_leader];
    Wallet= (wallet - U_BG_leader);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9270,7 +9287,7 @@ Case 23: { if (Wallet<U_BG_leader) then {
   
 Case 24: { if (Wallet<U_C_HunterBody_brn) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_C_HunterBody_brn]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 8for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_C_HunterBody_brn];
    Wallet= (wallet - U_C_HunterBody_brn);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9282,7 +9299,7 @@ Case 24: { if (Wallet<U_C_HunterBody_brn) then {
   
 Case 25: { if (Wallet<U_C_HunterBody_grn) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_C_HunterBody_grn]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 9for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_C_HunterBody_grn];
    Wallet= (wallet - U_C_HunterBody_grn);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9293,7 +9310,7 @@ Case 25: { if (Wallet<U_C_HunterBody_grn) then {
   }; 
 Case 26: { if (Wallet<U_I_CombatUniform) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_I_CombatUniform]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 10for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_I_CombatUniform];
    Wallet= (wallet - U_I_CombatUniform);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9305,7 +9322,7 @@ Case 26: { if (Wallet<U_I_CombatUniform) then {
   
 Case 27: { if (Wallet<U_I_CombatUniform_shortsleeve) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_I_CombatUniform_shortsleeve]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 11for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_I_CombatUniform_shortsleeve];
    Wallet= (wallet - U_I_CombatUniform_shortsleeve);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9317,7 +9334,7 @@ Case 27: { if (Wallet<U_I_CombatUniform_shortsleeve) then {
   
 Case 28: { if (Wallet<U_I_CombatUniform_tshirt) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_I_CombatUniform_tshirt]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 12for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_I_CombatUniform_tshirt];
    Wallet= (wallet - U_I_CombatUniform_tshirt);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9329,7 +9346,7 @@ Case 28: { if (Wallet<U_I_CombatUniform_tshirt) then {
   
 Case 29: { if (Wallet<U_I_G_resistanceLeader_F) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_I_G_resistanceLeader_F]; } else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 13for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_I_G_resistanceLeader_F];
    Wallet= (wallet - U_I_G_resistanceLeader_F);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9341,7 +9358,7 @@ Case 29: { if (Wallet<U_I_G_resistanceLeader_F) then {
   
 Case 30: { if (Wallet<U_IG_Guerilla1_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla1_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 14for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla1_1];
    Wallet= (wallet - U_IG_Guerilla1_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9353,7 +9370,7 @@ Case 30: { if (Wallet<U_IG_Guerilla1_1) then {
   
 Case 31: { if (Wallet<U_IG_Guerilla2_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla2_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 15for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla2_1];
    Wallet= (wallet - U_IG_Guerilla2_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9365,7 +9382,7 @@ Case 31: { if (Wallet<U_IG_Guerilla2_1) then {
    
 Case 32: { if (Wallet<U_IG_Guerilla2_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla2_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 16for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla2_2];
    Wallet= (wallet - U_IG_Guerilla2_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9377,7 +9394,7 @@ Case 32: { if (Wallet<U_IG_Guerilla2_2) then {
   
 Case 33: { if (Wallet<U_IG_Guerilla2_3) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla2_3]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 17for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla2_3];
    Wallet= (wallet - U_IG_Guerilla2_3);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9389,7 +9406,7 @@ Case 33: { if (Wallet<U_IG_Guerilla2_3) then {
   
 Case 34: { if (Wallet<U_IG_Guerilla3_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla3_1]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered Casual Combat 18for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla3_1];
     Wallet= (wallet - U_IG_Guerilla3_1);
     profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9401,7 +9418,7 @@ Case 34: { if (Wallet<U_IG_Guerilla3_1) then {
    
 Case 35: { if (Wallet<U_IG_Guerilla3_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_Guerilla3_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 19for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_Guerilla3_2];
    Wallet= (wallet - U_IG_Guerilla3_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9413,7 +9430,7 @@ Case 35: { if (Wallet<U_IG_Guerilla3_2) then {
   
 Case 36: { if (Wallet<U_IG_leader) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_IG_leader]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 20for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_IG_leader];
    Wallet= (wallet - U_IG_leader);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9425,7 +9442,7 @@ Case 36: { if (Wallet<U_IG_leader) then {
   
 Case 37: { if (Wallet<U_OG_Guerilla1_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla1_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 21for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla1_1];
    Wallet= (wallet - U_OG_Guerilla1_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9437,7 +9454,7 @@ Case 37: { if (Wallet<U_OG_Guerilla1_1) then {
   
 Case 38: { if (Wallet<U_OG_Guerilla2_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla2_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 22for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla2_1];
    Wallet= (wallet - U_OG_Guerilla2_1);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9449,7 +9466,7 @@ Case 38: { if (Wallet<U_OG_Guerilla2_1) then {
   
 Case 39: { if (Wallet<U_OG_Guerilla2_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla2_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 23for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla2_2];
    Wallet= (wallet - U_OG_Guerilla2_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9461,7 +9478,7 @@ Case 39: { if (Wallet<U_OG_Guerilla2_2) then {
   
 Case 40: { if (Wallet<U_OG_Guerilla2_3) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla2_3]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 24for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla2_3];
    Wallet= (wallet - U_OG_Guerilla2_3);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9473,7 +9490,7 @@ Case 40: { if (Wallet<U_OG_Guerilla2_3) then {
    
 Case 41: { if (Wallet<U_OG_Guerilla3_1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla3_1]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 25for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla3_1];
    Wallet= (wallet - U_OG_Guerilla3_1);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9485,7 +9502,7 @@ Case 41: { if (Wallet<U_OG_Guerilla3_1) then {
   
 Case 42: { if (Wallet<U_OG_Guerilla3_2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_Guerilla3_2]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 26for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_Guerilla3_2];
    Wallet= (wallet - U_OG_Guerilla3_2);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9497,7 +9514,7 @@ Case 42: { if (Wallet<U_OG_Guerilla3_2) then {
   
 Case 43: { if (Wallet<U_OG_leader) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", U_OG_leader]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casual Combat 27for $%1.00. Your order will be delivered soon! Check the deliveries box often!", U_OG_leader];
    Wallet= (wallet - U_OG_leader);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9514,7 +9531,7 @@ A3M_fnc_RHSUnis = {
 switch (TheSelection) do {
 Case 0: { if (Wallet<rhs_uniform_cu_ocp_patchless) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_uniform_cu_ocp_patchless ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Army Combat Uniform OCPfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_uniform_cu_ocp_patchless ];
    Wallet= (wallet - rhs_uniform_cu_ocp_patchless );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9526,7 +9543,7 @@ Case 0: { if (Wallet<rhs_uniform_cu_ocp_patchless) then {
   
 Case 1: { if (Wallet<rhs_uniform_cu_ucp_patchless) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_uniform_cu_ucp_patchless ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Army Combat Uniform UCPfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_uniform_cu_ucp_patchless ];
    Wallet= (wallet - rhs_uniform_cu_ucp_patchless );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9538,7 +9555,7 @@ Case 1: { if (Wallet<rhs_uniform_cu_ucp_patchless) then {
   
 Case 2: { if (Wallet<rhs_uniform_FROG01_wd) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_uniform_FROG01_wd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Flame Resistant Organizational Gear MARPAT (Woodland) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_uniform_FROG01_wd ];
    Wallet= (wallet - rhs_uniform_FROG01_wd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9550,7 +9567,7 @@ Case 2: { if (Wallet<rhs_uniform_FROG01_wd) then {
   
 Case 3: { if (Wallet<rhs_uniform_FROG01_d) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_uniform_FROG01_d ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Flame Resistant Organizational Gear MARPAT (Desert) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_uniform_FROG01_d ];
    Wallet= (wallet - rhs_uniform_FROG01_d );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9562,7 +9579,7 @@ Case 3: { if (Wallet<rhs_uniform_FROG01_d) then {
   
 Case 4: { if (Wallet<rhs_uniform_FROG01_m81) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_uniform_FROG01_m81 ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Flame Resistant Organizational Gear  M81for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_uniform_FROG01_m81 ];
   Wallet= (wallet - rhs_uniform_FROG01_m81 );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -9581,7 +9598,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet< H_Bandanna_camo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_camo ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Bandanna (Camo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_camo ]; 
    Wallet= (wallet -   H_Bandanna_camo ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9593,7 +9610,7 @@ Case 0: { if (Wallet< H_Bandanna_camo ) then {
   
 Case 1: { if (Wallet< H_Bandanna_cbr  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_cbr  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (Coyote)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_cbr  ];  
    Wallet= (wallet -   H_Bandanna_cbr  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9605,7 +9622,7 @@ Case 1: { if (Wallet< H_Bandanna_cbr  ) then {
   
 Case 2: { if (Wallet< H_Bandanna_gry  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_gry  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (Gray) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_gry  ]; 
    Wallet= (wallet -   H_Bandanna_gry  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9617,7 +9634,7 @@ Case 2: { if (Wallet< H_Bandanna_gry  ) then {
   
 Case 3: { if (Wallet< H_Bandanna_khk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_khk  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Bandanna (Khaki)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_khk  ]; 
    Wallet= (wallet -   H_Bandanna_khk  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9629,7 +9646,7 @@ Case 3: { if (Wallet< H_Bandanna_khk  ) then {
  
 Case 4: { if (Wallet< H_Bandanna_khk_hs   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_khk_hs   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (Headset)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_khk_hs   ];  
    Wallet= (wallet -   H_Bandanna_khk_hs   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9641,7 +9658,7 @@ Case 4: { if (Wallet< H_Bandanna_khk_hs   ) then {
   
 Case 5: { if (Wallet< H_Bandanna_mcamo) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_mcamo]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (MTP)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_mcamo];  
    Wallet= (wallet -   H_Bandanna_mcamo);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9653,7 +9670,7 @@ Case 5: { if (Wallet< H_Bandanna_mcamo) then {
   
 Case 6: { if (Wallet< H_Bandanna_sgg  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_sgg  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (Sage) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_sgg  ];  
    Wallet= (wallet -   H_Bandanna_sgg  );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9665,7 +9682,7 @@ Case 6: { if (Wallet< H_Bandanna_sgg  ) then {
   
 Case 7: { if (Wallet< H_Bandanna_surfer   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Bandanna_surfer   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna (Surfer)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Bandanna_surfer   ]; 
    Wallet= (wallet -   H_Bandanna_surfer   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9677,7 +9694,7 @@ Case 7: { if (Wallet< H_Bandanna_surfer   ) then {
   
 Case 8: { if (Wallet< H_BandMask_blk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_BandMask_blk  ]; }else {   
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  Bandanna Mask (Black)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_BandMask_blk  ]; 
    Wallet= (wallet -   H_BandMask_blk  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9689,7 +9706,7 @@ Case 8: { if (Wallet< H_BandMask_blk  ) then {
   
 Case 9: { if (Wallet< H_BandMask_demon) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_BandMask_demon]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Bandanna Mask (Demon)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_BandMask_demon];  
    Wallet= (wallet -   H_BandMask_demon); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9701,7 +9718,7 @@ Case 9: { if (Wallet< H_BandMask_demon) then {
   
 Case 10: { if (Wallet< H_BandMask_khk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_BandMask_khk  ]; }else {   
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  Bandanna Mask (Khaki)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_BandMask_khk  ];  
   Wallet= (wallet -   H_BandMask_khk  );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9713,7 +9730,7 @@ Case 10: { if (Wallet< H_BandMask_khk  ) then {
  
 Case 11: { if (Wallet< H_BandMask_reaper   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_BandMask_reaper   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Bandanna Mask (Reaper)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_BandMask_reaper   ]; 
    Wallet= (wallet -   H_BandMask_reaper   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9725,7 +9742,7 @@ Case 11: { if (Wallet< H_BandMask_reaper   ) then {
   
 Case 12: { if (Wallet< H_Beret_02  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_02  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Beret [NATO]for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_02  ];  
    Wallet= (wallet -   H_Beret_02  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9737,7 +9754,7 @@ Case 12: { if (Wallet< H_Beret_02  ) then {
    
 Case 13: { if (Wallet< H_Beret_blk ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_blk ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Beret (Black)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_blk ];  
    Wallet= (wallet -   H_Beret_blk ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9749,7 +9766,7 @@ Case 13: { if (Wallet< H_Beret_blk ) then {
   
 Case 14: { if (Wallet< H_Beret_blk_POLICE  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_blk_POLICE  ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Beret (Police)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_blk_POLICE  ]; 
    Wallet= (wallet -   H_Beret_blk_POLICE  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9761,7 +9778,7 @@ Case 14: { if (Wallet< H_Beret_blk_POLICE  ) then {
    
 Case 15: { if (Wallet< H_Beret_brn_SF  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_brn_SF  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Beret (SAS) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_brn_SF  ];  
    Wallet= (wallet -   H_Beret_brn_SF  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9773,7 +9790,7 @@ Case 15: { if (Wallet< H_Beret_brn_SF  ) then {
   
 Case 16: { if (Wallet< H_Beret_grn ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_grn ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Beret (Green)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_grn ];  
    Wallet= (wallet -   H_Beret_grn ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9785,7 +9802,7 @@ Case 16: { if (Wallet< H_Beret_grn ) then {
   
 Case 17: { if (Wallet< H_Beret_grn_SF  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_grn_SF  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Beret (SF)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_grn_SF  ]; 
    Wallet= (wallet -   H_Beret_grn_SF  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9797,7 +9814,7 @@ Case 17: { if (Wallet< H_Beret_grn_SF  ) then {
   
 Case 18: { if (Wallet< H_Beret_ocamo   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_ocamo   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Beret [CSAT]for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_ocamo   ]; 
    Wallet= (wallet -   H_Beret_ocamo   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9809,7 +9826,7 @@ Case 18: { if (Wallet< H_Beret_ocamo   ) then {
   
 Case 19: { if (Wallet< H_Beret_red ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Beret_red ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Beret (Red) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Beret_red ];  
    Wallet= (wallet -   H_Beret_red );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9821,7 +9838,7 @@ Case 19: { if (Wallet< H_Beret_red ) then {
   
 Case 20: { if (Wallet< H_Booniehat_dgtl) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_dgtl]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Booniehat [AAF] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_dgtl]; 
    Wallet= (wallet -   H_Booniehat_dgtl);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9833,7 +9850,7 @@ Case 20: { if (Wallet< H_Booniehat_dgtl) then {
   
 Case 21: { if (Wallet< H_Booniehat_dirty   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_dirty   ]; }else {  
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered  Booniehat (Dirty)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_dirty   ];  
   Wallet= (wallet -   H_Booniehat_dirty   ); 
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9845,7 +9862,7 @@ Case 21: { if (Wallet< H_Booniehat_dirty   ) then {
  
 Case 22: { if (Wallet< H_Booniehat_grn ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_grn ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Booniehat (Green)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_grn ]; 
    Wallet= (wallet -   H_Booniehat_grn );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9857,7 +9874,7 @@ Case 22: { if (Wallet< H_Booniehat_grn ) then {
   
 Case 23: { if (Wallet< H_Booniehat_indp) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_indp]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Booniehat (Khaki)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_indp]; 
    Wallet= (wallet -   H_Booniehat_indp);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9869,7 +9886,7 @@ Case 23: { if (Wallet< H_Booniehat_indp) then {
   
 Case 24: { if (Wallet< H_Booniehat_khk ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_khk ]; }else {  
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  Booniehat (Hex) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_khk ];  
   Wallet= (wallet -   H_Booniehat_khk );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9881,7 +9898,7 @@ Case 24: { if (Wallet< H_Booniehat_khk ) then {
  
 Case 25: { if (Wallet< H_Booniehat_khk_hs  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_khk_hs  ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Booniehat (Headset) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_khk_hs  ]; 
    Wallet= (wallet -   H_Booniehat_khk_hs  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9893,7 +9910,7 @@ Case 25: { if (Wallet< H_Booniehat_khk_hs  ) then {
   
 Case 26: { if (Wallet< H_Booniehat_mcamo   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_mcamo   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Booniehat (MTP) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_mcamo   ]; 
    Wallet= (wallet -   H_Booniehat_mcamo   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9905,7 +9922,7 @@ Case 26: { if (Wallet< H_Booniehat_mcamo   ) then {
   
 Case 27: { if (Wallet< H_Booniehat_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Booniehat_tan ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Booniehat (Tan) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Booniehat_tan ];  
    Wallet= (wallet -   H_Booniehat_tan );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9919,7 +9936,7 @@ Case 27: { if (Wallet< H_Booniehat_tan ) then {
    
 Case 28: { if (Wallet< H_Cap_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_blk   ]; }else {  
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  Cap (Black) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_blk   ];
    Wallet= (wallet -   H_Cap_blk   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9931,7 +9948,7 @@ Case 28: { if (Wallet< H_Cap_blk   ) then {
   
 Case 29: { if (Wallet< H_Cap_blk_CMMG  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_blk_CMMG  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (CMMG)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_blk_CMMG  ]; 
    Wallet= (wallet -   H_Cap_blk_CMMG  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9943,7 +9960,7 @@ Case 29: { if (Wallet< H_Cap_blk_CMMG  ) then {
   
 Case 30: { if (Wallet< H_Cap_blk_ION   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_blk_ION   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (ION)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_blk_ION   ]; 
    Wallet= (wallet -   H_Cap_blk_ION   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9955,7 +9972,7 @@ Case 30: { if (Wallet< H_Cap_blk_ION   ) then {
   
 Case 31: { if (Wallet< H_Cap_blk_Raven ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_blk_Raven ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (Raven Security)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_blk_Raven ]; 
    Wallet= (wallet -   H_Cap_blk_Raven ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9967,7 +9984,7 @@ Case 31: { if (Wallet< H_Cap_blk_Raven ) then {
   
 Case 32: { if (Wallet< H_Cap_blu   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_blu   ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Cap (Blue)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_blu   ];  
    Wallet= (wallet -   H_Cap_blu   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9979,7 +9996,7 @@ Case 32: { if (Wallet< H_Cap_blu   ) then {
   
 Case 33: { if (Wallet< H_Cap_brn_SPECOPS   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_brn_SPECOPS   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Cap (SPECOPS)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_brn_SPECOPS   ]; 
    Wallet= (wallet -   H_Cap_brn_SPECOPS   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -9991,7 +10008,7 @@ Case 33: { if (Wallet< H_Cap_brn_SPECOPS   ) then {
   
 Case 34: { if (Wallet< H_Cap_grn   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_grn   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Cap (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_grn   ]; 
    Wallet= (wallet -   H_Cap_grn   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10003,7 +10020,7 @@ Case 34: { if (Wallet< H_Cap_grn   ) then {
   
 Case 35: { if (Wallet< H_Cap_grn_BI) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_grn_BI]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Cap (BI)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_grn_BI];  
    Wallet= (wallet -   H_Cap_grn_BI);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10015,7 +10032,7 @@ Case 35: { if (Wallet< H_Cap_grn_BI) then {
   
 Case 36: { if (Wallet< H_Cap_headphones) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_headphones]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Rangemaster Cap for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_headphones]; 
    Wallet= (wallet -   H_Cap_headphones); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10027,7 +10044,7 @@ Case 36: { if (Wallet< H_Cap_headphones) then {
   
 Case 37: { if (Wallet< H_Cap_khaki_specops_UK  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_khaki_specops_UK  ]; }else {   
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Cap (SAS)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_khaki_specops_UK  ];  
    Wallet= (wallet -   H_Cap_khaki_specops_UK  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10039,7 +10056,7 @@ Case 37: { if (Wallet< H_Cap_khaki_specops_UK  ) then {
   
 Case 38: { if (Wallet< H_Cap_oli   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_oli   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (Green) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_oli   ];  
    Wallet= (wallet -   H_Cap_oli   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10051,7 +10068,7 @@ Case 38: { if (Wallet< H_Cap_oli   ) then {
   
 Case 39: { if (Wallet< H_Cap_oli_hs) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_oli_hs]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Cap (Olive, Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_oli_hs]; 
    Wallet= (wallet -   H_Cap_oli_hs);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10063,7 +10080,7 @@ Case 39: { if (Wallet< H_Cap_oli_hs) then {
   
 Case 40: { if (Wallet< H_Cap_red   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_red   ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (Red)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_red   ]; 
    Wallet= (wallet -   H_Cap_red   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10075,7 +10092,7 @@ Case 40: { if (Wallet< H_Cap_red   ) then {
   
 Case 41: { if (Wallet< H_Cap_tan   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_tan   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (Tan)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_tan   ];  
    Wallet= (wallet -   H_Cap_tan   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10087,7 +10104,7 @@ Case 41: { if (Wallet< H_Cap_tan   ) then {
   
 Case 42: { if (Wallet< H_Cap_tan_specops_US) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Cap_tan_specops_US]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Cap (SF)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Cap_tan_specops_US];  
    Wallet= (wallet -   H_Cap_tan_specops_US); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10099,7 +10116,7 @@ Case 42: { if (Wallet< H_Cap_tan_specops_US) then {
   
 Case 43: { if (Wallet< H_CrewHelmetHeli_B  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_CrewHelmetHeli_B  ]; }else {   
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Heli Crew Helmet [NATO] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_CrewHelmetHeli_B  ];
    Wallet= (wallet -   H_CrewHelmetHeli_B  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10111,7 +10128,7 @@ Case 43: { if (Wallet< H_CrewHelmetHeli_B  ) then {
   
 Case 44: { if (Wallet< H_CrewHelmetHeli_I  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_CrewHelmetHeli_I  ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Heli Crew Helmet [AAF]  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_CrewHelmetHeli_I  ];  
    Wallet= (wallet -   H_CrewHelmetHeli_I  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10123,7 +10140,7 @@ Case 44: { if (Wallet< H_CrewHelmetHeli_I  ) then {
   
 Case 45: { if (Wallet< H_CrewHelmetHeli_O  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_CrewHelmetHeli_O  ]; }else {
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  Heli Crew Helmet [CSAT] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_CrewHelmetHeli_O  ];  
   Wallet= (wallet -   H_CrewHelmetHeli_O  ); 
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10135,7 +10152,7 @@ Case 45: { if (Wallet< H_CrewHelmetHeli_O  ) then {
  
 Case 46: { if (Wallet< H_Hat_blue  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_blue  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Hat (Blue)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_blue  ]; 
    Wallet= (wallet -   H_Hat_blue  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10147,7 +10164,7 @@ Case 46: { if (Wallet< H_Hat_blue  ) then {
   
 Case 47: { if (Wallet< H_Hat_brown ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_brown ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Hat (Brown) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_brown ];  
    Wallet= (wallet -   H_Hat_brown );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10159,7 +10176,7 @@ Case 47: { if (Wallet< H_Hat_brown ) then {
   
 Case 48: { if (Wallet< H_Hat_camo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_camo  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Hat (Camo)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_camo  ];  
    Wallet= (wallet -   H_Hat_camo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10171,7 +10188,7 @@ Case 48: { if (Wallet< H_Hat_camo  ) then {
   
 Case 49: { if (Wallet< H_Hat_checker   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_checker   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Hat (Checker)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_checker   ];  
    Wallet= (wallet -   H_Hat_checker   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10183,7 +10200,7 @@ Case 49: { if (Wallet< H_Hat_checker   ) then {
   
 Case 50: { if (Wallet< H_Hat_grey  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_grey  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Hat (Gray)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_grey  ];  
    Wallet= (wallet -   H_Hat_grey  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10195,7 +10212,7 @@ Case 50: { if (Wallet< H_Hat_grey  ) then {
   
 Case 51: { if (Wallet< H_Hat_tan   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Hat_tan   ]; }else {   
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Hat (Tan)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Hat_tan   ]; 
    Wallet= (wallet -   H_Hat_tan   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10207,7 +10224,7 @@ Case 51: { if (Wallet< H_Hat_tan   ) then {
   
 Case 52: { if (Wallet< H_Helmet_Kerry  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Helmet_Kerry  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Combat Helmet (Camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Helmet_Kerry  ]; 
    Wallet= (wallet -   H_Helmet_Kerry  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10219,7 +10236,7 @@ Case 52: { if (Wallet< H_Helmet_Kerry  ) then {
   
 Case 53: { if (Wallet< H_HelmetB   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ECH for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB   ];  
    Wallet= (wallet -   H_HelmetB   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10230,7 +10247,7 @@ Case 53: { if (Wallet< H_HelmetB   ) then {
  };
 Case 54: { if (Wallet< H_HelmetB_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_black ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ECH (Black) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_black ];  
    Wallet= (wallet -   H_HelmetB_black ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10242,7 +10259,7 @@ Case 54: { if (Wallet< H_HelmetB_black ) then {
   
 Case 55: { if (Wallet< H_HelmetB_camo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_camo  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_camo  ];  
    Wallet= (wallet -   H_HelmetB_camo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10254,7 +10271,7 @@ Case 55: { if (Wallet< H_HelmetB_camo  ) then {
   
 Case 56: { if (Wallet< H_HelmetB_desert) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_desert]; }else {  
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered  ECH (Desert)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_desert];
   Wallet= (wallet -   H_HelmetB_desert); 
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10266,7 +10283,7 @@ Case 56: { if (Wallet< H_HelmetB_desert) then {
  
 Case 57: { if (Wallet< H_HelmetB_grass ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_grass ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Grass) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_grass ];  
    Wallet= (wallet -   H_HelmetB_grass ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10278,7 +10295,7 @@ Case 57: { if (Wallet< H_HelmetB_grass ) then {
   
 Case 58: { if (Wallet< H_HelmetB_light ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Light) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light ]; 
    Wallet= (wallet -   H_HelmetB_light ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10290,7 +10307,7 @@ Case 58: { if (Wallet< H_HelmetB_light ) then {
   
 Case 59: { if (Wallet< H_HelmetB_light_black   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light_black   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Light, Black)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light_black   ];  
    Wallet= (wallet -   H_HelmetB_light_black   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10302,7 +10319,7 @@ Case 59: { if (Wallet< H_HelmetB_light_black   ) then {
   
 Case 60: { if (Wallet< H_HelmetB_light_desert  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light_desert  ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ECH (Light, Desert) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light_desert  ]; 
    Wallet= (wallet -   H_HelmetB_light_desert  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10314,7 +10331,7 @@ Case 60: { if (Wallet< H_HelmetB_light_desert  ) then {
   
 Case 61: { if (Wallet< H_HelmetB_light_grass   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light_grass   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Light, Grass)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light_grass   ]; 
    Wallet= (wallet -   H_HelmetB_light_grass   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10326,7 +10343,7 @@ Case 61: { if (Wallet< H_HelmetB_light_grass   ) then {
   
 Case 62: { if (Wallet< H_HelmetB_light_sand) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light_sand]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Light, Sand)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light_sand]; 
    Wallet= (wallet -   H_HelmetB_light_sand); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10338,7 +10355,7 @@ Case 62: { if (Wallet< H_HelmetB_light_sand) then {
   
 Case 63: { if (Wallet< H_HelmetB_light_snakeskin   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_light_snakeskin   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  ECH (Light, Snakeskin)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_light_snakeskin   ];  
    Wallet= (wallet -   H_HelmetB_light_snakeskin   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10350,7 +10367,7 @@ Case 63: { if (Wallet< H_HelmetB_light_snakeskin   ) then {
   
 Case 64: { if (Wallet< H_HelmetB_paint ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_paint ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  ECH (Spraypaint)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_paint ]; 
    Wallet= (wallet -   H_HelmetB_paint ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10362,7 +10379,7 @@ Case 64: { if (Wallet< H_HelmetB_paint ) then {
   
 Case 65: { if (Wallet< H_HelmetB_plain_blk ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_plain_blk ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Combat Helmet (Black)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_plain_blk ]; 
    Wallet= (wallet -   H_HelmetB_plain_blk ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10374,7 +10391,7 @@ Case 65: { if (Wallet< H_HelmetB_plain_blk ) then {
   
 Case 66: { if (Wallet< H_HelmetB_plain_mcamo   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_plain_mcamo   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Combat Helmet (Camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_plain_mcamo   ]; 
    Wallet= (wallet -   H_HelmetB_plain_mcamo   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10386,7 +10403,7 @@ Case 66: { if (Wallet< H_HelmetB_plain_mcamo   ) then {
   
 Case 67: { if (Wallet< H_HelmetB_sand  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_sand  ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  ECH (Sand)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_sand  ]; 
    Wallet= (wallet -   H_HelmetB_sand  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10398,7 +10415,7 @@ Case 67: { if (Wallet< H_HelmetB_sand  ) then {
   
 Case 68: { if (Wallet< H_HelmetB_snakeskin ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetB_snakeskin ]; }else {   
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  ECH (Snakeskin) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetB_snakeskin ];  
    Wallet= (wallet -   H_HelmetB_snakeskin );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10410,7 +10427,7 @@ Case 68: { if (Wallet< H_HelmetB_snakeskin ) then {
   
 Case 69: { if (Wallet< H_HelmetCrew_B  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetCrew_B  ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Crew Helmet for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetCrew_B  ]; 
    Wallet= (wallet -   H_HelmetCrew_B  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10422,7 +10439,7 @@ Case 69: { if (Wallet< H_HelmetCrew_B  ) then {
   
 Case 70: { if (Wallet< H_HelmetCrew_I  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetCrew_I  ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Crew Helmet [AAF]   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetCrew_I  ]; 
    Wallet= (wallet -   H_HelmetCrew_I  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10434,7 +10451,7 @@ Case 70: { if (Wallet< H_HelmetCrew_I  ) then {
   
 Case 71: { if (Wallet< H_HelmetCrew_O  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetCrew_O  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Crew Helmet [CSAT]  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetCrew_O  ];  
    Wallet= (wallet -   H_HelmetCrew_O  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10446,7 +10463,7 @@ Case 71: { if (Wallet< H_HelmetCrew_O  ) then {
   
 Case 72: { if (Wallet< H_HelmetIA  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetIA  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MICHfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetIA  ];  
    Wallet= (wallet -   H_HelmetIA  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10458,7 +10475,7 @@ Case 72: { if (Wallet< H_HelmetIA  ) then {
   
 Case 73: { if (Wallet< H_HelmetIA_camo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetIA_camo ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MICH2 (Camo)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetIA_camo ];  
    Wallet= (wallet -   H_HelmetIA_camo );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10470,7 +10487,7 @@ Case 73: { if (Wallet< H_HelmetIA_camo ) then {
   
 Case 74: { if (Wallet< H_HelmetIA_net  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetIA_net  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  MICH (Camo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetIA_net  ];  
    Wallet= (wallet -   H_HelmetIA_net  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10482,7 +10499,7 @@ Case 74: { if (Wallet< H_HelmetIA_net  ) then {
   
 Case 75: { if (Wallet< H_HelmetLeaderO_ocamo   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetLeaderO_ocamo   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Defender Helmet (Hex)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetLeaderO_ocamo   ];  
    Wallet= (wallet -   H_HelmetLeaderO_ocamo   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10494,7 +10511,7 @@ Case 75: { if (Wallet< H_HelmetLeaderO_ocamo   ) then {
   
 Case 76: { if (Wallet< H_HelmetLeaderO_oucamo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetLeaderO_oucamo  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Defender Helmet (Urban) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetLeaderO_oucamo  ];  
    Wallet= (wallet -   H_HelmetLeaderO_oucamo  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10506,7 +10523,7 @@ Case 76: { if (Wallet< H_HelmetLeaderO_oucamo  ) then {
   
 Case 77: { if (Wallet< H_HelmetO_ocamo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetO_ocamo ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Protector Helmet (Hex)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetO_ocamo ];  
    Wallet= (wallet -   H_HelmetO_ocamo ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10518,7 +10535,7 @@ Case 77: { if (Wallet< H_HelmetO_ocamo ) then {
   
 Case 78: { if (Wallet< H_HelmetO_oucamo) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetO_oucamo]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Protector Helmet (Urban)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetO_oucamo];  
    Wallet= (wallet -   H_HelmetO_oucamo);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10530,7 +10547,7 @@ Case 78: { if (Wallet< H_HelmetO_oucamo) then {
   
 Case 79: { if (Wallet< H_HelmetSpecB   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecB   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  SF Helmet   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecB   ]; 
    Wallet= (wallet -   H_HelmetSpecB   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10542,7 +10559,7 @@ Case 79: { if (Wallet< H_HelmetSpecB   ) then {
   
 Case 80: { if (Wallet< H_HelmetSpecB_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecB_blk   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  SF Helmet (Black)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecB_blk   ];  
    Wallet= (wallet -   H_HelmetSpecB_blk   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10554,7 +10571,7 @@ Case 80: { if (Wallet< H_HelmetSpecB_blk   ) then {
   
 Case 81: { if (Wallet< H_HelmetSpecB_paint1) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecB_paint1]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  SF Helmet (LightÂ paint)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecB_paint1]; 
    Wallet= (wallet -   H_HelmetSpecB_paint1);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10566,7 +10583,7 @@ Case 81: { if (Wallet< H_HelmetSpecB_paint1) then {
   
 Case 82: { if (Wallet< H_HelmetSpecB_paint2) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecB_paint2]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  SF Helmet (DarkÂ paint) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecB_paint2]; 
    Wallet= (wallet -   H_HelmetSpecB_paint2);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10578,7 +10595,7 @@ Case 82: { if (Wallet< H_HelmetSpecB_paint2) then {
   
 Case 83: { if (Wallet< H_HelmetSpecO_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecO_blk   ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assassin Helmet (Black) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecO_blk   ]; 
    Wallet= (wallet -   H_HelmetSpecO_blk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10590,7 +10607,7 @@ Case 83: { if (Wallet< H_HelmetSpecO_blk   ) then {
   
 Case 84: { if (Wallet< H_HelmetSpecO_ocamo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_HelmetSpecO_ocamo ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assassin Helmet (Hex)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_HelmetSpecO_ocamo ]; 
    Wallet= (wallet -   H_HelmetSpecO_ocamo );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10602,7 +10619,7 @@ Case 84: { if (Wallet< H_HelmetSpecO_ocamo ) then {
   
 Case 85: { if (Wallet< H_MilCap_blue   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_blue   ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Blue Capfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_blue   ]; 
    Wallet= (wallet -   H_MilCap_blue   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10614,7 +10631,7 @@ Case 85: { if (Wallet< H_MilCap_blue   ) then {
   
 Case 86: { if (Wallet< H_MilCap_dgtl   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_dgtl   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Military Cap [AAF]  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_dgtl   ];  
    Wallet= (wallet -   H_MilCap_dgtl   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10626,7 +10643,7 @@ Case 86: { if (Wallet< H_MilCap_dgtl   ) then {
   
 Case 87: { if (Wallet< H_MilCap_gry) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_gry]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Military Cap (Gray) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_gry];  
    Wallet= (wallet -   H_MilCap_gry); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10638,7 +10655,7 @@ Case 87: { if (Wallet< H_MilCap_gry) then {
   
 Case 88: { if (Wallet< H_MilCap_mcamo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_mcamo  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Military Cap (MTP)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_mcamo  ]; 
    Wallet= (wallet -   H_MilCap_mcamo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10650,7 +10667,7 @@ Case 88: { if (Wallet< H_MilCap_mcamo  ) then {
   
 Case 89: { if (Wallet< H_MilCap_ocamo  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_ocamo  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Military Cap (Hex)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_ocamo  ]; 
    Wallet= (wallet -   H_MilCap_ocamo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10662,7 +10679,7 @@ Case 89: { if (Wallet< H_MilCap_ocamo  ) then {
   
 Case 90: { if (Wallet< H_MilCap_oucamo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_oucamo ]; }else {  
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  Military Cap (Urban)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_oucamo ]; 
    Wallet= (wallet -   H_MilCap_oucamo );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10674,7 +10691,7 @@ Case 90: { if (Wallet< H_MilCap_oucamo ) then {
   
 Case 91: { if (Wallet< H_MilCap_rucamo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_MilCap_rucamo ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Military Cap (Russia)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_MilCap_rucamo ];  
    Wallet= (wallet -   H_MilCap_rucamo ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10686,7 +10703,7 @@ Case 91: { if (Wallet< H_MilCap_rucamo ) then {
   
 Case 92: { if (Wallet< H_PilotHelmetFighter_B  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetFighter_B  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Pilot Helmet [NATO] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetFighter_B  ]; 
    Wallet= (wallet -   H_PilotHelmetFighter_B  );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10698,7 +10715,7 @@ Case 92: { if (Wallet< H_PilotHelmetFighter_B  ) then {
   
 Case 93: { if (Wallet< H_PilotHelmetFighter_I  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetFighter_I  ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Pilot Helmet [AAF]  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetFighter_I  ]; 
    Wallet= (wallet -   H_PilotHelmetFighter_I  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10709,7 +10726,7 @@ Case 93: { if (Wallet< H_PilotHelmetFighter_I  ) then {
   };
 Case 94: { if (Wallet< H_PilotHelmetFighter_O  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetFighter_O  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Pilot Helmet [CSAT] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetFighter_O  ]; 
    Wallet= (wallet -   H_PilotHelmetFighter_O  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10721,7 +10738,7 @@ Case 94: { if (Wallet< H_PilotHelmetFighter_O  ) then {
   
 Case 95: { if (Wallet< H_PilotHelmetHeli_B ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetHeli_B ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Heli Pilot Helmet [NATO]for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetHeli_B ]; 
    Wallet= (wallet -   H_PilotHelmetHeli_B );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10733,7 +10750,7 @@ Case 95: { if (Wallet< H_PilotHelmetHeli_B ) then {
   
 Case 96: { if (Wallet< H_PilotHelmetHeli_I ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetHeli_I ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Heli Pilot Helmet [AAF] for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetHeli_I ]; 
    Wallet= (wallet -   H_PilotHelmetHeli_I ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10745,7 +10762,7 @@ Case 96: { if (Wallet< H_PilotHelmetHeli_I ) then {
   
 Case 97: { if (Wallet< H_PilotHelmetHeli_O ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_PilotHelmetHeli_O ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Heli Pilot Helmet [CSAT]for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_PilotHelmetHeli_O ]; 
    Wallet= (wallet -   H_PilotHelmetHeli_O );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10757,7 +10774,7 @@ Case 97: { if (Wallet< H_PilotHelmetHeli_O ) then {
   
 Case 98: { if (Wallet< H_Shemag_khk) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Shemag_khk]; }else {   
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  Shemag mask (Khaki) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Shemag_khk]; 
   Wallet= (wallet -   H_Shemag_khk);
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10769,7 +10786,7 @@ Case 98: { if (Wallet< H_Shemag_khk) then {
  
 Case 99: { if (Wallet< H_Shemag_olive  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Shemag_olive  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Shemag (Olive)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Shemag_olive  ]; 
    Wallet= (wallet -   H_Shemag_olive  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10781,7 +10798,7 @@ Case 99: { if (Wallet< H_Shemag_olive  ) then {
   
 Case 100:   { if (Wallet< H_Shemag_olive_hs   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Shemag_olive_hs   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Shemag (Olive, Headset) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Shemag_olive_hs   ]; 
    Wallet= (wallet -   H_Shemag_olive_hs   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10793,7 +10810,7 @@ Case 100:   { if (Wallet< H_Shemag_olive_hs   ) then {
   
 Case 101:   { if (Wallet< H_Shemag_tan) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Shemag_tan]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Shemag mask (Tan)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Shemag_tan];  
    Wallet= (wallet -   H_Shemag_tan);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10805,7 +10822,7 @@ Case 101:   { if (Wallet< H_Shemag_tan) then {
   
 Case 102:   { if (Wallet< H_ShemagOpen_khk) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_ShemagOpen_khk]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Shemag (Khaki)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_ShemagOpen_khk]; 
    Wallet= (wallet -   H_ShemagOpen_khk); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10817,7 +10834,7 @@ Case 102:   { if (Wallet< H_ShemagOpen_khk) then {
   
 Case 103:   { if (Wallet< H_ShemagOpen_tan) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_ShemagOpen_tan]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Shemag (Tan)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_ShemagOpen_tan];  
    Wallet= (wallet -   H_ShemagOpen_tan); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10829,7 +10846,7 @@ Case 103:   { if (Wallet< H_ShemagOpen_tan) then {
   
 Case 104:   { if (Wallet< H_StrawHat  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_StrawHat  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Straw Hat   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_StrawHat  ];  
    Wallet= (wallet -   H_StrawHat  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10841,7 +10858,7 @@ Case 104:   { if (Wallet< H_StrawHat  ) then {
   
 Case 105:   { if (Wallet< H_StrawHat_dark ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_StrawHat_dark ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Straw hat (Dark)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_StrawHat_dark ]; 
    Wallet= (wallet -   H_StrawHat_dark ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10853,7 +10870,7 @@ Case 105:   { if (Wallet< H_StrawHat_dark ) then {
   
 Case 106:   { if (Wallet< H_TurbanO_blk   ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_TurbanO_blk   ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Black Turbanfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_TurbanO_blk   ]; 
    Wallet= (wallet -   H_TurbanO_blk   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10865,7 +10882,7 @@ Case 106:   { if (Wallet< H_TurbanO_blk   ) then {
   
 Case 107:   { if (Wallet< H_Watchcap_blk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Watchcap_blk  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Beanie  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Watchcap_blk  ]; 
    Wallet= (wallet -   H_Watchcap_blk  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10877,7 +10894,7 @@ Case 107:   { if (Wallet< H_Watchcap_blk  ) then {
   
 Case 108:   { if (Wallet< H_Watchcap_camo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Watchcap_camo ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Beanie (Camo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Watchcap_camo ];  
    Wallet= (wallet -   H_Watchcap_camo ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10889,7 +10906,7 @@ Case 108:   { if (Wallet< H_Watchcap_camo ) then {
   
 Case 109:   { if (Wallet< H_Watchcap_khk  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Watchcap_khk  ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Beanie (Khaki)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Watchcap_khk  ]; 
    Wallet= (wallet -   H_Watchcap_khk  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10901,7 +10918,7 @@ Case 109:   { if (Wallet< H_Watchcap_khk  ) then {
   
 Case 110:   { if (Wallet< H_Watchcap_sgg  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_Watchcap_sgg  ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Beanie (Sage)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",H_Watchcap_sgg  ]; 
    Wallet= (wallet -   H_Watchcap_sgg  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -10920,7 +10937,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhsusf_ach_bare ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Bare for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare ];
    Wallet= (wallet - rhsusf_ach_bare );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10932,7 +10949,7 @@ Case 0: { if (Wallet<rhsusf_ach_bare ) then {
   
 Case 1: { if (Wallet<rhsusf_ach_bare_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Bare W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_ess ];
    Wallet= (wallet - rhsusf_ach_bare_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10944,7 +10961,7 @@ Case 1: { if (Wallet<rhsusf_ach_bare_ess ) then {
   
 Case 2: { if (Wallet<rhsusf_ach_bare_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Bare W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_headset ];
    Wallet= (wallet - rhsusf_ach_bare_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10956,7 +10973,7 @@ Case 2: { if (Wallet<rhsusf_ach_bare_headset ) then {
   
 Case 3: { if (Wallet<rhsusf_ach_bare_headset_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_headset_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Bare W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_headset_ess ];
    Wallet= (wallet - rhsusf_ach_bare_headset_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10968,7 +10985,7 @@ Case 3: { if (Wallet<rhsusf_ach_bare_headset_ess ) then {
   
 Case 4: { if (Wallet<rhsusf_ach_bare_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_tan ];
    Wallet= (wallet - rhsusf_ach_bare_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10980,7 +10997,7 @@ Case 4: { if (Wallet<rhsusf_ach_bare_tan ) then {
   
 Case 5: { if (Wallet<rhsusf_ach_bare_tan_ess) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_tan_ess]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Tan W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_tan_ess];
    Wallet= (wallet - rhsusf_ach_bare_tan_ess);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -10992,7 +11009,7 @@ Case 5: { if (Wallet<rhsusf_ach_bare_tan_ess) then {
   
 Case 6: { if (Wallet<rhsusf_ach_bare_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_tan_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Tan W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_tan_headset ];
    Wallet= (wallet - rhsusf_ach_bare_tan_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11004,7 +11021,7 @@ Case 6: { if (Wallet<rhsusf_ach_bare_tan_headset ) then {
   
 Case 7: { if (Wallet<rhsusf_ach_bare_tan_headset_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_tan_headset_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Tan W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_tan_headset_ess ];
    Wallet= (wallet - rhsusf_ach_bare_tan_headset_ess );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11016,7 +11033,7 @@ Case 7: { if (Wallet<rhsusf_ach_bare_tan_headset_ess ) then {
   
 Case 8: { if (Wallet<rhsusf_ach_bare_wood ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_wood ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Wood for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_wood ];
    Wallet= (wallet - rhsusf_ach_bare_wood );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11028,7 +11045,7 @@ Case 8: { if (Wallet<rhsusf_ach_bare_wood ) then {
   
 Case 9: { if (Wallet<rhsusf_ach_bare_wood_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_wood_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Wood W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_wood_ess ];
    Wallet= (wallet - rhsusf_ach_bare_wood_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11039,7 +11056,7 @@ Case 9: { if (Wallet<rhsusf_ach_bare_wood_ess ) then {
   }; 
 Case 10: { if (Wallet<rhsusf_ach_bare_wood_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_wood_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Wood W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_wood_headset ];
    Wallet= (wallet - rhsusf_ach_bare_wood_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11051,7 +11068,7 @@ Case 10: { if (Wallet<rhsusf_ach_bare_wood_headset ) then {
   
 Case 11: { if (Wallet<rhsusf_ach_bare_wood_headset_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_wood_headset_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Wood W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_wood_headset_ess ];
    Wallet= (wallet - rhsusf_ach_bare_wood_headset_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11063,7 +11080,7 @@ Case 11: { if (Wallet<rhsusf_ach_bare_wood_headset_ess ) then {
   
 Case 12: { if (Wallet<rhsusf_ach_bare_des) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_des]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Desert for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_des];
    Wallet= (wallet - rhsusf_ach_bare_des);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11075,7 +11092,7 @@ Case 12: { if (Wallet<rhsusf_ach_bare_des) then {
   
 Case 13: { if (Wallet<rhsusf_ach_bare_des_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_des_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Desert W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_des_ess ];
    Wallet= (wallet - rhsusf_ach_bare_des_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11087,7 +11104,7 @@ Case 13: { if (Wallet<rhsusf_ach_bare_des_ess ) then {
   
 Case 14: { if (Wallet<rhsusf_ach_bare_des_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_des_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Desert W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_des_headset ];
    Wallet= (wallet - rhsusf_ach_bare_des_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11099,7 +11116,7 @@ Case 14: { if (Wallet<rhsusf_ach_bare_des_headset ) then {
   
 Case 15: { if (Wallet<rhsusf_ach_bare_des_headset_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_des_headset_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Desert W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_des_headset_ess ];
    Wallet= (wallet - rhsusf_ach_bare_des_headset_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11110,7 +11127,7 @@ Case 15: { if (Wallet<rhsusf_ach_bare_des_headset_ess ) then {
   
 Case 16: { if (Wallet<rhsusf_ach_bare_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_semi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Semi-Arid for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_semi ];
    Wallet= (wallet - rhsusf_ach_bare_semi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11122,7 +11139,7 @@ Case 16: { if (Wallet<rhsusf_ach_bare_semi ) then {
   
 Case 17: { if (Wallet<rhsusf_ach_bare_semi_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_semi_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Semi-Arid W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_semi_ess ];
    Wallet= (wallet - rhsusf_ach_bare_semi_ess );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11134,7 +11151,7 @@ Case 17: { if (Wallet<rhsusf_ach_bare_semi_ess ) then {
   
 Case 18: { if (Wallet<rhsusf_ach_bare_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_semi_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH Semi-Arid W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_semi_headset ];
    Wallet= (wallet - rhsusf_ach_bare_semi_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11146,7 +11163,7 @@ Case 18: { if (Wallet<rhsusf_ach_bare_semi_headset ) then {
   
 Case 19: { if (Wallet<rhsusf_ach_bare_semi_headset_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_bare_semi_headset_ess ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered ACH Semi-Arid W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_bare_semi_headset_ess ];
   Wallet= (wallet - rhsusf_ach_bare_semi_headset_ess );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11158,7 +11175,7 @@ Case 19: { if (Wallet<rhsusf_ach_bare_semi_headset_ess ) then {
   
 Case 20: { if (Wallet<rhsusf_ach_helmet_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH UCP for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_ucp ];
    Wallet= (wallet - rhsusf_ach_helmet_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11170,7 +11187,7 @@ Case 20: { if (Wallet<rhsusf_ach_helmet_ucp ) then {
   
 Case 21: { if (Wallet<rhsusf_ach_helmet_ess_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_ess_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH UCP W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_ess_ucp ];
    Wallet= (wallet - rhsusf_ach_helmet_ess_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11182,7 +11199,7 @@ Case 21: { if (Wallet<rhsusf_ach_helmet_ess_ucp ) then {
   
 Case 22: { if (Wallet<rhsusf_ach_helmet_headset_ucp) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_headset_ucp]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH UCP W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_headset_ucp];
    Wallet= (wallet - rhsusf_ach_helmet_headset_ucp);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11194,7 +11211,7 @@ Case 22: { if (Wallet<rhsusf_ach_helmet_headset_ucp) then {
   
 Case 23: { if (Wallet<rhsusf_ach_helmet_headset_ess_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_headset_ess_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH UCP W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_headset_ess_ucp ];
    Wallet= (wallet - rhsusf_ach_helmet_headset_ess_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11206,7 +11223,7 @@ Case 23: { if (Wallet<rhsusf_ach_helmet_headset_ess_ucp ) then {
   
 Case 24: { if (Wallet<rhsusf_ach_helmet_ocp ) then {
 Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_ocp ]; } else {
- PlaySound "buy";
+ PlaySound "A3M_buy";
  Hint format ["You have ordered ACH OCP for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_ocp ];
  Wallet= (wallet - rhsusf_ach_helmet_ocp );
  profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11218,7 +11235,7 @@ Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Pl
  
 Case 25: { if (Wallet<rhsusf_ach_helmet_camo_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_camo_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH OCP Camofor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_camo_ocp ];
    Wallet= (wallet - rhsusf_ach_helmet_camo_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11230,7 +11247,7 @@ Case 25: { if (Wallet<rhsusf_ach_helmet_camo_ocp ) then {
   
 Case 26: { if (Wallet<rhsusf_ach_helmet_ess_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_ess_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH OCP W/ ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_ess_ocp ];
    Wallet= (wallet - rhsusf_ach_helmet_ess_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11242,7 +11259,7 @@ Case 26: { if (Wallet<rhsusf_ach_helmet_ess_ocp ) then {
   
 Case 27: { if (Wallet<rhsusf_ach_helmet_headset_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_headset_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH OCP W/ Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_headset_ocp ];
    Wallet= (wallet - rhsusf_ach_helmet_headset_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11254,7 +11271,7 @@ Case 27: { if (Wallet<rhsusf_ach_helmet_headset_ocp ) then {
   
 Case 28: { if (Wallet<rhsusf_ach_helmet_headset_ess_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_headset_ess_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACH OCP W/ Headset+ESSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_headset_ess_ocp ];
    Wallet= (wallet - rhsusf_ach_helmet_headset_ess_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11266,7 +11283,7 @@ Case 28: { if (Wallet<rhsusf_ach_helmet_headset_ess_ocp ) then {
   
 Case 29: { if (Wallet<rhsusf_ach_helmet_m81 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ach_helmet_m81 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M81for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ach_helmet_m81 ];
    Wallet= (wallet - rhsusf_ach_helmet_m81 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11278,7 +11295,7 @@ Case 29: { if (Wallet<rhsusf_ach_helmet_m81 ) then {
   
 Case 30: { if (Wallet<rhsusf_mich_bare ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Clean for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare ];
    Wallet= (wallet - rhsusf_mich_bare );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11290,7 +11307,7 @@ Case 30: { if (Wallet<rhsusf_mich_bare ) then {
   
 Case 31: { if (Wallet<rhsusf_mich_bare_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_headset ];
    Wallet= (wallet - rhsusf_mich_bare_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11302,7 +11319,7 @@ Case 31: { if (Wallet<rhsusf_mich_bare_headset ) then {
   
 Case 32: { if (Wallet<rhsusf_mich_bare_alt ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_alt ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Alternative for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_alt ];
    Wallet= (wallet - rhsusf_mich_bare_alt );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11314,7 +11331,7 @@ Case 32: { if (Wallet<rhsusf_mich_bare_alt ) then {
   
 Case 33: { if (Wallet<rhsusf_mich_bare_norotos ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos ];
    Wallet= (wallet - rhsusf_mich_bare_norotos );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11326,7 +11343,7 @@ Case 33: { if (Wallet<rhsusf_mich_bare_norotos ) then {
   
 Case 34: { if (Wallet<rhsusf_mich_bare_norotos_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11338,7 +11355,7 @@ Case 34: { if (Wallet<rhsusf_mich_bare_norotos_headset ) then {
   
 Case 35: { if (Wallet<rhsusf_mich_bare_norotos_alt ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_alt );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11350,7 +11367,7 @@ Case 35: { if (Wallet<rhsusf_mich_bare_norotos_alt ) then {
   
 Case 36: { if (Wallet<rhsusf_mich_bare_norotos_alt_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt_headset ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt_headset ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_alt_headset );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11362,7 +11379,7 @@ Case 36: { if (Wallet<rhsusf_mich_bare_norotos_alt_headset ) then {
  
 Case 37: { if (Wallet<rhsusf_mich_bare_norotos_arc ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Arc for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11374,7 +11391,7 @@ Case 37: { if (Wallet<rhsusf_mich_bare_norotos_arc ) then {
   
 Case 38: { if (Wallet<rhsusf_mich_bare_norotos_arc_headset ) then {
  Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_headset ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Arc / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_headset ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_arc_headset );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11386,7 +11403,7 @@ Case 38: { if (Wallet<rhsusf_mich_bare_norotos_arc_headset ) then {
  
 Case 39: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Arc / Alt for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11398,7 +11415,7 @@ Case 39: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt ) then {
   
 Case 40: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Olive) Norotos / Arc / Alt / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11410,7 +11427,7 @@ Case 40: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_headset ) then {
   
 Case 41: { if (Wallet<rhsusf_mich_bare_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Clean for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_tan ];
    Wallet= (wallet - rhsusf_mich_bare_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11422,7 +11439,7 @@ Case 41: { if (Wallet<rhsusf_mich_bare_tan ) then {
   
 Case 42: { if (Wallet<rhsusf_mich_bare_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_tan_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_tan_headset ];
    Wallet= (wallet - rhsusf_mich_bare_tan_headset );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11434,7 +11451,7 @@ Case 42: { if (Wallet<rhsusf_mich_bare_tan_headset ) then {
   
 Case 43: { if (Wallet<rhsusf_mich_bare_alt_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_alt_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Alternative for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_alt_tan ];
    Wallet= (wallet - rhsusf_mich_bare_alt_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11446,7 +11463,7 @@ Case 43: { if (Wallet<rhsusf_mich_bare_alt_tan ) then {
   
 Case 44: { if (Wallet<rhsusf_mich_bare_norotos_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_tan ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11458,7 +11475,7 @@ Case 44: { if (Wallet<rhsusf_mich_bare_norotos_tan ) then {
   
 Case 45: { if (Wallet<rhsusf_mich_bare_norotos_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_tan_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_tan_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_tan_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11470,7 +11487,7 @@ Case 45: { if (Wallet<rhsusf_mich_bare_norotos_tan_headset ) then {
   
 Case 46: { if (Wallet<rhsusf_mich_bare_norotos_alt_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt_tan ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt_tan ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_alt_tan );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11482,7 +11499,7 @@ Case 46: { if (Wallet<rhsusf_mich_bare_norotos_alt_tan ) then {
  
 Case 47: { if (Wallet<rhsusf_mich_bare_norotos_alt_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt_tan_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt_tan_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_alt_tan_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11494,7 +11511,7 @@ Case 47: { if (Wallet<rhsusf_mich_bare_norotos_alt_tan_headset ) then {
   
 Case 48: { if (Wallet<rhsusf_mich_bare_norotos_arc_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Arc for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_tan ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11506,7 +11523,7 @@ Case 48: { if (Wallet<rhsusf_mich_bare_norotos_arc_tan ) then {
   
 Case 49: { if (Wallet<rhsusf_mich_bare_norotos_arc_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_tan_headset ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Arc / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_tan_headset ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_arc_tan_headset );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11518,7 +11535,7 @@ Case 49: { if (Wallet<rhsusf_mich_bare_norotos_arc_tan_headset ) then {
  
 Case 50: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt_tan ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Arc / Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt_tan ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt_tan );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11530,7 +11547,7 @@ Case 50: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_tan ) then {
  
 Case 51: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_tan_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt_tan_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Tan) Norotos / Arc / Alt / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt_tan_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt_tan_headset );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11540,7 +11557,7 @@ Case 51: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_tan_headset ) then {
   }; 
 Case 52: { if (Wallet<rhsusf_mich_bare_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_semi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Clean for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_semi ];
    Wallet= (wallet - rhsusf_mich_bare_semi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11552,7 +11569,7 @@ Case 52: { if (Wallet<rhsusf_mich_bare_semi ) then {
   
 Case 53: { if (Wallet<rhsusf_mich_bare_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_semi_headset ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_semi_headset ];
   Wallet= (wallet - rhsusf_mich_bare_semi_headset );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11564,7 +11581,7 @@ Case 53: { if (Wallet<rhsusf_mich_bare_semi_headset ) then {
  
 Case 54: { if (Wallet<rhsusf_mich_bare_alt_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_alt_semi ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Alternative for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_alt_semi ];
   Wallet= (wallet - rhsusf_mich_bare_alt_semi );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11576,7 +11593,7 @@ Case 54: { if (Wallet<rhsusf_mich_bare_alt_semi ) then {
   
 Case 55: { if (Wallet<rhsusf_mich_bare_norotos_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_semi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_semi ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_semi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11588,7 +11605,7 @@ Case 55: { if (Wallet<rhsusf_mich_bare_norotos_semi ) then {
   
 Case 56: { if (Wallet<rhsusf_mich_bare_norotos_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_semi_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_semi_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_semi_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11600,7 +11617,7 @@ Case 56: { if (Wallet<rhsusf_mich_bare_norotos_semi_headset ) then {
   
 Case 57: { if (Wallet<rhsusf_mich_bare_norotos_alt_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt_semi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Alternative for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt_semi ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_alt_semi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11612,7 +11629,7 @@ Case 57: { if (Wallet<rhsusf_mich_bare_norotos_alt_semi ) then {
   
 Case 58: { if (Wallet<rhsusf_mich_bare_norotos_alt_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_alt_semi_headset ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Alternative for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_alt_semi_headset ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_alt_semi_headset );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11624,7 +11641,7 @@ Case 58: { if (Wallet<rhsusf_mich_bare_norotos_alt_semi_headset ) then {
  
 Case 59: { if (Wallet<rhsusf_mich_bare_norotos_arc_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_semi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Arc for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_semi ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_semi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11636,7 +11653,7 @@ Case 59: { if (Wallet<rhsusf_mich_bare_norotos_arc_semi ) then {
   
 Case 60: { if (Wallet<rhsusf_mich_bare_norotos_arc_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_semi_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Arc / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_semi_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_semi_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11648,7 +11665,7 @@ Case 60: { if (Wallet<rhsusf_mich_bare_norotos_arc_semi_headset ) then {
    
 Case 61: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_semi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt_semi ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Arc / Alt for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt_semi ];
   Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt_semi );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11660,7 +11677,7 @@ Case 61: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_semi ) then {
  
 Case 62: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_semi_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_bare_norotos_arc_alt_semi_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (Semi-Arid) Norotos / Arc / Alt / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_bare_norotos_arc_alt_semi_headset ];
    Wallet= (wallet - rhsusf_mich_bare_norotos_arc_alt_semi_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11672,7 +11689,7 @@ Case 62: { if (Wallet<rhsusf_mich_bare_norotos_arc_alt_semi_headset ) then {
   
 Case 63: { if (Wallet<rhsusf_mich_helmet_marpatwd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland) Clean for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11684,7 +11701,7 @@ Case 63: { if (Wallet<rhsusf_mich_helmet_marpatwd ) then {
   
 Case 64: { if (Wallet<rhsusf_mich_helmet_marpatwd_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_headset ]; } else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland) Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11696,7 +11713,7 @@ Case 64: { if (Wallet<rhsusf_mich_helmet_marpatwd_headset ) then {
   
 Case 65: { if (Wallet<rhsusf_mich_helmet_marpatwd_alt ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_alt ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland)  Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_alt ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_alt );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11708,7 +11725,7 @@ Case 65: { if (Wallet<rhsusf_mich_helmet_marpatwd_alt ) then {
   
 Case 66: { if (Wallet<rhsusf_mich_helmet_marpatwd_alt_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_alt_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland)  Alt / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_alt_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_alt_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11720,7 +11737,7 @@ Case 66: { if (Wallet<rhsusf_mich_helmet_marpatwd_alt_headset ) then {
   
 Case 67: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_norotos ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland)  Norotosfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_norotos ];
   Wallet= (wallet - rhsusf_mich_helmet_marpatwd_norotos );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11732,7 +11749,7 @@ Case 67: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos ) then {
   
 Case 68: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_norotos_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland) Norotos / Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_norotos_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_norotos_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11744,7 +11761,7 @@ Case 68: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_headset ) then {
   
 Case 69: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_arc ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_norotos_arc ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland) Norotos / Arc for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_norotos_arc ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_norotos_arc );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11756,7 +11773,7 @@ Case 69: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_arc ) then {
   
 Case 70: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_arc_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatwd_norotos_arc_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Woodland) Norotos / Arc / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatwd_norotos_arc_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatwd_norotos_arc_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11768,7 +11785,7 @@ Case 70: { if (Wallet<rhsusf_mich_helmet_marpatwd_norotos_arc_headset ) then {
    
 Case 71: { if (Wallet<rhsusf_mich_helmet_marpatd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert) Clean for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11780,7 +11797,7 @@ Case 71: { if (Wallet<rhsusf_mich_helmet_marpatd ) then {
   
 Case 72: { if (Wallet<rhsusf_mich_helmet_marpatd_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert) Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11792,7 +11809,7 @@ Case 72: { if (Wallet<rhsusf_mich_helmet_marpatd_headset ) then {
   
 Case 73: { if (Wallet<rhsusf_mich_helmet_marpatd_alt ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_alt ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert)  Altfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_alt ];
   Wallet= (wallet - rhsusf_mich_helmet_marpatd_alt );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11804,7 +11821,7 @@ Case 73: { if (Wallet<rhsusf_mich_helmet_marpatd_alt ) then {
  
 Case 74: { if (Wallet<rhsusf_mich_helmet_marpatd_alt_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_alt_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert)  Alt / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_alt_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_alt_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11816,7 +11833,7 @@ Case 74: { if (Wallet<rhsusf_mich_helmet_marpatd_alt_headset ) then {
   
 Case 75: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_norotos ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert)  Norotosfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_norotos ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_norotos );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11828,7 +11845,7 @@ Case 75: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos ) then {
   
 Case 76: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_norotos_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert) Norotos / Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_norotos_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_norotos_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11840,7 +11857,7 @@ Case 76: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_headset ) then {
   
 Case 77: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_arc ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_norotos_arc ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert) Norotos / Arc for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_norotos_arc ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_norotos_arc );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11852,7 +11869,7 @@ Case 77: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_arc ) then {
   
 Case 78: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_arc_headset ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_mich_helmet_marpatd_norotos_arc_headset ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered MICH 2000 Bare (MARPAT Desert) Norotos / Arc / Headset for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_mich_helmet_marpatd_norotos_arc_headset ];
    Wallet= (wallet - rhsusf_mich_helmet_marpatd_norotos_arc_headset );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11864,7 +11881,7 @@ Case 78: { if (Wallet<rhsusf_mich_helmet_marpatd_norotos_arc_headset ) then {
   
 Case 79: { if (Wallet<rhsusf_opscore_02 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_02 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OPS CORE Bare for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_02 ];
    Wallet= (wallet - rhsusf_opscore_02 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11876,7 +11893,7 @@ Case 79: { if (Wallet<rhsusf_opscore_02 ) then {
   
 Case 80: { if (Wallet<rhsusf_opscore_01 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_01 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OPS CORE Bare (Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_01 ];
    Wallet= (wallet - rhsusf_opscore_01 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11888,7 +11905,7 @@ Case 80: { if (Wallet<rhsusf_opscore_01 ) then {
   
 Case 81: { if (Wallet<rhsusf_opscore_02_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_02_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OPS CORE Tanfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_02_tan ];
    Wallet= (wallet - rhsusf_opscore_02_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11900,7 +11917,7 @@ Case 81: { if (Wallet<rhsusf_opscore_02_tan ) then {
   
 Case 82: { if (Wallet<rhsusf_opscore_01_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_01_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OPS CORE Tan (Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_01_tan ];
    Wallet= (wallet - rhsusf_opscore_01_tan );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11912,7 +11929,7 @@ Case 82: { if (Wallet<rhsusf_opscore_01_tan ) then {
   
 Case 83: { if (Wallet<rhsusf_opscore_04_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_04_ocp ]; } else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered OPS CORE OCPfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_04_ocp ];
    Wallet= (wallet - rhsusf_opscore_04_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11924,7 +11941,7 @@ Case 83: { if (Wallet<rhsusf_opscore_04_ocp ) then {
   
 Case 84: { if (Wallet<rhsusf_opscore_03_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_opscore_03_ocp ]; } else {
-    PlaySound "buy";
+    PlaySound "A3M_buy";
     Hint format ["You have ordered OPS CORE OCP (Headset)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_opscore_03_ocp ];
     Wallet= (wallet - rhsusf_opscore_03_ocp );
     profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11936,7 +11953,7 @@ Case 84: { if (Wallet<rhsusf_opscore_03_ocp ) then {
    
 Case 85: { if (Wallet<rhs_Booniehat_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Boonie Hat UCPfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_ucp ];
    Wallet= (wallet - rhs_Booniehat_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11947,7 +11964,7 @@ Case 85: { if (Wallet<rhs_Booniehat_ucp ) then {
   
 Case 86: { if (Wallet<rhs_Booniehat_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Boonie Hat OCPfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_ocp ];
    Wallet= (wallet - rhs_Booniehat_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -11959,7 +11976,7 @@ Case 86: { if (Wallet<rhs_Booniehat_ocp ) then {
   
 Case 87: { if (Wallet<rhs_Booniehat_marpatwd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_marpatwd ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Boonie Hat MARPAT (Woodland)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_marpatwd ];
   Wallet= (wallet - rhs_Booniehat_marpatwd );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11971,7 +11988,7 @@ Case 87: { if (Wallet<rhs_Booniehat_marpatwd ) then {
  
 Case 88: { if (Wallet<rhs_Booniehat_marpatd ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_marpatd ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Boonie Hat MARPAT (Desert)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_marpatd ];
    Wallet= (wallet - rhs_Booniehat_marpatd );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11983,7 +12000,7 @@ Case 88: { if (Wallet<rhs_Booniehat_marpatd ) then {
   
 Case 89: { if (Wallet<rhs_Booniehat_m81 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_m81 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M81for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_m81 ];
    Wallet= (wallet - rhs_Booniehat_m81 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -11995,7 +12012,7 @@ Case 89: { if (Wallet<rhs_Booniehat_m81 ) then {
   
 Case 90: { if (Wallet<rhsusf_Bowman ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_Bowman ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Bowman Headsetfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_Bowman ];
    Wallet= (wallet - rhsusf_Bowman );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12007,7 +12024,7 @@ Case 90: { if (Wallet<rhsusf_Bowman ) then {
   
 Case 91: { if (Wallet<rhsusf_bowman_cap ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_bowman_cap ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Bowman Headset w/ Capfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_bowman_cap ];
    Wallet= (wallet - rhsusf_bowman_cap );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12019,7 +12036,7 @@ Case 91: { if (Wallet<rhsusf_bowman_cap ) then {
   
 Case 92: { if (Wallet<rhsusf_patrolcap_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_patrolcap_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Patrol Cap (UCP)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_patrolcap_ucp ];
    Wallet= (wallet - rhsusf_patrolcap_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12031,7 +12048,7 @@ Case 92: { if (Wallet<rhsusf_patrolcap_ucp ) then {
   
 Case 93: { if (Wallet<rhsusf_patrolcap_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_patrolcap_ocp ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Patrol Cap (OCP)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_patrolcap_ocp ];
   Wallet= (wallet - rhsusf_patrolcap_ocp );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12043,7 +12060,7 @@ Case 93: { if (Wallet<rhsusf_patrolcap_ocp ) then {
  
 Case 94: { if (Wallet<rhsusf_cvc_helmet ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_cvc_helmet ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet CVC Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_cvc_helmet ];
    Wallet= (wallet - rhsusf_cvc_helmet );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12055,7 +12072,7 @@ Case 94: { if (Wallet<rhsusf_cvc_helmet ) then {
    
 Case 95: { if (Wallet<rhsusf_cvc_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_cvc_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet CVC Tan (ESS) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_cvc_ess ];
    Wallet= (wallet - rhsusf_cvc_ess );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12067,7 +12084,7 @@ Case 95: { if (Wallet<rhsusf_cvc_ess ) then {
   
 Case 96: { if (Wallet<rhsusf_cvc_green_helmet ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_cvc_green_helmet ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet CVC Green for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_cvc_green_helmet ];
    Wallet= (wallet - rhsusf_cvc_green_helmet );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12079,7 +12096,7 @@ Case 96: { if (Wallet<rhsusf_cvc_green_helmet ) then {
   
 Case 97: { if (Wallet<rhsusf_cvc_green_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_cvc_green_ess ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Tank Helmet CVC Green (ESS) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_cvc_green_ess ];
   Wallet= (wallet - rhsusf_cvc_green_ess );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12091,7 +12108,7 @@ Case 97: { if (Wallet<rhsusf_cvc_green_ess ) then {
  
 Case 98: { if (Wallet<PilotHelmetHeli) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", PilotHelmetHeli]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Pilot/Crew Helmet HGU-56/Pfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", PilotHelmetHeli];
    Wallet= (wallet - PilotHelmetHeli);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12103,7 +12120,7 @@ Case 98: { if (Wallet<PilotHelmetHeli) then {
   
 Case 99: { if (Wallet<H_CrewHelmetHeli_B ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", H_CrewHelmetHeli_B ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Pilot/Crew Helmet HGU-56/P (Mask)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", H_CrewHelmetHeli_B ];
    Wallet= (wallet - H_CrewHelmetHeli_B );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12115,7 +12132,7 @@ Case 99: { if (Wallet<H_CrewHelmetHeli_B ) then {
   
 Case 100: { if (Wallet<rhs_balaclava ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_balaclava ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Balaclavafor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_balaclava ];
    Wallet= (wallet - rhs_balaclava );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12127,7 +12144,7 @@ Case 100: { if (Wallet<rhs_balaclava ) then {
   
 Case 101: { if (Wallet<rhs_scarf ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_scarf ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Scarffor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_scarf ];
   Wallet= (wallet - rhs_scarf );
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12138,7 +12155,7 @@ Case 101: { if (Wallet<rhs_scarf ) then {
  }; 
 Case 102: { if (Wallet<rhs_6b27m_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Plain for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_green ];
    Wallet= (wallet - rhs_6b27m_green );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12150,7 +12167,7 @@ Case 102: { if (Wallet<rhs_6b27m_green ) then {
   
 Case 103: { if (Wallet<rhs_6b27m_green_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_green_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Plain ( Goggles ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_green_ess ];
    Wallet= (wallet - rhs_6b27m_green_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12162,7 +12179,7 @@ Case 103: { if (Wallet<rhs_6b27m_green_ess ) then {
   
 Case 104: { if (Wallet<rhs_6b27m_green_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_green_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Plain ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_green_bala ];
    Wallet= (wallet - rhs_6b27m_green_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12174,7 +12191,7 @@ Case 104: { if (Wallet<rhs_6b27m_green_bala ) then {
   
 Case 105: { if (Wallet<rhs_6b27m_green_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_green_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Plain ( Goggles and Balaclava )for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_green_ess_bala ];
    Wallet= (wallet - rhs_6b27m_green_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12186,7 +12203,7 @@ Case 105: { if (Wallet<rhs_6b27m_green_ess_bala ) then {
   
 Case 106: { if (Wallet<rhs_6b27m ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m ]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Helmet 6B27M Flora for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m ];
   Wallet= (wallet - rhs_6b27m );
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12198,7 +12215,7 @@ Case 106: { if (Wallet<rhs_6b27m ) then {
  
 Case 107: { if (Wallet<rhs_6b27m_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Flora ( Googles ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_ess ];
    Wallet= (wallet - rhs_6b27m_ess );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12210,7 +12227,7 @@ Case 107: { if (Wallet<rhs_6b27m_ess ) then {
   
 Case 108: { if (Wallet<rhs_6b27m_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Flora ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_bala ];
    Wallet= (wallet - rhs_6b27m_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12222,7 +12239,7 @@ Case 108: { if (Wallet<rhs_6b27m_bala ) then {
   
 Case 109: { if (Wallet<rhs_6b27m_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Flora ( Goggles and Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_ess_bala ];
    Wallet= (wallet - rhs_6b27m_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12234,7 +12251,7 @@ Case 109: { if (Wallet<rhs_6b27m_ess_bala ) then {
   
 Case 110: { if (Wallet<rhs_6b27m_digi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_digi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M EMR-Summer‏ for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_digi ];
    Wallet= (wallet - rhs_6b27m_digi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12246,7 +12263,7 @@ Case 110: { if (Wallet<rhs_6b27m_digi ) then {
   
 Case 111: { if (Wallet<rhs_6b27m_digi_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_digi_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M EMR-Summer‏ ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_digi_bala ];
    Wallet= (wallet - rhs_6b27m_digi_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12258,7 +12275,7 @@ Case 111: { if (Wallet<rhs_6b27m_digi_bala ) then {
   
 Case 112: { if (Wallet<rhs_6b27m_ml ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b27m_ml ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B27M Mountain Les for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b27m_ml ];Wallet= (wallet - rhs_6b27m_ml );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
    SaveProfileNamespace;
@@ -12269,7 +12286,7 @@ Case 112: { if (Wallet<rhs_6b27m_ml ) then {
   
 Case 113: { if (Wallet<rhs_6b28_green ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_green ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Plain for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_green ];
    Wallet= (wallet - rhs_6b28_green );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12279,7 +12296,7 @@ Case 113: { if (Wallet<rhs_6b28_green ) then {
   
 Case 114: { if (Wallet<rhs_6b28_green_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_green_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Plain ( Goggles ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_green_ess ];
    Wallet= (wallet - rhs_6b28_green_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12291,7 +12308,7 @@ Case 114: { if (Wallet<rhs_6b28_green_ess ) then {
   
 Case 115: { if (Wallet<rhs_6b28_green_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_green_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Plain ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_green_bala ];
    Wallet= (wallet - rhs_6b28_green_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12303,7 +12320,7 @@ Case 115: { if (Wallet<rhs_6b28_green_bala ) then {
   
 Case 116: { if (Wallet<rhs_6b28_green_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_green_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Plain ( Goggles and Balaclava )for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_green_ess_bala ];
    Wallet= (wallet - rhs_6b28_green_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12315,7 +12332,7 @@ Case 116: { if (Wallet<rhs_6b28_green_ess_bala ) then {
   
 Case 117: { if (Wallet<rhs_6b28 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 EMR-Summer‏ for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28 ];
    Wallet= (wallet - rhs_6b28 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12327,7 +12344,7 @@ Case 117: { if (Wallet<rhs_6b28 ) then {
   
 Case 118: { if (Wallet<rhs_6b28_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 EMR-Summer‏  ( Googles ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_ess ];
    Wallet= (wallet - rhs_6b28_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12339,7 +12356,7 @@ Case 118: { if (Wallet<rhs_6b28_ess ) then {
   
 Case 119: { if (Wallet<rhs_6b28_bala) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_bala]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 EMR-Summer‏  ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_bala];
    Wallet= (wallet - rhs_6b28_bala);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12350,7 +12367,7 @@ Case 119: { if (Wallet<rhs_6b28_bala) then {
   }; 
 Case 120: { if (Wallet<rhs_6b28_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 EMR-Summer‏  ( Goggles and Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_ess_bala ];
    Wallet= (wallet - rhs_6b28_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12362,7 +12379,7 @@ Case 120: { if (Wallet<rhs_6b28_ess_bala ) then {
   
 Case 121: { if (Wallet<rhs_6b28_flora ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_flora ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Florafor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_flora ];
    Wallet= (wallet - rhs_6b28_flora );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12374,7 +12391,7 @@ Case 121: { if (Wallet<rhs_6b28_flora ) then {
   
 Case 122: { if (Wallet<rhs_6b28_flora_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_flora_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Flora (Goggles) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_flora_ess ];
    Wallet= (wallet - rhs_6b28_flora_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12386,7 +12403,7 @@ Case 122: { if (Wallet<rhs_6b28_flora_ess ) then {
   
 Case 123: { if (Wallet<rhs_6b28_flora_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_flora_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Helmet 6B28 Flora (Balaclava)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_flora_bala ];
    Wallet= (wallet - rhs_6b28_flora_bala );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12398,7 +12415,7 @@ Case 123: { if (Wallet<rhs_6b28_flora_bala ) then {
   
 Case 124: { if (Wallet<rhs_6b28_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_6b28_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Flora ( Googles and Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_6b28_ess_bala ];
    Wallet= (wallet - rhs_6b28_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12410,7 +12427,7 @@ Case 124: { if (Wallet<rhs_6b28_ess_bala ) then {
   
 Case 125: { if (Wallet<rhs_Booniehat_flora ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_flora ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Boonie Hat (Flora) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_flora ];
    Wallet= (wallet - rhs_Booniehat_flora );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12422,7 +12439,7 @@ Case 125: { if (Wallet<rhs_Booniehat_flora ) then {
   
 Case 126: { if (Wallet<rhs_Booniehat_digi ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_Booniehat_digi ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Boonie Hat (EMR-Summer) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_Booniehat_digi ];
    Wallet= (wallet - rhs_Booniehat_digi );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12434,7 +12451,7 @@ Case 126: { if (Wallet<rhs_Booniehat_digi ) then {
   
 Case 127: { if (Wallet<rhs_beanie ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_beanie ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Beanie Florafor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_beanie ];
    Wallet= (wallet - rhs_beanie );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12446,7 +12463,7 @@ Case 127: { if (Wallet<rhs_beanie ) then {
   
 Case 128: { if (Wallet<rhs_beanie_green) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_beanie_green]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Beaniefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_beanie_green];
    Wallet= (wallet - rhs_beanie_green);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12458,7 +12475,7 @@ Case 128: { if (Wallet<rhs_beanie_green) then {
   
 Case 129: { if (Wallet<rhs_tsh4 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_tsh4 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet TSh-4for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_tsh4 ];
    Wallet= (wallet - rhs_tsh4 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12470,7 +12487,7 @@ Case 129: { if (Wallet<rhs_tsh4 ) then {
   
 Case 130: { if (Wallet<rhs_tsh4_ess ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_tsh4_ess ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet TSh-4  ( Googles ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_tsh4_ess ];
    Wallet= (wallet - rhs_tsh4_ess );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12482,7 +12499,7 @@ Case 130: { if (Wallet<rhs_tsh4_ess ) then {
   
 Case 131: { if (Wallet<rhs_tsh4_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_tsh4_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet TSh-4  ( Balaclava ) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_tsh4_bala ];
    Wallet= (wallet - rhs_tsh4_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12494,7 +12511,7 @@ Case 131: { if (Wallet<rhs_tsh4_bala ) then {
   
 Case 132: { if (Wallet<rhs_tsh4_ess_bala ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_tsh4_ess_bala ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tank Helmet TSh-4 ( Googles and Balaclava )for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_tsh4_ess_bala ];
    Wallet= (wallet - rhs_tsh4_ess_bala );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12506,7 +12523,7 @@ Case 132: { if (Wallet<rhs_tsh4_ess_bala ) then {
   
 Case 133: { if (Wallet<rhs_zsh7a_mike ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_zsh7a_mike ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Pilot Helmet ZSh-7Afor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_zsh7a_mike ];
    Wallet= (wallet - rhs_zsh7a_mike );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12518,7 +12535,7 @@ Case 133: { if (Wallet<rhs_zsh7a_mike ) then {
   
 Case 134: { if (Wallet<rhs_zsh7a ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_zsh7a ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Pilot Helmet ZSh-7A (KM-35)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_zsh7a ];
    Wallet= (wallet - rhs_zsh7a );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12537,7 +12554,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet< B_AssaultPack_blk)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_blk   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Black)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_blk   ]; 
    Wallet= (wallet -   B_AssaultPack_blk   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12549,7 +12566,7 @@ Case 0: { if (Wallet< B_AssaultPack_blk)  then{
   
 Case 1: { if (Wallet< B_AssaultPack_blk_DiverTL)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_blk_DiverTL   ]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Assault Pack (Black) - Diver Team Leaderfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_blk_DiverTL   ];  
    Wallet= (wallet -   B_AssaultPack_blk_DiverTL   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12561,7 +12578,7 @@ Case 1: { if (Wallet< B_AssaultPack_blk_DiverTL)  then{
   
 Case 2: { if (Wallet< B_AssaultPack_blk_DiverExp) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_blk_DiverExp  ]; }else { 
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Black) - Diver Explosives for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_blk_DiverExp  ];  
    Wallet= (wallet -   B_AssaultPack_blk_DiverExp  );  
    profileNamespace setVariable ["SavedMoney", Wallet];SaveProfileNamespace;  
@@ -12572,7 +12589,7 @@ Case 2: { if (Wallet< B_AssaultPack_blk_DiverExp) then{
   
 Case 3: { if (Wallet< B_AssaultPack_cbr)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_cbr   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Coyote)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_cbr   ];  
    Wallet= (wallet -   B_AssaultPack_cbr   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12584,7 +12601,7 @@ Case 3: { if (Wallet< B_AssaultPack_cbr)  then{
   
 Case 4: { if (Wallet< B_AssaultPack_dgtl) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_dgtl  ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Assault Pack (Digi) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_dgtl  ];  
    Wallet= (wallet -   B_AssaultPack_dgtl  );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12596,7 +12613,7 @@ Case 4: { if (Wallet< B_AssaultPack_dgtl) then{
   
 Case 5: { if (Wallet< B_AssaultPack_rgr)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_rgr   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Green)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_rgr   ]; 
    Wallet= (wallet -   B_AssaultPack_rgr   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12608,7 +12625,7 @@ Case 5: { if (Wallet< B_AssaultPack_rgr)  then{
   
 Case 6: { if (Wallet< B_AssaultPack_rgr_Repair) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_rgr_Repair]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Assault Pack (Green) - Engineer for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_rgr_Repair];  
    Wallet= (wallet -   B_AssaultPack_rgr_Repair);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12620,7 +12637,7 @@ Case 6: { if (Wallet< B_AssaultPack_rgr_Repair) then {
  
 Case 7: { if (Wallet< B_AssaultPack_rgr_Medic) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_rgr_Medic ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Green) - Medicfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_rgr_Medic ];  
    Wallet= (wallet -   B_AssaultPack_rgr_Medic ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12632,7 +12649,7 @@ Case 7: { if (Wallet< B_AssaultPack_rgr_Medic) then {
  
 Case 8: { if (Wallet< B_AssaultPack_ocamo) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_ocamo ]; }else {   
-  PlaySound "buy";  
+  PlaySound "A3M_buy";  
   Hint format ["You have ordered  Assault Pack (Hex)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_ocamo ]; 
   Wallet= (wallet -   B_AssaultPack_ocamo );  
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12644,7 +12661,7 @@ Case 8: { if (Wallet< B_AssaultPack_ocamo) then {
  
 Case 9: { if (Wallet< B_AssaultPack_khk)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_khk   ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Assault Pack (Khaki)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_khk   ]; 
    Wallet= (wallet -   B_AssaultPack_khk   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12656,7 +12673,7 @@ Case 9: { if (Wallet< B_AssaultPack_khk)  then{
   
 Case 10: { if (Wallet<B_AssaultPack_mcamo) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_mcamo ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Assault Pack (MTP)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_mcamo ]; 
    Wallet= (wallet -   B_AssaultPack_mcamo );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12668,7 +12685,7 @@ Case 10: { if (Wallet<B_AssaultPack_mcamo) then {
   
 Case 11: { if (Wallet<B_AssaultPack_sgg)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_AssaultPack_sgg   ]; }else {   
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Assault Pack (Sage) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_AssaultPack_sgg   ]; 
    Wallet= (wallet -   B_AssaultPack_sgg   );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12680,7 +12697,7 @@ Case 11: { if (Wallet<B_AssaultPack_sgg)  then{
   
 Case 12: { if (Wallet<B_Bergen_sgg_Exp) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Bergen_sgg_Exp]; }else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Bergen (Sage) - Explosives  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Bergen_sgg_Exp]; 
    Wallet= (wallet -   B_Bergen_sgg_Exp); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12692,7 +12709,7 @@ Case 12: { if (Wallet<B_Bergen_sgg_Exp) then {
   
 Case 13: { if (Wallet<B_Bergen_sgg) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Bergen_sgg]; }else {   
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Bergen (Sage)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Bergen_sgg]; 
    Wallet= (wallet -   B_Bergen_sgg); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12704,7 +12721,7 @@ Case 13: { if (Wallet<B_Bergen_sgg) then {
   
 Case 14: { if (Wallet<B_Carryall_ocamo) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Carryall_ocamo]; }else {   
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Carryall (Hex)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Carryall_ocamo]; 
    Wallet= (wallet -   B_Carryall_ocamo); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12716,7 +12733,7 @@ Case 14: { if (Wallet<B_Carryall_ocamo) then {
   
 Case 15: { if (Wallet<B_Carryall_oucamo)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Carryall_oucamo   ]; }else { 
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Carryall (Urban)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Carryall_oucamo   ]; 
    Wallet= (wallet -   B_Carryall_oucamo   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12728,7 +12745,7 @@ Case 15: { if (Wallet<B_Carryall_oucamo)  then{
   
 Case 16: { if (Wallet<B_Carryall_oucamo_Exp)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Carryall_oucamo_Exp   ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Carryall (Urban) - Explosives   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Carryall_oucamo_Exp   ];
    Wallet= (wallet -   B_Carryall_oucamo_Exp   ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12740,7 +12757,7 @@ Case 16: { if (Wallet<B_Carryall_oucamo_Exp)  then{
   
 Case 17: { if (Wallet<B_FieldPack_blk) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_blk ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Field Pack (Black)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_blk ];  
    Wallet= (wallet -   B_FieldPack_blk ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12752,7 +12769,7 @@ Case 17: { if (Wallet<B_FieldPack_blk) then {
   
 Case 18: { if (Wallet<B_FieldPack_blk_DiverTL) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_blk_DiverTL ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Field Pack (Black) - Diver Team Leader  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_blk_DiverTL ];  
    Wallet= (wallet -   B_FieldPack_blk_DiverTL );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12764,7 +12781,7 @@ Case 18: { if (Wallet<B_FieldPack_blk_DiverTL) then {
   
 Case 19: { if (Wallet<B_FieldPack_blk_DiverExp) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_blk_DiverExp]; }else {  
-  PlaySound "buy";   
+  PlaySound "A3M_buy";   
   Hint format ["You have ordered  Field Pack (Black) - Diver Explosives   for $%1.00. Your order will be delivered soon! 
   Check the deliveries box often!",B_FieldPack_blk_DiverExp];  
   Wallet= (wallet -   B_FieldPack_blk_DiverExp);  
@@ -12777,7 +12794,7 @@ Case 19: { if (Wallet<B_FieldPack_blk_DiverExp) then {
  
 Case 20: { if (Wallet<B_FieldPack_cbr) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_cbr ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Field Pack (Coyote) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_cbr ];  
    Wallet= (wallet -   B_FieldPack_cbr );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12789,7 +12806,7 @@ Case 20: { if (Wallet<B_FieldPack_cbr) then {
   
 Case 21: { if (Wallet<B_FieldPack_cbr_AT) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_cbr_AT  ]; }else {  
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Field Pack (Coyote) - Anti-Tank for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_cbr_AT  ];  
    Wallet= (wallet -   B_FieldPack_cbr_AT  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12801,7 +12818,7 @@ Case 21: { if (Wallet<B_FieldPack_cbr_AT) then{
   
 Case 22: { if (Wallet<B_FieldPack_cbr_Repair) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_cbr_Repair  ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Field Pack (Coyote) - Engineer  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_cbr_Repair  ];
    Wallet= (wallet -   B_FieldPack_cbr_Repair  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12813,7 +12830,7 @@ Case 22: { if (Wallet<B_FieldPack_cbr_Repair) then{
   
 Case 23: { if (Wallet<B_FieldPack_ocamo)  then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_ocamo   ]; }else {  
-   PlaySound "buy";  
+   PlaySound "A3M_buy";  
    Hint format ["You have ordered  Field Pack (Hex)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_ocamo   ];  
    Wallet= (wallet -   B_FieldPack_ocamo   );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12825,7 +12842,7 @@ Case 23: { if (Wallet<B_FieldPack_ocamo)  then{
   
 Case 24: { if (Wallet<B_FieldPack_ocamo_Medic) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_ocamo_Medic ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Field Pack (Hex) - Medicfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_ocamo_Medic ];
    Wallet= (wallet -   B_FieldPack_ocamo_Medic );  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12837,7 +12854,7 @@ Case 24: { if (Wallet<B_FieldPack_ocamo_Medic) then {
  
 Case 25: { if (Wallet<B_FieldPack_oucamo) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_FieldPack_oucamo  ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Field Pack (Urban)  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_FieldPack_oucamo  ];  
    Wallet= (wallet -   B_FieldPack_oucamo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12849,7 +12866,7 @@ Case 25: { if (Wallet<B_FieldPack_oucamo) then{
   
 Case 26: { if (Wallet<B_Kitbag_cbr) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Kitbag_cbr]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Kitbag (Coyote) for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Kitbag_cbr];  
    Wallet= (wallet -   B_Kitbag_cbr);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12861,7 +12878,7 @@ Case 26: { if (Wallet<B_Kitbag_cbr) then {
   
 Case 27: { if (Wallet<B_Kitbag_mcamo) then{
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Kitbag_mcamo  ]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Kitbag (MTP)for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Kitbag_mcamo  ]; 
    Wallet= (wallet -   B_Kitbag_mcamo  ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12873,7 +12890,7 @@ Case 27: { if (Wallet<B_Kitbag_mcamo) then{
   
 Case 28: { if (Wallet<B_Kitbag_sgg) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Kitbag_sgg]; }else {  
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  Kitbag (Sage)   for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Kitbag_sgg];
    Wallet= (wallet -   B_Kitbag_sgg);  
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12885,7 +12902,7 @@ Case 28: { if (Wallet<B_Kitbag_sgg) then {
   
 Case 29: { if (Wallet<B_Mk6Mortar_Wpn) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_Mk6Mortar_Wpn ]; }else {   
-   PlaySound "buy";   
+   PlaySound "A3M_buy";   
    Hint format ["You have ordered  Mk6 Mortar  for $%1.00. Your order will be delivered soon! Check the deliveries box often!",B_Mk6Mortar_Wpn ]; 
    Wallet= (wallet -   B_Mk6Mortar_Wpn ); 
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12904,7 +12921,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<rhsusf_falconii ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_falconii ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Falcon II (Olive)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_falconii ];
    Wallet= (wallet - rhsusf_falconii );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12916,7 +12933,7 @@ Case 0: { if (Wallet<rhsusf_falconii ) then {
   
 Case 1: { if (Wallet<rhsusf_assault_eagleaiii_ucp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_ucp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (UCP)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_ucp ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_ucp );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12928,7 +12945,7 @@ Case 1: { if (Wallet<rhsusf_assault_eagleaiii_ucp ) then {
   
 Case 2: { if (Wallet<rhsusf_assault_eagleaiii_ocp ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_ocp ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (OCP)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_ocp ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_ocp );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -12940,7 +12957,7 @@ Case 2: { if (Wallet<rhsusf_assault_eagleaiii_ocp ) then {
   
 Case 3: { if (Wallet<rhsusf_assault_eagleaiii_coy ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_coy ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (Coyote)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_coy ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_coy );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12952,7 +12969,7 @@ Case 3: { if (Wallet<rhsusf_assault_eagleaiii_coy ) then {
   
 Case 4: { if (Wallet<rhsusf_assault_eagleaiii_ocp_engineer ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_ocp_engineer ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (Engineer)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_ocp_engineer ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_ocp_engineer );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12964,7 +12981,7 @@ Case 4: { if (Wallet<rhsusf_assault_eagleaiii_ocp_engineer ) then {
   
 Case 5: { if (Wallet<rhsusf_assault_eagleaiii_ocp_medic ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_ocp_medic ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A- III (Medic) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_ocp_medic ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_ocp_medic );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12976,7 +12993,7 @@ Case 5: { if (Wallet<rhsusf_assault_eagleaiii_ocp_medic ) then {
   
 Case 6: { if (Wallet<rhsusf_assault_eagleaiii_ocp_demo ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_assault_eagleaiii_ocp_demo ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (Demo) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_assault_eagleaiii_ocp_demo ];
    Wallet= (wallet - rhsusf_assault_eagleaiii_ocp_demo );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -12988,7 +13005,7 @@ Case 6: { if (Wallet<rhsusf_assault_eagleaiii_ocp_demo ) then {
   
 Case 7: { if (Wallet<rhs_assault_umbts ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_assault_umbts ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered UMBTSfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_assault_umbts ];
    Wallet= (wallet - rhs_assault_umbts );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13000,7 +13017,7 @@ Case 7: { if (Wallet<rhs_assault_umbts ) then {
   
 Case 8: { if (Wallet<rhs_sidor ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_sidor ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Sidorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_sidor ];
    Wallet= (wallet - rhs_sidor );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13012,7 +13029,7 @@ Case 8: { if (Wallet<rhs_sidor ) then {
   
 Case 9: { if (Wallet<rhs_rpg ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhs_rpg ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered RPG Carrierfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhs_rpg ];
    Wallet= (wallet - rhs_rpg );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13030,7 +13047,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<B_rhsusf_B_BACKPACK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", B_rhsusf_B_BACKPACK ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Eagle A-III (Raven UAV) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", B_rhsusf_B_BACKPACK ];
    Wallet= (wallet - B_rhsusf_B_BACKPACK );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13042,7 +13059,7 @@ Case 0: { if (Wallet<B_rhsusf_B_BACKPACK ) then {
   
 Case 1: { if (Wallet<rhsusf_ANPVS_14 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ANPVS_14 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PVS-14 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ANPVS_14 ];
    Wallet= (wallet - rhsusf_ANPVS_14 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13054,7 +13071,7 @@ Case 1: { if (Wallet<rhsusf_ANPVS_14 ) then {
   
 Case 2: { if (Wallet<rhsusf_ANPVS_15 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_ANPVS_15 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PVS-15 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_ANPVS_15 ];
    Wallet= (wallet - rhsusf_ANPVS_15 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13066,7 +13083,7 @@ Case 2: { if (Wallet<rhsusf_ANPVS_15 ) then {
   
 Case 3: { if (Wallet<lerca_1200_black ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", lerca_1200_black ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Lerca 1200 (black) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", lerca_1200_black ];
    Wallet= (wallet - lerca_1200_black );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13077,7 +13094,7 @@ Case 3: { if (Wallet<lerca_1200_black ) then {
   }; 
 Case 4: { if (Wallet<lerca_1200_tan ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", lerca_1200_tan ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Lerca 1200 (tan) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", lerca_1200_tan ];
    Wallet= (wallet - lerca_1200_tan );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13089,7 +13106,7 @@ Case 4: { if (Wallet<lerca_1200_tan ) then {
   
 Case 5: { if (Wallet<rhsusf_acc_anpeq15 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_anpeq15 ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PEQ-15 for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_anpeq15 ];
    Wallet= (wallet - rhsusf_acc_anpeq15 );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13101,7 +13118,7 @@ Case 5: { if (Wallet<rhsusf_acc_anpeq15 ) then {
   
 Case 6: { if (Wallet<rhsusf_acc_anpeq15A ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_anpeq15A ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PEQ-15Afor $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_anpeq15A ];
    Wallet= (wallet - rhsusf_acc_anpeq15A );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13113,7 +13130,7 @@ Case 6: { if (Wallet<rhsusf_acc_anpeq15A ) then {
   
 Case 7: { if (Wallet<rhsusf_acc_anpeq15_light ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", rhsusf_acc_anpeq15_light ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered AN/PEQ-15/M952V (Light)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", rhsusf_acc_anpeq15_light ];
    Wallet= (wallet - rhsusf_acc_anpeq15_light );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13133,7 +13150,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<ACE_Kestrel) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_Kestrel]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Kestrel 4500NVfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_Kestrel];
    Wallet= (wallet - ACE_Kestrel);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13145,7 +13162,7 @@ Case 0: { if (Wallet<ACE_Kestrel) then {
   
 Case 1: { if (Wallet<ACE_microDAGR) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_microDAGR]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered ACE MicroDAGRfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_microDAGR];
    Wallet= (wallet - ACE_microDAGR);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13157,7 +13174,7 @@ Case 1: { if (Wallet<ACE_microDAGR) then {
   
 Case 2: { if (Wallet<ACE_IR_Strobe_Item) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_IR_Strobe_Item]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered IR Strobefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_IR_Strobe_Item];
    Wallet= (wallet - ACE_IR_Strobe_Item);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13169,7 +13186,7 @@ Case 2: { if (Wallet<ACE_IR_Strobe_Item) then {
   
 Case 3: { if (Wallet<ACE_Clacker) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_Clacker]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M57 Clackerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_Clacker];
    Wallet= (wallet - ACE_Clacker);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13181,7 +13198,7 @@ Case 3: { if (Wallet<ACE_Clacker) then {
   
 Case 4: { if (Wallet<ACE_M26_Clacker) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_M26_Clacker]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered M26 Clackerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_M26_Clacker];
    Wallet= (wallet - ACE_M26_Clacker);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13193,7 +13210,7 @@ Case 4: { if (Wallet<ACE_M26_Clacker) then {
   
 Case 5: { if (Wallet<ACE_UAVBattery) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_UAVBattery]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered UAV Batteryfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_UAVBattery];
    Wallet= (wallet - ACE_UAVBattery);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13205,7 +13222,7 @@ Case 5: { if (Wallet<ACE_UAVBattery) then {
   
 Case 6: { if (Wallet<ACE_DeadManSwitch) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_DeadManSwitch]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Dead Man's Switchfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_DeadManSwitch];
    Wallet= (wallet - ACE_DeadManSwitch);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13217,7 +13234,7 @@ Case 6: { if (Wallet<ACE_DeadManSwitch) then {
   
 Case 7: { if (Wallet<ACE_Cellphone) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_Cellphone]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Callular Device (ACE) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_Cellphone];
    Wallet= (wallet - ACE_Cellphone);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13229,7 +13246,7 @@ Case 7: { if (Wallet<ACE_Cellphone) then {
   
 Case 8: { if (Wallet<tf_microdagr) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", tf_microdagr]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Personal Radio Programmerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", tf_microdagr];
    Wallet= (wallet - tf_microdagr);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13241,7 +13258,7 @@ Case 8: { if (Wallet<tf_microdagr) then {
   
 Case 9: { if (Wallet<ItemALiVEPhoneOld) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemALiVEPhoneOld]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Old Cell Phone (ALiVE Mod) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemALiVEPhoneOld];
    Wallet= (wallet - ItemALiVEPhoneOld);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13253,7 +13270,7 @@ Case 9: { if (Wallet<ItemALiVEPhoneOld) then {
   
 Case 10: { if (Wallet<ItemAndroid) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemAndroid]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered GD300 Android Devicefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemAndroid];
    Wallet= (wallet - ItemAndroid);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13265,7 +13282,7 @@ Case 10: { if (Wallet<ItemAndroid) then {
   
 Case 11: { if (Wallet<ACE_Altimeter) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_Altimeter]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Altimeterfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_Altimeter];
    Wallet= (wallet - ACE_Altimeter);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13285,7 +13302,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<Laserdesignator) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Laserdesignator]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Raytheon Industries Laser Designatorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Laserdesignator];
    Wallet= (wallet - Laserdesignator);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13297,7 +13314,7 @@ Case 0: { if (Wallet<Laserdesignator) then {
   
 Case 1: { if (Wallet<NVGoggles) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", NVGoggles]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. Military Night Vision Gogglesfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", NVGoggles];
    Wallet= (wallet - NVGoggles);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13309,7 +13326,7 @@ Case 1: { if (Wallet<NVGoggles) then {
   
 Case 2: { if (Wallet<Rangefinder) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Rangefinder]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. Military Range Finderfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Rangefinder];
    Wallet= (wallet - Rangefinder);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13321,7 +13338,7 @@ Case 2: { if (Wallet<Rangefinder) then {
    
 Case 3: { if (Wallet<acc_flashlight ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", acc_flashlight ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tactical Flashlightfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", acc_flashlight ];
    Wallet= (wallet - acc_flashlight );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13333,7 +13350,7 @@ Case 3: { if (Wallet<acc_flashlight ) then {
   
 Case 4: { if (Wallet<acc_pointer_IR) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", acc_pointer_IR]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Infrared Laser Pointerfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", acc_pointer_IR];
    Wallet= (wallet - acc_pointer_IR);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13345,19 +13362,19 @@ Case 4: { if (Wallet<acc_pointer_IR) then {
   
 Case 5: { if (Wallet<I_UAVTerminal) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", I_UAVTerminal]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered UAV Control Interfacefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", I_UAVTerminal];
    Wallet= (wallet - I_UAVTerminal);
    profileNamespace setVariable ["SavedMoney", Wallet];
    SaveProfileNamespace;
    Sleep DeliveryTime; 
-   Deliveries AddItemCargoGlobal["I_UAVTerminal", 1];
+   Deliveries AddItemCargoGlobal["B_UavTerminal", 1];
    hint "Mail Call: Your UAV Control Interface has arrived in the deliveries box"; };
   }; 
   
 Case 6: { if (Wallet<ItemGPS) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemGPS]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Outdoorsman GPS Devicefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemGPS];
   Wallet= (wallet - ItemGPS);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13369,7 +13386,7 @@ Case 6: { if (Wallet<ItemGPS) then {
  
 Case 7: { if (Wallet<ItemRadio) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemRadio]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Cobra Radio for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemRadio];
    Wallet= (wallet - ItemRadio);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13381,7 +13398,7 @@ Case 7: { if (Wallet<ItemRadio) then {
   
 Case 8: { if (Wallet<ItemWatch) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ItemWatch]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Casio Survival Watchfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ItemWatch];
    Wallet= (wallet - ItemWatch);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13393,7 +13410,7 @@ Case 8: { if (Wallet<ItemWatch) then {
   
 Case 9: { if (Wallet<MineDetector) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", MineDetector]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered U.S. Army Mine Detection Devicefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", MineDetector];
    Wallet= (wallet - MineDetector);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13405,7 +13422,7 @@ Case 9: { if (Wallet<MineDetector) then {
 
 Case 10: { if (Wallet<Laserbatteries) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", Laserbatteries]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Duracell Batteriesfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", Laserbatteries];
   Wallet= (wallet - Laserbatteries);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13425,7 +13442,7 @@ A3M_fnc_SMAElectronics = {
  
 Case 0: { if (Wallet< SMA_ANPEQ15_TAN ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TAN ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Tan for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TAN ]; 
    Wallet= (wallet -  SMA_ANPEQ15_TAN ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -13437,7 +13454,7 @@ Case 0: { if (Wallet< SMA_ANPEQ15_TAN ) then {
   
 Case 1: { if (Wallet< SMA_ANPEQ15_BLK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_BLK ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Blk for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_BLK ];
    Wallet= (wallet -  SMA_ANPEQ15_BLK );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13449,7 +13466,7 @@ Case 1: { if (Wallet< SMA_ANPEQ15_BLK ) then {
   
 Case 2: { if (Wallet< SMA_ANPEQ15_TOP_TAN_MK18 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_TAN_MK18 ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Tan Mk18 Top Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_TAN_MK18 ]; 
    Wallet= (wallet -  SMA_ANPEQ15_TOP_TAN_MK18 ); 
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13461,7 +13478,7 @@ Case 2: { if (Wallet< SMA_ANPEQ15_TOP_TAN_MK18 ) then {
   
 Case 3: { if (Wallet< SMA_ANPEQ15_TOP_BLK_MK18 ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_BLK_MK18 ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Blk Mk18 Top Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_BLK_MK18 ]; 
    Wallet= (wallet -  SMA_ANPEQ15_TOP_BLK_MK18 );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13473,7 +13490,7 @@ Case 3: { if (Wallet< SMA_ANPEQ15_TOP_BLK_MK18 ) then {
   
 Case 4: { if (Wallet< SMA_ANPEQ15_TOP_TAN_SCAR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_TAN_SCAR ]; }  else { 
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  AN/PEQ-15 Tan SCAR Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_TAN_SCAR ]; 
    Wallet= (wallet -  SMA_ANPEQ15_TOP_TAN_SCAR );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -13485,7 +13502,7 @@ Case 4: { if (Wallet< SMA_ANPEQ15_TOP_TAN_SCAR ) then {
   
 Case 5: { if (Wallet< SMA_ANPEQ15_TOP_BLK_SCAR ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_BLK_SCAR ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Blk SCAR Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_BLK_SCAR ];
    Wallet= (wallet -  SMA_ANPEQ15_TOP_BLK_SCAR ); 
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -13497,7 +13514,7 @@ Case 5: { if (Wallet< SMA_ANPEQ15_TOP_BLK_SCAR ) then {
   
 Case 6: { if (Wallet< SMA_ANPEQ15_TOP_BLK ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_BLK ]; }  else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered  AN/PEQ-15 Blk Top Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_BLK ];
    Wallet= (wallet -  SMA_ANPEQ15_TOP_BLK );
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13509,7 +13526,7 @@ Case 6: { if (Wallet< SMA_ANPEQ15_TOP_BLK ) then {
   
 Case 7: { if (Wallet< SMA_ANPEQ15_TOP_TAN ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  SMA_ANPEQ15_TOP_TAN ]; }  else { 
-   PlaySound "buy"; 
+   PlaySound "A3M_buy"; 
    Hint format ["You have ordered  AN/PEQ-15 Tan Top Mount for $%1.00. Your order will be delivered soon! Check the deliveries box often!",  SMA_ANPEQ15_TOP_TAN ];
    Wallet= (wallet -  SMA_ANPEQ15_TOP_TAN );
    profileNamespace setVariable ["SavedMoney", Wallet];  
@@ -13527,7 +13544,7 @@ A3M_fnc_ACE3Medical = {
 switch (TheSelection) do {
 Case 0: { if (Wallet<ACE_fieldDressing) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_fieldDressing]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Gauze Bandagefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_fieldDressing];
   Wallet= (wallet - ACE_fieldDressing);
   profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13539,7 +13556,7 @@ Case 0: { if (Wallet<ACE_fieldDressing) then {
  
 Case 1: { if (Wallet<ACE_packingBandage) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_packingBandage]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Packing Bandagefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_packingBandage];
    Wallet= (wallet - ACE_packingBandage);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13551,7 +13568,7 @@ Case 1: { if (Wallet<ACE_packingBandage) then {
   
 Case 2: { if (Wallet<ACE_elasticBandage) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_elasticBandage]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Elastic Bandagefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_elasticBandage];
    Wallet= (wallet - ACE_elasticBandage);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13563,7 +13580,7 @@ Case 2: { if (Wallet<ACE_elasticBandage) then {
   
 Case 3: { if (Wallet<ACE_tourniquet) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_tourniquet]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Tourniquet for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_tourniquet];
    Wallet= (wallet - ACE_tourniquet);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13575,7 +13592,7 @@ Case 3: { if (Wallet<ACE_tourniquet) then {
   
 Case 4: { if (Wallet<ACE_morphine) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_morphine]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Morphine Autoinjectorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_morphine];
    Wallet= (wallet - ACE_morphine);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13587,7 +13604,7 @@ Case 4: { if (Wallet<ACE_morphine) then {
   
 Case 5: { if (Wallet<ACE_atropine) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_atropine]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Atropin Autoinjectorfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_atropine];
    Wallet= (wallet - ACE_atropine);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13599,7 +13616,7 @@ Case 5: { if (Wallet<ACE_atropine) then {
   
 Case 6: { if (Wallet<ACE_epinephrine) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_epinephrine]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Epinephrinefor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_epinephrine];
    Wallet= (wallet - ACE_epinephrine);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13611,7 +13628,7 @@ Case 6: { if (Wallet<ACE_epinephrine) then {
   
 Case 7: { if (Wallet<ACE_plasmaIV) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_plasmaIV]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Plasma IV (1000ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_plasmaIV];
    Wallet= (wallet - ACE_plasmaIV);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13623,7 +13640,7 @@ Case 7: { if (Wallet<ACE_plasmaIV) then {
   
 Case 8: { if (Wallet<ACE_plasmaIV_500) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_plasmaIV_500]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Plasma IV (500ml)for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_plasmaIV_500];
    Wallet= (wallet - ACE_plasmaIV_500);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13635,7 +13652,7 @@ Case 8: { if (Wallet<ACE_plasmaIV_500) then {
   
 Case 9: { if (Wallet<ACE_plasmaIV_250) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_plasmaIV_250]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Plasma IV (250 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_plasmaIV_250];
    Wallet= (wallet - ACE_plasmaIV_250);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13647,7 +13664,7 @@ Case 9: { if (Wallet<ACE_plasmaIV_250) then {
   
 Case 10: { if (Wallet<ACE_bloodIV) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_bloodIV]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Blood IV (1000 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_bloodIV];
    Wallet= (wallet - ACE_bloodIV);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13659,7 +13676,7 @@ Case 10: { if (Wallet<ACE_bloodIV) then {
   
 Case 11: { if (Wallet<ACE_bloodIV_500) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_bloodIV_500]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Blood IV (500 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_bloodIV_500];
    Wallet= (wallet - ACE_bloodIV_500);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13671,7 +13688,7 @@ Case 11: { if (Wallet<ACE_bloodIV_500) then {
   
 Case 12: { if (Wallet<ACE_bloodIV_250) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_bloodIV_250]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Blood IV (250 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_bloodIV_250];
    Wallet= (wallet - ACE_bloodIV_250);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13683,7 +13700,7 @@ Case 12: { if (Wallet<ACE_bloodIV_250) then {
   
 Case 13: { if (Wallet<ACE_salineIV) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_salineIV]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Saline IV (1000 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_salineIV];
    Wallet= (wallet - ACE_salineIV);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13695,7 +13712,7 @@ Case 13: { if (Wallet<ACE_salineIV) then {
   
 Case 14: { if (Wallet<ACE_salineIV_500) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_salineIV_500]; } else {
-  PlaySound "buy";
+  PlaySound "A3M_buy";
   Hint format ["You have ordered Saline IV (500 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_salineIV_500];
   Wallet= (wallet - ACE_salineIV_500);
   profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13707,7 +13724,7 @@ Case 14: { if (Wallet<ACE_salineIV_500) then {
  
 Case 15: { if (Wallet<ACE_salineIV_250) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_salineIV_250]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Saline IV (250 ml) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_salineIV_250];
    Wallet= (wallet - ACE_salineIV_250);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13719,7 +13736,7 @@ Case 15: { if (Wallet<ACE_salineIV_250) then {
   
 Case 16: { if (Wallet<ACE_quikclot) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_quikclot]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered QuikClot Field Dressingfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_quikclot];
    Wallet= (wallet - ACE_quikclot);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13731,7 +13748,7 @@ Case 16: { if (Wallet<ACE_quikclot) then {
   
 Case 17: { if (Wallet<ACE_personalAidKit) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_personalAidKit]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Personal Aid Kitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_personalAidKit];
    Wallet= (wallet - ACE_personalAidKit);
    profileNamespace setVariable ["SavedMoney", Wallet];
@@ -13743,7 +13760,7 @@ Case 17: { if (Wallet<ACE_personalAidKit) then {
   
 Case 18: { if (Wallet<ACE_surgicalKit) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_surgicalKit]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Surgical Kitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_surgicalKit];
    Wallet= (wallet - ACE_surgicalKit);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13755,7 +13772,7 @@ Case 18: { if (Wallet<ACE_surgicalKit) then {
   
 Case 19: { if (Wallet<ACE_bodyBag) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_bodyBag]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Body Bagfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_bodyBag];
    Wallet= (wallet - ACE_bodyBag);
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13776,7 +13793,7 @@ switch (TheSelection) do {
 
 Case 0: { if (Wallet<FirstAidKit ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", FirstAidKit ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered First Aid Kitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!", FirstAidKit ];
    Wallet= (wallet - FirstAidKit );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13788,7 +13805,7 @@ Case 0: { if (Wallet<FirstAidKit ) then {
   
 Case 1: { if (Wallet< Medikit  ) then {
   Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.",  Medikit  ]; } else {
-   PlaySound "buy";
+   PlaySound "A3M_buy";
    Hint format ["You have ordered Medikitfor $%1.00. Your order will be delivered soon! Check the deliveries box often!",  Medikit  ];
    Wallet= (wallet -  Medikit  );
    profileNamespace setVariable ["SavedMoney", Wallet]; 
@@ -13800,6 +13817,28 @@ Case 1: { if (Wallet< Medikit  ) then {
 
 }; 
 }; 
+
+A3M_fnc_Ace3Backpacks = {
+	switch (TheSelection) do {
+	
+		
+		Case 0:	{
+		
+			if (Wallet< ACE_TacticalLadder_Pack) then { 
+				Hint Format ["Attention: Your Card Was Declined in the amount of:\n $%1.00 \n Please contact your financial institution.", ACE_TacticalLadder_Pack]; }else{ 
+				PlaySound "A3M_buy"; 
+				Hint format ["You have ordered an ACE Tactical Ladder(Backpack) for $%1.00. Your order will be delivered soon! Check the deliveries box often!", ACE_TacticalLadder_Pack];
+				Wallet= (wallet - ACE_TacticalLadder_Pack);	
+				profileNamespace setVariable ["SavedMoney", Wallet];
+				SaveProfileNamespace; 
+				Sleep DeliveryTime;
+				Deliveries AddBackpackCargoGlobal ["ACE_TacticalLadder_Pack", 1];	
+				hint "Mail Call: Your ACE Tactical Ladder (Backpack) has arrived in the deliveries box";
+				};
+		}; 
+
+	}; 
+};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////  BEGIN ACTUAL OPENING OF DIALOG ////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13818,4 +13857,4 @@ _indexSM4= lbAdd [2175,"ACE3"];
 _indexSM5= lbAdd [2175,"TFAR"];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Last Line Of Filelee
+//Last Line Of File

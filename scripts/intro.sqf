@@ -36,6 +36,6 @@ _Basepos = Getpos Player;
 
 [_Basepos,"Astral Research Compound C-12",200,200,180,0] spawn BIS_fnc_establishingShot;
 
-["A3M", "PMC Simulator", "C-12 Compound","West Altis"] spawn BIS_fnc_infoText;
+["A3M", "PMC Simulator", "Operations HQ","West Altis"] spawn BIS_fnc_infoText;
 
-hintSilent parseText format["<img size = 15 image='images\Orion_Logo2.paa'/> <br/> <br/> <t size='1.25' font='TahomaB' color='#ff0000'>Welcome to Orion Private Security Group. We're glad to have you aboard!</t> <br/> <br/>  Access the Internet via a Laptop to Access Email, Banking (And Time Submission...to get paid!!), Online Shopping and more! <br/> <br/> <t color='#ffff00'>General Communications:</t>  <br/> <br/>Radio Channel 76 <br/> <br/>Please remember to operate responsibly. <br/> <br/> -OPSG HR</t>"]
+hintSilent parseText format["<img size = 15 image='images\Orion_Logo2.paa'/> <br/> <br/> <t size='1.25' font='TahomaB' color='#ff0000'>Welcome to Orion Private Security Group. We're glad to have you aboard!</t> <br/> <br/>  Access the Internet via a Laptop to Access Email, Banking (And Time Submission...to get paid!!), Online Shopping and more! <br/> <br/> <t color='#ffff00'>MISSION ONLY / LITE VERSION!!</t>  <br/> <br/> You are playing the Lite version of this mode. The @PMC_Simulator Total Modification is available now. Download on Steam Workshop, Play With Six, or directly from the A3MilSIm.Com Website. <br/> <br/> -OPSG HR</t>"]
